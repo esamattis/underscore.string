@@ -1,20 +1,24 @@
-var _s;
-
 (function(){
+    // ------------------------- Baseline setup ---------------------------------
 
+    // Establish the root object, "window" in the browser, or "global" on the server.
+    var root = this;
+
+    var nativeTrim = trim = String.prototype.trim;
+    
     function str_repeat(i, m) {
         for (var o = []; m > 0; o[--m] = i);
         return o.join('');
     }
 
-    function defaultToWhiteSpace(letters){
-        if (letters) {
-            return _s.escapeRegExp(letters);
+    function defaultToWhiteSpace(characters){
+        if (characters) {
+            return _s.escapeRegExp(characters);
         }
         return '\\s';
     }
 
-    _s = {
+    root._s = {
 
         capitalize : function(str) {
             return str.charAt(0).toUpperCase() + str.substring(1).toLowerCase();
@@ -33,19 +37,24 @@ var _s;
             return _s.strip(str.replace(/\s+/g, ' '));
         },
 
-        strip: function(str, letters){
-            letters = defaultToWhiteSpace(letters);
-            return str.replace(new RegExp('\^[' + letters + ']+|[' + letters + ']+$', 'g'), '');
+        trim: function(str, characters){
+            if (!characters && nativeTrim) {
+                return nativeTrim.call(str);
+            }
+            characters = defaultToWhiteSpace(characters);
+            return str.replace(new RegExp('\^[' + characters + ']+|[' + characters + ']+$', 'g'), '');
+        },
+        
+     
+
+        ltrim: function(str, characters){
+            characters = defaultToWhiteSpace(characters);
+            return str.replace(new RegExp('\^[' + characters + ']+', 'g'), '');
         },
 
-        lstrip: function(str, letters){
-            letters = defaultToWhiteSpace(letters);
-            return str.replace(new RegExp('\^[' + letters + ']+', 'g'), '');
-        },
-
-        rstrip: function(str, letters){
-            letters = defaultToWhiteSpace(letters);
-            return str.replace(new RegExp('[' + letters + ']+$', 'g'), '');
+        rtrim: function(str, characters){
+            characters = defaultToWhiteSpace(characters);
+            return str.replace(new RegExp('[' + characters + ']+$', 'g'), '');
         },
 
 
@@ -109,12 +118,16 @@ var _s;
             return o.join('');
         }
     }
+    
+    // Some aliases
+    root._s.strip = _s.trim;
+    root._s.lstrip = _s.ltrim;
+    root._s.rstrip = _s.rtrim;    
 
 
-
+	// Integrate with Underscore.js
     if (_) {
-        // Integrate with Underscore.js
-        _.mixin(_s);
+        _.mixin(root._s);
     }
 
 }());

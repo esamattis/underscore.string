@@ -2,66 +2,74 @@ $(document).ready(function() {
 
   module("String extensions");
 
+  test("Strings: basic", function() {
+    equals(_.trim("   epeli  "), "epeli", "Basic");  
+    equals(_.strip("   epeli  "), "epeli", "Aliases");    
+    equals(_("   epeli  ").trim(), "epeli", "Object-Oriented style");
+    equals(_("   epeli  ").chain().trim().capitalize().value(), "Epeli", "Can chain");
+  });
+
+
   test("Strings: capitalize", function() {
     equals(_("fabio").capitalize(), "Fabio", 'First letter is upper case');
     equals(_.capitalize("fabio"), "Fabio", 'First letter is upper case');
   });
 
 
-  test("Strings: strip", function() {
-    equals(_(" foo").strip(), "foo");
-    equals(_("foo ").strip(), "foo");
-    equals(_(" foo ").strip(), "foo");
-    equals(_("    foo     ").strip(), "foo");
+  test("Strings: trim", function() {
+    equals(_(" foo").trim(), "foo");
+    equals(_("foo ").trim(), "foo");
+    equals(_(" foo ").trim(), "foo");
+    equals(_("    foo     ").trim(), "foo");
 
-    equals(_("ffoo").strip("f"), "oo");
-    equals(_("ooff").strip("f"), "oo");
-    equals(_("ffooff").strip("f"), "oo");
+    equals(_("ffoo").trim("f"), "oo");
+    equals(_("ooff").trim("f"), "oo");
+    equals(_("ffooff").trim("f"), "oo");
 
 
-    equals(_("_-foobar-_").strip("_-"), "foobar");
+    equals(_("_-foobar-_").trim("_-"), "foobar");
 
-    equals(_("http://foo/").strip("/"), "http://foo");
-    equals(_("c:\\").strip('\\'), "c:");
+    equals(_("http://foo/").trim("/"), "http://foo");
+    equals(_("c:\\").trim('\\'), "c:");
 
 
   });
 
-  test("Strings: lstrip", function() {
-    equals(_(" foo").lstrip(), "foo");
-    equals(_("    foo").lstrip(), "foo");
-    equals(_("foo ").lstrip(), "foo ");
-    equals(_(" foo ").lstrip(), "foo ");
+  test("Strings: ltrim", function() {
+    equals(_(" foo").ltrim(), "foo");
+    equals(_("    foo").ltrim(), "foo");
+    equals(_("foo ").ltrim(), "foo ");
+    equals(_(" foo ").ltrim(), "foo ");
 
 
-    equals(_("ffoo").lstrip("f"), "oo");
-    equals(_("ooff").lstrip("f"), "ooff");
-    equals(_("ffooff").lstrip("f"), "ooff");
+    equals(_("ffoo").ltrim("f"), "oo");
+    equals(_("ooff").ltrim("f"), "ooff");
+    equals(_("ffooff").ltrim("f"), "ooff");
 
-    equals(_("_-foobar-_").lstrip("_-"), "foobar-_");
+    equals(_("_-foobar-_").ltrim("_-"), "foobar-_");
   });
 
-  test("Strings: rstrip", function() {
-    equals(_("http://foo/").rstrip("/"), "http://foo", 'clean trailing slash');
-    equals(_(" foo").rstrip(), " foo");
-    equals(_("foo ").rstrip(), "foo");
-    equals(_("foo     ").rstrip(), "foo");
-    equals(_("foo  bar     ").rstrip(), "foo  bar");
-    equals(_(" foo ").rstrip(), " foo");
+  test("Strings: rtrim", function() {
+    equals(_("http://foo/").rtrim("/"), "http://foo", 'clean trailing slash');
+    equals(_(" foo").rtrim(), " foo");
+    equals(_("foo ").rtrim(), "foo");
+    equals(_("foo     ").rtrim(), "foo");
+    equals(_("foo  bar     ").rtrim(), "foo  bar");
+    equals(_(" foo ").rtrim(), " foo");
 
 
-    equals(_("ffoo").rstrip("f"), "ffoo");
-    equals(_("ooff").rstrip("f"), "oo");
-    equals(_("ffooff").rstrip("f"), "ffoo");
+    equals(_("ffoo").rtrim("f"), "ffoo");
+    equals(_("ooff").rtrim("f"), "oo");
+    equals(_("ffooff").rtrim("f"), "ffoo");
 
-    equals(_("_-foobar-_").rstrip("_-"), "_-foobar");
+    equals(_("_-foobar-_").rtrim("_-"), "_-foobar");
 
   });
 
-  test("Strings: rstrip", function() {
-    equals(_(" foo").rstrip(), " foo");
-    equals(_("foo ").rstrip(), "foo");
-    equals(_(" foo ").rstrip(), " foo");
+  test("Strings: rtrim", function() {
+    equals(_(" foo").rtrim(), " foo");
+    equals(_("foo ").rtrim(), "foo");
+    equals(_(" foo ").rtrim(), " foo");
   });
 
   test("Strings: clean", function() {

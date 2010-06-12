@@ -5,12 +5,26 @@
   var objects = _.map(numbers, function(n){ return {num : n}; });
   var randomized = _.sortBy(numbers, function(){ return Math.random(); });
 
-  JSLitmus.test('_.startsWith(): found', function() {
+
+
+
+
+  JSLitmus.test('trim', function() {
+    return _.trim("  foobar  ");
+  });
+
+
+  JSLitmus.test('trimNoNative', function() {
+    return _.trim("  foobar  ", " ");
+  });
+
+  JSLitmus.test('_.startsWith("foobar", "foo")', function() {
     return _.startsWith("foobar", "foo");
   });
 
-  JSLitmus.test('_.startsWith(): not found', function() {
-    return _.startsWith("crappyy fdssadfdsdfasfdds", "foo");
+
+  JSLitmus.test('_.startsWith("foobar", "xx")', function() {
+    return _.startsWith("foobar", "xx");
   });
 
 

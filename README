@@ -19,32 +19,32 @@ use Object-Oriented style and chaining.
 
 [u]: http://documentcloud.github.com/underscore/
 
-    _("   epeli  ").chain().strip().capitalize().value()
+    _("   epeli  ").chain().trim().capitalize().value()
     => "Epeli"
 
 
 ## String Functions ##
 
-**strip** _.strip(string, [letters])
+**trim** _.trim(string, [characters])
 
-Strips defined letters from begining and ending of the string.
+trims defined characters from begining and ending of the string.
 Defaults to whitespace characters.
 
-    _.strip("  foobar   ")
+    _.trim("  foobar   ")
     => "foobar"
 
-    _.strip("_-foobar-_", "_-")
+    _.trim("_-foobar-_", "_-")
     => "foobar"
 
 
-**lstrip** _.lstrip(string, [letters])
+**ltrim** _.ltrim(string, [characters])
 
-Left strip. Similar to strip, but only for left side.
+Left trim. Similar to trim, but only for left side.
 
 
-**rstrip** _.rstrip(string, [letters])
+**rtrim** _.rtrim(string, [characters])
 
-Left strip. Similar to strip, but only for right side.
+Left trim. Similar to trim, but only for right side.
 
 **startsWith** _.startsWith(string, anotherstring)
 
@@ -77,8 +77,11 @@ Converts first letter of the string to uppercase
 
 **sprintf** _.sprintf(string format , [mixed arg1 [, mixed arg2 [ ,...]]])
 
-C like string formatting. Borrowed from http://www.diveintojavascript.com/projects/sprintf-for-javascript
-Credits goes to Alexandru Marasteanu <alexaholic [at) gmail (dot] com>
+C like string formatting. Borrowed from 
+Credits goes to [Alexandru Marasteanu][o] <alexaholic [at) gmail (dot] com>.
+For more detailed documentation, see the [original page][o].
+
+[o]: http://www.diveintojavascript.com/projects/sprintf-for-javascript
 
     _.sprintf("%.1f", 1.17)
     "1.2"
