@@ -1,14 +1,14 @@
 -*- markdown -*-
 
-# Underscore.strings.js #
+# Underscore.strings #
 
-Homepage: http://bitbucket.org/epeli/underscore.strings.js
+Homepage: http://bitbucket.org/epeli/underscore.strings
 
 Author: Esa-Matti Suuronen <esa-matti aet suuronen dot org>
 
 Javascript lacks good string manipulation operations.
 This an attempt to fill that cap. List stock methods can be found
-for example from [Dive Into JavaScript][d]
+for example from [Dive Into JavaScript][d] -page.
 
 [d]: http://www.diveintojavascript.com/core-javascript-reference/the-string-object 
 
