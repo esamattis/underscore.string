@@ -4,7 +4,7 @@
 
 Homepage: http://bitbucket.org/epeli/underscore.strings
 
-Author: Esa-Matti Suuronen <esa-matti aet suuronen dot org>
+Author: Esa-Matti Suuronen (esa-matti aet suuronen dot org)
 
 Javascript lacks good string manipulation operations.
 This an attempt to fill that cap. List stock methods can be found
@@ -78,7 +78,7 @@ Converts first letter of the string to uppercase
 **sprintf** _.sprintf(string format , [mixed arg1 [, mixed arg2 [ ,...]]])
 
 C like string formatting. Borrowed from 
-Credits goes to [Alexandru Marasteanu][o] <alexaholic [at) gmail (dot] com>.
+Credits goes to [Alexandru Marasteanu][o].
 For more detailed documentation, see the [original page][o].
 
 [o]: http://www.diveintojavascript.com/projects/sprintf-for-javascript

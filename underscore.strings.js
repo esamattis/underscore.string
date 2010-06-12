@@ -1,11 +1,20 @@
+// Underscore.strings
+// (c) 2010 Esa-Matti Suuronen <esa-matti aet suuronen dot org>
+// Underscore.strings is freely distributable under the terms of the MIT license.
+// Documentation: http://bitbucket.org/epeli/underscore.strings/
+// Some code is borrowed from MooTools and Alexandru Marasteanu.
+
+
+
+
 (function(){
     // ------------------------- Baseline setup ---------------------------------
 
     // Establish the root object, "window" in the browser, or "global" on the server.
     var root = this;
 
-    var nativeTrim = trim = String.prototype.trim;
-    
+    var nativeTrim = String.prototype.trim;
+
     function str_repeat(i, m) {
         for (var o = []; m > 0; o[--m] = i);
         return o.join('');
@@ -44,8 +53,8 @@
             characters = defaultToWhiteSpace(characters);
             return str.replace(new RegExp('\^[' + characters + ']+|[' + characters + ']+$', 'g'), '');
         },
-        
-     
+
+
 
         ltrim: function(str, characters){
             characters = defaultToWhiteSpace(characters);
@@ -118,11 +127,11 @@
             return o.join('');
         }
     }
-    
+
     // Some aliases
     root._s.strip = _s.trim;
     root._s.lstrip = _s.ltrim;
-    root._s.rstrip = _s.rtrim;    
+    root._s.rstrip = _s.rtrim;
 
 
 	// Integrate with Underscore.js

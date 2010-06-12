@@ -7,16 +7,22 @@
 
 
 
+  JSLitmus.test('trimNoNative', function() {
+    return _.trim("  foobar  ", " ");
+  });
 
 
   JSLitmus.test('trim', function() {
     return _.trim("  foobar  ");
   });
 
-
-  JSLitmus.test('trimNoNative', function() {
-    return _.trim("  foobar  ", " ");
+  /**
+   * Uh, how's jQuery.trim is so fast...
+   **/
+  JSLitmus.test('trim jQuery', function() {
+    return jQuery.trim("  foobar  ");
   });
+
 
   JSLitmus.test('_.startsWith("foobar", "foo")', function() {
     return _.startsWith("foobar", "foo");
