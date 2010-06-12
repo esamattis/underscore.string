@@ -1,1 +1,4 @@
 glob:.git
+glob:.project
+glob:index.html
+glob:*.swp
