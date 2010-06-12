@@ -77,7 +77,7 @@ Converts first letter of the string to uppercase
 
 **sprintf** _.sprintf(string format , [mixed arg1 [, mixed arg2 [ ,...]]])
 
-C like string formatting. Borrowed from 
+C like string formatting. 
 Credits goes to [Alexandru Marasteanu][o].
 For more detailed documentation, see the [original page][o].
 
