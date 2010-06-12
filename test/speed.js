@@ -16,9 +16,6 @@
     return _.trim("  foobar  ");
   });
 
-  /**
-   * Uh, how's jQuery.trim is so fast...
-   **/
   JSLitmus.test('trim jQuery', function() {
     return jQuery.trim("  foobar  ");
   });
@@ -32,6 +29,9 @@
   JSLitmus.test('_.startsWith("foobar", "xx")', function() {
     return _.startsWith("foobar", "xx");
   });
+
+
+
 
 
 })();
