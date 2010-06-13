@@ -21,6 +21,7 @@ $(document).ready(function() {
     equals(_("foo ").trim(), "foo");
     equals(_(" foo ").trim(), "foo");
     equals(_("    foo     ").trim(), "foo");
+    equals(_("    foo     ", " ").trim(), "foo", "Manually set whitespace");
 
     equals(_("ffoo").trim("f"), "oo");
     equals(_("ooff").trim("f"), "oo");
@@ -83,7 +84,7 @@ $(document).ready(function() {
     // http://www.diveintojavascript.com/projects/sprintf-for-javascript
     equals(_.sprintf("Hello %s", "me"), "Hello me", 'basic');
     equals(_("Hello %s").sprintf("me"), "Hello me", 'object');
-    equals(_("hello %s").chain().sprintf("me").capitalize().value(), "Hello me", 'Chaingin works');
+    equals(_("hello %s").chain().sprintf("me").capitalize().value(), "Hello me", 'Chaining works');
     equals(_.sprintf("%.1f", 1.22222), "1.2", 'round');
     equals(_.sprintf("%.1f", 1.17), "1.2", 'round 2');
 
