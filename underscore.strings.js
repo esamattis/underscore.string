@@ -73,7 +73,7 @@
 
 
         endsWith: function(str, ends){
-            return str.length >= ends.length && str.substring(ends.length) === ends;
+            return str.length >= ends.length && str.substring(str.length - ends.length) === ends;
         },
 
 
