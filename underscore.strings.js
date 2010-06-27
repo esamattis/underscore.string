@@ -27,7 +27,8 @@
         return '\\s';
     }
 
-    root._s = {
+    var _s;
+    _s = root._s = {
 
         capitalize : function(str) {
             return str.charAt(0).toUpperCase() + str.substring(1).toLowerCase();
