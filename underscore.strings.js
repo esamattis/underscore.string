@@ -140,8 +140,7 @@
 
 	// Integrate with Underscore.js
     if (root._) {
-        _.mixin(root._s);
+        root._.mixin(root._s);
     }
 
 }());
-
