@@ -63,17 +63,24 @@ Test if string ends with another string.
 
 **contains** _.contains(string, substring)
 
-Tests if string contains a substring
+Tests if string contains a substring.
 
     _.contains("foobar", "ob")
     => true
 
 **capitalize** _.capitalize(string)
 
-Converts first letter of the string to uppercase   
+Converts first letter of the string to uppercase.
 
     _.capitalize("epeli")
     => "Epeli"
+
+**reverse** _.reverse(string)
+
+Reverses the string.
+
+    _.reverse("foobar")
+    => "raboof"
 
 **sprintf** _.sprintf(string format , [mixed arg1 [, mixed arg2 [ ,...]]])
 
