@@ -15,6 +15,13 @@ $(document).ready(function() {
     equals(_.capitalize("fabio"), "Fabio", 'First letter is upper case');
   });
 
+  test("Strings: reverse", function() {
+    equals(_.reverse("foo"), "oof" );
+    equals(_.reverse("foobar"), "raboof" );
+    equals(_.reverse("foo bar"), "rab oof" );
+    equals(_.reverse("saippuakauppias"), "saippuakauppias" );
+  });
+
 
   test("Strings: trim", function() {
     equals(_(" foo").trim(), "foo");

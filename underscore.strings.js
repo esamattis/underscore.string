@@ -38,6 +38,10 @@
             return str.replace(/([-.*+?^${}()|[\]\/\\])/g, '\\$1');
         },
 
+        reverse: function(str){
+            return Array.prototype.reverse.apply(str.split('')).join('');
+        },  
+
         contains: function(str, needle){
             return str.indexOf(needle) !== -1;
         },
@@ -135,7 +139,7 @@
 
 
 	// Integrate with Underscore.js
-    if (_) {
+    if (root._) {
         _.mixin(root._s);
     }
 
