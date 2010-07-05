@@ -2,13 +2,13 @@
 
 # Underscore.strings #
 
-Homepage: http://bitbucket.org/epeli/underscore.strings
+Homepage: http://esa-matti.suuronen.org/projects/underscore.strings/
 
 Author: Esa-Matti Suuronen (esa-matti aet suuronen dot org)
 
-Javascript lacks a complete string manipulation operations.
+Javascript lacks complete string manipulation operations.
 This an attempt to fill that cap. List of buildin methods can be found
-for example from [Dive Into JavaScript][d] -page.
+for example from [Dive Into JavaScript][d].
 
 [d]: http://www.diveintojavascript.com/core-javascript-reference/the-string-object 
 
