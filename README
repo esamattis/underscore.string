@@ -6,8 +6,8 @@ Homepage: http://bitbucket.org/epeli/underscore.strings
 
 Author: Esa-Matti Suuronen (esa-matti aet suuronen dot org)
 
-Javascript lacks good string manipulation operations.
-This an attempt to fill that cap. List stock methods can be found
+Javascript lacks a complete string manipulation operations.
+This an attempt to fill that cap. List of buildin methods can be found
 for example from [Dive Into JavaScript][d] -page.
 
 [d]: http://www.diveintojavascript.com/core-javascript-reference/the-string-object 
@@ -15,7 +15,7 @@ for example from [Dive Into JavaScript][d] -page.
 
 As name states this an extension for [Underscore.js][u], but it can be used
 independently from **_s**-global variable. But with Underscore.js you can
-use Object-Oriented style and chaining.
+use Object-Oriented style and chaining:
 
 [u]: http://documentcloud.github.com/underscore/
 
