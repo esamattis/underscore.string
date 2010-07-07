@@ -82,7 +82,16 @@ Reverses the string.
     _.reverse("foobar")
     => "raboof"
 
-**sprintf** _.sprintf(string format , [mixed arg1 [, mixed arg2 [ ,...]]])
+
+**join** _.join(separator, *strings)
+
+Joins strings together with given separator
+
+    _.join(" ", "foo", "bar")
+    => "foo bar"
+
+
+**sprintf** _.sprintf(string format, *arguments)
 
 C like string formatting. 
 Credits goes to [Alexandru Marasteanu][o].
