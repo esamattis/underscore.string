@@ -2,20 +2,20 @@
 
 # Underscore.strings #
 
-Homepage: http://bitbucket.org/epeli/underscore.strings
+Homepage: http://esa-matti.suuronen.org/projects/underscore.strings/
 
 Author: Esa-Matti Suuronen (esa-matti aet suuronen dot org)
 
-Javascript lacks good string manipulation operations.
-This an attempt to fill that cap. List stock methods can be found
-for example from [Dive Into JavaScript][d] -page.
+Javascript lacks complete string manipulation operations.
+This an attempt to fill that cap. List of buildin methods can be found
+for example from [Dive Into JavaScript][d].
 
 [d]: http://www.diveintojavascript.com/core-javascript-reference/the-string-object 
 
 
 As name states this an extension for [Underscore.js][u], but it can be used
 independently from **_s**-global variable. But with Underscore.js you can
-use Object-Oriented style and chaining.
+use Object-Oriented style and chaining:
 
 [u]: http://documentcloud.github.com/underscore/
 
@@ -63,17 +63,24 @@ Test if string ends with another string.
 
 **contains** _.contains(string, substring)
 
-Tests if string contains a substring
+Tests if string contains a substring.
 
     _.contains("foobar", "ob")
     => true
 
 **capitalize** _.capitalize(string)
 
-Converts first letter of the string to uppercase   
+Converts first letter of the string to uppercase.
 
     _.capitalize("epeli")
     => "Epeli"
+
+**reverse** _.reverse(string)
+
+Reverses the string.
+
+    _.reverse("foobar")
+    => "raboof"
 
 **sprintf** _.sprintf(string format , [mixed arg1 [, mixed arg2 [ ,...]]])
 
@@ -85,3 +92,9 @@ For more detailed documentation, see the [original page][o].
 
     _.sprintf("%.1f", 1.17)
     "1.2"
+
+
+Any suggestions or bug reports are welcome. Just email me or more preferably open an issue on [Bitbucket][i].
+
+[i]: http://bitbucket.org/epeli/underscore.strings/issues?status=new&status=open
+

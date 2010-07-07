@@ -28,7 +28,8 @@
         return '\\s';
     }
 
-    root._s = {
+    var _s;
+    _s = root._s = {
 
         capitalize : function(str) {
             return str.charAt(0).toUpperCase() + str.substring(1).toLowerCase();
@@ -52,6 +53,10 @@
             // From MooTools core 1.2.4
             return str.replace(/([-.*+?^${}()|[\]\/\\])/g, '\\$1');
         },
+
+        reverse: function(str){
+            return Array.prototype.reverse.apply(str.split('')).join('');
+        },  
 
         contains: function(str, needle){
             return str.indexOf(needle) !== -1;
@@ -150,9 +155,8 @@
 
 
 	// Integrate with Underscore.js
-    if (_) {
-        _.mixin(root._s);
+    if (root._) {
+        root._.mixin(root._s);
     }
 
 }());
-
