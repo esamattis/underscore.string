@@ -4,6 +4,7 @@
 // Documentation: http://bitbucket.org/epeli/underscore.strings/
 // Some code is borrowed from MooTools and Alexandru Marasteanu.
 
+// Version 1.0
 
 
 
@@ -31,6 +32,20 @@
 
         capitalize : function(str) {
             return str.charAt(0).toUpperCase() + str.substring(1).toLowerCase();
+          },
+
+        join: function(sep) {
+            // TODO: Could this be faster by converting 
+            // arguments to Array and using array.join(sep)?
+            sep = String(sep);
+            var str = "";
+            for (var i=1; i < arguments.length; i += 1) {
+                str += String(arguments[i]);
+                if ( i !== arguments.length-1 ) {
+                    str += sep;
+                }
+            }
+            return str;
           },
 
         escapeRegExp: function(str){

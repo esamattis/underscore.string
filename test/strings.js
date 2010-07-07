@@ -14,6 +14,15 @@ $(document).ready(function() {
     equals(_("fabio").capitalize(), "Fabio", 'First letter is upper case');
     equals(_.capitalize("fabio"), "Fabio", 'First letter is upper case');
   });
+  
+  test("Strings: join", function() {
+    equals(_.join("", "foo", "bar"), "foobar", 'basic join');
+    equals(_.join("", 1, "foo", 2), "1foo2", 'join numbers and strings');
+    equals(_.join(" ","foo", "bar"), "foo bar", 'join with spaces');
+    equals(_.join("1", "2", "2"), "212", 'join number strings');
+    equals(_.join(1, 2, 2), "212", 'join numbers');
+    equals(_(" ").join("foo", "bar"), "foo bar", 'join object oriented');
+  });
 
 
   test("Strings: trim", function() {
