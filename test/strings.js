@@ -125,5 +125,9 @@ $(document).ready(function() {
     ok(!_("foobar").contains("buzz"), 'foobar does not contain buzz');
   });
 
-
+  test('String.supplant', function(){
+      var data = { name: 'Jessy' };
+      equals(_('My name is {name}').supplant(data), 'My name is Jessy');
+  });
+ 
 });

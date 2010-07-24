@@ -94,6 +94,15 @@
         endsWith: function(str, ends){
             return str.length >= ends.length && str.substring(str.length - ends.length) === ends;
         },
+                
+        supplant: function(str, o) {
+    	    return str.replace(/{([^{}]*)}/g,
+    	        function(a, b) {
+    	            var r = o[b];
+    	            return typeof r === 'string' || typeof r === 'number' ? r : a;
+    	        }
+    	    );
+    	},
 
 
         /**
