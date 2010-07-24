@@ -103,6 +103,16 @@
     	        }
     	    );
     	},
+    	
+    	chop: function(str, step){
+            step = step || str.length;
+            var arr = [];
+            for (var i = 0; i < str.length;) {                        
+                arr.push(str.slice(i,i + step));
+                i = i + step;
+            }
+            return arr;        
+        },
 
 
         /**
