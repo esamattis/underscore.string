@@ -136,19 +136,23 @@ $(document).ready(function() {
     ok(_('whitespace').chop()[0].length === 10, "output ['whitespace']");
   });
 
-  test('String.count', function(){
+  test('String: count', function(){
     equals(_('Hello world').count('l'), 3);
     equals(_('Hello world').count('Hello'), 1);
     equals(_('Hello world').count('foo'), 0);
   });
   
-  test('String.squeeze', function(){
+  test('String: squeeze', function(){
     equals(_('  Hello    cruel  world   ').squeeze(), ' Hello cruel world ');
     equals(_('Hello    cruel  world').squeeze('-'), 'Hello-cruel-world');
   });
   
-  test('String.insert', function(){
+  test('String: insert', function(){
     equals(_('Hello ').insert(6, 'Jessy'), 'Hello Jessy');
   });
   
+  test('String: splice', function(){
+      equals(_('https://edtsech@bitbucket.org/edtsech/underscore.strings').splice(30, 7, 'epeli'),
+           'https://edtsech@bitbucket.org/epeli/underscore.strings');
+  });
 });

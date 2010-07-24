@@ -58,4 +58,8 @@
   JSLitmus.test('insert', function() {
       return _('Hello ').insert(6, 'world');
   });
+  
+  JSLitmus.test('splice', function() {
+      return _('https://edtsech@bitbucket.org/edtsech/underscore.strings').splice(30, 7, 'epeli');
+  });
 })();

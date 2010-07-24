@@ -134,6 +134,12 @@
             arr.splice(i, 0, substr);
             return arr.join('');
         },
+        
+        splice: function(str, i, howmany, substr){
+            var arr = str.split('');
+            arr.splice(i, howmany, substr);
+            return arr.join('');
+        },
 
         /**
          * Credits for this function goes to
