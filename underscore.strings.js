@@ -140,6 +140,12 @@
             arr.splice(i, howmany, substr);
             return arr.join('');
         },
+        
+        succ: function(str){
+            var arr = str.split('');
+            arr.splice(str.length-1, 1, String.fromCharCode(str.charCodeAt(str.length-1) + 1));
+            return arr.join('');
+        },
 
         /**
          * Credits for this function goes to

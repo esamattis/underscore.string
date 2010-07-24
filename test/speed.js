@@ -56,10 +56,22 @@
   });
   
   JSLitmus.test('insert', function() {
-      return _('Hello ').insert(6, 'world');
+    return _('Hello ').insert(6, 'world');
   });
   
   JSLitmus.test('splice', function() {
-      return _('https://edtsech@bitbucket.org/edtsech/underscore.strings').splice(30, 7, 'epeli');
+    return _('https://edtsech@bitbucket.org/edtsech/underscore.strings').splice(30, 7, 'epeli');
   });
+  
+  JSLitmus.test('succ', function(){
+    var let = 'a', alphabet = [];
+    
+    for (var i=0; i < 26; i++) {
+        alphabet.push(let);
+        let = _(let).succ(); 
+    }
+            
+    return alphabet;
+  })
+  
 })();

@@ -152,7 +152,13 @@ $(document).ready(function() {
   });
   
   test('String: splice', function(){
-      equals(_('https://edtsech@bitbucket.org/edtsech/underscore.strings').splice(30, 7, 'epeli'),
+    equals(_('https://edtsech@bitbucket.org/edtsech/underscore.strings').splice(30, 7, 'epeli'),
            'https://edtsech@bitbucket.org/epeli/underscore.strings');
   });
+  
+  test('String: succ', function(){
+    equals(_('a').succ(), 'b');
+    equals(_('A').succ(), 'B');
+  });
+  
 });
