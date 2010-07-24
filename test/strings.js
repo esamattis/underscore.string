@@ -142,4 +142,8 @@ $(document).ready(function() {
     equals(_('Hello world').count('foo'), 0);
   });
   
+  test('String.squeeze', function(){
+      equals(_('  Hello    cruel  world   ').squeeze(), ' Hello cruel world ');
+      equals(_('Hello    cruel  world').squeeze('-'), 'Hello-cruel-world');
+  });
 });

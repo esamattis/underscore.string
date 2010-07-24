@@ -123,6 +123,11 @@
             }
             return count;
         },
+        
+        squeeze: function(str, delimiter){
+            delimiter = delimiter || ' ';
+            return str.replace(/\s+/g, delimiter);
+        },
 
 
         /**

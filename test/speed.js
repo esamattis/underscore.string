@@ -50,4 +50,8 @@
   JSLitmus.test('count', function(){
     return _('Hello worls').count('l');
   });
+  
+  JSLitmus.test('squeeze', function() {
+    return _('  Hello    cruel  world   ').squeeze();
+  });
 })();
