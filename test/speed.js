@@ -47,4 +47,7 @@
     return _('whitespace').chop(2);
   });
 
+  JSLitmus.test('count', function(){
+    return _('Hello worls').count('l');
+  });
 })();

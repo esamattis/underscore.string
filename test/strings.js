@@ -135,5 +135,11 @@ $(document).ready(function() {
     ok(_('whitespace').chop(3).length === 4, "output ['whi','tes','pac','e']");
     ok(_('whitespace').chop()[0].length === 10, "output ['whitespace']");
   });
+
+  test('String.count', function(){
+    equals(_('Hello world').count('l'), 3);
+    equals(_('Hello world').count('Hello'), 1);
+    equals(_('Hello world').count('foo'), 0);
+  });
   
 });

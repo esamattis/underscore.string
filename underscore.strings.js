@@ -113,6 +113,16 @@
             }
             return arr;        
         },
+        
+        count: function(str, substr){
+            var count = 0, index;
+            for (var i=0; i < str.length;) {
+                index = str.indexOf(substr, i);            
+                index >= 0 && count++;
+                i = i + (index >= 0 ? index : 0) + substr.length;
+            }
+            return count;
+        },
 
 
         /**
