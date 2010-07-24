@@ -146,6 +146,17 @@
             arr.splice(str.length-1, 1, String.fromCharCode(str.charCodeAt(str.length-1) + 1));
             return arr.join('');
         },
+        
+        titleize: function(str){
+            var arr = str.split(' '),
+                word;
+            for (var i=0; i < arr.length; i++) {
+                word = arr[i].split('');
+                word[0] = word[0].toUpperCase();
+                i+1 === arr.length ? arr[i] = word.join('') : arr[i] = word.join('') + ' ';
+            }
+            return arr.join('');
+        },
 
         /**
          * Credits for this function goes to

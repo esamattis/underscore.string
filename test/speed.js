@@ -74,4 +74,7 @@
     return alphabet;
   })
   
+  JSLitmus.test('titleize', function(){
+      return _('the titleize string method').titleize()
+  })
 })();

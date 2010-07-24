@@ -161,4 +161,8 @@ $(document).ready(function() {
     equals(_('A').succ(), 'B');
   });
   
+  test('String: titleize', function(){
+      equals(_('the titleize string method').titleize(), 'The Titleize String Method');
+  });
+  
 });
