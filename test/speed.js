@@ -39,7 +39,7 @@
   });
   
   JSLitmus.test('supplant', function(){
-    var data = { name: 'Jessy' };
+    var data = { name: 'John' };
     return _('My name is {name}').supplant(data);
   });
   
@@ -53,5 +53,9 @@
   
   JSLitmus.test('squeeze', function() {
     return _('  Hello    cruel  world   ').squeeze();
+  });
+  
+  JSLitmus.test('insert', function() {
+      return _('Hello ').insert(6, 'world');
   });
 })();

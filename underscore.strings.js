@@ -129,6 +129,11 @@
             return str.replace(/\s+/g, delimiter);
         },
 
+        insert: function(str, i, substr){
+            var arr = str.split('');            
+            arr.splice(i, 0, substr);
+            return arr.join('');
+        },
 
         /**
          * Credits for this function goes to

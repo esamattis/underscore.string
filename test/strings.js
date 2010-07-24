@@ -143,7 +143,12 @@ $(document).ready(function() {
   });
   
   test('String.squeeze', function(){
-      equals(_('  Hello    cruel  world   ').squeeze(), ' Hello cruel world ');
-      equals(_('Hello    cruel  world').squeeze('-'), 'Hello-cruel-world');
+    equals(_('  Hello    cruel  world   ').squeeze(), ' Hello cruel world ');
+    equals(_('Hello    cruel  world').squeeze('-'), 'Hello-cruel-world');
   });
+  
+  test('String.insert', function(){
+    equals(_('Hello ').insert(6, 'Jessy'), 'Hello Jessy');
+  });
+  
 });
