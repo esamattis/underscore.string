@@ -24,13 +24,12 @@
     return _.rtrim("  foobar  ", " ");
   });
 
-  JSLitmus.test('_.startsWith("foobar", "foo")', function() {
+  JSLitmus.test('startsWith', function() {
     return _.startsWith("foobar", "foo");
   });
 
-
-  JSLitmus.test('_.startsWith("foobar", "xx")', function() {
-    return _.startsWith("foobar", "xx");
+  JSLitmus.test('endsWith', function() {
+    return _.endsWith("foobar", "xx");
   });
   
   JSLitmus.test('supplant', function(){
@@ -44,10 +43,6 @@
 
   JSLitmus.test('count', function(){
     return _('Hello worls').count('l');
-  });
-  
-  JSLitmus.test('squeeze', function() {
-    return _('  Hello    cruel  world   ').squeeze();
   });
   
   JSLitmus.test('insert', function() {
@@ -75,5 +70,13 @@
   
   JSLitmus.test('truncate', function(){
     return _('Hello world').truncate(5);
+  });
+  
+  JSLitmus.test('empty', function(){
+    return _('').empty();
+  });
+  
+  JSLitmus.test('blank', function(){
+    return _('').blank();
   });
 })();

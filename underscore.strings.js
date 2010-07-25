@@ -29,81 +29,15 @@
 
     var _s;
     _s = root._s = {
+        
+        blank: function(str){
+            return !!str.match(/^\s*$/);
+        },
 
         capitalize : function(str) {
             return str.charAt(0).toUpperCase() + str.substring(1).toLowerCase();
-          },
-
-        join: function(sep) {
-            // TODO: Could this be faster by converting 
-            // arguments to Array and using array.join(sep)?
-            sep = String(sep);
-            var str = "";
-            for (var i=1; i < arguments.length; i += 1) {
-                str += String(arguments[i]);
-                if ( i !== arguments.length-1 ) {
-                    str += sep;
-                }
-            }
-            return str;
-          },
-
-        escapeRegExp: function(str){
-            // From MooTools core 1.2.4
-            return str.replace(/([-.*+?^${}()|[\]\/\\])/g, '\\$1');
         },
-
-        reverse: function(str){
-            return Array.prototype.reverse.apply(str.split('')).join('');
-        },  
-
-        contains: function(str, needle){
-            return str.indexOf(needle) !== -1;
-        },
-
-        clean: function(str){
-            return _s.strip(str.replace(/\s+/g, ' '));
-        },
-
-        trim: function(str, characters){
-            if (!characters && nativeTrim) {
-                return nativeTrim.call(str);
-            }
-            characters = defaultToWhiteSpace(characters);
-            return str.replace(new RegExp('\^[' + characters + ']+|[' + characters + ']+$', 'g'), '');
-        },
-
-
-
-        ltrim: function(str, characters){
-            characters = defaultToWhiteSpace(characters);
-            return str.replace(new RegExp('\^[' + characters + ']+', 'g'), '');
-        },
-
-        rtrim: function(str, characters){
-            characters = defaultToWhiteSpace(characters);
-            return str.replace(new RegExp('[' + characters + ']+$', 'g'), '');
-        },
-
-
-        startsWith: function(str, starts){
-            return str.length >= starts.length && str.substring(0, starts.length) === starts;
-        },
-
-
-        endsWith: function(str, ends){
-            return str.length >= ends.length && str.substring(str.length - ends.length) === ends;
-        },
-                
-        supplant: function(str, o) {
-    	    return str.replace(/{([^{}]*)}/g,
-    	        function(a, b) {
-    	            var r = o[b];
-    	            return typeof r === 'string' || typeof r === 'number' ? r : a;
-    	        }
-    	    );
-    	},
-    	
+        
     	chop: function(str, step){
             step = step || str.length;
             var arr = [];
@@ -112,6 +46,14 @@
                 i = i + step;
             }
             return arr;        
+        },
+        
+        clean: function(str){
+            return _s.strip(str.replace(/\s+/g, ' '));
+        },
+
+        contains: function(str, needle){
+            return str.indexOf(needle) !== -1;
         },
         
         count: function(str, substr){
@@ -124,9 +66,13 @@
             return count;
         },
         
-        squeeze: function(str, delimiter){
-            delimiter = delimiter || ' ';
-            return str.replace(/\s+/g, delimiter);
+        empty: function(str){
+            return str === '';
+        },
+        
+        escapeRegExp: function(str){
+            // From MooTools core 1.2.4
+            return str.replace(/([-.*+?^${}()|[\]\/\\])/g, '\\$1');
         },
 
         insert: function(str, i, substr){
@@ -135,18 +81,53 @@
             return arr.join('');
         },
         
+        join: function(sep) {
+            // TODO: Could this be faster by converting 
+            // arguments to Array and using array.join(sep)?
+            sep = String(sep);
+            var str = "";
+            for (var i=1; i < arguments.length; i += 1) {
+                str += String(arguments[i]);
+                if ( i !== arguments.length-1 ) {
+                    str += sep;
+                }
+            }
+            return str;
+        },
+
+        reverse: function(str){
+            return Array.prototype.reverse.apply(str.split('')).join('');
+        },  
+
         splice: function(str, i, howmany, substr){
             var arr = str.split('');
             arr.splice(i, howmany, substr);
             return arr.join('');
         },
-        
+
+        startsWith: function(str, starts){
+            return str.length >= starts.length && str.substring(0, starts.length) === starts;
+        },
+
+        endsWith: function(str, ends){
+            return str.length >= ends.length && str.substring(str.length - ends.length) === ends;
+        },
+                      
         succ: function(str){
             var arr = str.split('');
             arr.splice(str.length-1, 1, String.fromCharCode(str.charCodeAt(str.length-1) + 1));
             return arr.join('');
         },
         
+        supplant: function(str, o) {
+    	    return str.replace(/{([^{}]*)}/g,
+    	        function(a, b) {
+    	            var r = o[b];
+    	            return typeof r === 'string' || typeof r === 'number' ? r : a;
+    	        }
+    	    );
+    	},
+    	
         titleize: function(str){
             var arr = str.split(' '),
                 word;
@@ -157,7 +138,25 @@
             }
             return arr.join('');
         },
-        
+            	     
+        trim: function(str, characters){
+            if (!characters && nativeTrim) {
+                return nativeTrim.call(str);
+            }
+            characters = defaultToWhiteSpace(characters);
+            return str.replace(new RegExp('\^[' + characters + ']+|[' + characters + ']+$', 'g'), '');
+        },
+
+        ltrim: function(str, characters){
+            characters = defaultToWhiteSpace(characters);
+            return str.replace(new RegExp('\^[' + characters + ']+', 'g'), '');
+        },
+
+        rtrim: function(str, characters){
+            characters = defaultToWhiteSpace(characters);
+            return str.replace(new RegExp('[' + characters + ']+$', 'g'), '');
+        },
+
         truncate: function(str, length, truncateStr){
             truncateStr = truncateStr || '...';
             return str.slice(0,length) + truncateStr;
@@ -218,6 +217,7 @@
     root._s.strip = _s.trim;
     root._s.lstrip = _s.ltrim;
     root._s.rstrip = _s.rtrim;
+    root._s.includes = _s.contains;
 
 
 	// Integrate with Underscore.js

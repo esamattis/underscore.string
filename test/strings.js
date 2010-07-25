@@ -83,17 +83,9 @@ $(document).ready(function() {
 
   });
 
-  test("Strings: rtrim", function() {
-    equals(_(" foo").rtrim(), " foo");
-    equals(_("foo ").rtrim(), "foo");
-    equals(_(" foo ").rtrim(), " foo");
-  });
-
   test("Strings: clean", function() {
     equals(_(" foo    bar   ").clean(), "foo bar");
   });
-
-
 
   test("Strings: sprintf", function() {
     // Should be very tested function already.  Thanks to
@@ -103,9 +95,7 @@ $(document).ready(function() {
     equals(_("hello %s").chain().sprintf("me").capitalize().value(), "Hello me", 'Chaining works');
     equals(_.sprintf("%.1f", 1.22222), "1.2", 'round');
     equals(_.sprintf("%.1f", 1.17), "1.2", 'round 2');
-
   });
-
 
   test("Strings: startsWith", function() {
     ok(_("foobar").startsWith("foo"), 'foobar starts with foo');
@@ -118,7 +108,6 @@ $(document).ready(function() {
     ok(_.endsWith("00018-0000062.Plone.sdh264.1a7264e6912a91aa4a81b64dc5517df7b8875994.mp4", "mp4"), 'endsWith .mp4');
     ok(!_("fooba").endsWith("bar"), 'fooba does not end with bar');
   });
-
 
   test("Strings: contains", function() {
     ok(_("foobar").contains("bar"), 'foobar contains bar');
@@ -142,11 +131,6 @@ $(document).ready(function() {
     equals(_('Hello world').count('foo'), 0);
   });
   
-  test('String: squeeze', function(){
-    equals(_('  Hello    cruel  world   ').squeeze(), ' Hello cruel world ');
-    equals(_('Hello    cruel  world').squeeze('-'), 'Hello-cruel-world');
-  });
-  
   test('String: insert', function(){
     equals(_('Hello ').insert(6, 'Jessy'), 'Hello Jessy');
   });
@@ -165,9 +149,21 @@ $(document).ready(function() {
     equals(_('the titleize string method').titleize(), 'The Titleize String Method');
   });
   
-  test('String.truncate', function(){
+  test('String: truncate', function(){
     equals(_('Hello world').truncate(6, 'read more'), 'Hello read more');
     equals(_('Hello world').truncate(5), 'Hello...');
-  })
+  });
   
+  test('String: empty', function(){
+    ok(_('').empty());
+    ok(!_(' ').empty());
+    ok(!_('a').empty());
+  });
+  
+  test('String: blank', function(){
+    ok(_('').blank());
+    ok(_(' ').blank());
+    ok(_('\n').blank());
+    ok(!_('a').blank());
+  })
 });
