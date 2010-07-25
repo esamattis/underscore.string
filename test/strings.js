@@ -143,6 +143,7 @@ $(document).ready(function() {
   test('String: succ', function(){
     equals(_('a').succ(), 'b');
     equals(_('A').succ(), 'B');
+    equals(_('+').succ(), ',');
   });
   
   test('String: titleize', function(){

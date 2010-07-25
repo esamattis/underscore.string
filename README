@@ -143,8 +143,6 @@ substituted for the bracket expression and it repeats.
     _('my name is epeli').titleize()
     => 'My Name Is Epeli'
     
-
-
 **trim** _.trim(string, [characters])
 
 trims defined characters from begining and ending of the string.
