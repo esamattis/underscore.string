@@ -157,6 +157,11 @@
             }
             return arr.join('');
         },
+        
+        truncate: function(str, length, truncateStr){
+            truncateStr = truncateStr || '...';
+            return str.slice(0,length) + truncateStr;
+        },
 
         /**
          * Credits for this function goes to

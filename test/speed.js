@@ -1,10 +1,5 @@
 (function() {
 
-  var numbers = [];
-  for (var i=0; i<1000; i++) numbers.push(i);
-  var objects = _.map(numbers, function(n){ return {num : n}; });
-  var randomized = _.sortBy(numbers, function(){ return Math.random(); });
-
   JSLitmus.test('trimNoNative', function() {
     return _.trim("  foobar  ", " ");
   });
@@ -72,9 +67,13 @@
     }
             
     return alphabet;
-  })
+  });
   
   JSLitmus.test('titleize', function(){
-      return _('the titleize string method').titleize()
-  })
+    return _('the titleize string method').titleize()
+  });
+  
+  JSLitmus.test('truncate', function(){
+    return _('Hello world').truncate(5);
+  });
 })();

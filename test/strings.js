@@ -162,7 +162,12 @@ $(document).ready(function() {
   });
   
   test('String: titleize', function(){
-      equals(_('the titleize string method').titleize(), 'The Titleize String Method');
+    equals(_('the titleize string method').titleize(), 'The Titleize String Method');
   });
+  
+  test('String.truncate', function(){
+    equals(_('Hello world').truncate(6, 'read more'), 'Hello read more');
+    equals(_('Hello world').truncate(5), 'Hello...');
+  })
   
 });
