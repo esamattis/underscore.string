@@ -68,6 +68,8 @@ Tests if string contains a substring.
     _('').empty()
     => true
     
+**includes** alias for *contains*.
+    
 **insert** _.insert(string, index, substing)
 
     _('Hello ').insert(6, 'world')
@@ -129,6 +131,12 @@ substituted for the bracket expression and it repeats.
     var data = { name: 'Epeli' }
     _('My name is {name}').supplant(data)
     => 'My name is Epeli'
+    
+**strip** alias for *trim*
+
+**lstrip** alias for *ltrim*
+
+**rstrip** alias for *rtrim*
 
 **titleize** _.titleize(string)
 
@@ -157,13 +165,6 @@ Left trim. Similar to trim, but only for left side.
 **rtrim** _.rtrim(string, [characters])
 
 Left trim. Similar to trim, but only for right side.
-
-**startsWith** _.startsWith(string, anotherstring)
-
-Test if string starts with another string.
-
-    _.startsWith("foobar", "foo")
-    => true
     
 **truncate** _.truncate(string, length, truncateString)
 
