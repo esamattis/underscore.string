@@ -167,4 +167,8 @@ $(document).ready(function() {
     ok(_('\n').blank());
     ok(!_('a').blank());
   })
+  
+  test('String: escapeHTML', function(){
+    equals(_('<div>Blah blah blah</div>').escapeHTML(), '&lt;div&gt;Blah blah blah&lt;/div&gt;')
+  })
 });

@@ -63,10 +63,17 @@ Tests if string contains a substring.
     _('Hello world').count('l')
     => 3
     
-**empty** _.empty(str)
+**empty** _.empty(string)
 
     _('').empty()
     => true
+    
+**escapeHTML** _.escapeHTML(string)
+
+Converts HTML special characters to their entity equivalents.
+
+    _('<div>Blah blah blah</div>').escapeHTML();
+    => '&lt;div&gt;Blah blah blah&lt;/div&gt;'
     
 **includes** alias for *contains*.
     

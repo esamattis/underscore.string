@@ -70,6 +70,10 @@
             return str === '';
         },
         
+        escapeHTML: function(str) {
+            return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+        },
+        
         escapeRegExp: function(str){
             // From MooTools core 1.2.4
             return str.replace(/([-.*+?^${}()|[\]\/\\])/g, '\\$1');
