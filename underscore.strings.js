@@ -4,7 +4,7 @@
 // Documentation: http://bitbucket.org/epeli/underscore.strings/
 // Some code is borrowed from MooTools and Alexandru Marasteanu.
 
-// Version 1.0
+// Version 2.0.0
 
 
 (function(){

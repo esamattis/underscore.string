@@ -1,8 +1,6 @@
--*- markdown -*-
-
 # Underscore.strings #
 
-Idea: Esa-Matti Suuronen(esa-matti aet suuronen dot org)
+Idea: Esa-Matti Suuronen (esa-matti aet suuronen dot org)
 
 Authors: Esa-Matti Suuronen, Edward Tsech
 
