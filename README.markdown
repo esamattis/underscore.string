@@ -2,9 +2,9 @@
 
 # Underscore.strings #
 
-Homepage: http://esa-matti.suuronen.org/projects/underscore.strings/
+Idea: Esa-Matti Suuronen(esa-matti aet suuronen dot org)
 
-Author: Esa-Matti Suuronen (esa-matti aet suuronen dot org)
+Authors: Esa-Matti Suuronen, Edward Tsech
 
 Javascript lacks complete string manipulation operations.
 This an attempt to fill that cap. List of buildin methods can be found
@@ -188,7 +188,5 @@ For more detailed documentation, see the [original page][o].
     "1.2"
 
 
-Any suggestions or bug reports are welcome. Just email me or more preferably open an issue on [Bitbucket][i].
-
-[i]: http://bitbucket.org/epeli/underscore.strings/issues?status=new&status=open
+Any suggestions or bug reports are welcome. Just email me or more preferably open an issue.
 
