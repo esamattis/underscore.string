@@ -9,7 +9,6 @@ $(document).ready(function() {
     equals(_("   epeli  ").chain().trim().capitalize().value(), "Epeli", "Can chain");
   });
 
-
   test("Strings: capitalize", function() {
     equals(_("fabio").capitalize(), "Fabio", 'First letter is upper case');
     equals(_.capitalize("fabio"), "Fabio", 'First letter is upper case');
@@ -31,7 +30,6 @@ $(document).ready(function() {
     equals(_.reverse("saippuakauppias"), "saippuakauppias" );
   });
 
-
   test("Strings: trim", function() {
     equals(_(" foo").trim(), "foo");
     equals(_("foo ").trim(), "foo");
@@ -48,8 +46,6 @@ $(document).ready(function() {
 
     equals(_("http://foo/").trim("/"), "http://foo");
     equals(_("c:\\").trim('\\'), "c:");
-
-
   });
 
   test("Strings: ltrim", function() {
@@ -73,14 +69,12 @@ $(document).ready(function() {
     equals(_("foo     ").rtrim(), "foo");
     equals(_("foo  bar     ").rtrim(), "foo  bar");
     equals(_(" foo ").rtrim(), " foo");
-
-
+    
     equals(_("ffoo").rtrim("f"), "ffoo");
     equals(_("ooff").rtrim("f"), "oo");
     equals(_("ffooff").rtrim("f"), "ffoo");
 
     equals(_("_-foobar-_").rtrim("_-"), "_-foobar");
-
   });
 
   test("Strings: clean", function() {
@@ -166,9 +160,9 @@ $(document).ready(function() {
     ok(_(' ').blank());
     ok(_('\n').blank());
     ok(!_('a').blank());
-  })
+  });
   
   test('String: escapeHTML', function(){
-    equals(_('<div>Blah blah blah</div>').escapeHTML(), '&lt;div&gt;Blah blah blah&lt;/div&gt;')
-  })
+    equals(_('<div>Blah blah blah</div>').escapeHTML(), '&lt;div&gt;Blah blah blah&lt;/div&gt;');
+  });
 });

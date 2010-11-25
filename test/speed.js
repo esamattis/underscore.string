@@ -79,4 +79,12 @@
   JSLitmus.test('blank', function(){
     return _('').blank();
   });
+  
+  JSLitmus.test('escapeHTML', function(){
+    _('<div>Blah blah blah</div>').escapeHTML()
+  });
+  
+  JSLitmus.test('reverse', function(){
+    _('Hello World').reverse();
+  });
 })();

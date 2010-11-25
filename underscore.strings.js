@@ -38,7 +38,7 @@
             return str.charAt(0).toUpperCase() + str.substring(1).toLowerCase();
         },
         
-    	chop: function(str, step){
+    	  chop: function(str, step){
             step = step || str.length;
             var arr = [];
             for (var i = 0; i < str.length;) {                        
@@ -130,7 +130,7 @@
     	            return typeof r === 'string' || typeof r === 'number' ? r : a;
     	        }
     	    );
-    	},
+    	  },
     	
         titleize: function(str){
             var arr = str.split(' '),
