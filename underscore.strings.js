@@ -227,6 +227,11 @@
 	// Integrate with Underscore.js
     if (root._) {
         root._.mixin(root._s);
+    } 
+    
+  // Export for Node.js use  
+    else if (module) {
+      module.exports = root._s;
     }
-
+    
 }());
