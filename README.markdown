@@ -125,17 +125,10 @@ Returns the successor to str.
     _('A').succ()
     => 'B'
     
-**supplant** _.supplant(string, data)
+**supplant** 
 
-Supplant does variable substitution on the string. It scans
-through the string looking for expressions enclosed in {} braces.
-If an expression is found, use it as a key on the object,
-and if the key has a string value or number value, it is
-substituted for the bracket expression and it repeats.
-
-    var data = { name: 'Epeli' }
-    _('My name is {name}').supplant(data)
-    => 'My name is Epeli'
+Supplant function was removed, use Underscore.js template function.
+[o]: http://documentcloud.github.com/underscore/#template
     
 **strip** alias for *trim*
 

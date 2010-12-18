@@ -107,11 +107,6 @@ $(document).ready(function() {
     ok(_("foobar").contains("bar"), 'foobar contains bar');
     ok(!_("foobar").contains("buzz"), 'foobar does not contain buzz');
   });
-
-  test('String: supplant', function(){
-    var data = { name: 'Jessy' };
-    equals(_('My name is {name}').supplant(data), 'My name is Jessy');
-  });
   
   test('String: chop', function(){
     ok(_('whitespace').chop(2).length === 5, "output ['wh','it','es','pa','ce']");

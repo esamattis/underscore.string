@@ -32,11 +32,6 @@
     return _.endsWith("foobar", "xx");
   });
   
-  JSLitmus.test('supplant', function(){
-    var data = { name: 'John' };
-    return _('My name is {name}').supplant(data);
-  });
-  
   JSLitmus.test('chop', function(){
     return _('whitespace').chop(2);
   });

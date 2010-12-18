@@ -4,7 +4,7 @@
 // Documentation: https://github.com/edtsech/underscore.string
 // Some code is borrowed from MooTools and Alexandru Marasteanu.
 
-// Version 2.0.0
+// Version 2.1.0
 
 
 (function(){
@@ -122,15 +122,6 @@
             arr.splice(str.length-1, 1, String.fromCharCode(str.charCodeAt(str.length-1) + 1));
             return arr.join('');
         },
-        
-        supplant: function(str, o) {
-    	    return str.replace(/{([^{}]*)}/g,
-    	        function(a, b) {
-    	            var r = o[b];
-    	            return typeof r === 'string' || typeof r === 'number' ? r : a;
-    	        }
-    	    );
-    	  },
     	
         titleize: function(str){
             var arr = str.split(' '),
