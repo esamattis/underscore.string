@@ -127,9 +127,9 @@ Returns the successor to str.
     
 **supplant** 
 
-Supplant function was removed, use Underscore.js [template function][o].
+Supplant function was removed, use Underscore.js [template function][p].
 
-[o]: http://documentcloud.github.com/underscore/#templated
+[p]: http://documentcloud.github.com/underscore/#templated
     
 **strip** alias for *trim*
 
