@@ -129,7 +129,7 @@ Returns the successor to str.
 
 Supplant function was removed, use Underscore.js [template function][p].
 
-[p]: http://documentcloud.github.com/underscore/#templated
+[p]: http://documentcloud.github.com/underscore/#template
     
 **strip** alias for *trim*
 
