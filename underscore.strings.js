@@ -230,7 +230,7 @@
     } 
     
   // Export for Node.js use  
-    else if (module) {
+    else if (typeof module !== 'undefined') {
       module.exports = root._s;
     }
     
