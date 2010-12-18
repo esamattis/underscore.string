@@ -1,7 +1,7 @@
 // Underscore.strings
 // (c) 2010 Esa-Matti Suuronen <esa-matti aet suuronen dot org>
 // Underscore.strings is freely distributable under the terms of the MIT license.
-// Documentation: http://bitbucket.org/epeli/underscore.strings/
+// Documentation: https://github.com/edtsech/underscore.string
 // Some code is borrowed from MooTools and Alexandru Marasteanu.
 
 // Version 2.0.0
