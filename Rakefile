@@ -7,3 +7,6 @@ task :build do
     Closure::Compiler.new.compile(File.open('src/underscore.string.js', 'r'))
 end
 
+task :publish do
+
+end
