@@ -3,8 +3,8 @@ $(document).ready(function() {
   module("String extensions");
 
   test("Strings: basic", function() {
-    equals(_.trim("   epeli  "), "epeli", "Basic");  
-    equals(_.strip("   epeli  "), "epeli", "Aliases");    
+    equals(_.trim("   epeli  "), "epeli", "Basic");
+    equals(_.strip("   epeli  "), "epeli", "Aliases");
     equals(_("   epeli  ").trim(), "epeli", "Object-Oriented style");
     equals(_("   epeli  ").chain().trim().capitalize().value(), "Epeli", "Can chain");
   });
@@ -13,7 +13,7 @@ $(document).ready(function() {
     equals(_("fabio").capitalize(), "Fabio", 'First letter is upper case');
     equals(_.capitalize("fabio"), "Fabio", 'First letter is upper case');
   });
-  
+
   test("Strings: join", function() {
     equals(_.join("", "foo", "bar"), "foobar", 'basic join');
     equals(_.join("", 1, "foo", 2), "1foo2", 'join numbers and strings');
@@ -69,7 +69,7 @@ $(document).ready(function() {
     equals(_("foo     ").rtrim(), "foo");
     equals(_("foo  bar     ").rtrim(), "foo  bar");
     equals(_(" foo ").rtrim(), " foo");
-    
+
     equals(_("ffoo").rtrim("f"), "ffoo");
     equals(_("ooff").rtrim("f"), "oo");
     equals(_("ffooff").rtrim("f"), "ffoo");
@@ -107,7 +107,7 @@ $(document).ready(function() {
     ok(_("foobar").contains("bar"), 'foobar contains bar');
     ok(!_("foobar").contains("buzz"), 'foobar does not contain buzz');
   });
-  
+
   test('String: chop', function(){
     ok(_('whitespace').chop(2).length === 5, "output ['wh','it','es','pa','ce']");
     ok(_('whitespace').chop(3).length === 4, "output ['whi','tes','pac','e']");
@@ -119,44 +119,44 @@ $(document).ready(function() {
     equals(_('Hello world').count('Hello'), 1);
     equals(_('Hello world').count('foo'), 0);
   });
-  
+
   test('String: insert', function(){
     equals(_('Hello ').insert(6, 'Jessy'), 'Hello Jessy');
   });
-  
+
   test('String: splice', function(){
     equals(_('https://edtsech@bitbucket.org/edtsech/underscore.strings').splice(30, 7, 'epeli'),
            'https://edtsech@bitbucket.org/epeli/underscore.strings');
   });
-  
+
   test('String: succ', function(){
     equals(_('a').succ(), 'b');
     equals(_('A').succ(), 'B');
     equals(_('+').succ(), ',');
   });
-  
+
   test('String: titleize', function(){
     equals(_('the titleize string method').titleize(), 'The Titleize String Method');
   });
-  
+
   test('String: truncate', function(){
     equals(_('Hello world').truncate(6, 'read more'), 'Hello read more');
     equals(_('Hello world').truncate(5), 'Hello...');
   });
-  
+
   test('String: empty', function(){
     ok(_('').empty());
     ok(!_(' ').empty());
     ok(!_('a').empty());
   });
-  
+
   test('String: blank', function(){
     ok(_('').blank());
     ok(_(' ').blank());
     ok(_('\n').blank());
     ok(!_('a').blank());
   });
-  
+
   test('String: escapeHTML', function(){
     equals(_('<div>Blah blah blah</div>').escapeHTML(), '&lt;div&gt;Blah blah blah&lt;/div&gt;');
   });
