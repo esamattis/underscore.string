@@ -8,5 +8,7 @@ task :build do
 end
 
 task :publish do
-
+  `rm -rf ./lib`
+  `cp ./src/underscore.string.js ./lib`
+  `npm publish`
 end
