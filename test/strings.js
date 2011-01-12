@@ -160,5 +160,7 @@ $(document).ready(function() {
 
   test('String: escapeHTML', function(){
     equals(_('<div>Blah blah blah</div>').escapeHTML(), '&lt;div&gt;Blah blah blah&lt;/div&gt;');
+    equals(_(5).escapeHTML(), '5');
+    equals(_(undefined).escapeHTML(), '');
   });
 });
