@@ -67,10 +67,6 @@
     return _('Hello world').truncate(5);
   });
 
-  JSLitmus.test('isEmpty', function(){
-    return _('').isEmpty();
-  });
-
   JSLitmus.test('blank', function(){
     return _('').blank();
   });

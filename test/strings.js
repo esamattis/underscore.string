@@ -162,18 +162,6 @@ $(document).ready(function() {
     equals(_('Hello world').truncate(5), 'Hello...');
   });
 
-  test('String: isEmpty', function(){
-    ok(_('').isEmpty());
-    ok(!_(' ').isEmpty());
-    ok(!_('a').isEmpty());
-  });
-
-  test('String: empty', function(){
-    ok(_('').empty());
-    ok(!_(' ').empty());
-    ok(!_('a').empty());
-  });
-
   test('String: isBlank', function(){
     ok(_('').isBlank());
     ok(_(' ').isBlank());

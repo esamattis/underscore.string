@@ -23,13 +23,6 @@ use Object-Oriented style and chaining:
 
 ## String Functions ##
 
-**isBlank** _.isBlank(string)
-
-Checks if the string is empty or contains whitespaces only.
-
-    _.isBlank(' ')
-    => true
-
 **capitalize** _.capitalize(string)
 
 Converts first letter of the string to uppercase.
