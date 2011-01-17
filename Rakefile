@@ -4,11 +4,5 @@ require 'closure-compiler'
 desc 'Use the Closure Compiler to compress Underscore.string'
 task :build do
   File.open('dist/underscore.string.min.js', 'w').write \
-    Closure::Compiler.new.compile(File.open('src/underscore.string.js', 'r'))
-end
-
-task :publish do
-  `rm -rf ./lib`
-  `cp ./src/underscore.string.js ./lib`
-  `npm publish`
+    Closure::Compiler.new.compile(File.open('lib/underscore.string.js', 'r'))
 end

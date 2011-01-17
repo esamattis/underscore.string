@@ -24,14 +24,14 @@
     return _.rtrim("  foobar  ", " ");
   });
 
-  JSLitmus.test('startsWith', function() {
-    return _.startsWith("foobar", "foo");
+  JSLitmus.test('isStartsWith', function() {
+    return _.isStartsWith("foobar", "foo");
   });
 
-  JSLitmus.test('endsWith', function() {
-    return _.endsWith("foobar", "xx");
+  JSLitmus.test('isEndsWith', function() {
+    return _.isEndsWith("foobar", "xx");
   });
-  
+
   JSLitmus.test('chop', function(){
     return _('whitespace').chop(2);
   });
@@ -39,46 +39,50 @@
   JSLitmus.test('count', function(){
     return _('Hello worls').count('l');
   });
-  
+
   JSLitmus.test('insert', function() {
     return _('Hello ').insert(6, 'world');
   });
-  
+
   JSLitmus.test('splice', function() {
     return _('https://edtsech@bitbucket.org/edtsech/underscore.strings').splice(30, 7, 'epeli');
   });
-  
+
   JSLitmus.test('succ', function(){
     var let = 'a', alphabet = [];
-    
+
     for (var i=0; i < 26; i++) {
         alphabet.push(let);
-        let = _(let).succ(); 
+        let = _(let).succ();
     }
-            
+
     return alphabet;
   });
-  
+
   JSLitmus.test('titleize', function(){
     return _('the titleize string method').titleize()
   });
-  
+
   JSLitmus.test('truncate', function(){
     return _('Hello world').truncate(5);
   });
-  
-  JSLitmus.test('empty', function(){
-    return _('').empty();
+
+  JSLitmus.test('isEmpty', function(){
+    return _('').isEmpty();
   });
-  
+
   JSLitmus.test('blank', function(){
     return _('').blank();
   });
-  
+
   JSLitmus.test('escapeHTML', function(){
     _('<div>Blah blah blah</div>').escapeHTML()
   });
-  
+
+  JSLitmus.test('unescapeHTML', function(){
+    _('&lt;div&gt;Blah blah blah&lt;/div&gt;').unescapeHTML()
+  });
+
   JSLitmus.test('reverse', function(){
     _('Hello World').reverse();
   });

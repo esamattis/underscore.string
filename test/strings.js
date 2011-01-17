@@ -91,9 +91,21 @@ $(document).ready(function() {
     equals(_.sprintf("%.1f", 1.17), "1.2", 'round 2');
   });
 
+  test("Strings: isStartsWith", function() {
+    ok(_("foobar").isStartsWith("foo"), 'foobar starts with foo');
+    ok(!_("oobar").isStartsWith("foo"), 'oobar does not start with foo');
+  });
+
   test("Strings: startsWith", function() {
     ok(_("foobar").startsWith("foo"), 'foobar starts with foo');
     ok(!_("oobar").startsWith("foo"), 'oobar does not start with foo');
+  });
+
+  test("Strings: isEndsWith", function() {
+    ok(_("foobar").isEndsWith("bar"), 'foobar ends with bar');
+    ok(_.isEndsWith("foobar", "bar"), 'foobar ends with bar');
+    ok(_.isEndsWith("00018-0000062.Plone.sdh264.1a7264e6912a91aa4a81b64dc5517df7b8875994.mp4", "mp4"), 'endsWith .mp4');
+    ok(!_("fooba").isEndsWith("bar"), 'fooba does not end with bar');
   });
 
   test("Strings: endsWith", function() {
@@ -101,6 +113,11 @@ $(document).ready(function() {
     ok(_.endsWith("foobar", "bar"), 'foobar ends with bar');
     ok(_.endsWith("00018-0000062.Plone.sdh264.1a7264e6912a91aa4a81b64dc5517df7b8875994.mp4", "mp4"), 'endsWith .mp4');
     ok(!_("fooba").endsWith("bar"), 'fooba does not end with bar');
+  });
+
+  test("Strings: isContains", function() {
+    ok(_("foobar").isContains("bar"), 'foobar contains bar');
+    ok(!_("foobar").isContains("buzz"), 'foobar does not contain buzz');
   });
 
   test("Strings: contains", function() {
@@ -145,10 +162,23 @@ $(document).ready(function() {
     equals(_('Hello world').truncate(5), 'Hello...');
   });
 
+  test('String: isEmpty', function(){
+    ok(_('').isEmpty());
+    ok(!_(' ').isEmpty());
+    ok(!_('a').isEmpty());
+  });
+
   test('String: empty', function(){
     ok(_('').empty());
     ok(!_(' ').empty());
     ok(!_('a').empty());
+  });
+
+  test('String: isBlank', function(){
+    ok(_('').isBlank());
+    ok(_(' ').isBlank());
+    ok(_('\n').isBlank());
+    ok(!_('a').isBlank());
   });
 
   test('String: blank', function(){
@@ -162,5 +192,11 @@ $(document).ready(function() {
     equals(_('<div>Blah blah blah</div>').escapeHTML(), '&lt;div&gt;Blah blah blah&lt;/div&gt;');
     equals(_(5).escapeHTML(), '5');
     equals(_(undefined).escapeHTML(), '');
+  });
+
+  test('String: unescapeHTML', function(){
+    equals(_('&lt;div&gt;Blah blah blah&lt;/div&gt;').unescapeHTML(), '<div>Blah blah blah</div>');
+    equals(_(5).unescapeHTML(), '5');
+    equals(_(undefined).unescapeHTML(), '');
   });
 });
