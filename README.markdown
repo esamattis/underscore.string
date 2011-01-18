@@ -1,4 +1,4 @@
-# Underscore.strings #
+# Underscore.string #
 
 Idea: Esa-Matti Suuronen (esa-matti aet suuronen dot org)
 
