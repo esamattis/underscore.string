@@ -84,7 +84,7 @@ Converts HTML special characters to their entity equivalents.
 
 Converts entity characters to HTML equivalents.
 
-    _('&lt;div&gt;Blah blah blah&lt;/div&gt;').escapeHTML();
+    _('&lt;div&gt;Blah blah blah&lt;/div&gt;').unescapeHTML();
     => '<div>Blah blah blah</div>'
 
 **isIncludes** alias for *isContains*.
