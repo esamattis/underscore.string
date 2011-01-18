@@ -20,6 +20,20 @@ use Object-Oriented style and chaining:
     _("   epeli  ").chain().trim().capitalize().value()
     => "Epeli"
 
+## Node.js installation ##
+
+**npm package**
+
+    npm install underscore.string
+
+**Standalone usage**:
+
+    var _s = require('undescore.string');
+
+**Integrate with Underscore.js**:
+
+    var _  = require('underscore');
+    _.mixin(require('underscore.string'));
 
 ## String Functions ##
 
