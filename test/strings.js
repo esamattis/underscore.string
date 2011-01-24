@@ -187,4 +187,36 @@ $(document).ready(function() {
     equals(_(5).unescapeHTML(), '5');
     equals(_(undefined).unescapeHTML(), '');
   });
+
+  test('String: coerce', function(){
+    // numbers
+		equals(_(124.5).coerce('integer'), 124);
+		equals(_('123').coerce('number'), 123);
+    equals(_('123.6').coerce('integer'), 123);
+    // arrays
+		deepEqual(_({foo:'bar',bar:'baz'}).coerce('array'), ['bar','baz']);
+    deepEqual(_('123').coerce('array'), ['123']);
+    deepEqual(_(null).coerce('array'), []);
+    deepEqual(_(undefined).coerce('array'), []);
+    deepEqual(_(0).coerce('array'), [0]);
+    // objects
+		deepEqual(_('{"foo":"bar","bar":"baz"}').coerce('object'), {foo:'bar',bar:'baz'});
+    // bools
+    equals(_('true').coerce('boolean'), true);
+    equals(_('false').coerce('boolean'), false);
+    equals(_('').coerce('boolean'), false);
+    equals(_('0').coerce('boolean'), true);
+    // null
+    equals(_('null').coerce('null'), null);
+    // strings
+    equals(_(true).coerce('string'), 'true');
+    equals(_(false).coerce('string'), 'false');
+    equals(_(null).coerce('string'), '');
+    equals(_().coerce('string'), '');
+    equals(_(123.45).coerce('string'), '123.45');
+    equals(_([true, false, null, undefined, 0, 1.2, 'str']).coerce('string'), 'true,false,,,0,1.2,str');
+    // dates
+    equals(_(true).coerce('date').getTime(), 1);
+    equals(_('2011-01-01').coerce('date').getTime(), 1293829200000);
+  });
 });
