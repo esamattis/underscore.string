@@ -1,6 +1,6 @@
 {
   "name": "underscore.string",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "String manipulation extensions for Underscore.js javascript library.",
   "homepage": "https://github.com/edtsech/underscore.string",
   "contributors": [
