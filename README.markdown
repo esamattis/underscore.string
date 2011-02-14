@@ -56,22 +56,17 @@ Compress some whitespaces to one.
     _.clean(" foo    bar   ")
     => 'foo bar'
 
-**isContains** _.contains(string, substring)
+**contains** _.contains(string, substring)
 
 Tests if string contains a substring.
 
-    _.isContains("foobar", "ob")
+    _.contains("foobar", "ob")
     => true
 
 **count** _.count(string, substring)
 
     _('Hello world').count('l')
     => 3
-
-**isEmpty** _.isEmpty(string)
-
-    _('').isEmpty()
-    => true
 
 **escapeHTML** _.escapeHTML(string)
 
@@ -87,7 +82,7 @@ Converts entity characters to HTML equivalents.
     _('&lt;div&gt;Blah blah blah&lt;/div&gt;').unescapeHTML();
     => '<div>Blah blah blah</div>'
 
-**isIncludes** alias for *isContains*.
+**includes** alias for *contains*.
 
 **insert** _.insert(string, index, substing)
 
@@ -115,18 +110,18 @@ Like a array splice.
     _('https://edtsech@bitbucket.org/edtsech/underscore.strings').splice(30, 7, 'epeli')
     => 'https://edtsech@bitbucket.org/epeli/underscore.strings'
 
-**isStartsWith** _.isStartsWith(string, starts)
+**startsWith** _.startsWith(string, starts)
 
 This method checks whether string starts with starts.
 
-    _("image.gif").isStartsWith("image")
+    _("image.gif").startsWith("image")
     => true
 
-**isEndsWith** _.isEndsWith(string, ends)
+**endsWith** _.endsWith(string, ends)
 
 This method checks whether string ends with ends.
 
-    _("image.gif").isEndsWith("gif")
+    _("image.gif").endsWith("gif")
     => true
 
 **succ**  _.succ(str)

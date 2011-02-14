@@ -24,12 +24,12 @@
     return _.rtrim("  foobar  ", " ");
   });
 
-  JSLitmus.test('isStartsWith', function() {
-    return _.isStartsWith("foobar", "foo");
+  JSLitmus.test('startsWith', function() {
+    return _.startsWith("foobar", "foo");
   });
 
-  JSLitmus.test('isEndsWith', function() {
-    return _.isEndsWith("foobar", "xx");
+  JSLitmus.test('endsWith', function() {
+    return _.endsWith("foobar", "xx");
   });
 
   JSLitmus.test('chop', function(){
@@ -67,8 +67,8 @@
     return _('Hello world').truncate(5);
   });
 
-  JSLitmus.test('blank', function(){
-    return _('').blank();
+  JSLitmus.test('isBlank', function(){
+    return _('').isBlank();
   });
 
   JSLitmus.test('escapeHTML', function(){

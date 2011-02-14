@@ -91,21 +91,9 @@ $(document).ready(function() {
     equals(_.sprintf("%.1f", 1.17), "1.2", 'round 2');
   });
 
-  test("Strings: isStartsWith", function() {
-    ok(_("foobar").isStartsWith("foo"), 'foobar starts with foo');
-    ok(!_("oobar").isStartsWith("foo"), 'oobar does not start with foo');
-  });
-
   test("Strings: startsWith", function() {
     ok(_("foobar").startsWith("foo"), 'foobar starts with foo');
     ok(!_("oobar").startsWith("foo"), 'oobar does not start with foo');
-  });
-
-  test("Strings: isEndsWith", function() {
-    ok(_("foobar").isEndsWith("bar"), 'foobar ends with bar');
-    ok(_.isEndsWith("foobar", "bar"), 'foobar ends with bar');
-    ok(_.isEndsWith("00018-0000062.Plone.sdh264.1a7264e6912a91aa4a81b64dc5517df7b8875994.mp4", "mp4"), 'endsWith .mp4');
-    ok(!_("fooba").isEndsWith("bar"), 'fooba does not end with bar');
   });
 
   test("Strings: endsWith", function() {
@@ -115,14 +103,14 @@ $(document).ready(function() {
     ok(!_("fooba").endsWith("bar"), 'fooba does not end with bar');
   });
 
-  test("Strings: isContains", function() {
-    ok(_("foobar").isContains("bar"), 'foobar contains bar');
-    ok(!_("foobar").isContains("buzz"), 'foobar does not contain buzz');
-  });
-
   test("Strings: contains", function() {
     ok(_("foobar").contains("bar"), 'foobar contains bar');
     ok(!_("foobar").contains("buzz"), 'foobar does not contain buzz');
+  });
+
+  test("Strings: includes", function() {
+    ok(_("foobar").includes("bar"), 'foobar includes bar');
+    ok(!_("foobar").includes("buzz"), 'foobar does not includes buzz');
   });
 
   test('String: chop', function(){
@@ -167,13 +155,6 @@ $(document).ready(function() {
     ok(_(' ').isBlank());
     ok(_('\n').isBlank());
     ok(!_('a').isBlank());
-  });
-
-  test('String: blank', function(){
-    ok(_('').blank());
-    ok(_(' ').blank());
-    ok(_('\n').blank());
-    ok(!_('a').blank());
   });
 
   test('String: escapeHTML', function(){
