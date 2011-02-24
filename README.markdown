@@ -188,6 +188,10 @@ For more detailed documentation, see the [original page][o].
     _.sprintf("%.1f", 1.17)
     "1.2"
 
+## TODO ##
+
+* Create integration test suite with underscore.js
+* Resolve conflict with 'contains'
 
 Any suggestions or bug reports are welcome. Just email me or more preferably open an issue.
 
