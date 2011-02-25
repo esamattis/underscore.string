@@ -179,11 +179,15 @@ For more detailed documentation, see the [original page][o].
     _.sprintf("%.1f", 1.17)
     "1.2"
 
-## TODO ##
+## Roadmap ##
 
-* Create integration test suite with underscore.js
-* Resolve conflict with 'contains'
-* Create functions: lines, chars, words
+* Create functions: lines, chars, words functions
 
 Any suggestions or bug reports are welcome. Just email me or more preferably open an issue.
 
+## Changelog ##
+
+### 1.0.2 ###
+
+* Created integration test suite with underscore.js 1.1.4 (now it's absolutely compatible)
+* Removed 'reverse' function, because this function override underscore.js 'reverse'
