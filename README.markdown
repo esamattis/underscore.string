@@ -196,11 +196,15 @@ For more detailed documentation, see the [original page][o].
 
 ## Roadmap ##
 
-* Create functions: lines, chars, words functions
+* Resolve problem with function names crossing between libraries (include, contains and etc).
 
 Any suggestions or bug reports are welcome. Just email me or more preferably open an issue.
 
 ## Changelog ##
+
+### 1.1.2 ###
+
+* Created functions: lines, chars, words functions
 
 ### 1.0.2 ###
 
