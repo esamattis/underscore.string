@@ -192,6 +192,7 @@ For more detailed documentation, see the [original page][o].
 
 * Create integration test suite with underscore.js
 * Resolve conflict with 'contains'
+* Create functions: lines, chars, words
 
 Any suggestions or bug reports are welcome. Just email me or more preferably open an issue.
 
