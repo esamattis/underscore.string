@@ -23,12 +23,12 @@ $(document).ready(function() {
     equals(_(" ").join("foo", "bar"), "foo bar", 'join object oriented');
   });
 
-  test("Strings: reverse", function() {
-    equals(_.reverse("foo"), "oof" );
-    equals(_.reverse("foobar"), "raboof" );
-    equals(_.reverse("foo bar"), "rab oof" );
-    equals(_.reverse("saippuakauppias"), "saippuakauppias" );
-  });
+//  test("Strings: reverse", function() {
+//    equals(_.reverse("foo"), "oof" );
+//    equals(_.reverse("foobar"), "raboof" );
+//    equals(_.reverse("foo bar"), "rab oof" );
+//    equals(_.reverse("saippuakauppias"), "saippuakauppias" );
+//  });
 
   test("Strings: trim", function() {
     equals(_(" foo").trim(), "foo");
@@ -101,11 +101,6 @@ $(document).ready(function() {
     ok(_.endsWith("foobar", "bar"), 'foobar ends with bar');
     ok(_.endsWith("00018-0000062.Plone.sdh264.1a7264e6912a91aa4a81b64dc5517df7b8875994.mp4", "mp4"), 'endsWith .mp4');
     ok(!_("fooba").endsWith("bar"), 'fooba does not end with bar');
-  });
-
-  test("Strings: contains", function() {
-    ok(_("foobar").contains("bar"), 'foobar contains bar');
-    ok(!_("foobar").contains("buzz"), 'foobar does not contain buzz');
   });
 
   test("Strings: includes", function() {

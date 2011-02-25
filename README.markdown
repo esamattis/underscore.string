@@ -56,11 +56,11 @@ Compress some whitespaces to one.
     _.clean(" foo    bar   ")
     => 'foo bar'
 
-**contains** _.contains(string, substring)
+**includes** _.includes(string, substring)
 
 Tests if string contains a substring.
 
-    _.contains("foobar", "ob")
+    _.includes("foobar", "ob")
     => true
 
 **count** _.count(string, substring)
@@ -82,8 +82,6 @@ Converts entity characters to HTML equivalents.
     _('&lt;div&gt;Blah blah blah&lt;/div&gt;').unescapeHTML();
     => '<div>Blah blah blah</div>'
 
-**includes** alias for *contains*.
-
 **insert** _.insert(string, index, substing)
 
     _('Hello ').insert(6, 'world')
@@ -95,13 +93,6 @@ Joins strings together with given separator
 
     _.join(" ", "foo", "bar")
     => "foo bar"
-
-**reverse** _.reverse(string)
-
-Reverses the string.
-
-    _.reverse("foobar")
-    => "raboof"
 
 **splice**  _.splice(string, index, howmany, substring)
 
