@@ -163,4 +163,17 @@ $(document).ready(function() {
     equals(_(5).unescapeHTML(), '5');
     equals(_(undefined).unescapeHTML(), '');
   });
+
+  test('String: words', function() {
+    equals(_("I love you!").words().length, 3);
+  });
+
+  test('String: chars', function() {
+    equals(_("Hello").chars().length, 5);
+  });
+
+  test('String: lines', function() {
+    equals(_("Hello\nWorld").lines().length, 2);
+    equals(_("Hello World").lines().length, 1);
+  });
 });

@@ -56,6 +56,11 @@ Compress some whitespaces to one.
     _.clean(" foo    bar   ")
     => 'foo bar'
 
+**chars** _.chars(str)
+
+    _.chars('Hello')
+    => ['H','e','l','l','o']
+
 **includes** _.includes(string, substring)
 
 Tests if string contains a substring.
@@ -93,6 +98,11 @@ Joins strings together with given separator
 
     _.join(" ", "foo", "bar")
     => "foo bar"
+
+**lines** _.lines(str)
+
+    _.lines("Hello\nWorld")
+    => ["Hello", "World"]
 
 **splice**  _.splice(string, index, howmany, substring)
 
@@ -167,6 +177,11 @@ Left trim. Similar to trim, but only for right side.
 
     _('Hello world').truncate(5)
     => 'Hello...'
+
+**words** _.words(str)
+
+    _.words("I love you")
+    => ["I","love","you"]
 
 **sprintf** _.sprintf(string format, *arguments)
 
