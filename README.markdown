@@ -178,9 +178,17 @@ Left trim. Similar to trim, but only for right side.
     _('Hello world').truncate(5)
     => 'Hello...'
 
-**words** _.words(str)
+**words** _.words(str, delimiter=" ")
+
+Split string by delimiter (String or RegExp), ' ' by default.
 
     _.words("I love you")
+    => ["I","love","you"]
+
+    _.words("I_love_you", "_")
+    => ["I","love","you"]
+
+    _.words("I-love-you", /-/)
     => ["I","love","you"]
 
 **sprintf** _.sprintf(string format, *arguments)

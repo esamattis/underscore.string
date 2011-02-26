@@ -166,6 +166,8 @@ $(document).ready(function() {
 
   test('String: words', function() {
     equals(_("I love you!").words().length, 3);
+    equals(_("I_love_you!").words('_').length, 3);
+    equals(_("I-love-you!").words(/-/).length, 3);
   });
 
   test('String: chars', function() {
