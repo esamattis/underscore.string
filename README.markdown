@@ -104,6 +104,21 @@ Joins strings together with given separator
     _.lines("Hello\nWorld")
     => ["Hello", "World"]
 
+**reverse** 
+
+This functions has been removed, because this function override underscore.js 'reverse'.
+But now you can do that:
+
+    _("foobar").chars().reverse().join('')
+
+It's not good like this:
+
+    _("foobar").reverse()
+
+But maybe somebody can suggest a alias for reverse?
+Maybe it's not the really helpful function for manipulations with strings and for core of underscore.string.
+I don't know, any thoughts? 
+
 **splice**  _.splice(string, index, howmany, substring)
 
 Like a array splice.
