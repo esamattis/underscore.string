@@ -225,3 +225,7 @@ Any suggestions or bug reports are welcome. Just email me or more preferably ope
 
 * Created integration test suite with underscore.js 1.1.4 (now it's absolutely compatible)
 * Removed 'reverse' function, because this function override underscore.js 'reverse'
+
+## Licence ##
+
+MIT Licence
