@@ -235,4 +235,5 @@ Any suggestions or bug reports are welcome. Just email me or more preferably ope
 
 ## Licence ##
 
-MIT Licence
+[MIT Licence][mit]
+[mit]: http://www.opensource.org/licenses/mit-license.php
