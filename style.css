@@ -12,6 +12,16 @@ body {
   src: url(images/RFG69_.ttf);
 }
 
+@font-face {
+  font-family: 'MyAndrogyne';
+  src: url(images/Androgyne_TB.otf);
+}
+
+@font-face {
+  font-family: 'MyCambria';
+  src: url(images/cambriaz.ttf);
+}
+
 h1 {
   font-family: MyReforma;
   font-size: 117px;
@@ -28,6 +38,36 @@ h1.string {
   line-height: 170px;
 }
 
+h2 {
+  font-family: MyAndrogyne;
+  color: #01a3b2;
+  font-weight: normal;
+  border-bottom: 3px solid #01a3b2;
+  margin-bottom: 30px;
+}
+
+h2 span {
+  display: block;
+  margin: 0px auto;
+  margin-bottom: -13px;
+  background: transparent url(images/background.png);
+  padding: 0px 10px;
+}
+
+h2 span.desc {
+  width: 127px;
+}
+
+p {
+  font-family: MyCambria;
+  font-size: 16px;
+  color: #484546;
+}
+
+a {
+  color: #42b7c1;
+}
+
 #wrapper {
   overflow: hidden;
   width: 820px;
@@ -42,6 +82,7 @@ h1.string {
   width: 370px;
   padding-left: 10px;
   border-right: 1px solid gray;
+  margin-bottom: 20px;
 }
 
 #desc {
@@ -62,4 +103,8 @@ h1.string {
   padding-right: 5px;
   background: transparent url(images/back.png);
   color: white;
+}
+
+#content {
+  clear: both;
 }
