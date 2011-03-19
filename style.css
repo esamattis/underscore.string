@@ -1,0 +1,62 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  background: transparent url(images/background.png);
+}
+
+@font-face {
+  font-family: 'MyReforma';
+  src: url(images/RFG69_.ttf);
+}
+
+h1 {
+  font-family: MyReforma;
+  font-size: 117px;
+  color: #484546;
+  text-shadow: 1px 2px 2px gray;
+}
+
+h1.underscore {
+  line-height: 80px;
+}
+h1.string {
+  font-size: 210px;
+  line-height: 170px;
+}
+
+#wrapper {
+  overflow: hidden;
+  width: 820px;
+  margin: 0 auto;
+  padding: 70px 80px;
+  background: transparent url(images/background.png);
+}
+
+#header {
+  /*border: 1px solid black;*/
+  float: left;
+  width: 370px;
+  padding-left: 10px;
+  border-right: 1px solid gray;
+}
+
+#desc {
+  float: left;
+  width: 390px;
+  padding-left: 20px;
+  border-left: 1px solid white;
+}
+
+#desc h1 {
+  font-size: 54px;
+  line-height: 50px;
+  margin-top: -7px;
+}
+
+#desc h1 span {
+  background: #01a3b2;
+  color: white;
+}
