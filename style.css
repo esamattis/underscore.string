@@ -59,6 +59,7 @@ h1.string {
 
 #desc h1 span {
   padding-left: 5px;
+  padding-right: 5px;
   background: transparent url(images/back.png);
   color: white;
 }
