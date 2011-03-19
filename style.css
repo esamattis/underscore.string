@@ -17,6 +17,7 @@ h1 {
   font-size: 117px;
   color: #484546;
   text-shadow: 1px 2px 2px gray;
+  font-weight: normal;
 }
 
 h1.underscore {
@@ -57,6 +58,7 @@ h1.string {
 }
 
 #desc h1 span {
-  background: #01a3b2;
+  padding-left: 5px;
+  background: transparent url(images/back.png);
   color: white;
 }
