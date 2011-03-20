@@ -9,17 +9,17 @@ body {
 
 @font-face {
   font-family: 'MyReforma';
-  src: url(images/RFG69_.ttf);
+  src: url(fonts/RFG69_.ttf);
 }
 
 @font-face {
   font-family: 'MyAndrogyne';
-  src: url(images/Androgyne_TB.otf);
+  src: url(fonts/Androgyne_TB.otf);
 }
 
 @font-face {
   font-family: 'MyCambria';
-  src: url(images/cambriaz.ttf);
+  src: url(fonts/cambriaz.ttf);
 }
 
 h1 {
