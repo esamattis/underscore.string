@@ -4,7 +4,7 @@
 }
 
 body {
-  background: transparent url(images/background.png) no-repeat;
+  background: transparent url(images/background.png);
 }
 
 @font-face {
@@ -51,7 +51,7 @@ h2 span {
   display: block;
   margin: 0px auto;
   margin-bottom: -13px;
-  background: transparent url(images/background.png) no-repeat;
+  background: transparent url(images/background.png);
   padding: 0px 10px;
 }
 
@@ -77,10 +77,11 @@ p {
 }
 
 li a, p a {
-  /*color: #01a3b2;*/
+  text-decoration: underline;
 }
 
 li a:hover, p a:hover {
+  color: #01a3b2;
   text-decoration: underline;
 }
 
@@ -94,7 +95,6 @@ a {
   width: 820px;
   margin: 0 auto;
   padding: 70px 80px;
-  background: transparent url(images/background.png) no-repeat;
 }
 
 #header {
