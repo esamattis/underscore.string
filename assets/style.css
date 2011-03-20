@@ -127,11 +127,11 @@ a {
   top: -40px;
   width: 89px;
   height: 89px;
-  background: url(images/bage.png);
+  background: url(images/badge.png);
 }
 
 #desc .github:hover {
-  background: url(images/bage-light.png);
+  background: url(images/badge-light.png);
 }
 
 #desc h1 a.under {
