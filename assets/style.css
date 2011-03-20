@@ -59,6 +59,15 @@ h2 span.desc {
   width: 127px;
 }
 
+ul li {
+  font-family: MyCambria;
+  font-size: 16px;
+  color: #484546;
+  line-height: 24px;
+  margin-bottom: 10px;
+  margin-left: 20px;
+}
+
 p {
   font-family: MyCambria;
   font-size: 16px;
@@ -67,11 +76,11 @@ p {
   margin-bottom: 10px;
 }
 
-p a {
- color: #01a3b2;
+li a, p a {
+  color: #01a3b2;
 }
 
-p a:hover {
+li a:hover, p a:hover {
   text-decoration: underline;
 }
 
@@ -137,11 +146,6 @@ a {
   background: transparent url(images/backlight.png);
 }
 
-#desc h1 a.npm:hover {
-  color: #42b7c1;
-  text-decoration: underline;
-}
-
 #content {
   clear: both;
   overflow: hidden;
@@ -158,5 +162,6 @@ a {
   width: 280px;
   float: left;
   border-left: 1px solid #f9f9f9;
-  padding-left: 20px;
+  padding-left: 15px;
+  padding-top: 10px;
 }
