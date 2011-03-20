@@ -44,6 +44,7 @@ h2 {
   font-weight: normal;
   border-bottom: 3px solid #01a3b2;
   margin-bottom: 30px;
+  margin-top: 20px;
 }
 
 h2 span {
@@ -62,6 +63,16 @@ p {
   font-family: MyCambria;
   font-size: 16px;
   color: #484546;
+  line-height: 24px;
+  margin-bottom: 10px;
+}
+
+p a {
+ color: #01a3b2;
+}
+
+p a:hover {
+  text-decoration: underline;
 }
 
 a {
@@ -117,7 +128,7 @@ a {
 #desc h1 a.under {
   padding-left: 5px;
   padding-right: 5px;
-  background: transparent url(images/back.png);
+  background: transparent url(images/back.png) no-repeat;
   color: white;
   text-decoration: none;
 }
@@ -133,4 +144,19 @@ a {
 
 #content {
   clear: both;
+  overflow: hidden;
+}
+
+#left-desc {
+  width: 480px;
+  float: left;
+  border-right: 1px solid #b1b0af;
+  padding-right: 20px;
+}
+
+#right-desc {
+  width: 280px;
+  float: left;
+  border-left: 1px solid #f9f9f9;
+  padding-left: 20px;
 }
