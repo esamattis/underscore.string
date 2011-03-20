@@ -65,7 +65,8 @@ p {
 }
 
 a {
-  color: #42b7c1;
+  color: #484546;
+  text-decoration: none;
 }
 
 #wrapper {
@@ -87,6 +88,7 @@ a {
 
 #desc {
   float: left;
+  position: relative;
   width: 390px;
   padding-left: 20px;
   border-left: 1px solid white;
@@ -98,11 +100,35 @@ a {
   margin-top: -7px;
 }
 
-#desc h1 span {
+#desc .github {
+  display: block;
+  position: absolute;
+  right: 0px;
+  top: -40px;
+  width: 89px;
+  height: 89px;
+  background: url(images/bage.png);
+}
+
+#desc .github:hover {
+  background: url(images/bage-light.png);
+}
+
+#desc h1 a.under {
   padding-left: 5px;
   padding-right: 5px;
   background: transparent url(images/back.png);
   color: white;
+  text-decoration: none;
+}
+
+#desc h1 a.under:hover {
+  background: transparent url(images/back_light.png);
+}
+
+#desc h1 a.npm:hover {
+  color: #42b7c1;
+  text-decoration: underline;
 }
 
 #content {
