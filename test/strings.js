@@ -140,6 +140,22 @@ $(document).ready(function() {
     equals(_('the titleize string  method').titleize(), 'The Titleize String  Method');
   });
 
+  test('String: camelize', function(){
+    equals(_('the_camelize_string_method').camelize(), 'theCamelizeStringMethod');
+    equals(_('-the-camelize-string-method').camelize(), 'TheCamelizeStringMethod');
+  });
+
+  test('String: underscored', function(){
+    equals(_('the-dasherized-string').underscored(), 'the_dasherized_string');
+    equals(_('theCamelizedString').underscored(), 'the_camelized_string');
+    equals(_('TheCamelizedString').underscored(), 'the_camelized_string');
+  });
+
+  test('String: dasherize', function(){
+    equals(_('the_dasherize_string_method').dasherize(), 'the-dasherize-string-method');
+    equals(_('TheDasherizeStringMethod').dasherize(), '-the-dasherize-string-method');
+  });
+
   test('String: truncate', function(){
     equals(_('Hello world').truncate(6, 'read more'), 'Hello read more');
     equals(_('Hello world').truncate(5), 'Hello...');
