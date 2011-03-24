@@ -159,6 +159,27 @@ Supplant function was removed, use Underscore.js [template function][p].
     _('my name is epeli').titleize()
     => 'My Name Is Epeli'
 
+**camelize** _.camelize(string)
+
+Converts underscored or dasherized string to a camelized one
+
+    _('-moz-transform').camelize()
+    => 'MozTransform'
+
+**underscored** _.underscored(string)
+
+Converts a camelized or dasherized string into an underscored one
+
+    _(MozTransform).underscored()
+    => 'moz_transform'
+
+**dasherize** _.dasherize(string)
+
+Converts a underscored or camelized string into an dasherized one
+
+    _('MozTransform').dasherize()
+    => '-moz-transform'
+
 **trim** _.trim(string, [characters])
 
 trims defined characters from begining and ending of the string.
