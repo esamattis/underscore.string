@@ -143,17 +143,23 @@ $(document).ready(function() {
   test('String: camelize', function(){
     equals(_('the_camelize_string_method').camelize(), 'theCamelizeStringMethod');
     equals(_('-the-camelize-string-method').camelize(), 'TheCamelizeStringMethod');
+    equals(_('the camelize string method').camelize(), 'theCamelizeStringMethod');
+    equals(_(' the camelize  string method').camelize(), 'theCamelizeStringMethod');
+    equals(_('the camelize   string method').camelize(), 'theCamelizeStringMethod');
   });
 
   test('String: underscored', function(){
-    equals(_('the-dasherized-string').underscored(), 'the_dasherized_string');
-    equals(_('theCamelizedString').underscored(), 'the_camelized_string');
-    equals(_('TheCamelizedString').underscored(), 'the_camelized_string');
+    equals(_('the-underscored-string-method').underscored(), 'the_underscored_string_method');
+    equals(_('theUnderscoredStringMethod').underscored(), 'the_underscored_string_method');
+    equals(_('TheUnderscoredStringMethod').underscored(), 'the_underscored_string_method');
+    equals(_(' the underscored  string method').underscored(), 'the_underscored_string_method');
   });
 
   test('String: dasherize', function(){
     equals(_('the_dasherize_string_method').dasherize(), 'the-dasherize-string-method');
     equals(_('TheDasherizeStringMethod').dasherize(), '-the-dasherize-string-method');
+    equals(_('the dasherize string method').dasherize(), 'the-dasherize-string-method');
+    equals(_('the  dasherize string method  ').dasherize(), 'the-dasherize-string-method');
   });
 
   test('String: truncate', function(){
