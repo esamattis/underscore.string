@@ -13,6 +13,7 @@
     "underscore",
     "string"
   ],
+  "main": "./lib/underscore.string",
   "directories": {
     "lib": "./lib"
   },
