@@ -232,11 +232,17 @@ For more detailed documentation, see the [original page][o].
 
 ## Roadmap ##
 
+* Integration with Underscore 1.1.5
 * Resolve problem with function names crossing between libraries (include, contains and etc).
 
 Any suggestions or bug reports are welcome. Just email me or more preferably open an issue.
 
 ## Changelog ##
+
+### 1.1.3 ###
+
+* Added methods: underscored, camelize, dasherize
+* Support newer version of npm
 
 ### 1.1.2 ###
 
