@@ -258,7 +258,9 @@ Any suggestions or bug reports are welcome. Just email me or more preferably ope
 *  Esa-Matti Suuronen <esa-matti@suuronen.org> (http://esa-matti.suuronen.org/),
 *  Edward Tsech <edtsech@gmail.com>,
 *  Sasha Koss <kossnocorp@gmail.com> (http://koss.nocorp.me/),
-*  Vladimir Dronnikov <dronnikov@gmail.com>
+*  Vladimir Dronnikov <dronnikov@gmail.com>,
+*  Pete Kruckenberg (https://github.com/kruckenb),
+*  Paul Chavard <paul@chavard.net> (http://tchak.net)
 
 ## Licence ##
 
