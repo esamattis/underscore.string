@@ -274,12 +274,16 @@ left/right-pad a string. Alias for `pad(str, length, padStr, 'both')`
 
 ## Roadmap ##
 
-* Integration with Underscore 1.1.5
 * Resolve problem with function names crossing between libraries (include, contains and etc).
 
 Any suggestions or bug reports are welcome. Just email me or more preferably open an issue.
 
 ## Changelog ##
+
+### 1.1.4 ###
+
+* Added pad family methods
+* Integration with Underscore 1.1.6
 
 ### 1.1.3 ###
 
@@ -302,7 +306,7 @@ Any suggestions or bug reports are welcome. Just email me or more preferably ope
 *  Sasha Koss <kossnocorp@gmail.com> (<http://koss.nocorp.me/>),
 *  Vladimir Dronnikov <dronnikov@gmail.com>,
 *  Pete Kruckenberg (<https://github.com/kruckenb>),
-*  Paul Chavard <paul@chavard.net> (<http://tchak.net>)
+*  Paul Chavard <paul@chavard.net> (<http://tchak.net>),
 *  Ed Finkler <coj@funkatron.com> (<http://funkatron.com>)
 
 ## Licence ##

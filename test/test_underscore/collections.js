@@ -123,12 +123,12 @@ $(document).ready(function() {
   });
 
   test('collections: all', function() {
-    ok(_.all([]), 'the empty set');
-    ok(_.all([true, true, true]), 'all true values');
-    ok(!_.all([true, false, true]), 'one false value');
+    ok(_.all([], _.identity), 'the empty set');
+    ok(_.all([true, true, true], _.identity), 'all true values');
+    ok(!_.all([true, false, true], _.identity), 'one false value');
     ok(_.all([0, 10, 28], function(num){ return num % 2 == 0; }), 'even numbers');
     ok(!_.all([0, 11, 28], function(num){ return num % 2 == 0; }), 'an odd number');
-    ok(_.every([true, true, true]), 'aliased as "every"');
+    ok(_.every([true, true, true], _.identity), 'aliased as "every"');
   });
 
   test('collections: any', function() {
@@ -150,6 +150,13 @@ $(document).ready(function() {
   test('collections: invoke', function() {
     var list = [[5, 1, 7], [3, 2, 1]];
     var result = _.invoke(list, 'sort');
+    equals(result[0].join(', '), '1, 5, 7', 'first array sorted');
+    equals(result[1].join(', '), '1, 2, 3', 'second array sorted');
+  });
+
+  test('collections: invoke w/ function reference', function() {
+    var list = [[5, 1, 7], [3, 2, 1]];
+    var result = _.invoke(list, Array.prototype.sort);
     equals(result[0].join(', '), '1, 5, 7', 'first array sorted');
     equals(result[1].join(', '), '1, 2, 3', 'second array sorted');
   });
