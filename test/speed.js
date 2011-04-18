@@ -82,4 +82,25 @@
   JSLitmus.test('reverse', function(){
     _('Hello World').reverse();
   });
+
+  JSLitmus.test('pad default', function(){
+    _('foo').pad(12);
+  });
+
+  JSLitmus.test('pad hash left', function(){
+    _('foo').pad(12, '#');
+  });
+
+  JSLitmus.test('pad hash right', function(){
+    _('foo').pad(12, '#', 'right');
+  });
+
+  JSLitmus.test('pad hash both', function(){
+    _('foo').pad(12, '#', 'both');
+  });
+
+  JSLitmus.test('pad hash both longPad', function(){
+    _('foo').pad(12, 'f00f00f00', 'both');
+  });
+
 })();
