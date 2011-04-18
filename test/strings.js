@@ -200,4 +200,37 @@ $(document).ready(function() {
     equals(_("Hello\nWorld").lines().length, 2);
     equals(_("Hello World").lines().length, 1);
   });
+
+  test('String: pad', function() {
+    equals(_("1").pad(8), '       1');
+    equals(_("1").pad(8, '0'), '00000001');
+    equals(_("1").pad(8, '0', 'left'), '00000001');
+    equals(_("1").pad(8, '0', 'right'), '10000000');
+    equals(_("1").pad(8, '0', 'both'), '00001000');
+    equals(_("foo").pad(8, '0', 'both'), '000foo00');
+    equals(_("foo").pad(7, '0', 'both'), '00foo00');
+    equals(_("foo").pad(7, '!@$%dofjrofj', 'both'), '!!foo!!');
+  });
+
+  test('String: lpad', function() {
+    equals(_("1").lpad(8), '       1');
+    equals(_("1").lpad(8, '0'), '00000001');
+    equals(_("1").lpad(8, '0', 'left'), '00000001');
+  });
+
+  test('String: rpad', function() {
+    equals(_("1").rpad(8), '1       ');
+    equals(_("1").rpad(8, '0'), '10000000');
+    equals(_("foo").rpad(8, '0'), 'foo00000');
+    equals(_("foo").rpad(7, '0'), 'foo0000');
+  });
+
+  test('String: lrpad', function() {
+    equals(_("1").lrpad(8), '    1   ');
+    equals(_("1").lrpad(8, '0'), '00001000');
+    equals(_("foo").lrpad(8, '0'), '000foo00');
+    equals(_("foo").lrpad(7, '0'), '00foo00');
+    equals(_("foo").lrpad(7, '!@$%dofjrofj'), '!!foo!!');
+  });
+
 });

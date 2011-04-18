@@ -230,6 +230,52 @@ For more detailed documentation, see the [original page][o].
     _.sprintf("%.1f", 1.17)
     "1.2"
 
+**pad** _.pad(str, length, [padStr, type])
+
+pads the `str` with characters until the total string length is equal to the passed `length` parameter. By default, pads on the **left** with the space char (`" "`). `padStr` is truncated to a single character if necessary.
+
+    _.pad("1", 8)
+    -> "       1";
+
+    _.pad("1", 8, '0')
+    -> "00000001";
+
+    _.pad("1", 8, '0', 'right')
+    -> "10000000";
+
+    _.pad("1", 8, '0', 'both')
+    -> "00001000";
+
+    _.pad("1", 8, 'bleepblorp', 'both')
+    -> "bbbb1bbb";
+
+**lpad** _.lpad(str, length, [padStr])
+
+left-pad a string. Alias for `pad(str, length, padStr, 'left')`
+
+    _.lpad("1", 8, '0')
+    -> "00000001";
+
+**rpad** _.rpad(str, length, [padStr])
+
+right-pad a string. Alias for `pad(str, length, padStr, 'right')`
+
+    _.rpad("1", 8, '0')
+    -> "10000000";
+
+**lrpad** _.lrpad(str, length, [padStr])
+
+left/right-pad a string. Alias for `pad(str, length, padStr, 'both')`
+
+    _.lrpad("1", 8, '0')
+    -> "00001000";
+
+**center** alias for **lrpad**
+
+**ljust** alias for *lpad*
+
+**rjust** alias for *rpad*
+
 ## Roadmap ##
 
 * Integration with Underscore 1.1.5
@@ -238,6 +284,11 @@ For more detailed documentation, see the [original page][o].
 Any suggestions or bug reports are welcome. Just email me or more preferably open an issue.
 
 ## Changelog ##
+
+### 1.1.4 ###
+
+* Added pad, lpad, rpad, lrpad methods and aliases center, ljust, rjust
+* Integration with Underscore 1.1.6
 
 ### 1.1.3 ###
 
@@ -255,10 +306,13 @@ Any suggestions or bug reports are welcome. Just email me or more preferably ope
 
 ## Contributors list ##
 
-*  Esa-Matti Suuronen <esa-matti@suuronen.org> (http://esa-matti.suuronen.org/),
+*  Esa-Matti Suuronen <esa-matti@suuronen.org> (<http://esa-matti.suuronen.org/>),
 *  Edward Tsech <edtsech@gmail.com>,
-*  Sasha Koss <kossnocorp@gmail.com> (http://koss.nocorp.me/),
-*  Vladimir Dronnikov <dronnikov@gmail.com>
+*  Sasha Koss <kossnocorp@gmail.com> (<http://koss.nocorp.me/>),
+*  Vladimir Dronnikov <dronnikov@gmail.com>,
+*  Pete Kruckenberg (<https://github.com/kruckenb>),
+*  Paul Chavard <paul@chavard.net> (<http://tchak.net>),
+*  Ed Finkler <coj@funkatron.com> (<http://funkatron.com>)
 
 ## Licence ##
 

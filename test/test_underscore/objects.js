@@ -3,7 +3,16 @@ $(document).ready(function() {
   module("Object functions (values, extend, isEqual, and so on...)");
 
   test("objects: keys", function() {
+    var exception = /object/;
     equals(_.keys({one : 1, two : 2}).join(', '), 'one, two', 'can extract the keys from an object');
+    // the test above is not safe because it relies on for-in enumeration order
+    var a = []; a[1] = 0;
+    equals(_.keys(a).join(', '), '1', 'is not fooled by sparse arrays; see issue #95');
+    raises(function() { _.keys(null); }, exception, 'throws an error for `null` values');
+    raises(function() { _.keys(void 0); }, exception, 'throws an error for `undefined` values');
+    raises(function() { _.keys(1); }, exception, 'throws an error for number primitives');
+    raises(function() { _.keys('a'); }, exception, 'throws an error for string primitives');
+    raises(function() { _.keys(true); }, exception, 'throws an error for boolean primitives');
   });
 
   test("objects: values", function() {
@@ -24,6 +33,8 @@ $(document).ready(function() {
     ok(_.isEqual(result, {x:'x', a:'a', b:'b'}), 'can extend from multiple source objects');
     result = _.extend({x:'x'}, {a:'a', x:2}, {a:'b'});
     ok(_.isEqual(result, {x:2, a:'b'}), 'extending from multiple source objects last property trumps');
+    result = _.extend({}, {a: void 0, b: null});
+    equals(_.keys(result).join(''), 'b', 'extend does not copy undefined values');
   });
 
   test("objects: defaults", function() {
