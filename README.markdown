@@ -270,7 +270,11 @@ left/right-pad a string. Alias for `pad(str, length, padStr, 'both')`
     _.lrpad("1", 8, '0')
     -> "00001000";
 
+**center** alias for **lrpad**
 
+**ljust** alias for *lpad*
+
+**rjust** alias for *rpad*
 
 ## Roadmap ##
 
@@ -282,7 +286,7 @@ Any suggestions or bug reports are welcome. Just email me or more preferably ope
 
 ### 1.1.4 ###
 
-* Added pad family methods
+* Added pad, lpad, rpad, lrpad methods and aliases center, ljust, rjust
 * Integration with Underscore 1.1.6
 
 ### 1.1.3 ###
