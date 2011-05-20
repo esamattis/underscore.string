@@ -103,4 +103,24 @@
     _('foo').pad(12, 'f00f00f00', 'both');
   });
 
+  JSLitmus.test('toNumber', function(){
+      _('10.232323').toNumber(2);
+  });
+
+  JSLitmus.test('strRight', function(){
+    _('aaa_bbb_ccc').strRight('_');
+  });
+
+  JSLitmus.test('strRightBack', function(){
+    _('aaa_bbb_ccc').strRightBack('_');
+  });
+
+  JSLitmus.test('strLeft', function(){
+    _('aaa_bbb_ccc').strLeft('_');
+  });
+
+  JSLitmus.test('strLeftBack', function(){
+    _('aaa_bbb_ccc').strLeftBack('_');
+  });
+
 })();
