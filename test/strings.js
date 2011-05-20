@@ -235,4 +235,45 @@ $(document).ready(function() {
     equals(_("foo").lrpad(7, '!@$%dofjrofj'), '!!foo!!');
   });
 
+  test('String: toNumber', function() {
+    equals(_("not a number").toNumber(), 0);
+    equals(_("2.345").toNumber(), 2);
+    equals(_("2.345").toNumber(NaN), 2);
+    equals(_("2.345").toNumber(2), 2.35);
+    equals(_("2.344").toNumber(2), 2.34);
+    equals(_("2").toNumber(2), 2.00);
+  });
+
+  test('String: strRight', function() {
+    equals(_("This_is_a_test_string").strRight("_"), "is_a_test_string");
+    equals(_("This_is_a_test_string").strRight("string"), "");
+    equals(_("This_is_a_test_string").strRight(), "This_is_a_test_string");
+    equals(_("This_is_a_test_string").strRight(""), "This_is_a_test_string");
+    equals(_("This_is_a_test_string").strRight("-"), "This_is_a_test_string");
+  });
+
+  test('String: strRightBack', function() {
+    equals(_("This_is_a_test_string").strRightBack("_"), "string");
+    equals(_("This_is_a_test_string").strRightBack("string"), "");
+    equals(_("This_is_a_test_string").strRightBack(), "This_is_a_test_string");
+    equals(_("This_is_a_test_string").strRightBack(""), "This_is_a_test_string");
+    equals(_("This_is_a_test_string").strRightBack("-"), "This_is_a_test_string");
+  });
+
+  test('String: strLeft', function() {
+    equals(_("This_is_a_test_string").strLeft("_"), "This");
+    equals(_("This_is_a_test_string").strLeft("This"), "");
+    equals(_("This_is_a_test_string").strLeft(), "This_is_a_test_string");
+    equals(_("This_is_a_test_string").strLeft(""), "This_is_a_test_string");
+    equals(_("This_is_a_test_string").strLeft("-"), "This_is_a_test_string");
+  });
+
+  test('String: strLeftBack', function() {
+    equals(_("This_is_a_test_string").strLeftBack("_"), "This_is_a_test");
+    equals(_("This_is_a_test_string").strLeftBack("This"), "");
+    equals(_("This_is_a_test_string").strLeftBack(), "This_is_a_test_string");
+    equals(_("This_is_a_test_string").strLeftBack(""), "This_is_a_test_string");
+    equals(_("This_is_a_test_string").strLeftBack("-"), "This_is_a_test_string");
+  });
+
 });
