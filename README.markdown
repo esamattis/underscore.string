@@ -341,6 +341,13 @@ Any suggestions or bug reports are welcome. Just email me or more preferably ope
 * Created integration test suite with underscore.js 1.1.4 (now it's absolutely compatible)
 * Removed 'reverse' function, because this function override underscore.js 'reverse'
 
+## Contribute ##
+
+* Fork & pull request. Don't forget about tests.
+* If you planning add some feature please create issue before.
+
+Otherwise changes will be rejected.
+
 ## Contributors list ##
 
 *  Esa-Matti Suuronen <esa-matti@suuronen.org> (<http://esa-matti.suuronen.org/>),
