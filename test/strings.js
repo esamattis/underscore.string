@@ -165,6 +165,7 @@ $(document).ready(function() {
   test('String: truncate', function(){
     equals(_('Hello world').truncate(6, 'read more'), 'Hello read more');
     equals(_('Hello world').truncate(5), 'Hello...');
+    equals(_('Hello').truncate(10), 'Hello');
   });
 
   test('String: isBlank', function(){
