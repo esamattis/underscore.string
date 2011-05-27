@@ -322,6 +322,10 @@ Any suggestions or bug reports are welcome. Just email me or more preferably ope
 
 ## Changelog ##
 
+### 1.1.5 ###
+
+* Added strRight, strRightBack, strLeft, strLeftBack
+
 ### 1.1.4 ###
 
 * Added pad, lpad, rpad, lrpad methods and aliases center, ljust, rjust
