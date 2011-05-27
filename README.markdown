@@ -276,6 +276,44 @@ left/right-pad a string. Alias for `pad(str, length, padStr, 'both')`
 
 **rjust** alias for *rpad*
 
+**toNumber**  _.toNumber(string, [decimals])
+
+Parse string to number. Return 0 if string can't be parsed to number.
+
+    _('2.556').toNumber()
+    => 3
+
+    _('2.556').toNumber(1)
+    => 2.6
+
+**strRight**  _.strRight(string, pattern)
+
+Searches a string from left to right for a pattern and returns a substring consisting of the characters in the string that are to the right of the pattern or all string if no match found.
+
+    _('This_is_a_test_string').strRight('_')
+    => "is_a_test_string";
+
+**strRightBack**  _.strRightBack(string, pattern)
+
+Searches a string from right to left for a pattern and returns a substring consisting of the characters in the string that are to the right of the pattern or all string if no match found.
+
+    _('This_is_a_test_string').strRightBack('_')
+    => "string";
+
+**strLeft**  _.strLeft(string, pattern)
+
+Searches a string from left to right for a pattern and returns a substring consisting of the characters in the string that are to the left of the pattern or all string if no match found.
+
+    _('This_is_a_test_string').strLeft('_')
+    => "This";
+
+**strLeftBack**  _.strLeftBack(string, pattern)
+
+Searches a string from right to left for a pattern and returns a substring consisting of the characters in the string that are to the left of the pattern or all string if no match found.
+
+    _('This_is_a_test_string').strLeftBack('_')
+    => "This_is_a_test";
+
 ## Roadmap ##
 
 * Integration with Underscore 1.1.5
@@ -284,6 +322,10 @@ left/right-pad a string. Alias for `pad(str, length, padStr, 'both')`
 Any suggestions or bug reports are welcome. Just email me or more preferably open an issue.
 
 ## Changelog ##
+
+### 1.1.5 ###
+
+* Added strRight, strRightBack, strLeft, strLeftBack
 
 ### 1.1.4 ###
 
@@ -303,6 +345,13 @@ Any suggestions or bug reports are welcome. Just email me or more preferably ope
 
 * Created integration test suite with underscore.js 1.1.4 (now it's absolutely compatible)
 * Removed 'reverse' function, because this function override underscore.js 'reverse'
+
+## Contribute ##
+
+* Fork & pull request. Don't forget about tests.
+* If you planning add some feature please create issue before.
+
+Otherwise changes will be rejected.
 
 ## Contributors list ##
 
