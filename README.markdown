@@ -205,6 +205,9 @@ Left trim. Similar to trim, but only for right side.
 
     _('Hello world').truncate(5)
     => 'Hello...'
+    
+    _('Hello').truncate(10)
+    => 'Hello'
 
 **words** _.words(str, delimiter=" ")
 
