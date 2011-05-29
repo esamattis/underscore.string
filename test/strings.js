@@ -89,6 +89,20 @@ $(document).ready(function() {
     equals(_("hello %s").chain().sprintf("me").capitalize().value(), "Hello me", 'Chaining works');
     equals(_.sprintf("%.1f", 1.22222), "1.2", 'round');
     equals(_.sprintf("%.1f", 1.17), "1.2", 'round 2');
+    equals(_.sprintf("%(id)d - %(name)s", {id: 824, name: "Hello World"}), "824 - Hello World", 'Named replacements work');
+    equals(_.sprintf("%(args[0].id)d - %(args[1].name)s", {args: [{id: 824}, {name: "Hello World"}]}), "824 - Hello World", 'Named replacements with arrays work');
+  });
+
+  test("Strings: vsprintf", function() {
+    // Should be very tested function already.  Thanks to
+    // http://www.diveintojavascript.com/projects/sprintf-for-javascript
+    equals(_.vsprintf("Hello %s", ["me"]), "Hello me", 'basic');
+    equals(_("Hello %s").vsprintf(["me"]), "Hello me", 'object');
+    equals(_("hello %s").chain().vsprintf(["me"]).capitalize().value(), "Hello me", 'Chaining works');
+    equals(_.vsprintf("%.1f", [1.22222]), "1.2", 'round');
+    equals(_.vsprintf("%.1f", [1.17]), "1.2", 'round 2');
+    equals(_.vsprintf("%(id)d - %(name)s", [{id: 824, name: "Hello World"}]), "824 - Hello World", 'Named replacements work');
+    equals(_.vsprintf("%(args[0].id)d - %(args[1].name)s", [{args: [{id: 824}, {name: "Hello World"}]}]), "824 - Hello World", 'Named replacements with arrays work');
   });
 
   test("Strings: startsWith", function() {
