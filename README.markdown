@@ -28,7 +28,7 @@ use Object-Oriented style and chaining:
 
 **Standalone usage**:
 
-    var _s = require('undescore.string');
+    var _s = require('underscore.string');
 
 **Integrate with Underscore.js**:
 
