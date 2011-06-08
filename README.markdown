@@ -2,8 +2,6 @@
 
 Idea: Esa-Matti Suuronen (esa-matti aet suuronen dot org)
 
-Authors: Esa-Matti Suuronen, Edward Tsech
-
 Javascript lacks complete string manipulation operations.
 This an attempt to fill that cap. List of buildin methods can be found
 for example from [Dive Into JavaScript][d].
