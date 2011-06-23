@@ -186,7 +186,7 @@ $(document).ready(function() {
   test('String: unescapeHTML', function(){
     equals(_('&lt;div&gt;Blah &amp; &quot;blah&quot; &amp; &apos;blah&apos;&lt;/div&gt;').unescapeHTML(),
              '<div>Blah & "blah" & \'blah\'</div>');
-    equals(_('&amp;lt;).unescapeHTML(), '&lt;');
+    equals(_('&amp;lt;').unescapeHTML(), '&lt;');
     equals(_(5).unescapeHTML(), '5');
     equals(_(undefined).unescapeHTML(), '');
   });
