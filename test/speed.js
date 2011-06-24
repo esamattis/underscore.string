@@ -122,5 +122,9 @@
   JSLitmus.test('strLeftBack', function(){
     _('aaa_bbb_ccc').strLeftBack('_');
   });
+  
+  JSLitmus.test('join', function(){
+    _('separator').join(1, 2, 3, 4, 5, 6, 7, 8, 'foo', 'bar', 'lol', 'wut');
+  });
 
 })();
