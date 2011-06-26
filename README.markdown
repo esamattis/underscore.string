@@ -90,6 +90,13 @@ Converts entity characters to HTML equivalents.
     _('Hello ').insert(6, 'world')
     => 'Hello world'
 
+**isBlank** _.isBlank(string)
+
+    _('').isBlank(); // => true
+    _('\n').isBlank(); // => true
+    _(' ').isBlank(); // => true
+    _('a').isBlank(); // => false
+
 **join** _.join(separator, *strings)
 
 Joins strings together with given separator
@@ -203,7 +210,7 @@ Left trim. Similar to trim, but only for right side.
 
     _('Hello world').truncate(5)
     => 'Hello...'
-    
+
     _('Hello').truncate(10)
     => 'Hello'
 
