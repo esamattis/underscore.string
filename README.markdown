@@ -111,10 +111,10 @@ Joins strings together with given separator
 
 **reverse**
 
-This functions has been removed, because this function override underscore.js 'reverse'.
-But now you can do that:
+Return reversed string:
 
-    _("foobar").chars().reverse().join('')
+    _("foobar").reverse()
+    => 'raboof'
 
 **splice**  _.splice(string, index, howmany, substring)
 
