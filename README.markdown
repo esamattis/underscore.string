@@ -204,7 +204,7 @@ Left trim. Similar to trim, but only for left side.
 
 **rtrim** _.rtrim(string, [characters])
 
-Left trim. Similar to trim, but only for right side.
+Right trim. Similar to trim, but only for right side.
 
 **truncate** _.truncate(string, length, truncateString)
 
