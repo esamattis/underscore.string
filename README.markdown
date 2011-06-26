@@ -324,8 +324,6 @@ Searches a string from right to left for a pattern and returns a substring consi
 
 ## Roadmap ##
 
-* Resolve problem with function names crossing between libraries (include, contains and etc).
-
 Any suggestions or bug reports are welcome. Just email me or more preferably open an issue.
 
 ## Changelog ##
