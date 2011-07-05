@@ -278,5 +278,16 @@ $(document).ready(function() {
     equals(_("This_is_a_test_string").strLeftBack(""), "This_is_a_test_string");
     equals(_("This_is_a_test_string").strLeftBack("-"), "This_is_a_test_string");
   });
+  
+  test('Strings: isEmail', function() {
+    ok(_("rwz@duckroll.ru").isEmail());
+    ok(_("email@domain.local").isEmail());
+    ok(!_(" rwz@duckroll.ru").isEmail()); // untrimmed
+    ok(!_("Pavel Pravosud <rwz@duckroll.ru>").isEmail());
+    ok(!_("foobar").isEmail());
+    ok(!_("email@invalid_domain_name.com").isEmail());
+    ok(!_("vasya pupkine@example.com").isEmail());
+    ok(!_("Invalid Email format@example.com").isEmail());
+  });
 
 });

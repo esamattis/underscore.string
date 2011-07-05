@@ -322,6 +322,10 @@ Searches a string from right to left for a pattern and returns a substring consi
     _('This_is_a_test_string').strLeftBack('_')
     => "This_is_a_test";
 
+**isEmail** _.isEmail(string)
+
+Returns a basic boolean guess of if passed string is email or not. Don't forget to trim input before use.
+
 ## Roadmap ##
 
 Any suggestions or bug reports are welcome. Just email me or more preferably open an issue.
