@@ -322,6 +322,15 @@ Searches a string from right to left for a pattern and returns a substring consi
     _('This_is_a_test_string').strLeftBack('_')
     => "This_is_a_test";
 
+**stripTags**
+
+Removes all html tags from string.
+
+    _('a <a href="#">link</a>').stripTags()
+    => 'a link'
+    _('a <a href="#">link</a><script>alert("hello world!")</script>').stripTags()
+    => 'a linkalert("hello world!")'
+
 **isEmail** _.isEmail(string)
 
 Returns a basic boolean guess of if passed string is valid email address or not. Don't forget to trim input before use.

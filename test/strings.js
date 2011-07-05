@@ -289,5 +289,11 @@ $(document).ready(function() {
     ok(!_("vasya pupkine@example.com").isEmail());
     ok(!_("Invalid Email format@example.com").isEmail());
   });
+  
+  test('Strings: stripTags', function() {
+    equals(_('a <a href="#">link</a>').stripTags(), 'a link');
+    equals(_('a <a href="#">link</a><script>alert("hello world!")</script>').stripTags(), 'a linkalert("hello world!")');
+    equals(_('<html><body>hello world</body></html>').stripTags(), 'hello world');
+  });
 
 });
