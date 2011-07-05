@@ -324,7 +324,12 @@ Searches a string from right to left for a pattern and returns a substring consi
 
 **isEmail** _.isEmail(string)
 
-Returns a basic boolean guess of if passed string is email or not. Don't forget to trim input before use.
+Returns a basic boolean guess of if passed string is valid email address or not. Don't forget to trim input before use.
+
+    _('rwz@duckroll.ru').isEmail()
+    => true
+    _('this is not email').isEmail()
+    => false
 
 ## Roadmap ##
 
