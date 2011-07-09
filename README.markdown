@@ -340,6 +340,23 @@ Returns a basic boolean guess of if passed string is valid email address or not.
     _('this is not email').isEmail()
     => false
 
+**isURL/isUrl** _.isURL(string, [schemas...])
+
+Returns a boolean guess if passed string is an URL or not. You can specify supported schemas as optional params. Default schemas are http and https.
+
+    _('http://duckroll.ru').isUrl()
+    => true
+    _('//google.com').isUrl()
+    => true
+    _('//google.com').isUrl('http')
+    => false
+    _('foobar').isUrl()
+    => false
+    _('ftp://duckroll.ru').isUrl()
+    => false
+    _('ftp://duckroll.ru').isUrl('ftp', 'http')
+    => true
+
 ## Roadmap ##
 
 Any suggestions or bug reports are welcome. Just email me or more preferably open an issue.
