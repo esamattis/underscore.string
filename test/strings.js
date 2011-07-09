@@ -295,5 +295,25 @@ $(document).ready(function() {
     equals(_('a <a href="#">link</a><script>alert("hello world!")</script>').stripTags(), 'a linkalert("hello world!")');
     equals(_('<html><body>hello world</body></html>').stripTags(), 'hello world');
   });
+  
+  test('String: isUrl', function(){
+    ok(_('http://duckroll.ru').isUrl());
+    ok(_('https://duckroll.ru').isUrl());
+    ok(_('http://duckroll.ru').isUrl('http'));
+    ok(_('https://duckroll.ru').isUrl('https'));
+    ok(_('http://duckroll.ru').isUrl('http', 'https'));
+    ok(_('https://duckroll.ru').isUrl('http', 'https'));
+    ok(_('http://user:password@duckroll.ru').isUrl());
+    ok(_('http://duckroll.ru/some%20stuff%20here').isUrl());
+    ok(_('http://duckroll.ru/path#with_hashtag').isUrl());
+    ok(_('http://duckroll.ru/?with=query&and=for&bar').isUrl());
+    ok(_('//duckroll.ru').isUrl());
+    ok(!_('http://duckroll.ru').isUrl('https'));
+    ok(!_('https://duckroll.ru').isUrl('http'));
+    ok(!_('//duckroll.ru').isUrl('http', 'https'));
+    ok(!_('http://duckroll.ru/some stuff here').isUrl());
+    ok(!_('foobar').isUrl());
+    
+  });
 
 });
