@@ -10,7 +10,7 @@ task :build do
   uglified = Uglifier.compile(source, :copyright => false)
   closured = Closure::Compiler.new.compile(source)
   compressed = [ uglified, closured ].sort_by(&:length).first
-  File.open('dist/underscore.string.min.js', 'w').write compressed
+  File.open('dist/underscore.string.min.js', 'w'){ |f| f.write compressed }
   compression_rate = compressed.length.to_f/source.length
   puts "compressed dist/underscore.string.min.js: #{compressed.length}/#{source.length} #{(compression_rate * 100).round}%"
 end
