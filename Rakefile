@@ -2,7 +2,9 @@ require 'rubygems'
 require 'closure-compiler'
 require 'uglifier'
 
-desc 'Use the UglifyJS or Closure Compiler to compress Underscore.string'
+task :default => :build
+
+desc 'Use UglifyJS or Closure Compiler to compress Underscore.string'
 task :build do
   source = File.read('lib/underscore.string.js')
   uglified = Uglifier.compile(source, :copyright => false)
