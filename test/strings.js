@@ -292,7 +292,7 @@ $(document).ready(function() {
   
   test('Strings: stripTags', function() {
     equals(_('a <a href="#">link</a>').stripTags(), 'a link');
-    equals(_('a <a href="#">link</a><script>alert("hello world!")</script>').stripTags(), 'a linkalert("hello world!")');
+    equals(_('a <a href="#">link</a><script>alert("hello world!")</scr'+'ipt>').stripTags(), 'a linkalert("hello world!")');
     equals(_('<html><body>hello world</body></html>').stripTags(), 'hello world');
   });
   
@@ -307,8 +307,10 @@ $(document).ready(function() {
     ok(_('http://duckroll.ru/some%20stuff%20here').isUrl());
     ok(_('http://duckroll.ru/path#with_hashtag').isUrl());
     ok(_('http://duckroll.ru/?with=query&and=for&bar').isUrl());
-    ok(_('http://duckroll.ru:8080/?with=query&and=for&bar').isUrl());
+    ok(_('http://duckroll.ru:8080/with_port').isUrl());
     ok(_('//duckroll.ru').isUrl());
+    ok(_('HTTP://duckroll.ru').isUrl());
+    ok(_('HTTPs://duckroll.ru').isUrl());
     ok(!_('http://duckroll.ru').isUrl('https'));
     ok(!_('https://duckroll.ru').isUrl('http'));
     ok(!_('//duckroll.ru').isUrl('http', 'https'));
