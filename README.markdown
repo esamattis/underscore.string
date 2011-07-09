@@ -402,6 +402,7 @@ Otherwise changes will be rejected.
 *  Pete Kruckenberg (<https://github.com/kruckenb>),
 *  Paul Chavard <paul@chavard.net> (<http://tchak.net>),
 *  Ed Finkler <coj@funkatron.com> (<http://funkatron.com>)
+*  Pavel Pravosud <rwz@duckroll.ru>
 
 ## Licence ##
 
