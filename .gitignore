@@ -1,1 +1,4 @@
+.gitignore
 .DS_Store
+.project
+.tmp_*
