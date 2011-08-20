@@ -70,7 +70,7 @@ $(document).ready(function() {
     equals(_.reverse("foobar"), "raboof" );
     equals(_.reverse("foo bar"), "rab oof" );
     equals(_.reverse("saippuakauppias"), "saippuakauppias" );
-    // equals(_.reverse(123), "321", "Non string");
+    equals(_.reverse(123), "321", "Non string");
   });
 
   test("Strings: clean", function() {
