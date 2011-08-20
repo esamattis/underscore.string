@@ -118,11 +118,12 @@ $(document).ready(function() {
     ok(!_.endsWith(12345, 6), '12345 does not end with 6');
   });
 
-  test("Strings: includes", function() {
-    ok(_("foobar").includes("bar"), 'foobar includes bar');
+  test("Strings: include", function() {
+    ok(_.include("foobar", "bar"), 'foobar includes bar');
     ok(!_("foobar").include("buzz"), 'foobar does not includes buzz');
-    ok(_(12345).includes(34), '12345 includes 34');
+    ok(_(12345).include(34), '12345 includes 34');
     ok(!_(12345).include(6), '12345 does not includes 6');
+    ok(!_(12345).chain().include(6).value(), '12345 does not includes 6');
   });
 
   test('String: chop', function(){
