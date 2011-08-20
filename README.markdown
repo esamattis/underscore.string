@@ -287,7 +287,7 @@ left/right-pad a string. Alias for `pad(str, length, padStr, 'both')`
 
 **toNumber**  _.toNumber(string, [decimals])
 
-Parse string to number. Return 0 if string can't be parsed to number.
+Parse string to number. Returns NaN if string can't be parsed to number.
 
     _('2.556').toNumber()
     => 3

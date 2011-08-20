@@ -277,13 +277,17 @@ $(document).ready(function() {
   });
 
   test('String: toNumber', function() {
-    equals(_("not a number").toNumber(), 0);
+    deepEqual(_("not a number").toNumber(), Number.NaN);
+	equals(_(0).toNumber(), 0);
+	equals(_("0").toNumber(), 0);
     equals(_("2.345").toNumber(), 2);
     equals(_("2.345").toNumber(NaN), 2);
     equals(_("2.345").toNumber(2), 2.35);
     equals(_("2.344").toNumber(2), 2.34);
     equals(_("2").toNumber(2), 2.00);
     equals(_(2).toNumber(2), 2.00);
+	equals(_(-2).toNumber(), -2);
+	equals(_("-2").toNumber(), -2);
   });
 
   test('String: strRight', function() {
