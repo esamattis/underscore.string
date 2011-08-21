@@ -1,6 +1,7 @@
 # Underscore.string #
 
-Idea: Esa-Matti Suuronen <esa-matti@suuronen@org>
+Idea: Esa-Matti Suuronen <esa-matti@suuronen.org>
+
 Active maintainer: Eduard Tsech <edtsech@gmail.com>
 
 Javascript lacks complete string manipulation operations.
