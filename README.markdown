@@ -68,6 +68,8 @@ Tests if string contains a substring.
     _.includes("foobar", "ob")
     => true
 
+**include** alias for *includes*
+
 **count** _.count(string, substring)
 
     _('Hello world').count('l')
@@ -339,6 +341,12 @@ Removes all html tags from string.
 Any suggestions or bug reports are welcome. Just email me or more preferably open an issue.
 
 ## Changelog ##
+
+### 1.1.6 ###
+
+* Fixed reverse and truncate
+* Added isBlank, stripTags, inlude(alias for includes)
+* Added uglifier compression
 
 ### 1.1.5 ###
 
