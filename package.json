@@ -1,6 +1,6 @@
 {
   "name": "underscore.string",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "String manipulation extensions for Underscore.js javascript library.",
   "homepage": "https://github.com/edtsech/underscore.string",
   "contributors": [
@@ -10,7 +10,8 @@
     "Vladimir Dronnikov <dronnikov@gmail.com>",
     "Pete Kruckenberg (<https://github.com/kruckenb>)",
     "Paul Chavard <paul@chavard.net> (<http://tchak.net>)",
-    "Ed Finkler <coj@funkatron.com> (<http://funkatron.com>)"
+    "Ed Finkler <coj@funkatron.com> (<http://funkatron.com>)",
+    "Pavel Pravosud <rwz@duckroll.ru>"
   ],
   "keywords": [
     "underscore",
@@ -24,7 +25,7 @@
     "node": "*"
   },
   "dependencies": {
-    "underscore": "1.1.6"
+    "underscore": "1.1.7"
   },
   "repository": {
     "type": "git",

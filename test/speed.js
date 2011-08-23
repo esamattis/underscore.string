@@ -60,7 +60,7 @@
   });
 
   JSLitmus.test('titleize', function(){
-    return _('the titleize string method').titleize()
+    return _('the titleize string method').titleize();
   });
 
   JSLitmus.test('truncate', function(){
@@ -72,11 +72,11 @@
   });
 
   JSLitmus.test('escapeHTML', function(){
-    _('<div>Blah blah blah</div>').escapeHTML()
+    _('<div>Blah blah blah</div>').escapeHTML();
   });
 
   JSLitmus.test('unescapeHTML', function(){
-    _('&lt;div&gt;Blah blah blah&lt;/div&gt;').unescapeHTML()
+    _('&lt;div&gt;Blah blah blah&lt;/div&gt;').unescapeHTML();
   });
 
   JSLitmus.test('reverse', function(){
@@ -121,6 +121,10 @@
 
   JSLitmus.test('strLeftBack', function(){
     _('aaa_bbb_ccc').strLeftBack('_');
+  });
+  
+  JSLitmus.test('join', function(){
+    _('separator').join(1, 2, 3, 4, 5, 6, 7, 8, 'foo', 'bar', 'lol', 'wut');
   });
 
 })();

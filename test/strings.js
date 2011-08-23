@@ -2,35 +2,8 @@ $(document).ready(function() {
 
   module("String extensions");
 
-  test("Strings: basic", function() {
-    equals(_.trim("   epeli  "), "epeli", "Basic");
-    equals(_.strip("   epeli  "), "epeli", "Aliases");
-    equals(_("   epeli  ").trim(), "epeli", "Object-Oriented style");
-    equals(_("   epeli  ").chain().trim().capitalize().value(), "Epeli", "Can chain");
-  });
-
-  test("Strings: capitalize", function() {
-    equals(_("fabio").capitalize(), "Fabio", 'First letter is upper case');
-    equals(_.capitalize("fabio"), "Fabio", 'First letter is upper case');
-  });
-
-  test("Strings: join", function() {
-    equals(_.join("", "foo", "bar"), "foobar", 'basic join');
-    equals(_.join("", 1, "foo", 2), "1foo2", 'join numbers and strings');
-    equals(_.join(" ","foo", "bar"), "foo bar", 'join with spaces');
-    equals(_.join("1", "2", "2"), "212", 'join number strings');
-    equals(_.join(1, 2, 2), "212", 'join numbers');
-    equals(_(" ").join("foo", "bar"), "foo bar", 'join object oriented');
-  });
-
-//  test("Strings: reverse", function() {
-//    equals(_.reverse("foo"), "oof" );
-//    equals(_.reverse("foobar"), "raboof" );
-//    equals(_.reverse("foo bar"), "rab oof" );
-//    equals(_.reverse("saippuakauppias"), "saippuakauppias" );
-//  });
-
   test("Strings: trim", function() {
+    equals(_.trim(123), "123", "Non string");
     equals(_(" foo").trim(), "foo");
     equals(_("foo ").trim(), "foo");
     equals(_(" foo ").trim(), "foo");
@@ -77,8 +50,33 @@ $(document).ready(function() {
     equals(_("_-foobar-_").rtrim("_-"), "_-foobar");
   });
 
+  test("Strings: capitalize", function() {
+    equals(_("fabio").capitalize(), "Fabio", 'First letter is upper case');
+    equals(_.capitalize("fabio"), "Fabio", 'First letter is upper case');
+    equals(_(123).capitalize(), "123", "Non string");
+  });
+
+  test("Strings: join", function() {
+    equals(_.join("", "foo", "bar"), "foobar", 'basic join');
+    equals(_.join("", 1, "foo", 2), "1foo2", 'join numbers and strings');
+    equals(_.join(" ","foo", "bar"), "foo bar", 'join with spaces');
+    equals(_.join("1", "2", "2"), "212", 'join number strings');
+    equals(_.join(1, 2, 2), "212", 'join numbers');
+    equals(_(" ").join("foo", "bar"), "foo bar", 'join object oriented');
+  });
+
+  test("Strings: reverse", function() {
+    equals(_.reverse("foo"), "oof" );
+    equals(_.reverse("foobar"), "raboof" );
+    equals(_.reverse("foo bar"), "rab oof" );
+    equals(_.reverse("saippuakauppias"), "saippuakauppias" );
+    equals(_.reverse(123), "321", "Non string");
+    equals(_.reverse(123.45), "54.321", "Non string");
+  });
+
   test("Strings: clean", function() {
     equals(_(" foo    bar   ").clean(), "foo bar");
+    equals(_(123).clean(), "123");
   });
 
   test("Strings: sprintf", function() {
@@ -89,11 +87,26 @@ $(document).ready(function() {
     equals(_("hello %s").chain().sprintf("me").capitalize().value(), "Hello me", 'Chaining works');
     equals(_.sprintf("%.1f", 1.22222), "1.2", 'round');
     equals(_.sprintf("%.1f", 1.17), "1.2", 'round 2');
+    equals(_.sprintf("%(id)d - %(name)s", {id: 824, name: "Hello World"}), "824 - Hello World", 'Named replacements work');
+    equals(_.sprintf("%(args[0].id)d - %(args[1].name)s", {args: [{id: 824}, {name: "Hello World"}]}), "824 - Hello World", 'Named replacements with arrays work');
+  });
+
+
+  test("Strings: vsprintf", function() {
+    equals(_.vsprintf("Hello %s", ["me"]), "Hello me", 'basic');
+    equals(_("Hello %s").vsprintf(["me"]), "Hello me", 'object');
+    equals(_("hello %s").chain().vsprintf(["me"]).capitalize().value(), "Hello me", 'Chaining works');
+    equals(_.vsprintf("%.1f", [1.22222]), "1.2", 'round');
+    equals(_.vsprintf("%.1f", [1.17]), "1.2", 'round 2');
+    equals(_.vsprintf("%(id)d - %(name)s", [{id: 824, name: "Hello World"}]), "824 - Hello World", 'Named replacement works');
+    equals(_.vsprintf("%(args[0].id)d - %(args[1].name)s", [{args: [{id: 824}, {name: "Hello World"}]}]), "824 - Hello World", 'Named replacement with arrays works');
   });
 
   test("Strings: startsWith", function() {
     ok(_("foobar").startsWith("foo"), 'foobar starts with foo');
     ok(!_("oobar").startsWith("foo"), 'oobar does not start with foo');
+    ok(_(12345).startsWith(123), '12345 starts with 123');
+    ok(!_(2345).startsWith(123), '2345 does not start with 123');
   });
 
   test("Strings: endsWith", function() {
@@ -101,43 +114,56 @@ $(document).ready(function() {
     ok(_.endsWith("foobar", "bar"), 'foobar ends with bar');
     ok(_.endsWith("00018-0000062.Plone.sdh264.1a7264e6912a91aa4a81b64dc5517df7b8875994.mp4", "mp4"), 'endsWith .mp4');
     ok(!_("fooba").endsWith("bar"), 'fooba does not end with bar');
+    ok(_.endsWith(12345, 45), '12345 ends with 45');
+    ok(!_.endsWith(12345, 6), '12345 does not end with 6');
   });
 
-  test("Strings: includes", function() {
-    ok(_("foobar").includes("bar"), 'foobar includes bar');
-    ok(!_("foobar").includes("buzz"), 'foobar does not includes buzz');
+  test("Strings: include", function() {
+    ok(_.include("foobar", "bar"), 'foobar includes bar');
+    ok(!_("foobar").include("buzz"), 'foobar does not includes buzz');
+    ok(_(12345).include(34), '12345 includes 34');
+    ok(!_(12345).include(6), '12345 does not includes 6');
+    ok(!_(12345).chain().include(6).value(), '12345 does not includes 6');
   });
 
   test('String: chop', function(){
     ok(_('whitespace').chop(2).length === 5, "output ['wh','it','es','pa','ce']");
     ok(_('whitespace').chop(3).length === 4, "output ['whi','tes','pac','e']");
     ok(_('whitespace').chop()[0].length === 10, "output ['whitespace']");
+    ok(_(12345).chop(1).length === 5, "output ['1','2','3','4','5']");
   });
 
   test('String: count', function(){
     equals(_('Hello world').count('l'), 3);
     equals(_('Hello world').count('Hello'), 1);
     equals(_('Hello world').count('foo'), 0);
+    equals(_(12345).count(1), 1);
+    equals(_(11345).count(1), 2);
   });
 
   test('String: insert', function(){
     equals(_('Hello ').insert(6, 'Jessy'), 'Hello Jessy');
+    equals(_('Hello ').insert(100, 'Jessy'), 'Hello Jessy');
+    equals(_(12345).insert(6, 'Jessy'), '12345Jessy');
   });
 
   test('String: splice', function(){
     equals(_('https://edtsech@bitbucket.org/edtsech/underscore.strings').splice(30, 7, 'epeli'),
            'https://edtsech@bitbucket.org/epeli/underscore.strings');
+    equals(_.splice(12345, 1, 2, 321), '132145', 'Non strings');
   });
 
   test('String: succ', function(){
     equals(_('a').succ(), 'b');
     equals(_('A').succ(), 'B');
     equals(_('+').succ(), ',');
+    equals(_(1).succ(), '2');
   });
 
   test('String: titleize', function(){
     equals(_('the titleize string method').titleize(), 'The Titleize String Method');
     equals(_('the titleize string  method').titleize(), 'The Titleize String  Method');
+    equals(_(123).titleize(), '123');
   });
 
   test('String: camelize', function(){
@@ -146,6 +172,7 @@ $(document).ready(function() {
     equals(_('the camelize string method').camelize(), 'theCamelizeStringMethod');
     equals(_(' the camelize  string method').camelize(), 'theCamelizeStringMethod');
     equals(_('the camelize   string method').camelize(), 'theCamelizeStringMethod');
+    equals(_(123).camelize(), '123');
   });
 
   test('String: underscored', function(){
@@ -153,6 +180,7 @@ $(document).ready(function() {
     equals(_('theUnderscoredStringMethod').underscored(), 'the_underscored_string_method');
     equals(_('TheUnderscoredStringMethod').underscored(), 'the_underscored_string_method');
     equals(_(' the underscored  string method').underscored(), 'the_underscored_string_method');
+    equals(_(123).underscored(), '123');
   });
 
   test('String: dasherize', function(){
@@ -160,11 +188,14 @@ $(document).ready(function() {
     equals(_('TheDasherizeStringMethod').dasherize(), '-the-dasherize-string-method');
     equals(_('the dasherize string method').dasherize(), 'the-dasherize-string-method');
     equals(_('the  dasherize string method  ').dasherize(), 'the-dasherize-string-method');
+    equals(_(123).dasherize(), '123');
   });
 
   test('String: truncate', function(){
     equals(_('Hello world').truncate(6, 'read more'), 'Hello read more');
     equals(_('Hello world').truncate(5), 'Hello...');
+    equals(_('Hello').truncate(10), 'Hello');
+    equals(_(1234567890).truncate(5), '12345...');
   });
 
   test('String: isBlank', function(){
@@ -172,11 +203,14 @@ $(document).ready(function() {
     ok(_(' ').isBlank());
     ok(_('\n').isBlank());
     ok(!_('a').isBlank());
+    ok(!_('0').isBlank());
+    ok(!_(0).isBlank());
   });
 
   test('String: escapeHTML', function(){
     equals(_('<div>Blah & "blah" & \'blah\'</div>').escapeHTML(),
              '&lt;div&gt;Blah &amp; &quot;blah&quot; &amp; &apos;blah&apos;&lt;/div&gt;');
+    equals(_('&lt;').escapeHTML(), '&amp;lt;');
     equals(_(5).escapeHTML(), '5');
     equals(_(undefined).escapeHTML(), '');
   });
@@ -184,6 +218,7 @@ $(document).ready(function() {
   test('String: unescapeHTML', function(){
     equals(_('&lt;div&gt;Blah &amp; &quot;blah&quot; &amp; &apos;blah&apos;&lt;/div&gt;').unescapeHTML(),
              '<div>Blah & "blah" & \'blah\'</div>');
+    equals(_('&amp;lt;').unescapeHTML(), '&lt;');
     equals(_(5).unescapeHTML(), '5');
     equals(_(undefined).unescapeHTML(), '');
   });
@@ -192,19 +227,23 @@ $(document).ready(function() {
     equals(_("I love you!").words().length, 3);
     equals(_("I_love_you!").words('_').length, 3);
     equals(_("I-love-you!").words(/-/).length, 3);
+    equals(_(123).words().length, 1);
   });
 
   test('String: chars', function() {
     equals(_("Hello").chars().length, 5);
+    equals(_(123).chars().length, 3);
   });
 
   test('String: lines', function() {
     equals(_("Hello\nWorld").lines().length, 2);
     equals(_("Hello World").lines().length, 1);
+    equals(_(123).lines().length, 1);
   });
 
   test('String: pad', function() {
     equals(_("1").pad(8), '       1');
+    equals(_(1).pad(8), '       1');
     equals(_("1").pad(8, '0'), '00000001');
     equals(_("1").pad(8, '0', 'left'), '00000001');
     equals(_("1").pad(8, '0', 'right'), '10000000');
@@ -216,12 +255,14 @@ $(document).ready(function() {
 
   test('String: lpad', function() {
     equals(_("1").lpad(8), '       1');
+    equals(_(1).lpad(8), '       1');
     equals(_("1").lpad(8, '0'), '00000001');
     equals(_("1").lpad(8, '0', 'left'), '00000001');
   });
 
   test('String: rpad', function() {
     equals(_("1").rpad(8), '1       ');
+    equals(_(1).lpad(8), '       1');
     equals(_("1").rpad(8, '0'), '10000000');
     equals(_("foo").rpad(8, '0'), 'foo00000');
     equals(_("foo").rpad(7, '0'), 'foo0000');
@@ -229,6 +270,7 @@ $(document).ready(function() {
 
   test('String: lrpad', function() {
     equals(_("1").lrpad(8), '    1   ');
+    equals(_(1).lrpad(8), '    1   ');
     equals(_("1").lrpad(8, '0'), '00001000');
     equals(_("foo").lrpad(8, '0'), '000foo00');
     equals(_("foo").lrpad(7, '0'), '00foo00');
@@ -236,12 +278,17 @@ $(document).ready(function() {
   });
 
   test('String: toNumber', function() {
-    equals(_("not a number").toNumber(), 0);
+    deepEqual(_("not a number").toNumber(), Number.NaN);
+	equals(_(0).toNumber(), 0);
+	equals(_("0").toNumber(), 0);
     equals(_("2.345").toNumber(), 2);
     equals(_("2.345").toNumber(NaN), 2);
     equals(_("2.345").toNumber(2), 2.35);
     equals(_("2.344").toNumber(2), 2.34);
     equals(_("2").toNumber(2), 2.00);
+    equals(_(2).toNumber(2), 2.00);
+	equals(_(-2).toNumber(), -2);
+	equals(_("-2").toNumber(), -2);
   });
 
   test('String: strRight', function() {
@@ -250,6 +297,7 @@ $(document).ready(function() {
     equals(_("This_is_a_test_string").strRight(), "This_is_a_test_string");
     equals(_("This_is_a_test_string").strRight(""), "This_is_a_test_string");
     equals(_("This_is_a_test_string").strRight("-"), "This_is_a_test_string");
+    equals(_(12345).strRight(2), "345");
   });
 
   test('String: strRightBack', function() {
@@ -258,6 +306,7 @@ $(document).ready(function() {
     equals(_("This_is_a_test_string").strRightBack(), "This_is_a_test_string");
     equals(_("This_is_a_test_string").strRightBack(""), "This_is_a_test_string");
     equals(_("This_is_a_test_string").strRightBack("-"), "This_is_a_test_string");
+    equals(_(12345).strRightBack(2), "345");
   });
 
   test('String: strLeft', function() {
@@ -266,6 +315,7 @@ $(document).ready(function() {
     equals(_("This_is_a_test_string").strLeft(), "This_is_a_test_string");
     equals(_("This_is_a_test_string").strLeft(""), "This_is_a_test_string");
     equals(_("This_is_a_test_string").strLeft("-"), "This_is_a_test_string");
+    equals(_(123454321).strLeft(3), "12");
   });
 
   test('String: strLeftBack', function() {
@@ -274,6 +324,14 @@ $(document).ready(function() {
     equals(_("This_is_a_test_string").strLeftBack(), "This_is_a_test_string");
     equals(_("This_is_a_test_string").strLeftBack(""), "This_is_a_test_string");
     equals(_("This_is_a_test_string").strLeftBack("-"), "This_is_a_test_string");
+    equals(_(123454321).strLeftBack(3), "123454");
+  });
+
+  test('Strings: stripTags', function() {
+    equals(_('a <a href="#">link</a>').stripTags(), 'a link');
+    equals(_('a <a href="#">link</a><script>alert("hello world!")</scr'+'ipt>').stripTags(), 'a linkalert("hello world!")');
+    equals(_('<html><body>hello world</body></html>').stripTags(), 'hello world');
+    equals(_(123).stripTags(), '123');
   });
 
 });

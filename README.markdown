@@ -1,6 +1,8 @@
 # Underscore.string #
 
-Idea: Esa-Matti Suuronen (esa-matti aet suuronen dot org)
+Idea: Esa-Matti Suuronen <esa-matti@suuronen.org>
+
+Active maintainer: Eduard Tsech <edtsech@gmail.com>
 
 Javascript lacks complete string manipulation operations.
 This an attempt to fill that cap. List of buildin methods can be found
@@ -26,7 +28,7 @@ use Object-Oriented style and chaining:
 
 **Standalone usage**:
 
-    var _s = require('undescore.string');
+    var _s = require('underscore.string');
 
 **Integrate with Underscore.js**:
 
@@ -66,6 +68,8 @@ Tests if string contains a substring.
     _.includes("foobar", "ob")
     => true
 
+**include** alias for *includes*
+
 **count** _.count(string, substring)
 
     _('Hello world').count('l')
@@ -90,6 +94,13 @@ Converts entity characters to HTML equivalents.
     _('Hello ').insert(6, 'world')
     => 'Hello world'
 
+**isBlank** _.isBlank(string)
+
+    _('').isBlank(); // => true
+    _('\n').isBlank(); // => true
+    _(' ').isBlank(); // => true
+    _('a').isBlank(); // => false
+
 **join** _.join(separator, *strings)
 
 Joins strings together with given separator
@@ -104,10 +115,10 @@ Joins strings together with given separator
 
 **reverse**
 
-This functions has been removed, because this function override underscore.js 'reverse'.
-But now you can do that:
+Return reversed string:
 
-    _("foobar").chars().reverse().join('')
+    _("foobar").reverse()
+    => 'raboof'
 
 **splice**  _.splice(string, index, howmany, substring)
 
@@ -197,12 +208,15 @@ Left trim. Similar to trim, but only for left side.
 
 **rtrim** _.rtrim(string, [characters])
 
-Left trim. Similar to trim, but only for right side.
+Right trim. Similar to trim, but only for right side.
 
 **truncate** _.truncate(string, length, truncateString)
 
     _('Hello world').truncate(5)
     => 'Hello...'
+
+    _('Hello').truncate(10)
+    => 'Hello'
 
 **words** _.words(str, delimiter=" ")
 
@@ -276,7 +290,7 @@ left/right-pad a string. Alias for `pad(str, length, padStr, 'both')`
 
 **toNumber**  _.toNumber(string, [decimals])
 
-Parse string to number. Return 0 if string can't be parsed to number.
+Parse string to number. Returns NaN if string can't be parsed to number.
 
     _('2.556').toNumber()
     => 3
@@ -312,14 +326,27 @@ Searches a string from right to left for a pattern and returns a substring consi
     _('This_is_a_test_string').strLeftBack('_')
     => "This_is_a_test";
 
-## Roadmap ##
+**stripTags**
 
-* Integration with Underscore 1.1.5
-* Resolve problem with function names crossing between libraries (include, contains and etc).
+Removes all html tags from string.
+
+    _('a <a href="#">link</a>').stripTags()
+    => 'a link'
+    _('a <a href="#">link</a><script>alert("hello world!")</script>').stripTags()
+    => 'a linkalert("hello world!")'
+
+
+## Roadmap ##
 
 Any suggestions or bug reports are welcome. Just email me or more preferably open an issue.
 
 ## Changelog ##
+
+### 1.1.6 ###
+
+* Fixed reverse and truncate
+* Added isBlank, stripTags, inlude(alias for includes)
+* Added uglifier compression
 
 ### 1.1.5 ###
 
@@ -360,6 +387,7 @@ Otherwise changes will be rejected.
 *  Pete Kruckenberg (<https://github.com/kruckenb>),
 *  Paul Chavard <paul@chavard.net> (<http://tchak.net>),
 *  Ed Finkler <coj@funkatron.com> (<http://funkatron.com>)
+*  Pavel Pravosud <rwz@duckroll.ru>
 
 ## Licence ##
 
