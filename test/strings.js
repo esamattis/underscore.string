@@ -198,6 +198,15 @@ $(document).ready(function() {
     equals(_(1234567890).truncate(5), '12345...');
   });
 
+  test('String: prune', function(){
+    equals(_('Hello, cruel world').prune(6, ' read more'), 'Hello read more');
+    equals(_('Hello, cruel world').prune(6), 'Hello...');
+    equals(_('Hello, cruel world').prune(7), 'Hello...');
+    equals(_('Hello, cruel world').prune(8), 'Hello...');
+    equals(_('Hello, cruel world').prune(12), 'Hello, cruel...');
+    equals(_('Hello world').prune(11), 'Hello world');
+  });  
+  
   test('String: isBlank', function(){
     ok(_('').isBlank());
     ok(_(' ').isBlank());

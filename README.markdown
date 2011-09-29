@@ -218,6 +218,24 @@ Right trim. Similar to trim, but only for right side.
     _('Hello').truncate(10)
     => 'Hello'
 
+**prune** _.prune(string, length, pruneString)
+
+Elegant version of truncate. 
+Makes sure the pruned string does not exceed the original length
+Avoid half-chopped words when truncating
+
+    _('Hello, world').prune(5)
+    => 'Hello...'
+
+    _('Hello, world').prune(6)
+    => 'Hello...'
+
+    _('Hello, cruel world').prune(15)
+    => 'Hello, cruel...'
+
+    _('Hello').prune(10)
+    => 'Hello'
+
 **words** _.words(str, delimiter=" ")
 
 Split string by delimiter (String or RegExp), ' ' by default.
