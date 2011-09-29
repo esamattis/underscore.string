@@ -221,14 +221,17 @@ Right trim. Similar to trim, but only for right side.
 **prune** _.prune(string, length, pruneString)
 
 Elegant version of truncate. 
-Makes sure the pruned string does not exceed the original length
-Avoid half-chopped words when truncating
+Makes sure the pruned string does not exceed the original length. 
+Avoid half-chopped words when truncating.
 
     _('Hello, world').prune(5)
     => 'Hello...'
 
-    _('Hello, world').prune(6)
+    _('Hello, world').prune(8)
     => 'Hello...'
+
+    _('Hello, world').prune(5, ' (read a lot more)')
+    => 'Hello, world' (as adding "(read a lot more)" would be longer than the original string) 
 
     _('Hello, cruel world').prune(15)
     => 'Hello, cruel...'

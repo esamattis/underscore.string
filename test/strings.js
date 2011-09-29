@@ -200,11 +200,11 @@ $(document).ready(function() {
 
   test('String: prune', function(){
     equals(_('Hello, cruel world').prune(6, ' read more'), 'Hello read more');
-    equals(_('Hello, cruel world').prune(6), 'Hello...');
-    equals(_('Hello, cruel world').prune(7), 'Hello...');
-    equals(_('Hello, cruel world').prune(8), 'Hello...');
-    equals(_('Hello, cruel world').prune(12), 'Hello, cruel...');
-    equals(_('Hello world').prune(11), 'Hello world');
+    equals(_('Hello, world').prune(5, 'read a lot more'), 'Hello, world');
+    equals(_('Hello, world').prune(5), 'Hello...');
+    equals(_('Hello, world').prune(8), 'Hello...');
+    equals(_('Hello, cruel world').prune(15), 'Hello, cruel...');
+    equals(_('Hello world').prune(22), 'Hello world');
   });  
   
   test('String: isBlank', function(){
