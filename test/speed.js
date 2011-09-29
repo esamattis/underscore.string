@@ -68,7 +68,7 @@
   });
 
   JSLitmus.test('prune', function(){
-    return _('Hello world').truncate(5);
+    return _('Hello world').prune(5);
   });
   
   JSLitmus.test('isBlank', function(){
