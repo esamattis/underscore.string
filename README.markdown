@@ -1,9 +1,5 @@
 # Underscore.string #
 
-Idea: Esa-Matti Suuronen <esa-matti@suuronen.org>
-
-Active maintainer: Eduard Tsech <edtsech@gmail.com>
-
 Javascript lacks complete string manipulation operations.
 This an attempt to fill that cap. List of buildin methods can be found
 for example from [Dive Into JavaScript][d].
@@ -393,7 +389,7 @@ Otherwise changes will be rejected.
 
 The MIT License
 
-Copyright (c) 2011 Eduard Tsech edtsech@gmail.com
+Copyright (c) 2011 Esa-Matti Suuronen esa-matti@suuronen.org
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
