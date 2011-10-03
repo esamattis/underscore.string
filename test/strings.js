@@ -175,6 +175,12 @@ $(document).ready(function() {
     equals(_(123).camelize(), '123');
   });
 
+  test('String: uncamelize', function(){
+    equals(_('theCamelizeStringMethod').uncamelize(), 'the Camelize String Method');
+    equals(_('TheCamelizeStringMethod').uncamelize(), 'The Camelize String Method');
+    equals(_(123).camelize(), '123');
+  });
+
   test('String: underscored', function(){
     equals(_('the-underscored-string-method').underscored(), 'the_underscored_string_method');
     equals(_('theUnderscoredStringMethod').underscored(), 'the_underscored_string_method');
