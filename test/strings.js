@@ -191,6 +191,15 @@ $(document).ready(function() {
     equals(_(123).dasherize(), '123');
   });
 
+  test('String: humanize', function(){
+    equals(_('the_humanize_string_method').humanize(), 'The humanize string method');
+    equals(_('ThehumanizeStringMethod').humanize(), 'Thehumanize string method');
+    equals(_('the humanize string method').humanize(), 'The humanize string method');
+    equals(_('the humanize_id string method_id').humanize(), 'The humanize id string method');
+    equals(_('the  humanize string method  ').humanize(), 'The humanize string method');
+    equals(_(123).humanize(), '123');
+  });
+
   test('String: truncate', function(){
     equals(_('Hello world').truncate(6, 'read more'), 'Hello read more');
     equals(_('Hello world').truncate(5), 'Hello...');
