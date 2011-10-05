@@ -185,6 +185,14 @@ Converts a underscored or camelized string into an dasherized one
     _('MozTransform').dasherize()
     => '-moz-transform'
 
+**humanize** _.humanize(string)
+
+Converts an underscored, camelized, or dasherized string into a humanized one.
+Also removes beginning and ending whitespace, and removes the postfix '_id'.
+
+    _('  capitalize dash-CamelCase_underscore trim  ').humanize()
+    => 'Capitalize dash camel case underscore trim'
+
 **trim** _.trim(string, [characters])
 
 trims defined characters from begining and ending of the string.

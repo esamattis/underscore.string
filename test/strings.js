@@ -197,6 +197,7 @@ $(document).ready(function() {
     equals(_('the humanize string method').humanize(), 'The humanize string method');
     equals(_('the humanize_id string method_id').humanize(), 'The humanize id string method');
     equals(_('the  humanize string method  ').humanize(), 'The humanize string method');
+    equals(_('   capitalize dash-CamelCase_underscore trim  ').humanize(), 'Capitalize dash camel case underscore trim');
     equals(_(123).humanize(), '123');
   });
 
