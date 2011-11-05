@@ -1,7 +1,7 @@
 # Underscore.string #
 
 Javascript lacks complete string manipulation operations.
-This an attempt to fill that cap. List of buildin methods can be found
+This an attempt to fill that gap. List of buildin methods can be found
 for example from [Dive Into JavaScript][d].
 
 [d]: http://www.diveintojavascript.com/core-javascript-reference/the-string-object
@@ -216,8 +216,8 @@ Right trim. Similar to trim, but only for right side.
 
 **prune** _.prune(string, length, pruneString)
 
-Elegant version of truncate. 
-Makes sure the pruned string does not exceed the original length. 
+Elegant version of truncate.
+Makes sure the pruned string does not exceed the original length.
 Avoid half-chopped words when truncating.
 
     _('Hello, world').prune(5)
@@ -227,7 +227,7 @@ Avoid half-chopped words when truncating.
     => 'Hello...'
 
     _('Hello, world').prune(5, ' (read a lot more)')
-    => 'Hello, world' (as adding "(read a lot more)" would be longer than the original string) 
+    => 'Hello, world' (as adding "(read a lot more)" would be longer than the original string)
 
     _('Hello, cruel world').prune(15)
     => 'Hello, cruel...'
