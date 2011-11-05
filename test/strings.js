@@ -1,5 +1,8 @@
 $(document).ready(function() {
 
+  // Include Underscore.string methods to Underscore namespace
+  _.mixin(_.str.export());
+
   module("String extensions");
 
   test("Strings: trim", function() {
@@ -66,12 +69,12 @@ $(document).ready(function() {
   });
 
   test("Strings: reverse", function() {
-    equals(_.reverse("foo"), "oof" );
-    equals(_.reverse("foobar"), "raboof" );
-    equals(_.reverse("foo bar"), "rab oof" );
-    equals(_.reverse("saippuakauppias"), "saippuakauppias" );
-    equals(_.reverse(123), "321", "Non string");
-    equals(_.reverse(123.45), "54.321", "Non string");
+    equals(_.str.reverse("foo"), "oof" );
+    equals(_.str.reverse("foobar"), "raboof" );
+    equals(_.str.reverse("foo bar"), "rab oof" );
+    equals(_.str.reverse("saippuakauppias"), "saippuakauppias" );
+    equals(_.str.reverse(123), "321", "Non string");
+    equals(_.str.reverse(123.45), "54.321", "Non string");
   });
 
   test("Strings: clean", function() {
@@ -119,11 +122,10 @@ $(document).ready(function() {
   });
 
   test("Strings: include", function() {
-    ok(_.include("foobar", "bar"), 'foobar includes bar');
-    ok(!_("foobar").include("buzz"), 'foobar does not includes buzz');
-    ok(_(12345).include(34), '12345 includes 34');
-    ok(!_(12345).include(6), '12345 does not includes 6');
-    ok(!_(12345).chain().include(6).value(), '12345 does not includes 6');
+    ok(_.str.include("foobar", "bar"), 'foobar includes bar');
+    ok(!_.str.include("foobar", "buzz"), 'foobar does not includes buzz');
+    ok(_.str.include(12345, 34), '12345 includes 34');
+    ok(!_.str.contains(12345, 6), '12345 does not includes 6');
   });
 
   test('String: chop', function(){
@@ -205,8 +207,8 @@ $(document).ready(function() {
     equals(_('Hello, world').prune(8), 'Hello...');
     equals(_('Hello, cruel world').prune(15), 'Hello, cruel...');
     equals(_('Hello world').prune(22), 'Hello world');
-  });  
-  
+  });
+
   test('String: isBlank', function(){
     ok(_('').isBlank());
     ok(_(' ').isBlank());
