@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
   // Include Underscore.string methods to Underscore namespace
-  _.mixin(_.str.export());
+  _.mixin(_.str.exports());
 
   module("String extensions");
 
