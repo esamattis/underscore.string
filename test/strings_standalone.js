@@ -7,6 +7,6 @@ $(document).ready(function() {
   });
 
   test("provides standalone functions", function() {
-    equals(typeof _.trim, "function");
+    equals(typeof _.str.trim, "function");
   });
 });

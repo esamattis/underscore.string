@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  module("Utility functions (uniqueId, template)");
+  module("Utility");
 
   test("utility: noConflict", function() {
     var underscore = _.noConflict();
@@ -39,6 +39,11 @@ $(document).ready(function() {
     });
     equals(_.myReverse('panacea'), 'aecanap', 'mixed in a function to _');
     equals(_('champ').myReverse(), 'pmahc', 'mixed in a function to the OOP wrapper');
+  });
+
+  test("utility: _.escape", function() {
+    equals(_.escape("Curly & Moe"), "Curly &amp; Moe");
+    equals(_.escape("Curly &amp; Moe"), "Curly &amp;amp; Moe");
   });
 
   test("utility: template", function() {
@@ -80,6 +85,10 @@ $(document).ready(function() {
 
     var withNewlinesAndTabs = _.template('This\n\t\tis: <%= x %>.\n\tok.\nend.');
     equals(withNewlinesAndTabs({x: 'that'}), 'This\n\t\tis: that.\n\tok.\nend.');
+
+    var template = _.template("<i><%- value %></i>");
+    var result = template({value: "<script>"});
+    equals(result, '<i>&lt;script&gt;</i>');
 
     if (!$.browser.msie) {
       var fromHTML = _.template($('#template').html());
