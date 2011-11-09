@@ -36,6 +36,9 @@ use Object-Oriented style and chaining:
     // Mix in non-conflict functions to Underscore namespace if you want
     _.mixin(_.str.exports());
 
+    // All functions, include conflict, will be available through _.str object
+    _.str.include('Underscore.string', 'string'); // => true
+
 ## String Functions ##
 
 For availability of functions in this way you need to mix in Underscore.string functions:
