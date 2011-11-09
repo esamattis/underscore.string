@@ -29,14 +29,19 @@ use Object-Oriented style and chaining:
 **Integrate with Underscore.js**:
 
     var _  = require('underscore');
-    _.mixin(require('underscore.string'));
+
+    // Import Underscore.string to separate object, because there are conflict functions (include, reverse, contains)
+    _.str = require('underscore.string');
+
+    // Mix in non-conflict functions to Underscore namespace if you want
+    _.mixin(_.str.exports());
 
 ## String Functions ##
 
 For availability of functions in this way you need to mix in Underscore.string functions:
 
     _.mixin(_.string.exports());
-    
+
 otherwise functions from examples will be available through _.string or _.str objects:
 
     _.str.capitalize('epeli')
@@ -76,7 +81,7 @@ Tests if string contains a substring.
 **include** available only through _.str object, because Underscore has function with the same name.
 
     _.str.include("foobar", "ob")
-    => true 
+    => true
 
 **includes** function was removed
 
@@ -387,7 +392,7 @@ Any suggestions or bug reports are welcome. Just email me or more preferably ope
 
 ### 1.2.0 ###
 
-* Added prune function
+* Added prune, humanize functions
 * Added _.string (_.str) namespace for Underscore.string library
 * Removed includes function
 
@@ -402,7 +407,7 @@ But if you need this functionality you can create aliases for conflict functions
 
     _.includeString = _.str.include
     _.reverseString = _.str.reverse
-    
+
     // Now wrapper calls and chaining are available.
     _('foobar').chain().reverseString().includeString('rab').value()
 
