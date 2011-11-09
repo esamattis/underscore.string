@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  module("Collection functions (each, any, select, and so on...)");
+  module("Collections");
 
   test("collections: each", function() {
     _.each([1, 2, 3], function(num, i) {
@@ -77,6 +77,13 @@ $(document).ready(function() {
     ok(ifnull instanceof TypeError, 'handles a null (without inital value) properly');
 
     ok(_.reduce(null, function(){}, 138) === 138, 'handles a null (with initial value) properly');
+
+    // Sparse arrays:
+    var sparseArray  = [];
+    sparseArray[100] = 10;
+    sparseArray[200] = 20;
+
+    equals(_.reduce(sparseArray, function(a, b){ return a + b }), 30, 'initially-sparse arrays with no memo');
   });
 
   test('collections: reduceRight', function() {
@@ -128,12 +135,15 @@ $(document).ready(function() {
   });
 
   test('collections: any', function() {
+    var nativeSome = Array.prototype.some;
+    Array.prototype.some = null;
     ok(!_.any([]), 'the empty set');
     ok(!_.any([false, false, false]), 'all false values');
     ok(_.any([false, false, true]), 'one true value');
     ok(!_.any([1, 11, 29], function(num){ return num % 2 == 0; }), 'all odd numbers');
     ok(_.any([1, 10, 29], function(num){ return num % 2 == 0; }), 'an even number');
     ok(_.some([false, false, true]), 'aliased as "some"');
+    Array.prototype.some = nativeSome;
   });
 
   test('collections: include', function() {
@@ -167,6 +177,9 @@ $(document).ready(function() {
 
     var neg = _.max([1, 2, 3], function(num){ return -num; });
     equals(neg, 1, 'can perform a computation-based max');
+
+    equals(-Infinity, _.max({}), 'Maximum value of an empty object');
+    equals(-Infinity, _.max([]), 'Maximum value of an empty array');
   });
 
   test('collections: min', function() {
@@ -174,6 +187,9 @@ $(document).ready(function() {
 
     var neg = _.min([1, 2, 3], function(num){ return -num; });
     equals(neg, 3, 'can perform a computation-based min');
+
+    equals(Infinity, _.min({}), 'Minimum value of an empty object');
+    equals(Infinity, _.min([]), 'Minimum value of an empty array');
   });
 
   test('collections: sortBy', function() {
@@ -186,12 +202,25 @@ $(document).ready(function() {
     var parity = _.groupBy([1, 2, 3, 4, 5, 6], function(num){ return num % 2; });
     ok('0' in parity && '1' in parity, 'created a group for each value');
     equals(parity[0].join(', '), '2, 4, 6', 'put each even number in the right group');
+
+    var list = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"];
+    var grouped = _.groupBy(list, 'length');
+    equals(grouped['3'].join(' '), 'one two six ten');
+    equals(grouped['4'].join(' '), 'four five nine');
+    equals(grouped['5'].join(' '), 'three seven eight');
   });
 
   test('collections: sortedIndex', function() {
     var numbers = [10, 20, 30, 40, 50], num = 35;
     var index = _.sortedIndex(numbers, num);
     equals(index, 3, '35 should be inserted at index 3');
+  });
+
+  test('collections: shuffle', function() {
+    var numbers = _.range(10);
+	var shuffled = _.shuffle(numbers).sort();
+	notStrictEqual(numbers, shuffled, 'original object is unmodified');
+    equals(shuffled.join(','), numbers.join(','), 'contains the same members before and after shuffle');
   });
 
   test('collections: toArray', function() {

@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  module("Array-only functions (last, compact, uniq, and so on...)");
+  module("Arrays");
 
   test("arrays: first", function() {
     equals(_.first([1,2,3]), 1, 'can pull out the first element of an array');
@@ -24,10 +24,23 @@ $(document).ready(function() {
     equals(_.flatten(result).join(','), '2,3,2,3', 'works well with _.map');
   });
 
+  test("arrays: initial", function() {
+    equals(_.initial([1,2,3,4,5]).join(", "), "1, 2, 3, 4", 'working initial()');
+    equals(_.initial([1,2,3,4],2).join(", "), "1, 2", 'initial can take an index');
+    var result = (function(){ return _(arguments).initial(); })(1, 2, 3, 4);
+    equals(result.join(", "), "1, 2, 3", 'initial works on arguments object');
+    result = _.map([[1,2,3],[1,2,3]], _.initial);
+    equals(_.flatten(result).join(','), '1,2,1,2', 'initial works with _.map');
+  });
+
   test("arrays: last", function() {
     equals(_.last([1,2,3]), 3, 'can pull out the last element of an array');
+    equals(_.last([1,2,3], 0).join(', '), "", 'can pass an index to last');
+    equals(_.last([1,2,3], 2).join(', '), '2, 3', 'can pass an index to last');
     var result = (function(){ return _(arguments).last(); })(1, 2, 3, 4);
     equals(result, 4, 'works on an arguments object');
+    result = _.map([[1,2,3],[1,2,3]], _.last);
+    equals(result.join(','), '3,3', 'works well with _.map');
   });
 
   test("arrays: compact", function() {
@@ -37,10 +50,13 @@ $(document).ready(function() {
   });
 
   test("arrays: flatten", function() {
-    var list = [1, [2], [3, [[[4]]]]];
-    equals(_.flatten(list).join(', '), '1, 2, 3, 4', 'can flatten nested arrays');
-    var result = (function(){ return _.flatten(arguments); })(1, [2], [3, [[[4]]]]);
-    equals(result.join(', '), '1, 2, 3, 4', 'works on an arguments object');
+    if (window.JSON) {
+      var list = [1, [2], [3, [[[4]]]]];
+      equals(JSON.stringify(_.flatten(list)), '[1,2,3,4]', 'can flatten nested arrays');
+      equals(JSON.stringify(_.flatten(list, true)), '[1,2,3,[[[4]]]]', 'can shallowly flatten nested arrays');
+      var result = (function(){ return _.flatten(arguments); })(1, [2], [3, [[[4]]]]);
+      equals(JSON.stringify(result), '[1,2,3,4]', 'works on an arguments object');
+    }
   });
 
   test("arrays: without", function() {
@@ -61,16 +77,37 @@ $(document).ready(function() {
     var list = [1, 1, 1, 2, 2, 3];
     equals(_.uniq(list, true).join(', '), '1, 2, 3', 'can find the unique values of a sorted array faster');
 
+    var list = [{name:'moe'}, {name:'curly'}, {name:'larry'}, {name:'curly'}];
+    var iterator = function(value) { return value.name; };
+    equals(_.map(_.uniq(list, false, iterator), iterator).join(', '), 'moe, curly, larry', 'can find the unique values of an array using a custom iterator');
+
+    var iterator = function(value) { return value +1; };
+    var list = [1, 2, 2, 3, 4, 4];
+    equals(_.uniq(list, true, iterator).join(', '), '1, 2, 3, 4', 'iterator works with sorted array');
+
     var result = (function(){ return _.uniq(arguments); })(1, 2, 1, 3, 1, 4);
     equals(result.join(', '), '1, 2, 3, 4', 'works on an arguments object');
   });
 
-  test("arrays: intersect", function() {
+  test("arrays: intersection", function() {
     var stooges = ['moe', 'curly', 'larry'], leaders = ['moe', 'groucho'];
-    equals(_.intersect(stooges, leaders).join(''), 'moe', 'can take the set intersection of two arrays');
-    equals(_(stooges).intersect(leaders).join(''), 'moe', 'can perform an OO-style intersection');
-    var result = (function(){ return _.intersect(arguments, leaders); })('moe', 'curly', 'larry');
+    equals(_.intersection(stooges, leaders).join(''), 'moe', 'can take the set intersection of two arrays');
+    equals(_(stooges).intersection(leaders).join(''), 'moe', 'can perform an OO-style intersection');
+    var result = (function(){ return _.intersection(arguments, leaders); })('moe', 'curly', 'larry');
     equals(result.join(''), 'moe', 'works on an arguments object');
+  });
+
+  test("arrays: union", function() {
+    var result = _.union([1, 2, 3], [2, 30, 1], [1, 40]);
+    equals(result.join(' '), '1 2 3 30 40', 'takes the union of a list of arrays');
+
+    var result = _.union([1, 2, 3], [2, 30, 1], [1, 40, [1]]);
+    equals(result.join(' '), '1 2 3 30 40 1', 'takes the union of a list of nested arrays');
+  });
+
+  test("arrays: difference", function() {
+    var result = _.difference([1, 2, 3], [2, 30, 40]);
+    equals(result.join(' '), '1 3', 'takes the difference of two arrays');
   });
 
   test('arrays: zip', function() {
