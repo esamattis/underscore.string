@@ -408,8 +408,10 @@ We lose two things for `include` and `reverse` methods from `_.string`:
 
 But if you need this functionality you can create aliases for conflict functions which will be convenient for you:
 
-    _.includeString = _.str.include
-    _.reverseString = _.str.reverse
+    _.mixin({
+        includeString: _.str.include,
+        reverseString: _.str.reverse
+    })
 
     // Now wrapper calls and chaining are available.
     _('foobar').chain().reverseString().includeString('rab').value()
