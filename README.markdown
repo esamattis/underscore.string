@@ -1,11 +1,7 @@
 # Underscore.string #
 
-Idea: Esa-Matti Suuronen <esa-matti@suuronen.org>
-
-Active maintainer: Eduard Tsech <edtsech@gmail.com>
-
 Javascript lacks complete string manipulation operations.
-This an attempt to fill that cap. List of buildin methods can be found
+This an attempt to fill that gap. List of build-in methods can be found
 for example from [Dive Into JavaScript][d].
 
 [d]: http://www.diveintojavascript.com/core-javascript-reference/the-string-object
@@ -33,9 +29,26 @@ use Object-Oriented style and chaining:
 **Integrate with Underscore.js**:
 
     var _  = require('underscore');
-    _.mixin(require('underscore.string'));
+
+    // Import Underscore.string to separate object, because there are conflict functions (include, reverse, contains)
+    _.str = require('underscore.string');
+
+    // Mix in non-conflict functions to Underscore namespace if you want
+    _.mixin(_.str.exports());
+
+    // All functions, include conflict, will be available through _.str object
+    _.str.include('Underscore.string', 'string'); // => true
 
 ## String Functions ##
+
+For availability of functions in this way you need to mix in Underscore.string functions:
+
+    _.mixin(_.string.exports());
+
+otherwise functions from examples will be available through _.string or _.str objects:
+
+    _.str.capitalize('epeli')
+    => "Epeli"
 
 **capitalize** _.capitalize(string)
 
@@ -68,7 +81,16 @@ Tests if string contains a substring.
     _.includes("foobar", "ob")
     => true
 
-**include** alias for *includes*
+**include** available only through _.str object, because Underscore has function with the same name.
+
+    _.str.include("foobar", "ob")
+    => true
+
+**includes** function was removed
+
+But you can create it in this way, for compatibility with previous versions:
+
+    _.includes = _.str.include
 
 **count** _.count(string, substring)
 
@@ -113,11 +135,11 @@ Joins strings together with given separator
     _.lines("Hello\nWorld")
     => ["Hello", "World"]
 
-**reverse**
+**reverse** available only through _.str object, because Underscore has function with the same name.
 
 Return reversed string:
 
-    _("foobar").reverse()
+    _.str.reverse("foobar")
     => 'raboof'
 
 **splice**  _.splice(string, index, howmany, substring)
@@ -189,6 +211,14 @@ Converts a underscored or camelized string into an dasherized one
     _('MozTransform').dasherize()
     => '-moz-transform'
 
+**humanize** _.humanize(string)
+
+Converts an underscored, camelized, or dasherized string into a humanized one.
+Also removes beginning and ending whitespace, and removes the postfix '_id'.
+
+    _('  capitalize dash-CamelCase_underscore trim  ').humanize()
+    => 'Capitalize dash camel case underscore trim'
+
 **trim** _.trim(string, [characters])
 
 trims defined characters from begining and ending of the string.
@@ -216,6 +246,27 @@ Right trim. Similar to trim, but only for right side.
     => 'Hello...'
 
     _('Hello').truncate(10)
+    => 'Hello'
+
+**prune** _.prune(string, length, pruneString)
+
+Elegant version of truncate.
+Makes sure the pruned string does not exceed the original length.
+Avoid half-chopped words when truncating.
+
+    _('Hello, world').prune(5)
+    => 'Hello...'
+
+    _('Hello, world').prune(8)
+    => 'Hello...'
+
+    _('Hello, world').prune(5, ' (read a lot more)')
+    => 'Hello, world' (as adding "(read a lot more)" would be longer than the original string)
+
+    _('Hello, cruel world').prune(15)
+    => 'Hello, cruel...'
+
+    _('Hello').prune(10)
     => 'Hello'
 
 **words** _.words(str, delimiter=" ")
@@ -342,6 +393,44 @@ Any suggestions or bug reports are welcome. Just email me or more preferably ope
 
 ## Changelog ##
 
+### 1.2.0 ###
+
+* Added prune, humanize functions
+* Added _.string (_.str) namespace for Underscore.string library
+* Removed includes function
+
+#### Problems
+
+We lose two things for `include` and `reverse` methods from `_.string`:
+
+* Calls like `_('foobar').include('bar')` aren't available;
+* Chaining isn't available too.
+
+But if you need this functionality you can create aliases for conflict functions which will be convenient for you:
+
+    _.includeString = _.str.include
+    _.reverseString = _.str.reverse
+
+    // Now wrapper calls and chaining are available.
+    _('foobar').chain().reverseString().includeString('rab').value()
+
+#### Standalone Usage
+
+If you are using Underscore.string without Underscore. You also have `_.string` namespace for it and `_.str` alias
+But of course you can just reassign `_` variable with `_.string`
+
+    _ = _.string
+
+#### Upgrade
+
+For upgrading to this version you need to mix in Underscore.string library to Underscore object:
+
+    _.mixin(_.string.exports());
+
+and all non-conflict Underscore.string functions will be available through Underscore object.
+Also function `includes` has been removed, you should replace this function by `_.str.include`
+or create alias `_.includes = _.str.include` and all your code will work fine.
+
 ### 1.1.6 ###
 
 * Fixed reverse and truncate
@@ -393,7 +482,7 @@ Otherwise changes will be rejected.
 
 The MIT License
 
-Copyright (c) 2011 Eduard Tsech edtsech@gmail.com
+Copyright (c) 2011 Esa-Matti Suuronen esa-matti@suuronen.org
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

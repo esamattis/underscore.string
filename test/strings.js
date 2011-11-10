@@ -1,5 +1,8 @@
 $(document).ready(function() {
 
+  // Include Underscore.string methods to Underscore namespace
+  _.mixin(_.str.exports());
+
   module("String extensions");
 
   test("Strings: trim", function() {
@@ -66,12 +69,12 @@ $(document).ready(function() {
   });
 
   test("Strings: reverse", function() {
-    equals(_.reverse("foo"), "oof" );
-    equals(_.reverse("foobar"), "raboof" );
-    equals(_.reverse("foo bar"), "rab oof" );
-    equals(_.reverse("saippuakauppias"), "saippuakauppias" );
-    equals(_.reverse(123), "321", "Non string");
-    equals(_.reverse(123.45), "54.321", "Non string");
+    equals(_.str.reverse("foo"), "oof" );
+    equals(_.str.reverse("foobar"), "raboof" );
+    equals(_.str.reverse("foo bar"), "rab oof" );
+    equals(_.str.reverse("saippuakauppias"), "saippuakauppias" );
+    equals(_.str.reverse(123), "321", "Non string");
+    equals(_.str.reverse(123.45), "54.321", "Non string");
   });
 
   test("Strings: clean", function() {
@@ -119,11 +122,10 @@ $(document).ready(function() {
   });
 
   test("Strings: include", function() {
-    ok(_.include("foobar", "bar"), 'foobar includes bar');
-    ok(!_("foobar").include("buzz"), 'foobar does not includes buzz');
-    ok(_(12345).include(34), '12345 includes 34');
-    ok(!_(12345).include(6), '12345 does not includes 6');
-    ok(!_(12345).chain().include(6).value(), '12345 does not includes 6');
+    ok(_.str.include("foobar", "bar"), 'foobar includes bar');
+    ok(!_.str.include("foobar", "buzz"), 'foobar does not includes buzz');
+    ok(_.str.include(12345, 34), '12345 includes 34');
+    ok(!_.str.contains(12345, 6), '12345 does not includes 6');
   });
 
   test('String: chop', function(){
@@ -191,11 +193,30 @@ $(document).ready(function() {
     equals(_(123).dasherize(), '123');
   });
 
+  test('String: humanize', function(){
+    equals(_('the_humanize_string_method').humanize(), 'The humanize string method');
+    equals(_('ThehumanizeStringMethod').humanize(), 'Thehumanize string method');
+    equals(_('the humanize string method').humanize(), 'The humanize string method');
+    equals(_('the humanize_id string method_id').humanize(), 'The humanize id string method');
+    equals(_('the  humanize string method  ').humanize(), 'The humanize string method');
+    equals(_('   capitalize dash-CamelCase_underscore trim  ').humanize(), 'Capitalize dash camel case underscore trim');
+    equals(_(123).humanize(), '123');
+  });
+
   test('String: truncate', function(){
     equals(_('Hello world').truncate(6, 'read more'), 'Hello read more');
     equals(_('Hello world').truncate(5), 'Hello...');
     equals(_('Hello').truncate(10), 'Hello');
     equals(_(1234567890).truncate(5), '12345...');
+  });
+
+  test('String: prune', function(){
+    equals(_('Hello, cruel world').prune(6, ' read more'), 'Hello read more');
+    equals(_('Hello, world').prune(5, 'read a lot more'), 'Hello, world');
+    equals(_('Hello, world').prune(5), 'Hello...');
+    equals(_('Hello, world').prune(8), 'Hello...');
+    equals(_('Hello, cruel world').prune(15), 'Hello, cruel...');
+    equals(_('Hello world').prune(22), 'Hello world');
   });
 
   test('String: isBlank', function(){
