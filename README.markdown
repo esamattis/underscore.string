@@ -393,7 +393,7 @@ Any suggestions or bug reports are welcome. Just email me or more preferably ope
 
 ## Changelog ##
 
-### 1.2.0 ###
+### 2.0.0 ###
 
 * Added prune, humanize functions
 * Added _.string (_.str) namespace for Underscore.string library
