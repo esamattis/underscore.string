@@ -201,7 +201,7 @@ Converts underscored or dasherized string to a camelized one
 
 Converts a camelized or dasherized string into an underscored one
 
-    _(MozTransform).underscored()
+    _('MozTransform').underscored()
     => 'moz_transform'
 
 **dasherize** _.dasherize(string)
