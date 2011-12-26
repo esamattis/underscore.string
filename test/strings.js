@@ -355,4 +355,12 @@ $(document).ready(function() {
     equals(_(123).stripTags(), '123');
   });
 
+  test('Strings: toSentence', function() {
+      equals(_.toSentence(['jQuery']), 'jQuery', 'array with a single element')
+      equals(_.toSentence(['jQuery', 'MooTools']), 'jQuery and MooTools', 'array with two elements');
+      equals(_.toSentence(['jQuery', 'MooTools', 'Prototype']), 'jQuery, MooTools and Prototype', 'array with three elements');
+      equals(_.toSentence(['jQuery', 'MooTools', 'Prototype', 'YUI']), 'jQuery, MooTools, Prototype and YUI', 'array with multiple elements');
+      equals(_.toSentence(['jQuery', 'MooTools', 'Prototype'], ',', ' or '), 'jQuery,MooTools or Prototype', 'handles custom separators');
+  });
+
 });
