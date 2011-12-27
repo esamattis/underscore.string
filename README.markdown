@@ -475,6 +475,18 @@ _('a <a href="#">link</a><script>alert("hello world!")</script>').stripTags()
 => 'a linkalert("hello world!")'
 ```
 
+**toSentence**  _.toSentence(array, [delimiter, lastDelimiter])
+
+Join an array into a human readable sentence.
+
+```javascript
+_.toSentence(['jQuery', 'Mootools', 'Prototype'])
+=> 'jQuery, Mootools and Prototype';
+
+_.toSentence(['jQuery', 'Mootools', 'Prototype'], ', ', ' unt ')
+=> 'jQuery, Mootools unt Prototype';
+```
+
 ## Roadmap ##
 
 Any suggestions or bug reports are welcome. Just email me or more preferably open an issue.
