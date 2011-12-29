@@ -131,4 +131,8 @@
     _('separator').join(1, 2, 3, 4, 5, 6, 7, 8, 'foo', 'bar', 'lol', 'wut');
   });
 
+  JSLitmus.test('slugify', function(){
+    _("Un éléphant à l'orée du bois").slugify();
+  });
+
 })();

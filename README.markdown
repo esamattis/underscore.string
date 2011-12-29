@@ -487,6 +487,17 @@ _.toSentence(['jQuery', 'Mootools', 'Prototype'], ', ', ' unt ')
 => 'jQuery, Mootools unt Prototype';
 ```
 
+**slugify** _.slugify(string)
+
+Transform text into a URL slug. Replaces whitespaces, accentuated, and special characters with a dash.
+
+```javascript
+_.slugify("Un éléphant à l'orée du bois")
+=> 'un-elephant-a-loree-du-bois';
+```
+
+***Caution: this function is charset dependent***
+
 ## Roadmap ##
 
 Any suggestions or bug reports are welcome. Just email me or more preferably open an issue.
