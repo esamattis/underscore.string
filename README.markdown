@@ -585,6 +585,7 @@ Otherwise changes will be rejected.
 *  Paul Chavard <paul@chavard.net> (<http://tchak.net>),
 *  Ed Finkler <coj@funkatron.com> (<http://funkatron.com>)
 *  Pavel Pravosud <rwz@duckroll.ru>
+*  Anton Lindqvist <anton@qvister.se> (<http://qvister.se>)
 
 ## Licence ##
 
