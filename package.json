@@ -24,7 +24,8 @@
   "engines": {
     "node": "*"
   },
-  "dependencies": [],
+  "dependencies": {
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/epeli/underscore.string.git"
