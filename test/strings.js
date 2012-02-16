@@ -363,4 +363,9 @@ $(document).ready(function() {
       equals(_.toSentence(['jQuery', 'MooTools', 'Prototype'], ',', ' or '), 'jQuery,MooTools or Prototype', 'handles custom separators');
   });
 
+  test('String: simpleFormat', function() {
+    equals(_("This is a test\nstring").simpleFormat(), "This is a test<br>string");
+    equals(_("This is a test\r\nstring").simpleFormat(), "This is a test<br>string");
+    equals(_("This is\n\na test\nstring").simpleFormat(), "This is<br><br>a test<br>string");
+  });
 });
