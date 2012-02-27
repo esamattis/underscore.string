@@ -363,4 +363,10 @@ $(document).ready(function() {
       equals(_.toSentence(['jQuery', 'MooTools', 'Prototype'], ',', ' or '), 'jQuery,MooTools or Prototype', 'handles custom separators');
   });
 
+  test('Strings: slugify', function() {
+      equals(_("Jack & Jill like numbers 1,2,3 and 4 and silly characters ?%.$!/").slugify(), "jack-jill-like-numbers-123-and-4-and-silly-characters");
+      equals(_("Un éléphant à l'orée du bois").slugify(), "un-elephant-a-loree-du-bois");
+      equals(_("I am a word too, even though I am but a single letter: i!").slugify(), "i-am-a-word-too-even-though-i-am-but-a-single-letter--i");
+  });
+
 });
