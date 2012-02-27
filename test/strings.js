@@ -224,6 +224,12 @@ $(document).ready(function() {
     equals(_('Hello, world').prune(8), 'Hello...');
     equals(_('Hello, cruel world').prune(15), 'Hello, cruel...');
     equals(_('Hello world').prune(22), 'Hello world');
+    equals(_('Привет, жестокий мир').prune(6, ' read more'), 'Привет read more');
+    equals(_('Привет, мир').prune(6, 'read a lot more'), 'Привет, мир');
+    equals(_('Привет, мир').prune(6), 'Привет...');
+    equals(_('Привет, мир').prune(8), 'Привет...');
+    equals(_('Привет, жестокий мир').prune(16), 'Привет, жестокий...');
+    equals(_('Привет, мир').prune(22), 'Привет, мир');
   });
 
   test('String: isBlank', function(){
