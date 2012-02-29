@@ -196,6 +196,9 @@ $(document).ready(function() {
     equals(_('the_dasherize_string_method').dasherize(), 'the-dasherize-string-method');
     equals(_('TheDasherizeStringMethod').dasherize(), '-the-dasherize-string-method');
     equals(_('thisIsATest').dasherize(), 'this-is-a-test');
+    equals(_('this Is A Test').dasherize(), 'this-is-a-test');
+    equals(_('thisIsATest123').dasherize(), 'this-is-a-test123');
+    equals(_('123thisIsATest').dasherize(), '123this-is-a-test');
     equals(_('the dasherize string method').dasherize(), 'the-dasherize-string-method');
     equals(_('the  dasherize string method  ').dasherize(), 'the-dasherize-string-method');
     equals(_(123).dasherize(), '123');
