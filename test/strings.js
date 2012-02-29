@@ -201,6 +201,8 @@ $(document).ready(function() {
     equals(_('123thisIsATest').dasherize(), '123this-is-a-test');
     equals(_('the dasherize string method').dasherize(), 'the-dasherize-string-method');
     equals(_('the  dasherize string method  ').dasherize(), 'the-dasherize-string-method');
+    equals(_('téléphone').dasherize(), 'téléphone');
+    equals(_('foo$bar').dasherize(), 'foo$bar');
     equals(_(123).dasherize(), '123');
   });
 
