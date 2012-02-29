@@ -1,3 +1,5 @@
+[![Build Status](https://secure.travis-ci.org/epeli/underscore.string.png?branch=master)](http://travis-ci.org/epeli/underscore.string)
+
 # Underscore.string #
 
 Javascript lacks complete string manipulation operations.
