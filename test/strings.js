@@ -23,8 +23,8 @@ $(document).ready(function() {
     equals(_("http://foo/").trim("/"), "http://foo");
     equals(_("c:\\").trim('\\'), "c:");
     
-    equals(_(123).trim(), '123')
-    equals(_(123).trim(3), '12')
+    equals(_(123).trim(), '123');
+    equals(_(123).trim(3), '12');
   });
 
   test("Strings: ltrim", function() {
@@ -40,7 +40,7 @@ $(document).ready(function() {
 
     equals(_("_-foobar-_").ltrim("_-"), "foobar-_");
     
-    equals(_(123).ltrim(1), '23')
+    equals(_(123).ltrim(1), '23');
   });
 
   test("Strings: rtrim", function() {
@@ -57,7 +57,7 @@ $(document).ready(function() {
 
     equals(_("_-foobar-_").rtrim("_-"), "_-foobar");
     
-    equals(_(123).rtrim(3), '12')
+    equals(_(123).rtrim(3), '12');
   });
 
   test("Strings: capitalize", function() {
@@ -195,6 +195,7 @@ $(document).ready(function() {
   test('String: dasherize', function(){
     equals(_('the_dasherize_string_method').dasherize(), 'the-dasherize-string-method');
     equals(_('TheDasherizeStringMethod').dasherize(), '-the-dasherize-string-method');
+    equals(_('thisIsATest').dasherize(), 'this-is-a-test');
     equals(_('the dasherize string method').dasherize(), 'the-dasherize-string-method');
     equals(_('the  dasherize string method  ').dasherize(), 'the-dasherize-string-method');
     equals(_(123).dasherize(), '123');
@@ -230,8 +231,8 @@ $(document).ready(function() {
     equals(_('Привет, мир').prune(8), 'Привет...');
     equals(_('Привет, жестокий мир').prune(16), 'Привет, жестокий...');
     equals(_('Привет, мир').prune(22), 'Привет, мир');
-    equals(_(123).prune(10), '123')
-    equals(_(123).prune(1,1), '11')
+    equals(_(123).prune(10), '123');
+    equals(_(123).prune(1,1), '11');
   });
 
   test('String: isBlank', function(){
@@ -371,7 +372,7 @@ $(document).ready(function() {
   });
 
   test('Strings: toSentence', function() {
-      equals(_.toSentence(['jQuery']), 'jQuery', 'array with a single element')
+      equals(_.toSentence(['jQuery']), 'jQuery', 'array with a single element');
       equals(_.toSentence(['jQuery', 'MooTools']), 'jQuery and MooTools', 'array with two elements');
       equals(_.toSentence(['jQuery', 'MooTools', 'Prototype']), 'jQuery, MooTools and Prototype', 'array with three elements');
       equals(_.toSentence(['jQuery', 'MooTools', 'Prototype', 'YUI']), 'jQuery, MooTools, Prototype and YUI', 'array with multiple elements');
