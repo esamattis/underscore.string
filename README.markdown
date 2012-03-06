@@ -498,7 +498,7 @@ _.repeat("foo", 3)
 => 'foofoofoo';
 
 _.repeat("foo", 3, "bar")
-=> 'foobarfoobarboo'
+=> 'foobarfoobarfoo'
 ```
 
 **slugify** _.slugify(string)
