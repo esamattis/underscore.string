@@ -489,6 +489,18 @@ _.toSentence(['jQuery', 'Mootools', 'Prototype'], ', ', ' unt ')
 => 'jQuery, Mootools unt Prototype';
 ```
 
+**repeat** _.repeat(string, count, [separator])
+
+Repeats a string count times.
+
+```javascript
+_.repeat("foo", 3)
+=> 'foofoofoo';
+
+_.repeat("foo", 3, "bar")
+=> 'foobarfoobarboo'
+```
+
 **slugify** _.slugify(string)
 
 Transform text into a URL slug. Replaces whitespaces, accentuated, and special characters with a dash.
