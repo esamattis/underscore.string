@@ -413,9 +413,9 @@ _.lrpad("1", 8, '0')
 
 **center** alias for **lrpad**
 
-**ljust** alias for *lpad*
+**ljust** alias for *rpad*
 
-**rjust** alias for *rpad*
+**rjust** alias for *lpad*
 
 **toNumber**  _.toNumber(string, [decimals])
 
