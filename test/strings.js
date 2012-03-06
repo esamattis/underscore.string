@@ -389,5 +389,14 @@ $(document).ready(function() {
       equals(_("Un éléphant à l'orée du bois").slugify(), "un-elephant-a-loree-du-bois");
       equals(_("I am a word too, even though I am but a single letter: i!").slugify(), "i-am-a-word-too-even-though-i-am-but-a-single-letter-i");
   });
+  
+  test('Strings: repeat', function() {
+      equals(_.repeat('foo'), '');
+      equals(_.repeat('foo', 3), 'foofoofoo');
+      equals(_.repeat('foo', '3'), 'foofoofoo');
+      equals(_.repeat(123, 2), '123123');
+      equals(_.repeat(1234, 2, '*'), '1234*1234');
+      equals(_.repeat(1234, 2, 5), '123451234');
+  });
 
 });
