@@ -1,0 +1,167 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  background: transparent url(images/background.png);
+}
+
+@font-face {
+  font-family: 'MyReforma';
+  src: url(fonts/RFG69_.ttf);
+}
+
+@font-face {
+  font-family: 'MyAndrogyne';
+  src: url(fonts/Androgyne_TB.otf);
+}
+
+@font-face {
+  font-family: 'MyCambria';
+  src: url(fonts/cambriaz.ttf);
+}
+
+h1 {
+  font-family: MyReforma;
+  font-size: 117px;
+  color: #484546;
+  text-shadow: 1px 2px 2px gray;
+  font-weight: normal;
+}
+
+h1.underscore {
+  line-height: 80px;
+}
+h1.string {
+  font-size: 210px;
+  line-height: 170px;
+}
+
+h2 {
+  font-family: MyAndrogyne;
+  color: #01a3b2;
+  font-weight: normal;
+  border-bottom: 3px solid #01a3b2;
+  margin-bottom: 30px;
+  margin-top: 20px;
+}
+
+h2 span {
+  display: block;
+  margin: 0px auto;
+  margin-bottom: -13px;
+  background: transparent url(images/background.png);
+  padding: 0px 10px;
+}
+
+h2 span.desc {
+  width: 127px;
+}
+
+ul li {
+  font-family: MyCambria;
+  font-size: 16px;
+  color: #484546;
+  line-height: 24px;
+  margin-bottom: 10px;
+  margin-left: 20px;
+}
+
+p {
+  font-family: MyCambria;
+  font-size: 16px;
+  color: #484546;
+  line-height: 24px;
+  margin-bottom: 10px;
+}
+
+li a, p a {
+  text-decoration: underline;
+}
+
+li a:hover, p a:hover {
+  color: #01a3b2;
+  text-decoration: underline;
+}
+
+a {
+  color: #484546;
+  text-decoration: none;
+}
+
+#wrapper {
+  overflow: hidden;
+  width: 820px;
+  margin: 0 auto;
+  padding: 70px 80px;
+}
+
+#header {
+  /*border: 1px solid black;*/
+  float: left;
+  width: 370px;
+  padding-left: 10px;
+  border-right: 1px solid gray;
+  margin-bottom: 20px;
+}
+
+#desc {
+  float: left;
+  position: relative;
+  width: 390px;
+  padding-left: 20px;
+  border-left: 1px solid white;
+}
+
+#desc h1 {
+  font-size: 54px;
+  line-height: 50px;
+  margin-top: -7px;
+}
+
+#desc .github {
+  display: block;
+  position: absolute;
+  right: 0px;
+  top: -45px;
+  width: 89px;
+  height: 89px;
+  background: url(images/badge.png) no-repeat;
+}
+
+#desc .github:hover {
+  background: url(images/badge-light.png) no-repeat;
+}
+
+#desc h1 a.under {
+  padding-left: 5px;
+  padding-right: 5px;
+  background: transparent url(images/back.png) no-repeat;
+  color: white;
+  text-decoration: none;
+}
+
+#desc h1 a.under:hover {
+  background: transparent url(images/backlight.png) no-repeat;
+}
+
+#content {
+  clear: both;
+  overflow: hidden;
+}
+
+#left-desc {
+  width: 480px;
+  float: left;
+  border-right: 1px solid #b1b0af;
+  padding-right: 20px;
+}
+
+#right-desc {
+  width: 280px;
+  float: left;
+  border-left: 1px solid #f9f9f9;
+  padding-left: 15px;
+  padding-top: 10px;
+}
