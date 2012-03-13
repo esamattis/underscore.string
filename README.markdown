@@ -20,6 +20,12 @@ _("   epeli  ").chain().trim().capitalize().value()
 => "Epeli"
 ```
 
+## Download ##
+
+  * [Development version](https://raw.github.com/epeli/underscore.string/master/lib/underscore.string.js) *Uncompressed with Comments*
+  * [Production version](https://github.com/epeli/underscore.string/raw/master/dist/underscore.string.min.js) *Minified*
+
+
 ## Node.js installation ##
 
 **npm package**
