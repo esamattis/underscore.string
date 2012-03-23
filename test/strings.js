@@ -146,6 +146,7 @@ $(document).ready(function() {
     equals(_('Hello world').count('l'), 3);
     equals(_('Hello world').count('Hello'), 1);
     equals(_('Hello world').count('foo'), 0);
+    equals(_('x.xx....x.x').count('x'), 5);
     equals(_(12345).count(1), 1);
     equals(_(11345).count(1), 2);
   });
