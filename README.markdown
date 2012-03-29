@@ -558,7 +558,7 @@ But of course you can just reassign `_` variable with `_.string`
 _ = _.string
 ```
 
-#### Upgrade
+### 2.0.0 ###
 
 For upgrading to this version you need to mix in Underscore.string library to Underscore object:
 
