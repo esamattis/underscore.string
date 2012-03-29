@@ -558,6 +558,14 @@ But of course you can just reassign `_` variable with `_.string`
 _ = _.string
 ```
 
+
+### 2.1.0 ###
+
+* AMD support
+* Added toSentence method
+* Added slugify method
+* Lots of speed optimizations
+
 ### 2.0.0 ###
 
 For upgrading to this version you need to mix in Underscore.string library to Underscore object:
