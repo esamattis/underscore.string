@@ -566,7 +566,10 @@ But of course you can just reassign `_` variable with `_.string`
 ```javascript
 _ = _.string
 ```
+### 2.1.1###
 
+* Fixed words method bug
+* Added classify method
 
 ### 2.1.0 ###
 
