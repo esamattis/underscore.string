@@ -207,6 +207,10 @@ $(document).ready(function() {
     equals(_(123).dasherize(), '123');
   });
 
+  test('String: classify', function(){
+    equals(_('some_class_name').classify(), 'SomeClassName');
+  });
+
   test('String: humanize', function(){
     equals(_('the_humanize_string_method').humanize(), 'The humanize string method');
     equals(_('ThehumanizeStringMethod').humanize(), 'Thehumanize string method');
