@@ -257,6 +257,15 @@ _('-moz-transform').camelize()
 => 'MozTransform'
 ```
 
+**classify** _.classify(string)
+
+Converts string to camelized class name
+
+```javascript
+_('some_class_name').classify()
+=> 'SomeClassName'
+```
+
 **underscored** _.underscored(string)
 
 Converts a camelized or dasherized string into an underscored one
