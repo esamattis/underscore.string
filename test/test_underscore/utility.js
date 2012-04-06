@@ -51,14 +51,24 @@ $(document).ready(function() {
     var result = basicTemplate({thing : 'This'});
     equals(result, "This is gettin' on my noives!", 'can do basic attribute interpolation');
 
+    var sansSemicolonTemplate = _.template("A <% this %> B");
+    equals(sansSemicolonTemplate(), "A  B");
+
     var backslashTemplate = _.template("<%= thing %> is \\ridanculous");
     equals(backslashTemplate({thing: 'This'}), "This is \\ridanculous");
+
+    var escapeTemplate = _.template('<%= a ? "checked=\\"checked\\"" : "" %>');
+    equals(escapeTemplate({a: true}), 'checked="checked"', 'can handle slash escapes in interpolations.');
 
     var fancyTemplate = _.template("<ul><% \
       for (key in people) { \
     %><li><%= people[key] %></li><% } %></ul>");
     result = fancyTemplate({people : {moe : "Moe", larry : "Larry", curly : "Curly"}});
     equals(result, "<ul><li>Moe</li><li>Larry</li><li>Curly</li></ul>", 'can run arbitrary javascript in templates');
+
+    var escapedCharsInJavascriptTemplate = _.template("<ul><% _.each(numbers.split('\\n'), function(item) { %><li><%= item %></li><% }) %></ul>");
+    result = escapedCharsInJavascriptTemplate({numbers: "one\ntwo\nthree\nfour"});
+    equals(result, "<ul><li>one</li><li>two</li><li>three</li><li>four</li></ul>", 'Can use escaped characters (e.g. \\n) in Javascript');
 
     var namespaceCollisionTemplate = _.template("<%= pageCount %> <%= thumbnails[pageCount] %> <% _.each(thumbnails, function(p) { %><div class=\"thumbnail\" rel=\"<%= p %>\"></div><% }); %>");
     result = namespaceCollisionTemplate({
@@ -89,6 +99,12 @@ $(document).ready(function() {
     var template = _.template("<i><%- value %></i>");
     var result = template({value: "<script>"});
     equals(result, '<i>&lt;script&gt;</i>');
+
+    var stooge = {
+      name: "Moe",
+      template: _.template("I'm <%= this.name %>")
+    };
+    equals(stooge.template(), "I'm Moe");
 
     if (!$.browser.msie) {
       var fromHTML = _.template($('#template').html());
@@ -131,6 +147,9 @@ $(document).ready(function() {
 
     var mustache = _.template("Hello {{planet}}!");
     equals(mustache({planet : "World"}), "Hello World!", "can mimic mustache.js");
+
+    var templateWithNull = _.template("a null undefined {{planet}}");
+    equals(templateWithNull({planet : "world"}), "a null undefined world", "can handle missing escape and evaluate settings");
   });
 
 });

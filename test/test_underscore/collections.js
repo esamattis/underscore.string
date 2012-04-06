@@ -35,6 +35,9 @@ $(document).ready(function() {
     var doubled = _.map([1, 2, 3], function(num){ return num * 2; });
     equals(doubled.join(', '), '2, 4, 6', 'doubled numbers');
 
+    doubled = _.collect([1, 2, 3], function(num){ return num * 2; });
+    equals(doubled.join(', '), '2, 4, 6', 'aliased as "collect"');
+
     var tripled = _.map([1, 2, 3], function(num){ return num * this.multiplier; }, {multiplier : 3});
     equals(tripled.join(', '), '3, 6, 9', 'tripled numbers with context');
 
@@ -49,6 +52,9 @@ $(document).ready(function() {
 
     var ifnull = _.map(null, function(){});
     ok(_.isArray(ifnull) && ifnull.length === 0, 'handles a null properly');
+
+    var length = _.map(Array(2), function(v) { return v; }).length;
+    equals(length, 2, "can preserve a sparse array's length");
   });
 
   test('collections: reduce', function() {
@@ -77,13 +83,13 @@ $(document).ready(function() {
     ok(ifnull instanceof TypeError, 'handles a null (without inital value) properly');
 
     ok(_.reduce(null, function(){}, 138) === 138, 'handles a null (with initial value) properly');
+    equals(_.reduce([], function(){}, undefined), undefined, 'undefined can be passed as a special case');
+    raises(function() { _.reduce([], function(){}); }, TypeError, 'throws an error for empty arrays with no initial value');
 
-    // Sparse arrays:
-    var sparseArray  = [];
-    sparseArray[100] = 10;
-    sparseArray[200] = 20;
-
-    equals(_.reduce(sparseArray, function(a, b){ return a + b }), 30, 'initially-sparse arrays with no memo');
+    var sparseArray = [];
+    sparseArray[0] = 20;
+    sparseArray[2] = -5;
+    equals(_.reduce(sparseArray, function(a, b){ return a - b; }), 25, 'initially-sparse arrays with no memo');
   });
 
   test('collections: reduceRight', function() {
@@ -105,6 +111,14 @@ $(document).ready(function() {
     ok(ifnull instanceof TypeError, 'handles a null (without inital value) properly');
 
     ok(_.reduceRight(null, function(){}, 138) === 138, 'handles a null (with initial value) properly');
+
+    equals(_.reduceRight([], function(){}, undefined), undefined, 'undefined can be passed as a special case');
+    raises(function() { _.reduceRight([], function(){}); }, TypeError, 'throws an error for empty arrays with no initial value');
+
+    var sparseArray = [];
+    sparseArray[0] = 20;
+    sparseArray[2] = -5;
+    equals(_.reduceRight(sparseArray, function(a, b){ return a - b; }), -25, 'initially-sparse arrays with no memo');
   });
 
   test('collections: detect', function() {
@@ -140,6 +154,8 @@ $(document).ready(function() {
     ok(!_.any([]), 'the empty set');
     ok(!_.any([false, false, false]), 'all false values');
     ok(_.any([false, false, true]), 'one true value');
+    ok(_.any([null, 0, 'yes', false]), 'a string');
+    ok(!_.any([null, 0, '', false]), 'falsy values');
     ok(!_.any([1, 11, 29], function(num){ return num % 2 == 0; }), 'all odd numbers');
     ok(_.any([1, 10, 29], function(num){ return num % 2 == 0; }), 'an even number');
     ok(_.some([false, false, true]), 'aliased as "some"');
@@ -165,6 +181,19 @@ $(document).ready(function() {
     var result = _.invoke(list, Array.prototype.sort);
     equals(result[0].join(', '), '1, 5, 7', 'first array sorted');
     equals(result[1].join(', '), '1, 2, 3', 'second array sorted');
+  });
+
+  // Relevant when using ClojureScript
+  test('collections: invoke when strings have a call method', function() {
+    String.prototype.call = function(){return 42;}
+    var list = [[5, 1, 7], [3, 2, 1]];
+    var s = "foo";
+    equals(s.call(), 42, "call function exists");
+    var result = _.invoke(list, 'sort');
+    equals(result[0].join(', '), '1, 5, 7', 'first array sorted');
+    equals(result[1].join(', '), '1, 2, 3', 'second array sorted');
+    delete String.prototype.call;
+    equals(s.call, undefined, "call function removed");
   });
 
   test('collections: pluck', function() {

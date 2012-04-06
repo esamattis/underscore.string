@@ -112,10 +112,9 @@ $(document).ready(function() {
     throttledUpdate(1); throttledUpdate(2); throttledUpdate(3);
     setTimeout(function(){ throttledUpdate(4); }, 120);
     setTimeout(function(){ throttledUpdate(5); }, 140);
-    setTimeout(function(){ throttledUpdate(6); }, 260);
-    setTimeout(function(){ throttledUpdate(7); }, 270);
-    _.delay(function(){ ok(value == 1, "updated to latest value"); }, 40);
-    _.delay(function(){ ok(value == 7, "updated to latest value"); start(); }, 400);
+    setTimeout(function(){ throttledUpdate(6); }, 250);
+    _.delay(function(){ equals(value, 1, "updated to latest value"); }, 40);
+    _.delay(function(){ equals(value, 6, "updated to latest value"); start(); }, 400);
   });
 
   asyncTest("functions: throttle once", 1, function() {
@@ -164,6 +163,11 @@ $(document).ready(function() {
     var obj   = {name : "Moe"};
     obj.hi    = _.wrap(inner, function(fn){ return fn() + this.name; });
     equals(obj.hi(), "Hello Moe");
+
+    var noop    = function(){};
+    var wrapped = _.wrap(noop, function(fn){ return Array.prototype.slice.call(arguments, 0); });
+    var ret     = wrapped(['whats', 'your'], 'vector', 'victor');
+    same(ret, [noop, ['whats', 'your'], 'vector', 'victor']);
   });
 
   test("functions: compose", function() {
@@ -188,6 +192,7 @@ $(document).ready(function() {
 
     equals(testAfter(5, 5), 1, "after(N) should fire after being called N times");
     equals(testAfter(5, 4), 0, "after(N) should not fire unless called N times");
+    equals(testAfter(0, 0), 1, "after(0) should fire immediately");
   });
 
 });
