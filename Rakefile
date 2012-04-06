@@ -17,7 +17,7 @@ task :test do
   system %{bundle exec serve 2>/dev/null &}
   sleep 2
 
-  puts "Running Underscore test suite."
+  puts "Running underscore.string test suite."
   result1 = system %{phantomjs ./test/run-qunit.js "http://localhost:4000/test/test.html"}
 
   puts "Running Underscore test suite."
