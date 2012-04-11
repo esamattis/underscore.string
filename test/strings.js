@@ -266,6 +266,15 @@ $(document).ready(function() {
     equals(_('&lt;div&gt;Blah &amp; &quot;blah&quot; &amp; &apos;blah&apos;&lt;/div&gt;').unescapeHTML(),
              '<div>Blah & "blah" & \'blah\'</div>');
     equals(_('&amp;lt;').unescapeHTML(), '&lt;');
+    equals(_('&#39;').unescapeHTML(), "'");
+    equals(_('&#0039;').unescapeHTML(), "'");
+    equals(_('&#x4a;').unescapeHTML(), "J");
+    equals(_('&#x04A;').unescapeHTML(), "J");
+    equals(_('&#X4A;').unescapeHTML(), "&#X4A;");
+    equals(_('&_#39;').unescapeHTML(), "&_#39;");
+    equals(_('&#39_;').unescapeHTML(), "&#39_;");
+    equals(_('&amp;#38;').unescapeHTML(), "&#38;");
+    equals(_('&#38;amp;').unescapeHTML(), "&amp;");
     equals(_(5).unescapeHTML(), '5');
     // equals(_(undefined).unescapeHTML(), '');
   });
