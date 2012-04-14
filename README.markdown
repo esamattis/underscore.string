@@ -566,6 +566,11 @@ But of course you can just reassign `_` variable with `_.string`
 ```javascript
 _ = _.string
 ```
+### 2.2.0 ###
+
+* Capitalize method behavior changed
+* Various perfomance tweaks
+
 ### 2.1.1###
 
 * Fixed words method bug
