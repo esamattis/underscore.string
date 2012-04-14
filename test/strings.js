@@ -63,6 +63,7 @@ $(document).ready(function() {
   test("Strings: capitalize", function() {
     equals(_("fabio").capitalize(), "Fabio", 'First letter is upper case');
     equals(_.capitalize("fabio"), "Fabio", 'First letter is upper case');
+    equals(_.capitalize('FOO'), 'FOO', 'Other letters unchanged');
     equals(_(123).capitalize(), "123", "Non string");
   });
 

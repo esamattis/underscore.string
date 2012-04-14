@@ -70,11 +70,11 @@ _.str.capitalize('epeli')
 
 **capitalize** _.capitalize(string)
 
-Converts first letter of the string to uppercase and the rest of the string to lower case.
+Converts first letter of the string to uppercase.
 
 ```javascript
 _.capitalize("foo Bar")
-=> "Foo bar"
+=> "Foo Bar"
 ```
 
 **chop** _.chop(string, step)
