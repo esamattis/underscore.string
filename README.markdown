@@ -516,6 +516,25 @@ _.repeat("foo", 3, "bar")
 => 'foobarfoobarfoo'
 ```
 
+**surround** _.surround(string, wrap)
+
+Surround a string with another string.
+
+```javascript
+_.surround("foo", "ab")
+=> 'abfooab';
+```
+
+**quote** _.quote(string)
+
+Quotes a string.
+
+```javascript
+_.quote('foo')
+=> '"foo"';
+```
+
+
 **slugify** _.slugify(string)
 
 Transform text into a URL slug. Replaces whitespaces, accentuated, and special characters with a dash.
