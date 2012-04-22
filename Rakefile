@@ -13,16 +13,11 @@ end
 
 desc 'Run tests'
 task :test do
-  pid = spawn('bundle exec serve', err: '/dev/null')
-  sleep 2
-
   puts "Running underscore.string test suite."
-  result1 = system %{phantomjs ./test/run-qunit.js "http://localhost:4000/test/test.html"}
+  result1 = system %{phantomjs ./test/run-qunit.js "test/test.html"}
 
   puts "Running Underscore test suite."
-  result2 = system %{phantomjs ./test/run-qunit.js "http://localhost:4000/test/test_underscore/test.html"}
-  
-  Process.kill 'INT', pid
+  result2 = system %{phantomjs ./test/run-qunit.js "test/test_underscore/test.html"}
   
   exit(result1 && result2 ? 0 : 1)
 end
