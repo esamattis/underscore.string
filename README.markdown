@@ -525,7 +525,7 @@ _.surround("foo", "ab")
 => 'abfooab';
 ```
 
-**quote** _.quote(string)
+**quote** _.quote(string) or _.q(string)
 
 Quotes a string.
 

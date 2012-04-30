@@ -412,37 +412,43 @@ $(document).ready(function() {
   });
 
   test('Strings: toSentence', function() {
-      equals(_.toSentence(['jQuery']), 'jQuery', 'array with a single element');
-      equals(_.toSentence(['jQuery', 'MooTools']), 'jQuery and MooTools', 'array with two elements');
-      equals(_.toSentence(['jQuery', 'MooTools', 'Prototype']), 'jQuery, MooTools and Prototype', 'array with three elements');
-      equals(_.toSentence(['jQuery', 'MooTools', 'Prototype', 'YUI']), 'jQuery, MooTools, Prototype and YUI', 'array with multiple elements');
-      equals(_.toSentence(['jQuery', 'MooTools', 'Prototype'], ',', ' or '), 'jQuery,MooTools or Prototype', 'handles custom separators');
+    equals(_.toSentence(['jQuery']), 'jQuery', 'array with a single element');
+    equals(_.toSentence(['jQuery', 'MooTools']), 'jQuery and MooTools', 'array with two elements');
+    equals(_.toSentence(['jQuery', 'MooTools', 'Prototype']), 'jQuery, MooTools and Prototype', 'array with three elements');
+    equals(_.toSentence(['jQuery', 'MooTools', 'Prototype', 'YUI']), 'jQuery, MooTools, Prototype and YUI', 'array with multiple elements');
+    equals(_.toSentence(['jQuery', 'MooTools', 'Prototype'], ',', ' or '), 'jQuery,MooTools or Prototype', 'handles custom separators');
   });
 
   test('Strings: slugify', function() {
-      equals(_("Jack & Jill like numbers 1,2,3 and 4 and silly characters ?%.$!/").slugify(), "jack-jill-like-numbers-123-and-4-and-silly-characters");
-      equals(_("Un éléphant à l'orée du bois").slugify(), "un-elephant-a-loree-du-bois");
-      equals(_("I know latin characters: á í ó ú ç ã õ ñ ü").slugify(), "i-know-latin-characters-a-i-o-u-c-a-o-n-u");
-      equals(_("I am a word too, even though I am but a single letter: i!").slugify(), "i-am-a-word-too-even-though-i-am-but-a-single-letter-i");
+    equals(_("Jack & Jill like numbers 1,2,3 and 4 and silly characters ?%.$!/").slugify(), "jack-jill-like-numbers-123-and-4-and-silly-characters");
+    equals(_("Un éléphant à l'orée du bois").slugify(), "un-elephant-a-loree-du-bois");
+    equals(_("I know latin characters: á í ó ú ç ã õ ñ ü").slugify(), "i-know-latin-characters-a-i-o-u-c-a-o-n-u");
+    equals(_("I am a word too, even though I am but a single letter: i!").slugify(), "i-am-a-word-too-even-though-i-am-but-a-single-letter-i");
   });
  
   test('Strings: quote', function(){
-      equals(_.quote("foo"), '"foo"');
-      equals(_.quote('"foo"'), '""foo""');
+    equals(_.quote("foo"), '"foo"');
+    equals(_.quote('"foo"'), '""foo""');
+    equals(_.quote(1), '"1"');
+    // alias
+    equals(_.q("foo"), '"foo"');
   });
     
   test('Strings: surround', function(){
-      equals(_.surround("foo", "ab"), 'abfooab');
+    equals(_.surround('foo', 'ab'), 'abfooab');
+    equals(_.surround(1, 'ab'), 'ab1ab');
+    equals(_.surround(1, 2), '212');
+    equals(_.surround('foo', 1), '1foo1');
   });
 
 
   test('Strings: repeat', function() {
-      equals(_.repeat('foo'), '');
-      equals(_.repeat('foo', 3), 'foofoofoo');
-      equals(_.repeat('foo', '3'), 'foofoofoo');
-      equals(_.repeat(123, 2), '123123');
-      equals(_.repeat(1234, 2, '*'), '1234*1234');
-      equals(_.repeat(1234, 2, 5), '123451234');
+    equals(_.repeat('foo'), '');
+    equals(_.repeat('foo', 3), 'foofoofoo');
+    equals(_.repeat('foo', '3'), 'foofoofoo');
+    equals(_.repeat(123, 2), '123123');
+    equals(_.repeat(1234, 2, '*'), '1234*1234');
+    equals(_.repeat(1234, 2, 5), '123451234');
   });
 
 });
