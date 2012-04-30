@@ -425,7 +425,17 @@ $(document).ready(function() {
       equals(_("I know latin characters: á í ó ú ç ã õ ñ ü").slugify(), "i-know-latin-characters-a-i-o-u-c-a-o-n-u");
       equals(_("I am a word too, even though I am but a single letter: i!").slugify(), "i-am-a-word-too-even-though-i-am-but-a-single-letter-i");
   });
-  
+ 
+  test('Strings: quote', function(){
+      equals(_.quote("foo"), '"foo"');
+      equals(_.quote('"foo"'), '""foo""');
+  });
+    
+  test('Strings: surround', function(){
+      equals(_.surround("foo", "ab"), 'abfooab');
+  });
+
+
   test('Strings: repeat', function() {
       equals(_.repeat('foo'), '');
       equals(_.repeat('foo', 3), 'foofoofoo');
