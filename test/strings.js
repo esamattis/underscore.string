@@ -179,6 +179,7 @@ $(document).ready(function() {
   test('String: titleize', function(){
     equals(_('the titleize string method').titleize(), 'The Titleize String Method');
     equals(_('the titleize string  method').titleize(), 'The Titleize String  Method');
+    equals(_('let\'s have some fun').titleize(), 'Let\'s Have Some Fun');
     equals(_(123).titleize(), '123');
   });
 
