@@ -27,6 +27,15 @@ $(document).ready(function() {
     equals(_(123).trim(3), '12');
   });
 
+  test('String: levenshtein', function() {
+    equals(_.levenshtein('Godfather', 'Godfather'), 0);
+    equals(_.levenshtein('Godfather', 'Godfathe'), 1);
+    equals(_.levenshtein('Godfather', 'odfather'), 1);
+    equals(_.levenshtein('Godfather', 'Gdfthr'), 3);
+    equals(_.levenshtein('123', 123), 0);
+    equals(_.levenshtein(321, '321'), 0);
+  });
+
   test("Strings: ltrim", function() {
     equals(_(" foo").ltrim(), "foo");
     equals(_("    foo").ltrim(), "foo");
