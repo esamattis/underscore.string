@@ -1,5 +1,10 @@
 (function() {
 
+  JSLitmus.test('levenshtein', function() {
+    return _.levenshtein('pineapple', 'potato');
+  });
+
+
   JSLitmus.test('trimNoNative', function() {
     return _.trim("  foobar  ", " ");
   });
