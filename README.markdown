@@ -68,6 +68,12 @@ _.str.capitalize('epeli')
 => "Epeli"
 ```
 
+**levenshtein** _.levenshtein(string1, string2)
+
+Calculates [Levenshtein distance][ld] between two strings.
+[ld]: http://en.wikipedia.org/wiki/Levenshtein_distance
+
+
 **capitalize** _.capitalize(string)
 
 Converts first letter of the string to uppercase.
