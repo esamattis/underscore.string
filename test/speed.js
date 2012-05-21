@@ -1,7 +1,12 @@
 (function() {
 
   JSLitmus.test('levenshtein', function() {
-    return _.levenshtein('pineapple', 'potato');
+    return [
+      _.levenshtein('pineapple', 'potato'),
+      _.levenshtein('seven', 'eight'),
+      _.levenshtein('the very same string', 'the very same string'),
+      _.levenshtein('very very very long string', 'something completely different')
+    ];
   });
 
 
