@@ -32,6 +32,7 @@ $(document).ready(function() {
     equals(_.levenshtein('Godfather', 'Godfathe'), 1);
     equals(_.levenshtein('Godfather', 'odfather'), 1);
     equals(_.levenshtein('Godfather', 'Gdfthr'), 3);
+    equals(_.levenshtein('seven', 'eight'), 5);
     equals(_.levenshtein('123', 123), 0);
     equals(_.levenshtein(321, '321'), 0);
   });
