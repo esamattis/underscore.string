@@ -73,6 +73,10 @@ _.str.capitalize('epeli')
 Calculates [Levenshtein distance][ld] between two strings.
 [ld]: http://en.wikipedia.org/wiki/Levenshtein_distance
 
+```javascript
+_.levenshtein('kitten', 'kittah')
+=> 2
+```
 
 **capitalize** _.capitalize(string)
 
