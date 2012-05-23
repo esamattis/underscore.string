@@ -284,6 +284,11 @@ $(document).ready(function() {
     ok(!_(0).isBlank());
   });
 
+  test('String: escapeRegExp', function(){
+    equals(_.escapeRegExp(/hello(?=\sworld)/.source), 'hello\\(\\?\\=\\\\sworld\\)', 'with lookahead');
+    equals(_.escapeRegExp(/hello(?!\shell)/.source), 'hello\\(\\?\\!\\\\shell\\)', 'with negative lookahead');
+  });
+
   test('String: escapeHTML', function(){
     equals(_('<div>Blah & "blah" & \'blah\'</div>').escapeHTML(),
              '&lt;div&gt;Blah &amp; &quot;blah&quot; &amp; &apos;blah&apos;&lt;/div&gt;');
