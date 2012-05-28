@@ -326,6 +326,10 @@ $(document).ready(function() {
     equals(_("Hello").chars().length, 5);
     equals(_(123).chars().length, 3);
   });
+  
+  test('String: swapCase', function(){
+	equals(_("hELLO").swapCase(), "Hello");	
+  });
 
   test('String: lines', function() {
     equals(_("Hello\nWorld").lines().length, 2);

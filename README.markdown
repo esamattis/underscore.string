@@ -110,6 +110,15 @@ _.chars('Hello')
 => ['H','e','l','l','o']
 ```
 
+**swapCase** _.swapCase(str)
+
+Returns a copy of the string in which all the case-based characters have had their case swapped.
+
+```javascript
+_.swapCase('hELLO')
+=> 'Hello'
+```
+
 **includes** _.includes(string, substring)
 
 Tests if string contains a substring.
