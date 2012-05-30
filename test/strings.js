@@ -129,6 +129,13 @@ $(document).ready(function() {
     ok(_(12345).startsWith(123), '12345 starts with 123');
     ok(!_(2345).startsWith(123), '2345 does not start with 123');
   });
+  
+  test('Strings: replaceDiacritics', function() {
+    equals(_.replaceDiacritics('Märkisch-Oderland'), 'Markisch-Oderland');
+    equals(_.replaceDiacritics('Schöneiche bei Berlin'), 'Schoneiche bei Berlin');
+    equals(_.replaceDiacritics('Königs Wusterhausen'), 'Konigs Wusterhausen');
+    equals(_.replaceDiacritics('Mühlenbecker Land'), 'Muhlenbecker Land');
+  });
 
   test("Strings: endsWith", function() {
     ok(_("foobar").endsWith("bar"), 'foobar ends with bar');
