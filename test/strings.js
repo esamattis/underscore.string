@@ -323,12 +323,13 @@ $(document).ready(function() {
   });
 
   test('String: chars', function() {
-    equals(_("Hello").chars().length, 5);
+    equals(_('Hello').chars().length, 5);
     equals(_(123).chars().length, 3);
   });
   
   test('String: swapCase', function(){
-	equals(_("hELLO").swapCase(), "Hello");	
+	  equals(_('AaBbCcDdEe').swapCase(), 'aAbBcCdDeE');
+    equals(_('Hello World').swapCase(), 'hELLO wORLD');  
   });
 
   test('String: lines', function() {
