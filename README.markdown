@@ -462,6 +462,21 @@ _('2.556').toNumber()
 _('2.556').toNumber(1)
 => 2.6
 ```
+Updated readme to contain example of newly made castNumber.
+**castNumber**  _.castNumber(string, [decimals])
+
+Cast string to number. It will return NaN if can't be cast to number.
+
+```javascript
+_('$2.556').toNumber()
+=> 3
+
+_('2.556').toNumber(1)
+=> 2.6
+
+_('We are looking for 2 droids').toNumber()
+=> 2
+```
 
 **strRight**  _.strRight(string, pattern)
 
