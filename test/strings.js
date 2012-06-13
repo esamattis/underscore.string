@@ -22,7 +22,7 @@ $(document).ready(function() {
 
     equals(_("http://foo/").trim("/"), "http://foo");
     equals(_("c:\\").trim('\\'), "c:");
-    
+
     equals(_(123).trim(), '123');
     equals(_(123).trim(3), '12');
   });
@@ -49,7 +49,7 @@ $(document).ready(function() {
     equals(_("ffooff").ltrim("f"), "ooff");
 
     equals(_("_-foobar-_").ltrim("_-"), "foobar-_");
-    
+
     equals(_(123).ltrim(1), '23');
   });
 
@@ -66,7 +66,7 @@ $(document).ready(function() {
     equals(_("ffooff").rtrim("f"), "ffoo");
 
     equals(_("_-foobar-_").rtrim("_-"), "_-foobar");
-    
+
     equals(_(123).rtrim(3), '12');
   });
 
@@ -152,7 +152,7 @@ $(document).ready(function() {
     ok(_('whitespace').chop()[0].length === 10, "output ['whitespace']");
     ok(_(12345).chop(1).length === 5, "output ['1','2','3','4','5']");
   });
-  
+
   test('String: clean', function(){
     equals(_.clean(' foo     bar   '), 'foo bar');
     equals(_.clean(1), '1');
@@ -223,14 +223,14 @@ $(document).ready(function() {
     equals(_('foo$bar').dasherize(), 'foo$bar');
     equals(_(123).dasherize(), '123');
   });
-  
+
   test('String: camelize', function(){
     equals(_.camelize('-moz-transform'), 'MozTransform');
     equals(_.camelize('webkit-transform'), 'webkitTransform');
     equals(_.camelize('under_scored'), 'underScored');
     equals(_.camelize(' with   spaces'), 'withSpaces');
   });
-  
+
   test('String: join', function(){
     equals(_.join(1, 2, 3, 4), '21314');
     equals(_.join('|', 'foo', 'bar', 'baz'), 'foo|bar|baz');
@@ -326,10 +326,10 @@ $(document).ready(function() {
     equals(_('Hello').chars().length, 5);
     equals(_(123).chars().length, 3);
   });
-  
+
   test('String: swapCase', function(){
 	  equals(_('AaBbCcDdEe').swapCase(), 'aAbBcCdDeE');
-    equals(_('Hello World').swapCase(), 'hELLO wORLD');  
+    equals(_('Hello World').swapCase(), 'hELLO wORLD');
   });
 
   test('String: lines', function() {
@@ -446,7 +446,7 @@ $(document).ready(function() {
     equals(_("I know latin characters: á í ó ú ç ã õ ñ ü").slugify(), "i-know-latin-characters-a-i-o-u-c-a-o-n-u");
     equals(_("I am a word too, even though I am but a single letter: i!").slugify(), "i-am-a-word-too-even-though-i-am-but-a-single-letter-i");
   });
- 
+
   test('Strings: quote', function(){
     equals(_.quote("foo"), '"foo"');
     equals(_.quote('"foo"'), '""foo""');
@@ -454,7 +454,7 @@ $(document).ready(function() {
     // alias
     equals(_.q("foo"), '"foo"');
   });
-    
+
   test('Strings: surround', function(){
     equals(_.surround('foo', 'ab'), 'abfooab');
     equals(_.surround(1, 'ab'), 'ab1ab');
