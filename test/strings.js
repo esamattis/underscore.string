@@ -27,6 +27,16 @@ $(document).ready(function() {
     equals(_(123).trim(3), '12');
   });
 
+  test('String: levenshtein', function() {
+    equals(_.levenshtein('Godfather', 'Godfather'), 0);
+    equals(_.levenshtein('Godfather', 'Godfathe'), 1);
+    equals(_.levenshtein('Godfather', 'odfather'), 1);
+    equals(_.levenshtein('Godfather', 'Gdfthr'), 3);
+    equals(_.levenshtein('seven', 'eight'), 5);
+    equals(_.levenshtein('123', 123), 0);
+    equals(_.levenshtein(321, '321'), 0);
+  });
+
   test("Strings: ltrim", function() {
     equals(_(" foo").ltrim(), "foo");
     equals(_("    foo").ltrim(), "foo");
@@ -274,6 +284,11 @@ $(document).ready(function() {
     ok(!_(0).isBlank());
   });
 
+  test('String: escapeRegExp', function(){
+    equals(_.escapeRegExp(/hello(?=\sworld)/.source), 'hello\\(\\?\\=\\\\sworld\\)', 'with lookahead');
+    equals(_.escapeRegExp(/hello(?!\shell)/.source), 'hello\\(\\?\\!\\\\shell\\)', 'with negative lookahead');
+  });
+
   test('String: escapeHTML', function(){
     equals(_('<div>Blah & "blah" & \'blah\'</div>').escapeHTML(),
              '&lt;div&gt;Blah &amp; &quot;blah&quot; &amp; &apos;blah&apos;&lt;/div&gt;');
@@ -308,8 +323,13 @@ $(document).ready(function() {
   });
 
   test('String: chars', function() {
-    equals(_("Hello").chars().length, 5);
+    equals(_('Hello').chars().length, 5);
     equals(_(123).chars().length, 3);
+  });
+  
+  test('String: swapCase', function(){
+	  equals(_('AaBbCcDdEe').swapCase(), 'aAbBcCdDeE');
+    equals(_('Hello World').swapCase(), 'hELLO wORLD');  
   });
 
   test('String: lines', function() {

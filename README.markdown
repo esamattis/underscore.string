@@ -68,6 +68,16 @@ _.str.capitalize('epeli')
 => "Epeli"
 ```
 
+**levenshtein** _.levenshtein(string1, string2)
+
+Calculates [Levenshtein distance][ld] between two strings.
+[ld]: http://en.wikipedia.org/wiki/Levenshtein_distance
+
+```javascript
+_.levenshtein('kitten', 'kittah')
+=> 2
+```
+
 **capitalize** _.capitalize(string)
 
 Converts first letter of the string to uppercase.
@@ -98,6 +108,15 @@ _.clean(" foo    bar   ")
 ```javascript
 _.chars('Hello')
 => ['H','e','l','l','o']
+```
+
+**swapCase** _.swapCase(str)
+
+Returns a copy of the string in which all the case-based characters have had their case swapped.
+
+```javascript
+_.swapCase('hELLO')
+=> 'Hello'
 ```
 
 **includes** _.includes(string, substring)
