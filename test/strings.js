@@ -271,8 +271,9 @@ $(document).ready(function() {
     equals(_('Привет, мир').prune(8), 'Привет...');
     equals(_('Привет, жестокий мир').prune(16), 'Привет, жестокий...');
     equals(_('Привет, мир').prune(22), 'Привет, мир');
+    equals(_('alksjd!!!!!!....').prune(100, ''), 'alksjd!!!!!!....');
     equals(_(123).prune(10), '123');
-    equals(_(123).prune(1,1), '11');
+    equals(_(123).prune(1, 321), '321');
   });
 
   test('String: isBlank', function(){
