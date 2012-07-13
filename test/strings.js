@@ -389,6 +389,20 @@ $(document).ready(function() {
 	equals(_(-2).toNumber(), -2);
 	equals(_("-2").toNumber(), -2);
   });
+  
+  test("String: numberFormat", function() {
+	equals(_.numberFormat(9000), "9,000");
+	equals(_.numberFormat(9000, 0), "9,000");
+	equals(_.numberFormat(90000, 2), "90,000.00");
+	equals(_.numberFormat(1000.754), "1,001");
+	equals(_.numberFormat(1000.754, 2), "1,000.75");
+	equals(_.numberFormat(1000.754, 0, ',', '.'), "1.001");
+	equals(_.numberFormat(1000.754, 2, ',', '.'), "1.000,75");
+	equals(_.numberFormat(1000000.754, 2, ',', '.'), "1.000.000,75");
+	equals(_.numberFormat(1000000000), "1,000,000,000");
+	equals(_.numberFormat("not number"), "");
+	equals(_.numberFormat(new Number(5000)), "5,000");
+  });
 
   test('String: strRight', function() {
     equals(_("This_is_a_test_string").strRight("_"), "is_a_test_string");
