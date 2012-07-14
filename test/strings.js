@@ -386,8 +386,8 @@ $(document).ready(function() {
     equals(_("2.344").toNumber(2), 2.34);
     equals(_("2").toNumber(2), 2.00);
     equals(_(2).toNumber(2), 2.00);
-	equals(_(-2).toNumber(), -2);
-	equals(_("-2").toNumber(), -2);
+    equals(_(-2).toNumber(), -2);
+    equals(_("-2").toNumber(), -2);
   });
 
   test('String: strRight', function() {
