@@ -27,6 +27,7 @@ $(document).ready(function() {
     equals(_(123).trim(3), '12');
     equals(_('').trim(), "", 'Trim empty string should return empty string');
     equals(_(null).trim(), "", 'Trim null should return empty string');
+    equals(_(undefined).trim(), "", 'Trim undefined should return empty string');
   });
 
   test('String: levenshtein', function() {
@@ -46,6 +47,7 @@ $(document).ready(function() {
     equals(_(" foo ").ltrim(), "foo ");
     equals(_('').ltrim(), "", 'ltrim empty string should return empty string');
     equals(_(null).ltrim(), "", 'ltrim null should return empty string');
+    equals(_(undefined).ltrim(), "", 'ltrim undefined should return empty string');
 
     equals(_("ffoo").ltrim("f"), "oo");
     equals(_("ooff").ltrim("f"), "ooff");
@@ -82,6 +84,7 @@ $(document).ready(function() {
     equals(_(123).capitalize(), "123", "Non string");
     equals(_.capitalize(''), '', 'Capitalizing empty string returns empty string');
     equals(_.capitalize(null), '', 'Capitalizing null returns empty string');
+    equals(_.capitalize(undefined), '', 'Capitalizing undefined returns empty string');
   });
 
   test("Strings: join", function() {
@@ -104,6 +107,7 @@ $(document).ready(function() {
     equals(_.str.reverse(123.45), "54.321", "Non string");
     equals(_.str.reverse(''), "", 'reversing empty string returns empty string' );
     equals(_.str.reverse(null), "", 'reversing null returns empty string' );
+    equals(_.str.reverse(undefined), "", 'reversing undefined returns empty string' );
   });
 
   test("Strings: clean", function() {
@@ -111,6 +115,7 @@ $(document).ready(function() {
     equals(_(123).clean(), "123");
     equals(_('').clean(), "", 'claning empty string returns empty string');
     equals(_(null).clean(), "", 'claning null returns empty string');
+    equals(_(undefined).clean(), "", 'claning undefined returns empty string');
   });
 
   test("Strings: sprintf", function() {
@@ -189,6 +194,7 @@ $(document).ready(function() {
     equals(_('x.xx....x.x').count('x'), 5);
     equals(_('').count('x'), 0);
     equals(_(null).count('x'), 0);
+    equals(_(undefined).count('x'), 0);
     equals(_(12345).count(1), 1);
     equals(_(11345).count(1), 2);
   });
@@ -198,6 +204,7 @@ $(document).ready(function() {
     equals(_('Hello ').insert(100, 'Jessy'), 'Hello Jessy');
     equals(_('').insert(100, 'Jessy'), 'Jessy');
     equals(_(null).insert(100, 'Jessy'), 'Jessy');
+    equals(_(undefined).insert(100, 'Jessy'), 'Jessy');
     equals(_(12345).insert(6, 'Jessy'), '12345Jessy');
   });
 
@@ -219,6 +226,7 @@ $(document).ready(function() {
     equals(_('the titleize string  method').titleize(), 'The Titleize String  Method');
     equals(_('').titleize(), '', 'Titleize empty string returns empty string');
     equals(_(null).titleize(), '', 'Titleize null returns empty string');
+    equals(_(undefined).titleize(), '', 'Titleize undefined returns empty string');
     equals(_('let\'s have some fun').titleize(), 'Let\'s Have Some Fun');
     equals(_(123).titleize(), '123');
   });
@@ -231,6 +239,7 @@ $(document).ready(function() {
     equals(_('the camelize   string method').camelize(), 'theCamelizeStringMethod');
     equals(_('').camelize(), '', 'Camelize empty string returns empty string');
     equals(_(null).camelize(), '', 'Camelize null returns empty string');
+    equals(_(undefined).camelize(), '', 'Camelize undefined returns empty string');
     equals(_(123).camelize(), '123');
   });
 
@@ -241,6 +250,7 @@ $(document).ready(function() {
     equals(_(' the underscored  string method').underscored(), 'the_underscored_string_method');
     equals(_('').underscored(), '');
     equals(_(null).underscored(), '');
+    equals(_(undefined).underscored(), '');
     equals(_(123).underscored(), '123');
   });
 
@@ -257,6 +267,7 @@ $(document).ready(function() {
     equals(_('foo$bar').dasherize(), 'foo$bar');
     equals(_('').dasherize(), '');
     equals(_(null).dasherize(), '');
+    equals(_(undefined).dasherize(), '');
     equals(_(123).dasherize(), '123');
   });
 
@@ -267,6 +278,7 @@ $(document).ready(function() {
     equals(_.camelize(' with   spaces'), 'withSpaces');
     equals(_('').camelize(), '');
     equals(_(null).camelize(), '');
+    equals(_(undefined).camelize(), '');
   });
 
   test('String: join', function(){
@@ -291,6 +303,7 @@ $(document).ready(function() {
     equals(_(123).humanize(), '123');
     equals(_('').humanize(), '');
     equals(_(null).humanize(), '');
+    equals(_(undefined).humanize(), '');
   });
 
   test('String: truncate', function(){
@@ -299,6 +312,7 @@ $(document).ready(function() {
     equals(_('Hello').truncate(10), 'Hello');
     equals(_('').truncate(10), '');
     equals(_(null).truncate(10), '');
+    equals(_(undefined).truncate(10), '');
     equals(_(1234567890).truncate(5), '12345...');
   });
 
@@ -320,6 +334,7 @@ $(document).ready(function() {
     equals(_(123).prune(1, 321), '321');
     equals(_('').prune(5), '');
     equals(_(null).prune(5), '');
+    equals(_(undefined).prune(5), '');
   });
 
   test('String: isBlank', function(){
@@ -331,6 +346,7 @@ $(document).ready(function() {
     ok(!_(0).isBlank());
     ok(_('').isBlank());
     ok(_(null).isBlank());
+    ok(_(undefined).isBlank());
   });
 
   test('String: escapeRegExp', function(){
@@ -343,7 +359,9 @@ $(document).ready(function() {
              '&lt;div&gt;Blah &amp; &quot;blah&quot; &amp; &apos;blah&apos;&lt;/div&gt;');
     equals(_('&lt;').escapeHTML(), '&amp;lt;');
     equals(_(5).escapeHTML(), '5');
-    // equals(_(undefined).escapeHTML(), '');
+    equals(_('').escapeHTML(), '');
+    equals(_(null).escapeHTML(), '');
+    equals(_(undefined).escapeHTML(), '');
   });
 
   test('String: unescapeHTML', function(){
@@ -361,6 +379,7 @@ $(document).ready(function() {
     equals(_('&#38;amp;').unescapeHTML(), "&amp;");
     equals(_('').unescapeHTML(), "");
     equals(_(null).unescapeHTML(), "");
+    equals(_(undefined).unescapeHTML(), "");
     equals(_(5).unescapeHTML(), '5');
     // equals(_(undefined).unescapeHTML(), '');
   });
@@ -373,6 +392,7 @@ $(document).ready(function() {
     equals(_(123).words().length, 1);
     equals(_("").words().length, 0);
     equals(_(null).words().length, 0);
+    equals(_(undefined).words().length, 0);
   });
 
   test('String: chars', function() {
@@ -380,6 +400,7 @@ $(document).ready(function() {
     equals(_(123).chars().length, 3);
     equals(_('').chars().length, 0);
     equals(_(null).chars().length, 0);
+    equals(_(undefined).chars().length, 0);
   });
 
   test('String: swapCase', function(){
@@ -387,6 +408,7 @@ $(document).ready(function() {
     equals(_('Hello World').swapCase(), 'hELLO wORLD');
     equals(_('').swapCase(), '');
     equals(_(null).swapCase(), '');
+    equals(_(undefined).swapCase(), '');
   });
 
   test('String: lines', function() {
@@ -395,6 +417,7 @@ $(document).ready(function() {
     equals(_(123).lines().length, 1);
     equals(_('').lines().length, 0);
     equals(_(null).lines().length, 0);
+    equals(_(undefined).lines().length, 0);
   });
 
   test('String: pad', function() {
@@ -409,6 +432,7 @@ $(document).ready(function() {
     equals(_("foo").pad(7, '!@$%dofjrofj', 'both'), '!!foo!!');
     equals(_("").pad(2), '  ');
     equals(_(null).pad(2), '  ');
+    equals(_(undefined).pad(2), '  ');
   });
 
   test('String: lpad', function() {
@@ -418,6 +442,7 @@ $(document).ready(function() {
     equals(_("1").lpad(8, '0', 'left'), '00000001');
     equals(_("").lpad(2), '  ');
     equals(_(null).lpad(2), '  ');
+    equals(_(undefined).lpad(2), '  ');
   });
 
   test('String: rpad', function() {
@@ -428,6 +453,7 @@ $(document).ready(function() {
     equals(_("foo").rpad(7, '0'), 'foo0000');
     equals(_("").rpad(2), '  ');
     equals(_(null).rpad(2), '  ');
+    equals(_(undefined).rpad(2), '  ');
   });
 
   test('String: lrpad', function() {
@@ -439,6 +465,7 @@ $(document).ready(function() {
     equals(_("foo").lrpad(7, '!@$%dofjrofj'), '!!foo!!');
     equals(_("").lrpad(2), '  ');
     equals(_(null).lrpad(2), '  ');
+    equals(_(undefined).lrpad(2), '  ');
   });
 
   test('String: toNumber', function() {
@@ -456,6 +483,7 @@ $(document).ready(function() {
     equals(_("-2").toNumber(), -2);
     equals(_('').toNumber(), 0);
     equals(_(null).toNumber(), 0);
+    equals(_(undefined).toNumber(), 0);
   });
 
   test('String: strRight', function() {
@@ -467,6 +495,7 @@ $(document).ready(function() {
     equals(_("This_is_a_test_string").strRight(''), "This_is_a_test_string");
     equals(_('').strRight('foo'), "");
     equals(_(null).strRight('foo'), "");
+    equals(_(undefined).strRight('foo'), "");
     equals(_(12345).strRight(2), "345");
   });
 
@@ -478,6 +507,7 @@ $(document).ready(function() {
     equals(_("This_is_a_test_string").strRightBack("-"), "This_is_a_test_string");
     equals(_('').strRightBack('foo'), "");
     equals(_(null).strRightBack('foo'), "");
+    equals(_(undefined).strRightBack('foo'), "");
     equals(_(12345).strRightBack(2), "345");
   });
 
@@ -489,6 +519,7 @@ $(document).ready(function() {
     equals(_("This_is_a_test_string").strLeft("-"), "This_is_a_test_string");
     equals(_('').strLeft('foo'), "");
     equals(_(null).strLeft('foo'), "");
+    equals(_(undefined).strLeft('foo'), "");
     equals(_(123454321).strLeft(3), "12");
   });
 
@@ -500,6 +531,7 @@ $(document).ready(function() {
     equals(_("This_is_a_test_string").strLeftBack("-"), "This_is_a_test_string");
     equals(_('').strLeftBack('foo'), "");
     equals(_(null).strLeftBack('foo'), "");
+    equals(_(undefined).strLeftBack('foo'), "");
     equals(_(123454321).strLeftBack(3), "123454");
   });
 
@@ -510,6 +542,7 @@ $(document).ready(function() {
     equals(_(123).stripTags(), '123');
     equals(_('').stripTags(), '');
     equals(_(null).stripTags(), '');
+    equals(_(undefined).stripTags(), '');
   });
 
   test('Strings: toSentence', function() {
@@ -527,6 +560,7 @@ $(document).ready(function() {
     equals(_("I am a word too, even though I am but a single letter: i!").slugify(), "i-am-a-word-too-even-though-i-am-but-a-single-letter-i");
     equals(_('').slugify(), "");
     equals(_(null).slugify(), "");
+    equals(_(undefined).slugify(), "");
   });
 
   test('Strings: quote', function(){
@@ -537,6 +571,7 @@ $(document).ready(function() {
     equals(_.q("foo"), '"foo"');
     equals(_.q(""), '""');
     equals(_.q(null), '""');
+    equals(_.q(undefined), '""');
   });
 
   test('Strings: surround', function(){
@@ -560,6 +595,7 @@ $(document).ready(function() {
     equals(_.repeat(1234, 2, 5), '123451234');
     equals(_.repeat('', 2), '');
     equals(_.repeat(null, 2), '');
+    equals(_.repeat(undefined, 2), '');
   });
 
 });
