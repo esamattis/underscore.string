@@ -463,6 +463,21 @@ _('2.556').toNumber(1)
 => 2.6
 ```
 
+**castNumber**  _.castNumber(string, [decimals])
+
+Cast string to number. It will return NaN if can't be cast to number.
+
+```javascript
+_('$2.556').castNumber()
+=> 3
+
+_('2.556').castNumber(1)
+=> 2.6
+
+_('We are looking for 2 droids').castNumber()
+=> 2
+```
+
 **strRight**  _.strRight(string, pattern)
 
 Searches a string from left to right for a pattern and returns a substring consisting of the characters in the string that are to the right of the pattern or all string if no match found.
