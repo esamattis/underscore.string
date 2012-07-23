@@ -3,20 +3,19 @@ $(document).ready(function() {
   module("Objects");
 
   test("objects: keys", function() {
-    var exception = /object/;
-    equals(_.keys({one : 1, two : 2}).join(', '), 'one, two', 'can extract the keys from an object');
+    equal(_.keys({one : 1, two : 2}).join(', '), 'one, two', 'can extract the keys from an object');
     // the test above is not safe because it relies on for-in enumeration order
     var a = []; a[1] = 0;
-    equals(_.keys(a).join(', '), '1', 'is not fooled by sparse arrays; see issue #95');
-    raises(function() { _.keys(null); }, exception, 'throws an error for `null` values');
-    raises(function() { _.keys(void 0); }, exception, 'throws an error for `undefined` values');
-    raises(function() { _.keys(1); }, exception, 'throws an error for number primitives');
-    raises(function() { _.keys('a'); }, exception, 'throws an error for string primitives');
-    raises(function() { _.keys(true); }, exception, 'throws an error for boolean primitives');
+    equal(_.keys(a).join(', '), '1', 'is not fooled by sparse arrays; see issue #95');
+    raises(function() { _.keys(null); }, TypeError, 'throws an error for `null` values');
+    raises(function() { _.keys(void 0); }, TypeError, 'throws an error for `undefined` values');
+    raises(function() { _.keys(1); }, TypeError, 'throws an error for number primitives');
+    raises(function() { _.keys('a'); }, TypeError, 'throws an error for string primitives');
+    raises(function() { _.keys(true); }, TypeError, 'throws an error for boolean primitives');
   });
 
   test("objects: values", function() {
-    equals(_.values({one : 1, two : 2}).join(', '), '1, 2', 'can extract the values from an object');
+    equal(_.values({one : 1, two : 2}).join(', '), '1, 2', 'can extract the values from an object');
   });
 
   test("objects: functions", function() {
@@ -25,20 +24,30 @@ $(document).ready(function() {
 
     var Animal = function(){};
     Animal.prototype.run = function(){};
-    equals(_.functions(new Animal).join(''), 'run', 'also looks up functions on the prototype');
+    equal(_.functions(new Animal).join(''), 'run', 'also looks up functions on the prototype');
   });
 
   test("objects: extend", function() {
     var result;
-    equals(_.extend({}, {a:'b'}).a, 'b', 'can extend an object with the attributes of another');
-    equals(_.extend({a:'x'}, {a:'b'}).a, 'b', 'properties in source override destination');
-    equals(_.extend({x:'x'}, {a:'b'}).x, 'x', 'properties not in source dont get overriden');
+    equal(_.extend({}, {a:'b'}).a, 'b', 'can extend an object with the attributes of another');
+    equal(_.extend({a:'x'}, {a:'b'}).a, 'b', 'properties in source override destination');
+    equal(_.extend({x:'x'}, {a:'b'}).x, 'x', 'properties not in source dont get overriden');
     result = _.extend({x:'x'}, {a:'a'}, {b:'b'});
     ok(_.isEqual(result, {x:'x', a:'a', b:'b'}), 'can extend from multiple source objects');
     result = _.extend({x:'x'}, {a:'a', x:2}, {a:'b'});
     ok(_.isEqual(result, {x:2, a:'b'}), 'extending from multiple source objects last property trumps');
     result = _.extend({}, {a: void 0, b: null});
-    equals(_.keys(result).join(''), 'ab', 'extend does not copy undefined values');
+    equal(_.keys(result).join(''), 'ab', 'extend does not copy undefined values');
+  });
+
+  test("objects: pick", function() {
+    var result;
+    result = _.pick({a:1, b:2, c:3}, 'a', 'c');
+    ok(_.isEqual(result, {a:1, c:3}), 'can restrict properties to those named');
+    result = _.pick({a:1, b:2, c:3}, ['b', 'c']);
+    ok(_.isEqual(result, {b:2, c:3}), 'can restrict properties to those named in an array');
+    result = _.pick({a:1, b:2, c:3}, ['a'], 'b');
+    ok(_.isEqual(result, {a:1, b:2}), 'can restrict properties to those named in mixed args');
   });
 
   test("objects: defaults", function() {
@@ -46,30 +55,30 @@ $(document).ready(function() {
     var options = {zero: 0, one: 1, empty: "", nan: NaN, string: "string"};
 
     _.defaults(options, {zero: 1, one: 10, twenty: 20});
-    equals(options.zero, 0, 'value exists');
-    equals(options.one, 1, 'value exists');
-    equals(options.twenty, 20, 'default applied');
+    equal(options.zero, 0, 'value exists');
+    equal(options.one, 1, 'value exists');
+    equal(options.twenty, 20, 'default applied');
 
     _.defaults(options, {empty: "full"}, {nan: "nan"}, {word: "word"}, {word: "dog"});
-    equals(options.empty, "", 'value exists');
+    equal(options.empty, "", 'value exists');
     ok(_.isNaN(options.nan), "NaN isn't overridden");
-    equals(options.word, "word", 'new value is added, first one wins');
+    equal(options.word, "word", 'new value is added, first one wins');
   });
 
   test("objects: clone", function() {
     var moe = {name : 'moe', lucky : [13, 27, 34]};
     var clone = _.clone(moe);
-    equals(clone.name, 'moe', 'the clone as the attributes of the original');
+    equal(clone.name, 'moe', 'the clone as the attributes of the original');
 
     clone.name = 'curly';
     ok(clone.name == 'curly' && moe.name == 'moe', 'clones can change shallow attributes without affecting the original');
 
     clone.lucky.push(101);
-    equals(_.last(moe.lucky), 101, 'changes to deep attributes are shared with the original');
+    equal(_.last(moe.lucky), 101, 'changes to deep attributes are shared with the original');
 
-    equals(_.clone(undefined), void 0, 'non objects should not be changed by clone');
-    equals(_.clone(1), 1, 'non objects should not be changed by clone');
-    equals(_.clone(null), null, 'non objects should not be changed by clone');
+    equal(_.clone(undefined), void 0, 'non objects should not be changed by clone');
+    equal(_.clone(1), 1, 'non objects should not be changed by clone');
+    equal(_.clone(null), null, 'non objects should not be changed by clone');
   });
 
   test("objects: isEqual", function() {
@@ -168,7 +177,7 @@ $(document).ready(function() {
 
     // Arrays with primitive and object values.
     ok(_.isEqual([1, "Larry", true], [1, "Larry", true]), "Arrays containing identical primitives are equal");
-    ok(_.isEqual([/Moe/g, new Date(2009, 9, 25)], [/Moe/g, new Date(2009, 9, 25)]), "Arrays containing equivalent elements are equal");
+    ok(_.isEqual([(/Moe/g), new Date(2009, 9, 25)], [(/Moe/g), new Date(2009, 9, 25)]), "Arrays containing equivalent elements are equal");
 
     // Multi-dimensional arrays.
     var a = [new Number(47), false, "Larry", /Moe/, new Date(2009, 11, 13), ['running', 'biking', new String('programming')], {a: 47}];
@@ -291,7 +300,7 @@ $(document).ready(function() {
 
     // Chaining.
     ok(!_.isEqual(_({x: 1, y: undefined}).chain(), _({x: 1, z: 2}).chain()), 'Chained objects containing different values are not equal');
-    equals(_({x: 1, y: 2}).chain().isEqual(_({x: 1, y: 2}).chain()).value(), true, '`isEqual` can be chained');
+    equal(_({x: 1, y: 2}).chain().isEqual(_({x: 1, y: 2}).chain()).value(), true, '`isEqual` can be chained');
 
     // Custom `isEqual` methods.
     var isEqualObj = {isEqual: function (o) { return o.isEqual == this.isEqual; }, unique: {}};
@@ -336,7 +345,7 @@ $(document).ready(function() {
     Date.prototype.isEqual = function(that) {
       var this_date_components = this.toJSON();
       var that_date_components = (that instanceof Date) ? that.toJSON() : that;
-      delete this_date_components['_type']; delete that_date_components['_type']
+      delete this_date_components['_type']; delete that_date_components['_type'];
       return _.isEqual(this_date_components, that_date_components);
     };
 
@@ -481,6 +490,20 @@ $(document).ready(function() {
     ok(_.isRegExp(iRegExp), 'even from another frame');
   });
 
+  test("objects: isFinite", function() {
+    ok(!_.isFinite(undefined), 'undefined is not Finite');
+    ok(!_.isFinite(null), 'null is not Finite');
+    ok(!_.isFinite(NaN), 'NaN is not Finite');
+    ok(!_.isFinite(Infinity), 'Infinity is not Finite');
+    ok(!_.isFinite(-Infinity), '-Infinity is not Finite');
+    ok(!_.isFinite('12'), 'Strings are not numbers');
+    var obj = new Number(5);
+    ok(_.isFinite(obj), 'Number instances can be finite');
+    ok(_.isFinite(0), '0 is Finite');
+    ok(_.isFinite(123), 'Ints are Finite');
+    ok(_.isFinite(-12.44), 'Floats are Finite');
+  });
+
   test("objects: isNaN", function() {
     ok(!_.isNaN(undefined), 'undefined is not NaN');
     ok(!_.isNaN(null), 'null is not NaN');
@@ -522,8 +545,8 @@ $(document).ready(function() {
     var intercepted = null;
     var interceptor = function(obj) { intercepted = obj; };
     var returned = _.tap(1, interceptor);
-    equals(intercepted, 1, "passes tapped object to interceptor");
-    equals(returned, 1, "returns tapped object");
+    equal(intercepted, 1, "passes tapped object to interceptor");
+    equal(returned, 1, "returns tapped object");
 
     returned = _([1,2,3]).chain().
       map(function(n){ return n * 2; }).
