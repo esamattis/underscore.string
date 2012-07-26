@@ -415,7 +415,7 @@ $(document).ready(function() {
     equals(_("Hello\nWorld").lines().length, 2);
     equals(_("Hello World").lines().length, 1);
     equals(_(123).lines().length, 1);
-    equals(_('').lines().length, 0);
+    equals(_('').lines().length, 1);
     equals(_(null).lines().length, 0);
     equals(_(undefined).lines().length, 0);
   });
