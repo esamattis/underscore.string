@@ -38,6 +38,11 @@ $(document).ready(function() {
     equals(_.levenshtein('seven', 'eight'), 5);
     equals(_.levenshtein('123', 123), 0);
     equals(_.levenshtein(321, '321'), 0);
+    equals(_.levenshtein('lol', null), 3);
+    equals(_.levenshtein('lol'), 3);
+    equals(_.levenshtein(null, 'lol'), 3);
+    equals(_.levenshtein(undefined, 'lol'), 3);
+    equals(_.levenshtein(), 0);
   });
 
   test('Strings: ltrim', function() {
