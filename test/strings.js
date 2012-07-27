@@ -492,20 +492,21 @@ $(document).ready(function() {
   });
 
   test('String: numberFormat', function() {
-	equals(_.numberFormat(9000), '9,000');
-	equals(_.numberFormat(9000, 0), '9,000');
-	equals(_.numberFormat(90000, 2), '90,000.00');
-	equals(_.numberFormat(1000.754), '1,001');
-	equals(_.numberFormat(1000.754, 2), '1,000.75');
-	equals(_.numberFormat(1000.754, 0, ',', '.'), '1.001');
-	equals(_.numberFormat(1000.754, 2, ',', '.'), '1.000,75');
-	equals(_.numberFormat(1000000.754, 2, ',', '.'), '1.000.000,75');
-	equals(_.numberFormat(1000000000), '1,000,000,000');
-	equals(_.numberFormat('not number'), '');
-  equals(_.numberFormat(), '');
-  equals(_.numberFormat(null, '.', ','), '');
-  equals(_.numberFormat(undefined, '.', ','), '');
-	equals(_.numberFormat(new Number(5000)), '5,000');
+    equals(_.numberFormat(9000), '9,000');
+    equals(_.numberFormat(9000, 0), '9,000');
+    equals(_.numberFormat(90000, 2), '90,000.00');
+    equals(_.numberFormat(1000.754), '1,001');
+    equals(_.numberFormat(1000.754, 2), '1,000.75');
+    equals(_.numberFormat(1000.754, 0, ',', '.'), '1.001');
+    equals(_.numberFormat(1000.754, 2, ',', '.'), '1.000,75');
+    equals(_.numberFormat(1000000.754, 2, ',', '.'), '1.000.000,75');
+    equals(_.numberFormat(1000000000), '1,000,000,000');
+    equals(_.numberFormat(100000000), '100,000,000');
+    equals(_.numberFormat('not number'), '');
+    equals(_.numberFormat(), '');
+    equals(_.numberFormat(null, '.', ','), '');
+    equals(_.numberFormat(undefined, '.', ','), '');
+    equals(_.numberFormat(new Number(5000)), '5,000');
   });
 
   test('String: strRight', function() {

@@ -68,6 +68,19 @@ _.str.capitalize('epeli')
 => "Epeli"
 ```
 
+**numberFormat** _.numberFormat(number, [ decimals=0, decimalSeparator='.', orderSeparator=','])
+
+Formats the numbers.
+
+```javascript
+_.numberFormat(1000, 2)
+=> "1,000.00"
+
+_.numberFormat(123456789.123, 5, '.', ',')
+=> "123,456,789.12300"
+```
+
+
 **levenshtein** _.levenshtein(string1, string2)
 
 Calculates [Levenshtein distance][ld] between two strings.
