@@ -536,7 +536,7 @@ _.toSentence(['jQuery', 'Mootools', 'Prototype'], ', ', ' unt ')
 => 'jQuery, Mootools unt Prototype';
 ```
 
-**toSentenceOxford**  _.toSentenceOxford(array, [delimiter, lastDelimiter])
+**toSentenceSerial**  _.toSentenceSerial(array, [delimiter, lastDelimiter])
 
 The same as `toSentence`, but adjusts delimeters to use [Serial comma](http://en.wikipedia.org/wiki/Serial_comma).
 
