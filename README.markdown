@@ -701,17 +701,8 @@ or create alias `_.includes = _.str.include` and all your code will work fine.
 Otherwise changes will be rejected.
 
 ## Contributors list ##
+[Can be found here](https://github.com/epeli/underscore.string/graphs/contributors).
 
-*  Esa-Matti Suuronen <esa-matti@suuronen.org> (<http://esa-matti.suuronen.org/>),
-*  Edward Tsech <edtsech@gmail.com>,
-*  Sasha Koss <kossnocorp@gmail.com> (<http://koss.nocorp.me/>),
-*  Vladimir Dronnikov <dronnikov@gmail.com>,
-*  Pete Kruckenberg (<https://github.com/kruckenb>),
-*  Paul Chavard <paul@chavard.net> (<http://tchak.net>),
-*  Ed Finkler <coj@funkatron.com> (<http://funkatron.com>)
-*  Pavel Pravosud <pavel@pravosud.com> (<https://github.com/rwz>)
-*  Anton Lindqvist <anton@qvister.se> (<http://qvister.se>)
-*  Dmitry Karpunin <koderfunk@gmail.com> (<https://github.com/KODerFunk>)
 
 ## Licence ##
 
