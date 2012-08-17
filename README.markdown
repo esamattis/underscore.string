@@ -382,12 +382,12 @@ _('Hello').prune(10)
 => 'Hello'
 ```
 
-**words** _.words(str, delimiter=" ")
+**words** _.words(str, delimiter=/\s+/)
 
-Split string by delimiter (String or RegExp), ' ' by default.
+Split string by delimiter (String or RegExp), /\s+/ by default.
 
 ```javascript
-_.words("I love you")
+_.words("   I   love   you   ")
 => ["I","love","you"]
 
 _.words("I_love_you", "_")
@@ -395,6 +395,9 @@ _.words("I_love_you", "_")
 
 _.words("I-love-you", /-/)
 => ["I","love","you"]
+
+_.words("   ")
+=> []
 ```
 
 **sprintf** _.sprintf(string format, *arguments)
@@ -693,6 +696,7 @@ Otherwise changes will be rejected.
 *  Ed Finkler <coj@funkatron.com> (<http://funkatron.com>)
 *  Pavel Pravosud <rwz@duckroll.ru>
 *  Anton Lindqvist <anton@qvister.se> (<http://qvister.se>)
+*  Dmitry Karpunin <koderfunk@gmail.com> (<https://github.com/KODerFunk>)
 
 ## Licence ##
 
