@@ -6,12 +6,12 @@
   "contributors": [
     "Esa-Matti Suuronen <esa-matti@suuronen.org> (http://esa-matti.suuronen.org/)",
     "Edward Tsech <edtsech@gmail.com>",
+    "Pavel Pravosud <pavel@pravosud.com> (<https://github.com/rwz>)",
     "Sasha Koss <kossnocorp@gmail.com> (http://koss.nocorp.me/)",
     "Vladimir Dronnikov <dronnikov@gmail.com>",
     "Pete Kruckenberg (<https://github.com/kruckenb>)",
     "Paul Chavard <paul@chavard.net> (<http://tchak.net>)",
-    "Ed Finkler <coj@funkatron.com> (<http://funkatron.com>)",
-    "Pavel Pravosud <rwz@duckroll.ru>"
+    "Ed Finkler <coj@funkatron.com> (<http://funkatron.com>)"
   ],
   "keywords": [
     "underscore",
