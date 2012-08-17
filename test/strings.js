@@ -576,6 +576,12 @@ $(document).ready(function() {
     equals(_.toSentence(['jQuery', 'MooTools', 'Prototype'], ',', ' or '), 'jQuery,MooTools or Prototype', 'handles custom separators');
   });
 
+  test('Strings: toSentenceSerial', function (){
+    equals(_.toSentenceSerial(['jQuery']), 'jQuery');
+    equals(_.toSentenceSerial(['jQuery', 'MooTools']), 'jQuery and MooTools');
+    equals(_.toSentenceSerial(['jQuery', 'MooTools', 'Prototype']), 'jQuery, MooTools, and Prototype');
+  });
+
   test('Strings: slugify', function() {
     equals(_('Jack & Jill like numbers 1,2,3 and 4 and silly characters ?%.$!/').slugify(), 'jack-jill-like-numbers-123-and-4-and-silly-characters');
     equals(_('Un éléphant à l\'orée du bois').slugify(), 'un-elephant-a-loree-du-bois');

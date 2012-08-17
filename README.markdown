@@ -536,6 +536,21 @@ _.toSentence(['jQuery', 'Mootools', 'Prototype'], ', ', ' unt ')
 => 'jQuery, Mootools unt Prototype';
 ```
 
+**toSentenceOxford**  _.toSentenceOxford(array, [delimiter, lastDelimiter])
+
+The same as `toSentence`, but adjusts delimeters to use [Serial comma](http://en.wikipedia.org/wiki/Serial_comma).
+
+```javascript
+_.toSentenceSerial(['jQuery', 'Mootools'])
+=> 'Mootools and Prototype';
+
+_.toSentenceSerial(['jQuery', 'Mootools', 'Prototype'])
+=> 'jQuery, Mootools, and Prototype'
+
+_.toSentenceSerial(['jQuery', 'Mootools', 'Prototype'], ', ', ' unt ');
+=> 'jQuery, Mootools, unt Prototype';
+```
+
 **repeat** _.repeat(string, count, [separator])
 
 Repeats a string count times.
