@@ -11,7 +11,8 @@ $(document).ready(function() {
     equals(_('foo ').trim(), 'foo');
     equals(_(' foo ').trim(), 'foo');
     equals(_('    foo     ').trim(), 'foo');
-    equals(_('    foo     ', ' ').trim(), 'foo', 'Manually set whitespace');
+    equals(_('    foo     ').trim(' '), 'foo', 'Manually set whitespace');
+    equals(_('\t    foo \t  ').trim(/\s/), 'foo', 'Manually set RegExp /\\s+/');
 
     equals(_('ffoo').trim('f'), 'oo');
     equals(_('ooff').trim('f'), 'oo');
@@ -390,14 +391,16 @@ $(document).ready(function() {
   });
 
   test('String: words', function() {
-    equals(_('I love you!').words().length, 3);
-    equals(_(' I    love   you!  ').words().length, 3);
-    equals(_('I_love_you!').words('_').length, 3);
-    equals(_('I-love-you!').words(/-/).length, 3);
-    equals(_(123).words().length, 1);
-    equals(_('').words().length, 0);
-    equals(_(null).words().length, 0);
-    equals(_(undefined).words().length, 0);
+    deepEqual(_('I love you!').words(), ['I', 'love', 'you!']);
+    deepEqual(_(' I    love   you!  ').words(), ['I', 'love', 'you!']);
+    deepEqual(_('I_love_you!').words('_'), ['I', 'love', 'you!']);
+    deepEqual(_('I-love-you!').words(/-/), ['I', 'love', 'you!']);
+    deepEqual(_(123).words(), ['123'], '123 number has one word "123".');
+    deepEqual(_(0).words(), ['0'], 'Zero number has one word "0".');
+    deepEqual(_('').words(), [], 'Empty strings hasn\'t words.');
+    deepEqual(_('   ').words(), [], 'Clean strings hasn\'t words.');
+    deepEqual(_(null).words(), [], '"null" hasn\'t words.');
+    deepEqual(_(undefined).words(), [], '"undefined" hasn\'t words.');
   });
 
   test('String: chars', function() {
