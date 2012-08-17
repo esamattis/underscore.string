@@ -397,10 +397,10 @@ $(document).ready(function() {
     deepEqual(_('I-love-you!').words(/-/), ['I', 'love', 'you!']);
     deepEqual(_(123).words(), ['123'], '123 number has one word "123".');
     deepEqual(_(0).words(), ['0'], 'Zero number has one word "0".');
-    deepEqual(_('').words(), [], 'Empty strings hasn\'t words.');
-    deepEqual(_('   ').words(), [], 'Clean strings hasn\'t words.');
-    deepEqual(_(null).words(), [], '"null" hasn\'t words.');
-    deepEqual(_(undefined).words(), [], '"undefined" hasn\'t words.');
+    deepEqual(_('').words(), [], 'Empty strings has no words.');
+    deepEqual(_('   ').words(), [], 'Blank strings has no words.');
+    deepEqual(_(null).words(), [], 'null has no words.');
+    deepEqual(_(undefined).words(), [], 'undefined has no words.');
   });
 
   test('String: chars', function() {
