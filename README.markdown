@@ -630,6 +630,15 @@ _ = _.string
 
 ## Changelog ##
 
+### 2.3.0 ###
+
+* Added `numberformat` method
+* Added `levenshtein` method (Levenshtein distance calculation)
+* Added `swapCase` method
+* Changed default behavior of `words` method
+* Added `toSentenceSerial` method
+* Added `surround` and `quote` methods
+
 ### 2.2.0 ###
 
 * Capitalize method behavior changed
