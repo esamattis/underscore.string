@@ -600,14 +600,6 @@ _.slugify("Un éléphant à l'orée du bois")
 
 Any suggestions or bug reports are welcome. Just email me or more preferably open an issue.
 
-## Changelog ##
-
-### 2.0.0 ###
-
-* Added prune, humanize functions
-* Added _.string (_.str) namespace for Underscore.string library
-* Removed includes function
-
 #### Problems
 
 We lose two things for `include` and `reverse` methods from `_.string`:
@@ -635,6 +627,9 @@ But of course you can just reassign `_` variable with `_.string`
 ```javascript
 _ = _.string
 ```
+
+## Changelog ##
+
 ### 2.2.0 ###
 
 * Capitalize method behavior changed
@@ -653,6 +648,10 @@ _ = _.string
 * Lots of speed optimizations
 
 ### 2.0.0 ###
+
+* Added prune, humanize functions
+* Added _.string (_.str) namespace for Underscore.string library
+* Removed includes function
 
 For upgrading to this version you need to mix in Underscore.string library to Underscore object:
 
