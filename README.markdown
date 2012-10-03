@@ -515,6 +515,16 @@ _('This_is_a_test_string').strLeftBack('_')
 => "This_is_a_test";
 ```
 
+**strTr**  _.strTr(string, map)
+
+Replace tokens in a string with the corresponding values in the given map.
+Tokens in the string must be in the %{token} form.
+
+```javascript
+_.strTr('hello %{name}', {name: "world"})
+=> "hello world";
+```
+
 **stripTags**
 
 Removes all html tags from string.

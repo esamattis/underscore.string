@@ -561,6 +561,13 @@ $(document).ready(function() {
     equals(_(123454321).strLeftBack(3), '123454');
   });
 
+  test('Strings: strTr', function() {
+    equals(_.strTr('Hello %{name}!', {name : "World"}), 'Hello World!');
+    equals(_.strTr('Hello %{name}! Welcome to %{location}.', {name : "World", location : "Universe"}), 'Hello World! Welcome to Universe.');
+    equals(_.strTr('Hello %{name}!', {}), 'Hello !');
+    equals(_.strTr('Hello %{name}!', {foo: "bar"}), 'Hello !');
+  });
+
   test('Strings: stripTags', function() {
     equals(_('a <a href="#">link</a>').stripTags(), 'a link');
     equals(_('a <a href="#">link</a><script>alert("hello world!")</scr'+'ipt>').stripTags(), 'a linkalert("hello world!")');
@@ -617,7 +624,6 @@ $(document).ready(function() {
     equals(_.surround('foo', null), 'foo');
   });
 
-
   test('Strings: repeat', function() {
     equals(_.repeat('foo'), '');
     equals(_.repeat('foo', 3), 'foofoofoo');
@@ -629,5 +635,4 @@ $(document).ready(function() {
     equals(_.repeat(null, 2), '');
     equals(_.repeat(undefined, 2), '');
   });
-
 });
