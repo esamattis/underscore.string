@@ -2,7 +2,7 @@ $(document).ready(function() {
 
   module("Objects");
 
-  test("objects: keys", function() {
+  test("keys", function() {
     equal(_.keys({one : 1, two : 2}).join(', '), 'one, two', 'can extract the keys from an object');
     // the test above is not safe because it relies on for-in enumeration order
     var a = []; a[1] = 0;
@@ -14,11 +14,26 @@ $(document).ready(function() {
     raises(function() { _.keys(true); }, TypeError, 'throws an error for boolean primitives');
   });
 
-  test("objects: values", function() {
-    equal(_.values({one : 1, two : 2}).join(', '), '1, 2', 'can extract the values from an object');
+  test("values", function() {
+    equal(_.values({one: 1, two: 2}).join(', '), '1, 2', 'can extract the values from an object');
+    equal(_.values({one: 1, two: 2, length: 3}).join(', '), '1, 2, 3', '... even when one of them is "length"');
   });
 
-  test("objects: functions", function() {
+  test("pairs", function() {
+    deepEqual(_.pairs({one: 1, two: 2}), [['one', 1], ['two', 2]], 'can convert an object into pairs');
+    deepEqual(_.pairs({one: 1, two: 2, length: 3}), [['one', 1], ['two', 2], ['length', 3]], '... even when one of them is "length"');
+  });
+
+  test("invert", function() {
+    var obj = {first: 'Moe', second: 'Larry', third: 'Curly'};
+    equal(_.keys(_.invert(obj)).join(' '), 'Moe Larry Curly', 'can invert an object');
+    ok(_.isEqual(_.invert(_.invert(obj)), obj), 'two inverts gets you back where you started');
+
+    var obj = {length: 3};
+    ok(_.invert(obj)['3'] == 'length', 'can invert an object with "length"')
+  });
+
+  test("functions", function() {
     var obj = {a : 'dash', b : _.map, c : (/yo/), d : _.reduce};
     ok(_.isEqual(['b', 'd'], _.functions(obj)), 'can grab the function names of any passed-in object');
 
@@ -27,7 +42,7 @@ $(document).ready(function() {
     equal(_.functions(new Animal).join(''), 'run', 'also looks up functions on the prototype');
   });
 
-  test("objects: extend", function() {
+  test("extend", function() {
     var result;
     equal(_.extend({}, {a:'b'}).a, 'b', 'can extend an object with the attributes of another');
     equal(_.extend({a:'x'}, {a:'b'}).a, 'b', 'properties in source override destination');
@@ -40,7 +55,7 @@ $(document).ready(function() {
     equal(_.keys(result).join(''), 'ab', 'extend does not copy undefined values');
   });
 
-  test("objects: pick", function() {
+  test("pick", function() {
     var result;
     result = _.pick({a:1, b:2, c:3}, 'a', 'c');
     ok(_.isEqual(result, {a:1, c:3}), 'can restrict properties to those named');
@@ -48,9 +63,27 @@ $(document).ready(function() {
     ok(_.isEqual(result, {b:2, c:3}), 'can restrict properties to those named in an array');
     result = _.pick({a:1, b:2, c:3}, ['a'], 'b');
     ok(_.isEqual(result, {a:1, b:2}), 'can restrict properties to those named in mixed args');
+
+    var Obj = function(){};
+    Obj.prototype = {a: 1, b: 2, c: 3};
+    ok(_.isEqual(_.pick(new Obj, 'a', 'c'), {a:1, c: 3}), 'include prototype props');
   });
 
-  test("objects: defaults", function() {
+  test("omit", function() {
+    var result;
+    result = _.omit({a:1, b:2, c:3}, 'b');
+    ok(_.isEqual(result, {a:1, c:3}), 'can omit a single named property');
+    result = _.omit({a:1, b:2, c:3}, 'a', 'c');
+    ok(_.isEqual(result, {b:2}), 'can omit several named properties');
+    result = _.omit({a:1, b:2, c:3}, ['b', 'c']);
+    ok(_.isEqual(result, {a:1}), 'can omit properties named in an array');
+
+    var Obj = function(){};
+    Obj.prototype = {a: 1, b: 2, c: 3};
+    ok(_.isEqual(_.omit(new Obj, 'b'), {a:1, c: 3}), 'include prototype props');
+  });
+
+  test("defaults", function() {
     var result;
     var options = {zero: 0, one: 1, empty: "", nan: NaN, string: "string"};
 
@@ -65,7 +98,7 @@ $(document).ready(function() {
     equal(options.word, "word", 'new value is added, first one wins');
   });
 
-  test("objects: clone", function() {
+  test("clone", function() {
     var moe = {name : 'moe', lucky : [13, 27, 34]};
     var clone = _.clone(moe);
     equal(clone.name, 'moe', 'the clone as the attributes of the original');
@@ -81,7 +114,7 @@ $(document).ready(function() {
     equal(_.clone(null), null, 'non objects should not be changed by clone');
   });
 
-  test("objects: isEqual", function() {
+  test("isEqual", function() {
     function First() {
       this.value = 1;
     }
@@ -200,14 +233,6 @@ $(document).ready(function() {
     ok(_.isEqual(Array(3), Array(3)), "Sparse arrays of identical lengths are equal");
     ok(!_.isEqual(Array(3), Array(6)), "Sparse arrays of different lengths are not equal when both are empty");
 
-    // According to the Microsoft deviations spec, section 2.1.26, JScript 5.x treats `undefined`
-    // elements in arrays as elisions. Thus, sparse arrays and dense arrays containing `undefined`
-    // values are equivalent.
-    if (0 in [undefined]) {
-      ok(!_.isEqual(Array(3), [undefined, undefined, undefined]), "Sparse and dense arrays are not equal");
-      ok(!_.isEqual([undefined, undefined, undefined], Array(3)), "Commutative equality is implemented for sparse and dense arrays");
-    }
-
     // Simple objects.
     ok(_.isEqual({a: "Curly", b: 1, c: true}, {a: "Curly", b: 1, c: true}), "Objects containing identical primitives are equal");
     ok(_.isEqual({a: /Curly/g, b: new Date(2009, 11, 13)}, {a: /Curly/g, b: new Date(2009, 11, 13)}), "Objects containing equivalent members are equal");
@@ -265,6 +290,12 @@ $(document).ready(function() {
     b.push("Curly");
     ok(!_.isEqual(a, b), "Arrays containing circular references and different properties are not equal");
 
+    // More circular arrays #767.
+    a = ["everything is checked but", "this", "is not"];
+    a[1] = a;
+    b = ["everything is checked but", ["this", "array"], "is not"];
+    ok(!_.isEqual(a, b), "Comparison of circular references with non-circular references are not equal");
+
     // Circular Objects.
     a = {abc: null};
     b = {abc: null};
@@ -277,6 +308,12 @@ $(document).ready(function() {
     a.def = new Number(75);
     b.def = new Number(63);
     ok(!_.isEqual(a, b), "Objects containing circular references and different properties are not equal");
+
+    // More circular objects #767.
+    a = {everything: "is checked", but: "this", is: "not"};
+    a.but = a;
+    b = {everything: "is checked", but: {that:"object"}, is: "not"};
+    ok(!_.isEqual(a, b), "Comparison of circular references with non-circular object references are not equal");
 
     // Cyclic Structures.
     a = [{abc: null}];
@@ -311,60 +348,11 @@ $(document).ready(function() {
     ok(!_.isEqual(isEqualObj, {}), 'Objects that do not implement equivalent `isEqual` methods are not equal');
     ok(!_.isEqual({}, isEqualObj), 'Commutative equality is implemented for objects with different `isEqual` methods');
 
-    // Custom `isEqual` methods - comparing different types
-    LocalizedString = (function() {
-      function LocalizedString(id) { this.id = id; this.string = (this.id===10)? 'Bonjour': ''; }
-      LocalizedString.prototype.isEqual = function(that) {
-        if (_.isString(that)) return this.string == that;
-        else if (that instanceof LocalizedString) return this.id == that.id;
-        return false;
-      };
-      return LocalizedString;
-    })();
-    var localized_string1 = new LocalizedString(10), localized_string2 = new LocalizedString(10), localized_string3 = new LocalizedString(11);
-    ok(_.isEqual(localized_string1, localized_string2), 'comparing same typed instances with same ids');
-    ok(!_.isEqual(localized_string1, localized_string3), 'comparing same typed instances with different ids');
-    ok(_.isEqual(localized_string1, 'Bonjour'), 'comparing different typed instances with same values');
-    ok(_.isEqual('Bonjour', localized_string1), 'comparing different typed instances with same values');
-    ok(!_.isEqual('Bonjour', localized_string3), 'comparing two localized strings with different ids');
-    ok(!_.isEqual(localized_string1, 'Au revoir'), 'comparing different typed instances with different values');
-    ok(!_.isEqual('Au revoir', localized_string1), 'comparing different typed instances with different values');
-
-    // Custom `isEqual` methods - comparing with serialized data
-    Date.prototype.toJSON = function() {
-      return {
-        _type:'Date',
-        year:this.getUTCFullYear(),
-        month:this.getUTCMonth(),
-        day:this.getUTCDate(),
-        hours:this.getUTCHours(),
-        minutes:this.getUTCMinutes(),
-        seconds:this.getUTCSeconds()
-      };
-    };
-    Date.prototype.isEqual = function(that) {
-      var this_date_components = this.toJSON();
-      var that_date_components = (that instanceof Date) ? that.toJSON() : that;
-      delete this_date_components['_type']; delete that_date_components['_type'];
-      return _.isEqual(this_date_components, that_date_components);
-    };
-
-    var date = new Date();
-    var date_json = {
-      _type:'Date',
-      year:date.getUTCFullYear(),
-      month:date.getUTCMonth(),
-      day:date.getUTCDate(),
-      hours:date.getUTCHours(),
-      minutes:date.getUTCMinutes(),
-      seconds:date.getUTCSeconds()
-    };
-
-    ok(_.isEqual(date_json, date), 'serialized date matches date');
-    ok(_.isEqual(date, date_json), 'date matches serialized date');
+    // Objects from another frame.
+    ok(_.isEqual({}, iObject));
   });
 
-  test("objects: isEmpty", function() {
+  test("isEmpty", function() {
     ok(!_([1]).isEmpty(), '[1] is not empty');
     ok(_.isEmpty([]), '[] is empty');
     ok(!_.isEmpty({one : 1}), '{one : 1} is not empty');
@@ -398,17 +386,18 @@ $(document).ready(function() {
       parent.iNull      = null;\
       parent.iBoolean   = new Boolean(false);\
       parent.iUndefined = undefined;\
+      parent.iObject     = {};\
     </script>"
   );
   iDoc.close();
 
-  test("objects: isElement", function() {
+  test("isElement", function() {
     ok(!_.isElement('div'), 'strings are not dom elements');
     ok(_.isElement($('html')[0]), 'the html tag is a DOM element');
     ok(_.isElement(iElement), 'even from another frame');
   });
 
-  test("objects: isArguments", function() {
+  test("isArguments", function() {
     var args = (function(){ return arguments; })(1, 2, 3);
     ok(!_.isArguments('string'), 'a string is not an arguments object');
     ok(!_.isArguments(_.isArguments), 'a function is not an arguments object');
@@ -418,7 +407,7 @@ $(document).ready(function() {
     ok(_.isArguments(iArguments), 'even from another frame');
   });
 
-  test("objects: isObject", function() {
+  test("isObject", function() {
     ok(_.isObject(arguments), 'the arguments object is object');
     ok(_.isObject([1, 2, 3]), 'and arrays');
     ok(_.isObject($('html')[0]), 'and DOM element');
@@ -433,19 +422,19 @@ $(document).ready(function() {
     ok(_.isObject(new String('string')), 'but new String()');
   });
 
-  test("objects: isArray", function() {
+  test("isArray", function() {
     ok(!_.isArray(arguments), 'the arguments object is not an array');
     ok(_.isArray([1, 2, 3]), 'but arrays are');
     ok(_.isArray(iArray), 'even from another frame');
   });
 
-  test("objects: isString", function() {
+  test("isString", function() {
     ok(!_.isString(document.body), 'the document body is not a string');
     ok(_.isString([1, 2, 3].join(', ')), 'but strings are');
     ok(_.isString(iString), 'even from another frame');
   });
 
-  test("objects: isNumber", function() {
+  test("isNumber", function() {
     ok(!_.isNumber('string'), 'a string is not a number');
     ok(!_.isNumber(arguments), 'the arguments object is not a number');
     ok(!_.isNumber(undefined), 'undefined is not a number');
@@ -456,7 +445,7 @@ $(document).ready(function() {
     ok(!_.isNumber('1'), 'numeric strings are not numbers');
   });
 
-  test("objects: isBoolean", function() {
+  test("isBoolean", function() {
     ok(!_.isBoolean(2), 'a number is not a boolean');
     ok(!_.isBoolean("string"), 'a string is not a boolean');
     ok(!_.isBoolean("false"), 'the string "false" is not a boolean');
@@ -470,27 +459,27 @@ $(document).ready(function() {
     ok(_.isBoolean(iBoolean), 'even from another frame');
   });
 
-  test("objects: isFunction", function() {
+  test("isFunction", function() {
     ok(!_.isFunction([1, 2, 3]), 'arrays are not functions');
     ok(!_.isFunction('moe'), 'strings are not functions');
     ok(_.isFunction(_.isFunction), 'but functions are');
     ok(_.isFunction(iFunction), 'even from another frame');
   });
 
-  test("objects: isDate", function() {
+  test("isDate", function() {
     ok(!_.isDate(100), 'numbers are not dates');
     ok(!_.isDate({}), 'objects are not dates');
     ok(_.isDate(new Date()), 'but dates are');
     ok(_.isDate(iDate), 'even from another frame');
   });
 
-  test("objects: isRegExp", function() {
+  test("isRegExp", function() {
     ok(!_.isRegExp(_.identity), 'functions are not RegExps');
     ok(_.isRegExp(/identity/), 'but RegExps are');
     ok(_.isRegExp(iRegExp), 'even from another frame');
   });
 
-  test("objects: isFinite", function() {
+  test("isFinite", function() {
     ok(!_.isFinite(undefined), 'undefined is not Finite');
     ok(!_.isFinite(null), 'null is not Finite');
     ok(!_.isFinite(NaN), 'NaN is not Finite');
@@ -504,22 +493,23 @@ $(document).ready(function() {
     ok(_.isFinite(-12.44), 'Floats are Finite');
   });
 
-  test("objects: isNaN", function() {
+  test("isNaN", function() {
     ok(!_.isNaN(undefined), 'undefined is not NaN');
     ok(!_.isNaN(null), 'null is not NaN');
     ok(!_.isNaN(0), '0 is not NaN');
     ok(_.isNaN(NaN), 'but NaN is');
     ok(_.isNaN(iNaN), 'even from another frame');
+    ok(_.isNaN(new Number(NaN)), 'wrapped NaN is still NaN');
   });
 
-  test("objects: isNull", function() {
+  test("isNull", function() {
     ok(!_.isNull(undefined), 'undefined is not null');
     ok(!_.isNull(NaN), 'NaN is not null');
     ok(_.isNull(null), 'but null is');
     ok(_.isNull(iNull), 'even from another frame');
   });
 
-  test("objects: isUndefined", function() {
+  test("isUndefined", function() {
     ok(!_.isUndefined(1), 'numbers are defined');
     ok(!_.isUndefined(null), 'null is defined');
     ok(!_.isUndefined(false), 'false is defined');
@@ -530,7 +520,7 @@ $(document).ready(function() {
   });
 
   if (window.ActiveXObject) {
-    test("objects: IE host objects", function() {
+    test("IE host objects", function() {
       var xml = new ActiveXObject("Msxml2.DOMDocument.3.0");
       ok(!_.isNumber(xml));
       ok(!_.isBoolean(xml));
@@ -541,7 +531,7 @@ $(document).ready(function() {
     });
   }
 
-  test("objects: tap", function() {
+  test("tap", function() {
     var intercepted = null;
     var interceptor = function(obj) { intercepted = obj; };
     var returned = _.tap(1, interceptor);

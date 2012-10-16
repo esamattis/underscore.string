@@ -4,6 +4,7 @@
   for (var i=0; i<1000; i++) numbers.push(i);
   var objects = _.map(numbers, function(n){ return {num : n}; });
   var randomized = _.sortBy(numbers, function(){ return Math.random(); });
+  var deep = _.map(_.range(100), function() { return _.range(1000); });
 
   JSLitmus.test('_.each()', function() {
     var timesTwo = [];
@@ -59,12 +60,16 @@
     return _.values(objects);
   });
 
-  JSLitmus.test('_.intersect()', function() {
-    return _.intersect(numbers, randomized);
+  JSLitmus.test('_.intersection()', function() {
+    return _.intersection(numbers, randomized);
   });
 
   JSLitmus.test('_.range()', function() {
     return _.range(1000);
+  });
+
+  JSLitmus.test('_.flatten()', function() {
+    return _.flatten(deep);
   });
 
 })();

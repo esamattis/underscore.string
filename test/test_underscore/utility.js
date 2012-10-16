@@ -14,26 +14,24 @@ $(document).ready(function() {
 
   });
 
-  test("utility: noConflict", function() {
-    var underscore = _.noConflict();
-    ok(underscore.isUndefined(_), "The '_' variable has been returned to its previous state.");
-    var intersection = underscore.intersect([-1, 0, 1, 2], [1, 2, 3, 4]);
-    equal(intersection.join(', '), '1, 2', 'but the intersection function still works');
-    window._ = underscore;
+  test("#750 - Return _ instance.", 2, function() {
+    var instance = _([]);
+    ok(_(instance) === instance);
+    ok(new _(instance) === instance);
   });
 
-  test("utility: identity", function() {
+  test("identity", function() {
     var moe = {name : 'moe'};
     equal(_.identity(moe), moe, 'moe is the same as his identity');
   });
 
-  test("utility: uniqueId", function() {
+  test("uniqueId", function() {
     var ids = [], i = 0;
     while(i++ < 100) ids.push(_.uniqueId());
     equal(_.uniq(ids).length, ids.length, 'can generate a globally-unique stream of ids');
   });
 
-  test("utility: times", function() {
+  test("times", function() {
     var vals = [];
     _.times(3, function (i) { vals.push(i); });
     ok(_.isEqual(vals, [0,1,2]), "is 0 indexed");
@@ -43,7 +41,7 @@ $(document).ready(function() {
     ok(_.isEqual(vals, [0,1,2]), "works as a wrapper");
   });
 
-  test("utility: mixin", function() {
+  test("mixin", function() {
     _.mixin({
       myReverse: function(string) {
         return string.split('').reverse().join('');
@@ -53,12 +51,21 @@ $(document).ready(function() {
     equal(_('champ').myReverse(), 'pmahc', 'mixed in a function to the OOP wrapper');
   });
 
-  test("utility: _.escape", function() {
+  test("_.escape", function() {
     equal(_.escape("Curly & Moe"), "Curly &amp; Moe");
     equal(_.escape("Curly &amp; Moe"), "Curly &amp;amp; Moe");
+    equal(_.escape(null), '');
   });
 
-  test("utility: template", function() {
+  test("_.unescape", function() {
+    var string = "Curly & Moe";
+    equal(_.unescape("Curly &amp; Moe"), string);
+    equal(_.unescape("Curly &amp;amp; Moe"), "Curly &amp; Moe");
+    equal(_.unescape(null), '');
+    equal(_.unescape(_.escape(string)), string);
+  });
+
+  test("template", function() {
     var basicTemplate = _.template("<%= thing %> is gettin' on my noives!");
     var result = basicTemplate({thing : 'This'});
     equal(result, "This is gettin' on my noives!", 'can do basic attribute interpolation');
@@ -164,6 +171,14 @@ $(document).ready(function() {
     equal(templateWithNull({planet : "world"}), "a null undefined world", "can handle missing escape and evaluate settings");
   });
 
+  test('_.template provides the generated function source, when a SyntaxError occurs', function() {
+    try {
+      _.template('<b><%= if %></b>');
+    } catch (e) {
+      ok(e.source.indexOf('( if )') > 0);
+    }
+  });
+
   test('_.template handles \\u2028 & \\u2029', function() {
     var tmpl = _.template('<p>\u2028<%= "\\u2028\\u2029" %>\u2029</p>');
     strictEqual(tmpl(), '<p>\u2028\u2028\u2029\u2029</p>');
@@ -181,15 +196,54 @@ $(document).ready(function() {
   test('_.templateSettings.variable', function() {
     var s = '<%=data.x%>';
     var data = {x: 'x'};
-    strictEqual(_.template(s, data, {variable: 'data'}), 'x')
+    strictEqual(_.template(s, data, {variable: 'data'}), 'x');
     _.templateSettings.variable = 'data';
-    strictEqual(_.template(s)(data), 'x')
+    strictEqual(_.template(s)(data), 'x');
   });
 
   test('#547 - _.templateSettings is unchanged by custom settings.', function() {
     ok(!_.templateSettings.variable);
     _.template('', {}, {variable: 'x'});
     ok(!_.templateSettings.variable);
+  });
+
+  test('#556 - undefined template variables.', function() {
+    var template = _.template('<%=x%>');
+    strictEqual(template({x: null}), '');
+    strictEqual(template({x: undefined}), '');
+
+    var templateEscaped = _.template('<%-x%>');
+    strictEqual(templateEscaped({x: null}), '');
+    strictEqual(templateEscaped({x: undefined}), '');
+
+    var templateWithProperty = _.template('<%=x.foo%>');
+    strictEqual(templateWithProperty({x: {} }), '');
+    strictEqual(templateWithProperty({x: {} }), '');
+
+    var templateWithPropertyEscaped = _.template('<%-x.foo%>');
+    strictEqual(templateWithPropertyEscaped({x: {} }), '');
+    strictEqual(templateWithPropertyEscaped({x: {} }), '');
+  });
+
+  test('interpolate evaluates code only once.', 2, function() {
+    var count = 0;
+    var template = _.template('<%= f() %>');
+    template({f: function(){ ok(!(count++)); }});
+
+    var countEscaped = 0;
+    var templateEscaped = _.template('<%- f() %>');
+    templateEscaped({f: function(){ ok(!(countEscaped++)); }});
+  });
+
+  test('#746 - _.template settings are not modified.', 1, function() {
+    var settings = {};
+    _.template('', null, settings);
+    deepEqual(settings, {});
+  });
+
+  test('#779 - delimeters are applied to unescaped text.', 1, function() {
+    var template = _.template('<<\nx\n>>', null, {evaluate: /<<(.*?)>>/g});
+    strictEqual(template(), '<<\nx\n>>');
   });
 
 });

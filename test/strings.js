@@ -6,145 +6,145 @@ $(document).ready(function() {
   module('String extensions');
 
   test('Strings: trim', function() {
-    equals(_.trim(123), '123', 'Non string');
-    equals(_(' foo').trim(), 'foo');
-    equals(_('foo ').trim(), 'foo');
-    equals(_(' foo ').trim(), 'foo');
-    equals(_('    foo     ').trim(), 'foo');
-    equals(_('    foo     ').trim(' '), 'foo', 'Manually set whitespace');
-    equals(_('\t    foo \t  ').trim(/\s/), 'foo', 'Manually set RegExp /\\s+/');
+    equal(_.trim(123), '123', 'Non string');
+    equal(_(' foo').trim(), 'foo');
+    equal(_('foo ').trim(), 'foo');
+    equal(_(' foo ').trim(), 'foo');
+    equal(_('    foo     ').trim(), 'foo');
+    equal(_('    foo     ').trim(' '), 'foo', 'Manually set whitespace');
+    equal(_('\t    foo \t  ').trim(/\s/), 'foo', 'Manually set RegExp /\\s+/');
 
-    equals(_('ffoo').trim('f'), 'oo');
-    equals(_('ooff').trim('f'), 'oo');
-    equals(_('ffooff').trim('f'), 'oo');
+    equal(_('ffoo').trim('f'), 'oo');
+    equal(_('ooff').trim('f'), 'oo');
+    equal(_('ffooff').trim('f'), 'oo');
 
 
-    equals(_('_-foobar-_').trim('_-'), 'foobar');
+    equal(_('_-foobar-_').trim('_-'), 'foobar');
 
-    equals(_('http://foo/').trim('/'), 'http://foo');
-    equals(_('c:\\').trim('\\'), 'c:');
+    equal(_('http://foo/').trim('/'), 'http://foo');
+    equal(_('c:\\').trim('\\'), 'c:');
 
-    equals(_(123).trim(), '123');
-    equals(_(123).trim(3), '12');
-    equals(_('').trim(), '', 'Trim empty string should return empty string');
-    equals(_(null).trim(), '', 'Trim null should return empty string');
-    equals(_(undefined).trim(), '', 'Trim undefined should return empty string');
+    equal(_(123).trim(), '123');
+    equal(_(123).trim(3), '12');
+    equal(_('').trim(), '', 'Trim empty string should return empty string');
+    equal(_(null).trim(), '', 'Trim null should return empty string');
+    equal(_(undefined).trim(), '', 'Trim undefined should return empty string');
   });
 
   test('String: levenshtein', function() {
-    equals(_.levenshtein('Godfather', 'Godfather'), 0);
-    equals(_.levenshtein('Godfather', 'Godfathe'), 1);
-    equals(_.levenshtein('Godfather', 'odfather'), 1);
-    equals(_.levenshtein('Godfather', 'Gdfthr'), 3);
-    equals(_.levenshtein('seven', 'eight'), 5);
-    equals(_.levenshtein('123', 123), 0);
-    equals(_.levenshtein(321, '321'), 0);
-    equals(_.levenshtein('lol', null), 3);
-    equals(_.levenshtein('lol'), 3);
-    equals(_.levenshtein(null, 'lol'), 3);
-    equals(_.levenshtein(undefined, 'lol'), 3);
-    equals(_.levenshtein(), 0);
+    equal(_.levenshtein('Godfather', 'Godfather'), 0);
+    equal(_.levenshtein('Godfather', 'Godfathe'), 1);
+    equal(_.levenshtein('Godfather', 'odfather'), 1);
+    equal(_.levenshtein('Godfather', 'Gdfthr'), 3);
+    equal(_.levenshtein('seven', 'eight'), 5);
+    equal(_.levenshtein('123', 123), 0);
+    equal(_.levenshtein(321, '321'), 0);
+    equal(_.levenshtein('lol', null), 3);
+    equal(_.levenshtein('lol'), 3);
+    equal(_.levenshtein(null, 'lol'), 3);
+    equal(_.levenshtein(undefined, 'lol'), 3);
+    equal(_.levenshtein(), 0);
   });
 
   test('Strings: ltrim', function() {
-    equals(_(' foo').ltrim(), 'foo');
-    equals(_('    foo').ltrim(), 'foo');
-    equals(_('foo ').ltrim(), 'foo ');
-    equals(_(' foo ').ltrim(), 'foo ');
-    equals(_('').ltrim(), '', 'ltrim empty string should return empty string');
-    equals(_(null).ltrim(), '', 'ltrim null should return empty string');
-    equals(_(undefined).ltrim(), '', 'ltrim undefined should return empty string');
+    equal(_(' foo').ltrim(), 'foo');
+    equal(_('    foo').ltrim(), 'foo');
+    equal(_('foo ').ltrim(), 'foo ');
+    equal(_(' foo ').ltrim(), 'foo ');
+    equal(_('').ltrim(), '', 'ltrim empty string should return empty string');
+    equal(_(null).ltrim(), '', 'ltrim null should return empty string');
+    equal(_(undefined).ltrim(), '', 'ltrim undefined should return empty string');
 
-    equals(_('ffoo').ltrim('f'), 'oo');
-    equals(_('ooff').ltrim('f'), 'ooff');
-    equals(_('ffooff').ltrim('f'), 'ooff');
+    equal(_('ffoo').ltrim('f'), 'oo');
+    equal(_('ooff').ltrim('f'), 'ooff');
+    equal(_('ffooff').ltrim('f'), 'ooff');
 
-    equals(_('_-foobar-_').ltrim('_-'), 'foobar-_');
+    equal(_('_-foobar-_').ltrim('_-'), 'foobar-_');
 
-    equals(_(123).ltrim(1), '23');
+    equal(_(123).ltrim(1), '23');
   });
 
   test('Strings: rtrim', function() {
-    equals(_('http://foo/').rtrim('/'), 'http://foo', 'clean trailing slash');
-    equals(_(' foo').rtrim(), ' foo');
-    equals(_('foo ').rtrim(), 'foo');
-    equals(_('foo     ').rtrim(), 'foo');
-    equals(_('foo  bar     ').rtrim(), 'foo  bar');
-    equals(_(' foo ').rtrim(), ' foo');
+    equal(_('http://foo/').rtrim('/'), 'http://foo', 'clean trailing slash');
+    equal(_(' foo').rtrim(), ' foo');
+    equal(_('foo ').rtrim(), 'foo');
+    equal(_('foo     ').rtrim(), 'foo');
+    equal(_('foo  bar     ').rtrim(), 'foo  bar');
+    equal(_(' foo ').rtrim(), ' foo');
 
-    equals(_('ffoo').rtrim('f'), 'ffoo');
-    equals(_('ooff').rtrim('f'), 'oo');
-    equals(_('ffooff').rtrim('f'), 'ffoo');
+    equal(_('ffoo').rtrim('f'), 'ffoo');
+    equal(_('ooff').rtrim('f'), 'oo');
+    equal(_('ffooff').rtrim('f'), 'ffoo');
 
-    equals(_('_-foobar-_').rtrim('_-'), '_-foobar');
+    equal(_('_-foobar-_').rtrim('_-'), '_-foobar');
 
-    equals(_(123).rtrim(3), '12');
-    equals(_('').rtrim(), '', 'rtrim empty string should return empty string');
-    equals(_(null).rtrim(), '', 'rtrim null should return empty string');
+    equal(_(123).rtrim(3), '12');
+    equal(_('').rtrim(), '', 'rtrim empty string should return empty string');
+    equal(_(null).rtrim(), '', 'rtrim null should return empty string');
   });
 
   test('Strings: capitalize', function() {
-    equals(_('fabio').capitalize(), 'Fabio', 'First letter is upper case');
-    equals(_.capitalize('fabio'), 'Fabio', 'First letter is upper case');
-    equals(_.capitalize('FOO'), 'FOO', 'Other letters unchanged');
-    equals(_(123).capitalize(), '123', 'Non string');
-    equals(_.capitalize(''), '', 'Capitalizing empty string returns empty string');
-    equals(_.capitalize(null), '', 'Capitalizing null returns empty string');
-    equals(_.capitalize(undefined), '', 'Capitalizing undefined returns empty string');
+    equal(_('fabio').capitalize(), 'Fabio', 'First letter is upper case');
+    equal(_.capitalize('fabio'), 'Fabio', 'First letter is upper case');
+    equal(_.capitalize('FOO'), 'FOO', 'Other letters unchanged');
+    equal(_(123).capitalize(), '123', 'Non string');
+    equal(_.capitalize(''), '', 'Capitalizing empty string returns empty string');
+    equal(_.capitalize(null), '', 'Capitalizing null returns empty string');
+    equal(_.capitalize(undefined), '', 'Capitalizing undefined returns empty string');
   });
 
   test('Strings: join', function() {
-    equals(_.join('', 'foo', 'bar'), 'foobar', 'basic join');
-    equals(_.join('', 1, 'foo', 2), '1foo2', 'join numbers and strings');
-    equals(_.join(' ','foo', 'bar'), 'foo bar', 'join with spaces');
-    equals(_.join('1', '2', '2'), '212', 'join number strings');
-    equals(_.join(1, 2, 2), '212', 'join numbers');
-    equals(_.join('','foo', null), 'foo', 'join null with string returns string');
-    equals(_.join(null,'foo', 'bar'), 'foobar', 'join strings with null returns string');
-    equals(_(' ').join('foo', 'bar'), 'foo bar', 'join object oriented');
+    equal(_.join('', 'foo', 'bar'), 'foobar', 'basic join');
+    equal(_.join('', 1, 'foo', 2), '1foo2', 'join numbers and strings');
+    equal(_.join(' ','foo', 'bar'), 'foo bar', 'join with spaces');
+    equal(_.join('1', '2', '2'), '212', 'join number strings');
+    equal(_.join(1, 2, 2), '212', 'join numbers');
+    equal(_.join('','foo', null), 'foo', 'join null with string returns string');
+    equal(_.join(null,'foo', 'bar'), 'foobar', 'join strings with null returns string');
+    equal(_(' ').join('foo', 'bar'), 'foo bar', 'join object oriented');
   });
 
   test('Strings: reverse', function() {
-    equals(_.str.reverse('foo'), 'oof' );
-    equals(_.str.reverse('foobar'), 'raboof' );
-    equals(_.str.reverse('foo bar'), 'rab oof' );
-    equals(_.str.reverse('saippuakauppias'), 'saippuakauppias' );
-    equals(_.str.reverse(123), '321', 'Non string');
-    equals(_.str.reverse(123.45), '54.321', 'Non string');
-    equals(_.str.reverse(''), '', 'reversing empty string returns empty string' );
-    equals(_.str.reverse(null), '', 'reversing null returns empty string' );
-    equals(_.str.reverse(undefined), '', 'reversing undefined returns empty string' );
+    equal(_.str.reverse('foo'), 'oof' );
+    equal(_.str.reverse('foobar'), 'raboof' );
+    equal(_.str.reverse('foo bar'), 'rab oof' );
+    equal(_.str.reverse('saippuakauppias'), 'saippuakauppias' );
+    equal(_.str.reverse(123), '321', 'Non string');
+    equal(_.str.reverse(123.45), '54.321', 'Non string');
+    equal(_.str.reverse(''), '', 'reversing empty string returns empty string' );
+    equal(_.str.reverse(null), '', 'reversing null returns empty string' );
+    equal(_.str.reverse(undefined), '', 'reversing undefined returns empty string' );
   });
 
   test('Strings: clean', function() {
-    equals(_(' foo    bar   ').clean(), 'foo bar');
-    equals(_(123).clean(), '123');
-    equals(_('').clean(), '', 'claning empty string returns empty string');
-    equals(_(null).clean(), '', 'claning null returns empty string');
-    equals(_(undefined).clean(), '', 'claning undefined returns empty string');
+    equal(_(' foo    bar   ').clean(), 'foo bar');
+    equal(_(123).clean(), '123');
+    equal(_('').clean(), '', 'claning empty string returns empty string');
+    equal(_(null).clean(), '', 'claning null returns empty string');
+    equal(_(undefined).clean(), '', 'claning undefined returns empty string');
   });
 
   test('Strings: sprintf', function() {
     // Should be very tested function already.  Thanks to
     // http://www.diveintojavascript.com/projects/sprintf-for-javascript
-    equals(_.sprintf('Hello %s', 'me'), 'Hello me', 'basic');
-    equals(_('Hello %s').sprintf('me'), 'Hello me', 'object');
-    equals(_('hello %s').chain().sprintf('me').capitalize().value(), 'Hello me', 'Chaining works');
-    equals(_.sprintf('%.1f', 1.22222), '1.2', 'round');
-    equals(_.sprintf('%.1f', 1.17), '1.2', 'round 2');
-    equals(_.sprintf('%(id)d - %(name)s', {id: 824, name: 'Hello World'}), '824 - Hello World', 'Named replacements work');
-    equals(_.sprintf('%(args[0].id)d - %(args[1].name)s', {args: [{id: 824}, {name: 'Hello World'}]}), '824 - Hello World', 'Named replacements with arrays work');
+    equal(_.sprintf('Hello %s', 'me'), 'Hello me', 'basic');
+    equal(_('Hello %s').sprintf('me'), 'Hello me', 'object');
+    equal(_('hello %s').chain().sprintf('me').capitalize().value(), 'Hello me', 'Chaining works');
+    equal(_.sprintf('%.1f', 1.22222), '1.2', 'round');
+    equal(_.sprintf('%.1f', 1.17), '1.2', 'round 2');
+    equal(_.sprintf('%(id)d - %(name)s', {id: 824, name: 'Hello World'}), '824 - Hello World', 'Named replacements work');
+    equal(_.sprintf('%(args[0].id)d - %(args[1].name)s', {args: [{id: 824}, {name: 'Hello World'}]}), '824 - Hello World', 'Named replacements with arrays work');
   });
 
 
   test('Strings: vsprintf', function() {
-    equals(_.vsprintf('Hello %s', ['me']), 'Hello me', 'basic');
-    equals(_('Hello %s').vsprintf(['me']), 'Hello me', 'object');
-    equals(_('hello %s').chain().vsprintf(['me']).capitalize().value(), 'Hello me', 'Chaining works');
-    equals(_.vsprintf('%.1f', [1.22222]), '1.2', 'round');
-    equals(_.vsprintf('%.1f', [1.17]), '1.2', 'round 2');
-    equals(_.vsprintf('%(id)d - %(name)s', [{id: 824, name: 'Hello World'}]), '824 - Hello World', 'Named replacement works');
-    equals(_.vsprintf('%(args[0].id)d - %(args[1].name)s', [{args: [{id: 824}, {name: 'Hello World'}]}]), '824 - Hello World', 'Named replacement with arrays works');
+    equal(_.vsprintf('Hello %s', ['me']), 'Hello me', 'basic');
+    equal(_('Hello %s').vsprintf(['me']), 'Hello me', 'object');
+    equal(_('hello %s').chain().vsprintf(['me']).capitalize().value(), 'Hello me', 'Chaining works');
+    equal(_.vsprintf('%.1f', [1.22222]), '1.2', 'round');
+    equal(_.vsprintf('%.1f', [1.17]), '1.2', 'round 2');
+    equal(_.vsprintf('%(id)d - %(name)s', [{id: 824, name: 'Hello World'}]), '824 - Hello World', 'Named replacement works');
+    equal(_.vsprintf('%(args[0].id)d - %(args[1].name)s', [{args: [{id: 824}, {name: 'Hello World'}]}]), '824 - Hello World', 'Named replacement with arrays works');
   });
 
   test('Strings: startsWith', function() {
@@ -187,160 +187,160 @@ $(document).ready(function() {
   });
 
   test('String: clean', function(){
-    equals(_.clean(' foo     bar   '), 'foo bar');
-    equals(_.clean(''), '');
-    equals(_.clean(null), '');
-    equals(_.clean(1), '1');
+    equal(_.clean(' foo     bar   '), 'foo bar');
+    equal(_.clean(''), '');
+    equal(_.clean(null), '');
+    equal(_.clean(1), '1');
   });
 
   test('String: count', function(){
-    equals(_('Hello world').count('l'), 3);
-    equals(_('Hello world').count('Hello'), 1);
-    equals(_('Hello world').count('foo'), 0);
-    equals(_('x.xx....x.x').count('x'), 5);
-    equals(_('').count('x'), 0);
-    equals(_(null).count('x'), 0);
-    equals(_(undefined).count('x'), 0);
-    equals(_(12345).count(1), 1);
-    equals(_(11345).count(1), 2);
+    equal(_('Hello world').count('l'), 3);
+    equal(_('Hello world').count('Hello'), 1);
+    equal(_('Hello world').count('foo'), 0);
+    equal(_('x.xx....x.x').count('x'), 5);
+    equal(_('').count('x'), 0);
+    equal(_(null).count('x'), 0);
+    equal(_(undefined).count('x'), 0);
+    equal(_(12345).count(1), 1);
+    equal(_(11345).count(1), 2);
   });
 
   test('String: insert', function(){
-    equals(_('Hello ').insert(6, 'Jessy'), 'Hello Jessy');
-    equals(_('Hello ').insert(100, 'Jessy'), 'Hello Jessy');
-    equals(_('').insert(100, 'Jessy'), 'Jessy');
-    equals(_(null).insert(100, 'Jessy'), 'Jessy');
-    equals(_(undefined).insert(100, 'Jessy'), 'Jessy');
-    equals(_(12345).insert(6, 'Jessy'), '12345Jessy');
+    equal(_('Hello ').insert(6, 'Jessy'), 'Hello Jessy');
+    equal(_('Hello ').insert(100, 'Jessy'), 'Hello Jessy');
+    equal(_('').insert(100, 'Jessy'), 'Jessy');
+    equal(_(null).insert(100, 'Jessy'), 'Jessy');
+    equal(_(undefined).insert(100, 'Jessy'), 'Jessy');
+    equal(_(12345).insert(6, 'Jessy'), '12345Jessy');
   });
 
   test('String: splice', function(){
-    equals(_('https://edtsech@bitbucket.org/edtsech/underscore.strings').splice(30, 7, 'epeli'),
+    equal(_('https://edtsech@bitbucket.org/edtsech/underscore.strings').splice(30, 7, 'epeli'),
            'https://edtsech@bitbucket.org/epeli/underscore.strings');
-    equals(_.splice(12345, 1, 2, 321), '132145', 'Non strings');
+    equal(_.splice(12345, 1, 2, 321), '132145', 'Non strings');
   });
 
   test('String: succ', function(){
-    equals(_('a').succ(), 'b');
-    equals(_('A').succ(), 'B');
-    equals(_('+').succ(), ',');
-    equals(_(1).succ(), '2');
+    equal(_('a').succ(), 'b');
+    equal(_('A').succ(), 'B');
+    equal(_('+').succ(), ',');
+    equal(_(1).succ(), '2');
   });
 
   test('String: titleize', function(){
-    equals(_('the titleize string method').titleize(), 'The Titleize String Method');
-    equals(_('the titleize string  method').titleize(), 'The Titleize String  Method');
-    equals(_('').titleize(), '', 'Titleize empty string returns empty string');
-    equals(_(null).titleize(), '', 'Titleize null returns empty string');
-    equals(_(undefined).titleize(), '', 'Titleize undefined returns empty string');
-    equals(_('let\'s have some fun').titleize(), 'Let\'s Have Some Fun');
-    equals(_(123).titleize(), '123');
+    equal(_('the titleize string method').titleize(), 'The Titleize String Method');
+    equal(_('the titleize string  method').titleize(), 'The Titleize String  Method');
+    equal(_('').titleize(), '', 'Titleize empty string returns empty string');
+    equal(_(null).titleize(), '', 'Titleize null returns empty string');
+    equal(_(undefined).titleize(), '', 'Titleize undefined returns empty string');
+    equal(_('let\'s have some fun').titleize(), 'Let\'s Have Some Fun');
+    equal(_(123).titleize(), '123');
   });
 
   test('String: camelize', function(){
-    equals(_('the_camelize_string_method').camelize(), 'theCamelizeStringMethod');
-    equals(_('-the-camelize-string-method').camelize(), 'TheCamelizeStringMethod');
-    equals(_('the camelize string method').camelize(), 'theCamelizeStringMethod');
-    equals(_(' the camelize  string method').camelize(), 'theCamelizeStringMethod');
-    equals(_('the camelize   string method').camelize(), 'theCamelizeStringMethod');
-    equals(_('').camelize(), '', 'Camelize empty string returns empty string');
-    equals(_(null).camelize(), '', 'Camelize null returns empty string');
-    equals(_(undefined).camelize(), '', 'Camelize undefined returns empty string');
-    equals(_(123).camelize(), '123');
+    equal(_('the_camelize_string_method').camelize(), 'theCamelizeStringMethod');
+    equal(_('-the-camelize-string-method').camelize(), 'TheCamelizeStringMethod');
+    equal(_('the camelize string method').camelize(), 'theCamelizeStringMethod');
+    equal(_(' the camelize  string method').camelize(), 'theCamelizeStringMethod');
+    equal(_('the camelize   string method').camelize(), 'theCamelizeStringMethod');
+    equal(_('').camelize(), '', 'Camelize empty string returns empty string');
+    equal(_(null).camelize(), '', 'Camelize null returns empty string');
+    equal(_(undefined).camelize(), '', 'Camelize undefined returns empty string');
+    equal(_(123).camelize(), '123');
   });
 
   test('String: underscored', function(){
-    equals(_('the-underscored-string-method').underscored(), 'the_underscored_string_method');
-    equals(_('theUnderscoredStringMethod').underscored(), 'the_underscored_string_method');
-    equals(_('TheUnderscoredStringMethod').underscored(), 'the_underscored_string_method');
-    equals(_(' the underscored  string method').underscored(), 'the_underscored_string_method');
-    equals(_('').underscored(), '');
-    equals(_(null).underscored(), '');
-    equals(_(undefined).underscored(), '');
-    equals(_(123).underscored(), '123');
+    equal(_('the-underscored-string-method').underscored(), 'the_underscored_string_method');
+    equal(_('theUnderscoredStringMethod').underscored(), 'the_underscored_string_method');
+    equal(_('TheUnderscoredStringMethod').underscored(), 'the_underscored_string_method');
+    equal(_(' the underscored  string method').underscored(), 'the_underscored_string_method');
+    equal(_('').underscored(), '');
+    equal(_(null).underscored(), '');
+    equal(_(undefined).underscored(), '');
+    equal(_(123).underscored(), '123');
   });
 
   test('String: dasherize', function(){
-    equals(_('the_dasherize_string_method').dasherize(), 'the-dasherize-string-method');
-    equals(_('TheDasherizeStringMethod').dasherize(), '-the-dasherize-string-method');
-    equals(_('thisIsATest').dasherize(), 'this-is-a-test');
-    equals(_('this Is A Test').dasherize(), 'this-is-a-test');
-    equals(_('thisIsATest123').dasherize(), 'this-is-a-test123');
-    equals(_('123thisIsATest').dasherize(), '123this-is-a-test');
-    equals(_('the dasherize string method').dasherize(), 'the-dasherize-string-method');
-    equals(_('the  dasherize string method  ').dasherize(), 'the-dasherize-string-method');
-    equals(_('téléphone').dasherize(), 'téléphone');
-    equals(_('foo$bar').dasherize(), 'foo$bar');
-    equals(_('').dasherize(), '');
-    equals(_(null).dasherize(), '');
-    equals(_(undefined).dasherize(), '');
-    equals(_(123).dasherize(), '123');
+    equal(_('the_dasherize_string_method').dasherize(), 'the-dasherize-string-method');
+    equal(_('TheDasherizeStringMethod').dasherize(), '-the-dasherize-string-method');
+    equal(_('thisIsATest').dasherize(), 'this-is-a-test');
+    equal(_('this Is A Test').dasherize(), 'this-is-a-test');
+    equal(_('thisIsATest123').dasherize(), 'this-is-a-test123');
+    equal(_('123thisIsATest').dasherize(), '123this-is-a-test');
+    equal(_('the dasherize string method').dasherize(), 'the-dasherize-string-method');
+    equal(_('the  dasherize string method  ').dasherize(), 'the-dasherize-string-method');
+    equal(_('téléphone').dasherize(), 'téléphone');
+    equal(_('foo$bar').dasherize(), 'foo$bar');
+    equal(_('').dasherize(), '');
+    equal(_(null).dasherize(), '');
+    equal(_(undefined).dasherize(), '');
+    equal(_(123).dasherize(), '123');
   });
 
   test('String: camelize', function(){
-    equals(_.camelize('-moz-transform'), 'MozTransform');
-    equals(_.camelize('webkit-transform'), 'webkitTransform');
-    equals(_.camelize('under_scored'), 'underScored');
-    equals(_.camelize(' with   spaces'), 'withSpaces');
-    equals(_('').camelize(), '');
-    equals(_(null).camelize(), '');
-    equals(_(undefined).camelize(), '');
+    equal(_.camelize('-moz-transform'), 'MozTransform');
+    equal(_.camelize('webkit-transform'), 'webkitTransform');
+    equal(_.camelize('under_scored'), 'underScored');
+    equal(_.camelize(' with   spaces'), 'withSpaces');
+    equal(_('').camelize(), '');
+    equal(_(null).camelize(), '');
+    equal(_(undefined).camelize(), '');
   });
 
   test('String: join', function(){
-    equals(_.join(1, 2, 3, 4), '21314');
-    equals(_.join('|', 'foo', 'bar', 'baz'), 'foo|bar|baz');
-    equals(_.join('',2,3,null), '23');
-    equals(_.join(null,2,3), '23');
+    equal(_.join(1, 2, 3, 4), '21314');
+    equal(_.join('|', 'foo', 'bar', 'baz'), 'foo|bar|baz');
+    equal(_.join('',2,3,null), '23');
+    equal(_.join(null,2,3), '23');
   });
 
   test('String: classify', function(){
-    equals(_.classify(1), '1');
-    equals(_('some_class_name').classify(), 'SomeClassName');
+    equal(_.classify(1), '1');
+    equal(_('some_class_name').classify(), 'SomeClassName');
   });
 
   test('String: humanize', function(){
-    equals(_('the_humanize_string_method').humanize(), 'The humanize string method');
-    equals(_('ThehumanizeStringMethod').humanize(), 'Thehumanize string method');
-    equals(_('the humanize string method').humanize(), 'The humanize string method');
-    equals(_('the humanize_id string method_id').humanize(), 'The humanize id string method');
-    equals(_('the  humanize string method  ').humanize(), 'The humanize string method');
-    equals(_('   capitalize dash-CamelCase_underscore trim  ').humanize(), 'Capitalize dash camel case underscore trim');
-    equals(_(123).humanize(), '123');
-    equals(_('').humanize(), '');
-    equals(_(null).humanize(), '');
-    equals(_(undefined).humanize(), '');
+    equal(_('the_humanize_string_method').humanize(), 'The humanize string method');
+    equal(_('ThehumanizeStringMethod').humanize(), 'Thehumanize string method');
+    equal(_('the humanize string method').humanize(), 'The humanize string method');
+    equal(_('the humanize_id string method_id').humanize(), 'The humanize id string method');
+    equal(_('the  humanize string method  ').humanize(), 'The humanize string method');
+    equal(_('   capitalize dash-CamelCase_underscore trim  ').humanize(), 'Capitalize dash camel case underscore trim');
+    equal(_(123).humanize(), '123');
+    equal(_('').humanize(), '');
+    equal(_(null).humanize(), '');
+    equal(_(undefined).humanize(), '');
   });
 
   test('String: truncate', function(){
-    equals(_('Hello world').truncate(6, 'read more'), 'Hello read more');
-    equals(_('Hello world').truncate(5), 'Hello...');
-    equals(_('Hello').truncate(10), 'Hello');
-    equals(_('').truncate(10), '');
-    equals(_(null).truncate(10), '');
-    equals(_(undefined).truncate(10), '');
-    equals(_(1234567890).truncate(5), '12345...');
+    equal(_('Hello world').truncate(6, 'read more'), 'Hello read more');
+    equal(_('Hello world').truncate(5), 'Hello...');
+    equal(_('Hello').truncate(10), 'Hello');
+    equal(_('').truncate(10), '');
+    equal(_(null).truncate(10), '');
+    equal(_(undefined).truncate(10), '');
+    equal(_(1234567890).truncate(5), '12345...');
   });
 
   test('String: prune', function(){
-    equals(_('Hello, cruel world').prune(6, ' read more'), 'Hello read more');
-    equals(_('Hello, world').prune(5, 'read a lot more'), 'Hello, world');
-    equals(_('Hello, world').prune(5), 'Hello...');
-    equals(_('Hello, world').prune(8), 'Hello...');
-    equals(_('Hello, cruel world').prune(15), 'Hello, cruel...');
-    equals(_('Hello world').prune(22), 'Hello world');
-    equals(_('Привет, жестокий мир').prune(6, ' read more'), 'Привет read more');
-    equals(_('Привет, мир').prune(6, 'read a lot more'), 'Привет, мир');
-    equals(_('Привет, мир').prune(6), 'Привет...');
-    equals(_('Привет, мир').prune(8), 'Привет...');
-    equals(_('Привет, жестокий мир').prune(16), 'Привет, жестокий...');
-    equals(_('Привет, мир').prune(22), 'Привет, мир');
-    equals(_('alksjd!!!!!!....').prune(100, ''), 'alksjd!!!!!!....');
-    equals(_(123).prune(10), '123');
-    equals(_(123).prune(1, 321), '321');
-    equals(_('').prune(5), '');
-    equals(_(null).prune(5), '');
-    equals(_(undefined).prune(5), '');
+    equal(_('Hello, cruel world').prune(6, ' read more'), 'Hello read more');
+    equal(_('Hello, world').prune(5, 'read a lot more'), 'Hello, world');
+    equal(_('Hello, world').prune(5), 'Hello...');
+    equal(_('Hello, world').prune(8), 'Hello...');
+    equal(_('Hello, cruel world').prune(15), 'Hello, cruel...');
+    equal(_('Hello world').prune(22), 'Hello world');
+    equal(_('Привет, жестокий мир').prune(6, ' read more'), 'Привет read more');
+    equal(_('Привет, мир').prune(6, 'read a lot more'), 'Привет, мир');
+    equal(_('Привет, мир').prune(6), 'Привет...');
+    equal(_('Привет, мир').prune(8), 'Привет...');
+    equal(_('Привет, жестокий мир').prune(16), 'Привет, жестокий...');
+    equal(_('Привет, мир').prune(22), 'Привет, мир');
+    equal(_('alksjd!!!!!!....').prune(100, ''), 'alksjd!!!!!!....');
+    equal(_(123).prune(10), '123');
+    equal(_(123).prune(1, 321), '321');
+    equal(_('').prune(5), '');
+    equal(_(null).prune(5), '');
+    equal(_(undefined).prune(5), '');
   });
 
   test('String: isBlank', function(){
@@ -356,38 +356,38 @@ $(document).ready(function() {
   });
 
   test('String: escapeRegExp', function(){
-    equals(_.escapeRegExp(/hello(?=\sworld)/.source), 'hello\\(\\?\\=\\\\sworld\\)', 'with lookahead');
-    equals(_.escapeRegExp(/hello(?!\shell)/.source), 'hello\\(\\?\\!\\\\shell\\)', 'with negative lookahead');
+    equal(_.escapeRegExp(/hello(?=\sworld)/.source), 'hello\\(\\?\\=\\\\sworld\\)', 'with lookahead');
+    equal(_.escapeRegExp(/hello(?!\shell)/.source), 'hello\\(\\?\\!\\\\shell\\)', 'with negative lookahead');
   });
 
   test('String: escapeHTML', function(){
-    equals(_('<div>Blah & "blah" & \'blah\'</div>').escapeHTML(),
+    equal(_('<div>Blah & "blah" & \'blah\'</div>').escapeHTML(),
              '&lt;div&gt;Blah &amp; &quot;blah&quot; &amp; &apos;blah&apos;&lt;/div&gt;');
-    equals(_('&lt;').escapeHTML(), '&amp;lt;');
-    equals(_(5).escapeHTML(), '5');
-    equals(_('').escapeHTML(), '');
-    equals(_(null).escapeHTML(), '');
-    equals(_(undefined).escapeHTML(), '');
+    equal(_('&lt;').escapeHTML(), '&amp;lt;');
+    equal(_(5).escapeHTML(), '5');
+    equal(_('').escapeHTML(), '');
+    equal(_(null).escapeHTML(), '');
+    equal(_(undefined).escapeHTML(), '');
   });
 
   test('String: unescapeHTML', function(){
-    equals(_('&lt;div&gt;Blah &amp; &quot;blah&quot; &amp; &apos;blah&apos;&lt;/div&gt;').unescapeHTML(),
+    equal(_('&lt;div&gt;Blah &amp; &quot;blah&quot; &amp; &apos;blah&apos;&lt;/div&gt;').unescapeHTML(),
              '<div>Blah & "blah" & \'blah\'</div>');
-    equals(_('&amp;lt;').unescapeHTML(), '&lt;');
-    equals(_('&#39;').unescapeHTML(), '\'');
-    equals(_('&#0039;').unescapeHTML(), '\'');
-    equals(_('&#x4a;').unescapeHTML(), 'J');
-    equals(_('&#x04A;').unescapeHTML(), 'J');
-    equals(_('&#X4A;').unescapeHTML(), '&#X4A;');
-    equals(_('&_#39;').unescapeHTML(), '&_#39;');
-    equals(_('&#39_;').unescapeHTML(), '&#39_;');
-    equals(_('&amp;#38;').unescapeHTML(), '&#38;');
-    equals(_('&#38;amp;').unescapeHTML(), '&amp;');
-    equals(_('').unescapeHTML(), '');
-    equals(_(null).unescapeHTML(), '');
-    equals(_(undefined).unescapeHTML(), '');
-    equals(_(5).unescapeHTML(), '5');
-    // equals(_(undefined).unescapeHTML(), '');
+    equal(_('&amp;lt;').unescapeHTML(), '&lt;');
+    equal(_('&#39;').unescapeHTML(), '\'');
+    equal(_('&#0039;').unescapeHTML(), '\'');
+    equal(_('&#x4a;').unescapeHTML(), 'J');
+    equal(_('&#x04A;').unescapeHTML(), 'J');
+    equal(_('&#X4A;').unescapeHTML(), '&#X4A;');
+    equal(_('&_#39;').unescapeHTML(), '&_#39;');
+    equal(_('&#39_;').unescapeHTML(), '&#39_;');
+    equal(_('&amp;#38;').unescapeHTML(), '&#38;');
+    equal(_('&#38;amp;').unescapeHTML(), '&amp;');
+    equal(_('').unescapeHTML(), '');
+    equal(_(null).unescapeHTML(), '');
+    equal(_(undefined).unescapeHTML(), '');
+    equal(_(5).unescapeHTML(), '5');
+    // equal(_(undefined).unescapeHTML(), '');
   });
 
   test('String: words', function() {
@@ -404,230 +404,230 @@ $(document).ready(function() {
   });
 
   test('String: chars', function() {
-    equals(_('Hello').chars().length, 5);
-    equals(_(123).chars().length, 3);
-    equals(_('').chars().length, 0);
-    equals(_(null).chars().length, 0);
-    equals(_(undefined).chars().length, 0);
+    equal(_('Hello').chars().length, 5);
+    equal(_(123).chars().length, 3);
+    equal(_('').chars().length, 0);
+    equal(_(null).chars().length, 0);
+    equal(_(undefined).chars().length, 0);
   });
 
   test('String: swapCase', function(){
-	  equals(_('AaBbCcDdEe').swapCase(), 'aAbBcCdDeE');
-    equals(_('Hello World').swapCase(), 'hELLO wORLD');
-    equals(_('').swapCase(), '');
-    equals(_(null).swapCase(), '');
-    equals(_(undefined).swapCase(), '');
+	  equal(_('AaBbCcDdEe').swapCase(), 'aAbBcCdDeE');
+    equal(_('Hello World').swapCase(), 'hELLO wORLD');
+    equal(_('').swapCase(), '');
+    equal(_(null).swapCase(), '');
+    equal(_(undefined).swapCase(), '');
   });
 
   test('String: lines', function() {
-    equals(_('Hello\nWorld').lines().length, 2);
-    equals(_('Hello World').lines().length, 1);
-    equals(_(123).lines().length, 1);
-    equals(_('').lines().length, 1);
-    equals(_(null).lines().length, 0);
-    equals(_(undefined).lines().length, 0);
+    equal(_('Hello\nWorld').lines().length, 2);
+    equal(_('Hello World').lines().length, 1);
+    equal(_(123).lines().length, 1);
+    equal(_('').lines().length, 1);
+    equal(_(null).lines().length, 0);
+    equal(_(undefined).lines().length, 0);
   });
 
   test('String: pad', function() {
-    equals(_('1').pad(8), '       1');
-    equals(_(1).pad(8), '       1');
-    equals(_('1').pad(8, '0'), '00000001');
-    equals(_('1').pad(8, '0', 'left'), '00000001');
-    equals(_('1').pad(8, '0', 'right'), '10000000');
-    equals(_('1').pad(8, '0', 'both'), '00001000');
-    equals(_('foo').pad(8, '0', 'both'), '000foo00');
-    equals(_('foo').pad(7, '0', 'both'), '00foo00');
-    equals(_('foo').pad(7, '!@$%dofjrofj', 'both'), '!!foo!!');
-    equals(_('').pad(2), '  ');
-    equals(_(null).pad(2), '  ');
-    equals(_(undefined).pad(2), '  ');
+    equal(_('1').pad(8), '       1');
+    equal(_(1).pad(8), '       1');
+    equal(_('1').pad(8, '0'), '00000001');
+    equal(_('1').pad(8, '0', 'left'), '00000001');
+    equal(_('1').pad(8, '0', 'right'), '10000000');
+    equal(_('1').pad(8, '0', 'both'), '00001000');
+    equal(_('foo').pad(8, '0', 'both'), '000foo00');
+    equal(_('foo').pad(7, '0', 'both'), '00foo00');
+    equal(_('foo').pad(7, '!@$%dofjrofj', 'both'), '!!foo!!');
+    equal(_('').pad(2), '  ');
+    equal(_(null).pad(2), '  ');
+    equal(_(undefined).pad(2), '  ');
   });
 
   test('String: lpad', function() {
-    equals(_('1').lpad(8), '       1');
-    equals(_(1).lpad(8), '       1');
-    equals(_('1').lpad(8, '0'), '00000001');
-    equals(_('1').lpad(8, '0', 'left'), '00000001');
-    equals(_('').lpad(2), '  ');
-    equals(_(null).lpad(2), '  ');
-    equals(_(undefined).lpad(2), '  ');
+    equal(_('1').lpad(8), '       1');
+    equal(_(1).lpad(8), '       1');
+    equal(_('1').lpad(8, '0'), '00000001');
+    equal(_('1').lpad(8, '0', 'left'), '00000001');
+    equal(_('').lpad(2), '  ');
+    equal(_(null).lpad(2), '  ');
+    equal(_(undefined).lpad(2), '  ');
   });
 
   test('String: rpad', function() {
-    equals(_('1').rpad(8), '1       ');
-    equals(_(1).lpad(8), '       1');
-    equals(_('1').rpad(8, '0'), '10000000');
-    equals(_('foo').rpad(8, '0'), 'foo00000');
-    equals(_('foo').rpad(7, '0'), 'foo0000');
-    equals(_('').rpad(2), '  ');
-    equals(_(null).rpad(2), '  ');
-    equals(_(undefined).rpad(2), '  ');
+    equal(_('1').rpad(8), '1       ');
+    equal(_(1).lpad(8), '       1');
+    equal(_('1').rpad(8, '0'), '10000000');
+    equal(_('foo').rpad(8, '0'), 'foo00000');
+    equal(_('foo').rpad(7, '0'), 'foo0000');
+    equal(_('').rpad(2), '  ');
+    equal(_(null).rpad(2), '  ');
+    equal(_(undefined).rpad(2), '  ');
   });
 
   test('String: lrpad', function() {
-    equals(_('1').lrpad(8), '    1   ');
-    equals(_(1).lrpad(8), '    1   ');
-    equals(_('1').lrpad(8, '0'), '00001000');
-    equals(_('foo').lrpad(8, '0'), '000foo00');
-    equals(_('foo').lrpad(7, '0'), '00foo00');
-    equals(_('foo').lrpad(7, '!@$%dofjrofj'), '!!foo!!');
-    equals(_('').lrpad(2), '  ');
-    equals(_(null).lrpad(2), '  ');
-    equals(_(undefined).lrpad(2), '  ');
+    equal(_('1').lrpad(8), '    1   ');
+    equal(_(1).lrpad(8), '    1   ');
+    equal(_('1').lrpad(8, '0'), '00001000');
+    equal(_('foo').lrpad(8, '0'), '000foo00');
+    equal(_('foo').lrpad(7, '0'), '00foo00');
+    equal(_('foo').lrpad(7, '!@$%dofjrofj'), '!!foo!!');
+    equal(_('').lrpad(2), '  ');
+    equal(_(null).lrpad(2), '  ');
+    equal(_(undefined).lrpad(2), '  ');
   });
 
   test('String: toNumber', function() {
     deepEqual(_('not a number').toNumber(), Number.NaN);
-    equals(_(0).toNumber(), 0);
-    equals(_('0').toNumber(), 0);
-    equals(_('0000').toNumber(), 0);
-    equals(_('2.345').toNumber(), 2);
-    equals(_('2.345').toNumber(NaN), 2);
-    equals(_('2.345').toNumber(2), 2.35);
-    equals(_('2.344').toNumber(2), 2.34);
-    equals(_('2').toNumber(2), 2.00);
-    equals(_(2).toNumber(2), 2.00);
-    equals(_(-2).toNumber(), -2);
-    equals(_('-2').toNumber(), -2);
-    equals(_('').toNumber(), 0);
-    equals(_(null).toNumber(), 0);
-    equals(_(undefined).toNumber(), 0);
+    equal(_(0).toNumber(), 0);
+    equal(_('0').toNumber(), 0);
+    equal(_('0000').toNumber(), 0);
+    equal(_('2.345').toNumber(), 2);
+    equal(_('2.345').toNumber(NaN), 2);
+    equal(_('2.345').toNumber(2), 2.35);
+    equal(_('2.344').toNumber(2), 2.34);
+    equal(_('2').toNumber(2), 2.00);
+    equal(_(2).toNumber(2), 2.00);
+    equal(_(-2).toNumber(), -2);
+    equal(_('-2').toNumber(), -2);
+    equal(_('').toNumber(), 0);
+    equal(_(null).toNumber(), 0);
+    equal(_(undefined).toNumber(), 0);
   });
 
   test('String: numberFormat', function() {
-    equals(_.numberFormat(9000), '9,000');
-    equals(_.numberFormat(9000, 0), '9,000');
-    equals(_.numberFormat(90000, 2), '90,000.00');
-    equals(_.numberFormat(1000.754), '1,001');
-    equals(_.numberFormat(1000.754, 2), '1,000.75');
-    equals(_.numberFormat(1000.754, 0, ',', '.'), '1.001');
-    equals(_.numberFormat(1000.754, 2, ',', '.'), '1.000,75');
-    equals(_.numberFormat(1000000.754, 2, ',', '.'), '1.000.000,75');
-    equals(_.numberFormat(1000000000), '1,000,000,000');
-    equals(_.numberFormat(100000000), '100,000,000');
-    equals(_.numberFormat('not number'), '');
-    equals(_.numberFormat(), '');
-    equals(_.numberFormat(null, '.', ','), '');
-    equals(_.numberFormat(undefined, '.', ','), '');
-    equals(_.numberFormat(new Number(5000)), '5,000');
+    equal(_.numberFormat(9000), '9,000');
+    equal(_.numberFormat(9000, 0), '9,000');
+    equal(_.numberFormat(90000, 2), '90,000.00');
+    equal(_.numberFormat(1000.754), '1,001');
+    equal(_.numberFormat(1000.754, 2), '1,000.75');
+    equal(_.numberFormat(1000.754, 0, ',', '.'), '1.001');
+    equal(_.numberFormat(1000.754, 2, ',', '.'), '1.000,75');
+    equal(_.numberFormat(1000000.754, 2, ',', '.'), '1.000.000,75');
+    equal(_.numberFormat(1000000000), '1,000,000,000');
+    equal(_.numberFormat(100000000), '100,000,000');
+    equal(_.numberFormat('not number'), '');
+    equal(_.numberFormat(), '');
+    equal(_.numberFormat(null, '.', ','), '');
+    equal(_.numberFormat(undefined, '.', ','), '');
+    equal(_.numberFormat(new Number(5000)), '5,000');
   });
 
   test('String: strRight', function() {
-    equals(_('This_is_a_test_string').strRight('_'), 'is_a_test_string');
-    equals(_('This_is_a_test_string').strRight('string'), '');
-    equals(_('This_is_a_test_string').strRight(), 'This_is_a_test_string');
-    equals(_('This_is_a_test_string').strRight(''), 'This_is_a_test_string');
-    equals(_('This_is_a_test_string').strRight('-'), 'This_is_a_test_string');
-    equals(_('This_is_a_test_string').strRight(''), 'This_is_a_test_string');
-    equals(_('').strRight('foo'), '');
-    equals(_(null).strRight('foo'), '');
-    equals(_(undefined).strRight('foo'), '');
-    equals(_(12345).strRight(2), '345');
+    equal(_('This_is_a_test_string').strRight('_'), 'is_a_test_string');
+    equal(_('This_is_a_test_string').strRight('string'), '');
+    equal(_('This_is_a_test_string').strRight(), 'This_is_a_test_string');
+    equal(_('This_is_a_test_string').strRight(''), 'This_is_a_test_string');
+    equal(_('This_is_a_test_string').strRight('-'), 'This_is_a_test_string');
+    equal(_('This_is_a_test_string').strRight(''), 'This_is_a_test_string');
+    equal(_('').strRight('foo'), '');
+    equal(_(null).strRight('foo'), '');
+    equal(_(undefined).strRight('foo'), '');
+    equal(_(12345).strRight(2), '345');
   });
 
   test('String: strRightBack', function() {
-    equals(_('This_is_a_test_string').strRightBack('_'), 'string');
-    equals(_('This_is_a_test_string').strRightBack('string'), '');
-    equals(_('This_is_a_test_string').strRightBack(), 'This_is_a_test_string');
-    equals(_('This_is_a_test_string').strRightBack(''), 'This_is_a_test_string');
-    equals(_('This_is_a_test_string').strRightBack('-'), 'This_is_a_test_string');
-    equals(_('').strRightBack('foo'), '');
-    equals(_(null).strRightBack('foo'), '');
-    equals(_(undefined).strRightBack('foo'), '');
-    equals(_(12345).strRightBack(2), '345');
+    equal(_('This_is_a_test_string').strRightBack('_'), 'string');
+    equal(_('This_is_a_test_string').strRightBack('string'), '');
+    equal(_('This_is_a_test_string').strRightBack(), 'This_is_a_test_string');
+    equal(_('This_is_a_test_string').strRightBack(''), 'This_is_a_test_string');
+    equal(_('This_is_a_test_string').strRightBack('-'), 'This_is_a_test_string');
+    equal(_('').strRightBack('foo'), '');
+    equal(_(null).strRightBack('foo'), '');
+    equal(_(undefined).strRightBack('foo'), '');
+    equal(_(12345).strRightBack(2), '345');
   });
 
   test('String: strLeft', function() {
-    equals(_('This_is_a_test_string').strLeft('_'), 'This');
-    equals(_('This_is_a_test_string').strLeft('This'), '');
-    equals(_('This_is_a_test_string').strLeft(), 'This_is_a_test_string');
-    equals(_('This_is_a_test_string').strLeft(''), 'This_is_a_test_string');
-    equals(_('This_is_a_test_string').strLeft('-'), 'This_is_a_test_string');
-    equals(_('').strLeft('foo'), '');
-    equals(_(null).strLeft('foo'), '');
-    equals(_(undefined).strLeft('foo'), '');
-    equals(_(123454321).strLeft(3), '12');
+    equal(_('This_is_a_test_string').strLeft('_'), 'This');
+    equal(_('This_is_a_test_string').strLeft('This'), '');
+    equal(_('This_is_a_test_string').strLeft(), 'This_is_a_test_string');
+    equal(_('This_is_a_test_string').strLeft(''), 'This_is_a_test_string');
+    equal(_('This_is_a_test_string').strLeft('-'), 'This_is_a_test_string');
+    equal(_('').strLeft('foo'), '');
+    equal(_(null).strLeft('foo'), '');
+    equal(_(undefined).strLeft('foo'), '');
+    equal(_(123454321).strLeft(3), '12');
   });
 
   test('String: strLeftBack', function() {
-    equals(_('This_is_a_test_string').strLeftBack('_'), 'This_is_a_test');
-    equals(_('This_is_a_test_string').strLeftBack('This'), '');
-    equals(_('This_is_a_test_string').strLeftBack(), 'This_is_a_test_string');
-    equals(_('This_is_a_test_string').strLeftBack(''), 'This_is_a_test_string');
-    equals(_('This_is_a_test_string').strLeftBack('-'), 'This_is_a_test_string');
-    equals(_('').strLeftBack('foo'), '');
-    equals(_(null).strLeftBack('foo'), '');
-    equals(_(undefined).strLeftBack('foo'), '');
-    equals(_(123454321).strLeftBack(3), '123454');
+    equal(_('This_is_a_test_string').strLeftBack('_'), 'This_is_a_test');
+    equal(_('This_is_a_test_string').strLeftBack('This'), '');
+    equal(_('This_is_a_test_string').strLeftBack(), 'This_is_a_test_string');
+    equal(_('This_is_a_test_string').strLeftBack(''), 'This_is_a_test_string');
+    equal(_('This_is_a_test_string').strLeftBack('-'), 'This_is_a_test_string');
+    equal(_('').strLeftBack('foo'), '');
+    equal(_(null).strLeftBack('foo'), '');
+    equal(_(undefined).strLeftBack('foo'), '');
+    equal(_(123454321).strLeftBack(3), '123454');
   });
 
   test('Strings: stripTags', function() {
-    equals(_('a <a href="#">link</a>').stripTags(), 'a link');
-    equals(_('a <a href="#">link</a><script>alert("hello world!")</scr'+'ipt>').stripTags(), 'a linkalert("hello world!")');
-    equals(_('<html><body>hello world</body></html>').stripTags(), 'hello world');
-    equals(_(123).stripTags(), '123');
-    equals(_('').stripTags(), '');
-    equals(_(null).stripTags(), '');
-    equals(_(undefined).stripTags(), '');
+    equal(_('a <a href="#">link</a>').stripTags(), 'a link');
+    equal(_('a <a href="#">link</a><script>alert("hello world!")</scr'+'ipt>').stripTags(), 'a linkalert("hello world!")');
+    equal(_('<html><body>hello world</body></html>').stripTags(), 'hello world');
+    equal(_(123).stripTags(), '123');
+    equal(_('').stripTags(), '');
+    equal(_(null).stripTags(), '');
+    equal(_(undefined).stripTags(), '');
   });
 
   test('Strings: toSentence', function() {
-    equals(_.toSentence(['jQuery']), 'jQuery', 'array with a single element');
-    equals(_.toSentence(['jQuery', 'MooTools']), 'jQuery and MooTools', 'array with two elements');
-    equals(_.toSentence(['jQuery', 'MooTools', 'Prototype']), 'jQuery, MooTools and Prototype', 'array with three elements');
-    equals(_.toSentence(['jQuery', 'MooTools', 'Prototype', 'YUI']), 'jQuery, MooTools, Prototype and YUI', 'array with multiple elements');
-    equals(_.toSentence(['jQuery', 'MooTools', 'Prototype'], ',', ' or '), 'jQuery,MooTools or Prototype', 'handles custom separators');
+    equal(_.toSentence(['jQuery']), 'jQuery', 'array with a single element');
+    equal(_.toSentence(['jQuery', 'MooTools']), 'jQuery and MooTools', 'array with two elements');
+    equal(_.toSentence(['jQuery', 'MooTools', 'Prototype']), 'jQuery, MooTools and Prototype', 'array with three elements');
+    equal(_.toSentence(['jQuery', 'MooTools', 'Prototype', 'YUI']), 'jQuery, MooTools, Prototype and YUI', 'array with multiple elements');
+    equal(_.toSentence(['jQuery', 'MooTools', 'Prototype'], ',', ' or '), 'jQuery,MooTools or Prototype', 'handles custom separators');
   });
 
   test('Strings: toSentenceSerial', function (){
-    equals(_.toSentenceSerial(['jQuery']), 'jQuery');
-    equals(_.toSentenceSerial(['jQuery', 'MooTools']), 'jQuery and MooTools');
-    equals(_.toSentenceSerial(['jQuery', 'MooTools', 'Prototype']), 'jQuery, MooTools, and Prototype');
+    equal(_.toSentenceSerial(['jQuery']), 'jQuery');
+    equal(_.toSentenceSerial(['jQuery', 'MooTools']), 'jQuery and MooTools');
+    equal(_.toSentenceSerial(['jQuery', 'MooTools', 'Prototype']), 'jQuery, MooTools, and Prototype');
   });
 
   test('Strings: slugify', function() {
-    equals(_('Jack & Jill like numbers 1,2,3 and 4 and silly characters ?%.$!/').slugify(), 'jack-jill-like-numbers-123-and-4-and-silly-characters');
-    equals(_('Un éléphant à l\'orée du bois').slugify(), 'un-elephant-a-loree-du-bois');
-    equals(_('I know latin characters: á í ó ú ç ã õ ñ ü').slugify(), 'i-know-latin-characters-a-i-o-u-c-a-o-n-u');
-    equals(_('I am a word too, even though I am but a single letter: i!').slugify(), 'i-am-a-word-too-even-though-i-am-but-a-single-letter-i');
-    equals(_('').slugify(), '');
-    equals(_(null).slugify(), '');
-    equals(_(undefined).slugify(), '');
+    equal(_('Jack & Jill like numbers 1,2,3 and 4 and silly characters ?%.$!/').slugify(), 'jack-jill-like-numbers-123-and-4-and-silly-characters');
+    equal(_('Un éléphant à l\'orée du bois').slugify(), 'un-elephant-a-loree-du-bois');
+    equal(_('I know latin characters: á í ó ú ç ã õ ñ ü').slugify(), 'i-know-latin-characters-a-i-o-u-c-a-o-n-u');
+    equal(_('I am a word too, even though I am but a single letter: i!').slugify(), 'i-am-a-word-too-even-though-i-am-but-a-single-letter-i');
+    equal(_('').slugify(), '');
+    equal(_(null).slugify(), '');
+    equal(_(undefined).slugify(), '');
   });
 
   test('Strings: quote', function(){
-    equals(_.quote('foo'), '"foo"');
-    equals(_.quote('"foo"'), '""foo""');
-    equals(_.quote(1), '"1"');
+    equal(_.quote('foo'), '"foo"');
+    equal(_.quote('"foo"'), '""foo""');
+    equal(_.quote(1), '"1"');
     // alias
-    equals(_.q('foo'), '"foo"');
-    equals(_.q(''), '""');
-    equals(_.q(null), '""');
-    equals(_.q(undefined), '""');
+    equal(_.q('foo'), '"foo"');
+    equal(_.q(''), '""');
+    equal(_.q(null), '""');
+    equal(_.q(undefined), '""');
   });
 
   test('Strings: surround', function(){
-    equals(_.surround('foo', 'ab'), 'abfooab');
-    equals(_.surround(1, 'ab'), 'ab1ab');
-    equals(_.surround(1, 2), '212');
-    equals(_.surround('foo', 1), '1foo1');
-    equals(_.surround('', 1), '11');
-    equals(_.surround(null, 1), '11');
-    equals(_.surround('foo', ''), 'foo');
-    equals(_.surround('foo', null), 'foo');
+    equal(_.surround('foo', 'ab'), 'abfooab');
+    equal(_.surround(1, 'ab'), 'ab1ab');
+    equal(_.surround(1, 2), '212');
+    equal(_.surround('foo', 1), '1foo1');
+    equal(_.surround('', 1), '11');
+    equal(_.surround(null, 1), '11');
+    equal(_.surround('foo', ''), 'foo');
+    equal(_.surround('foo', null), 'foo');
   });
 
 
   test('Strings: repeat', function() {
-    equals(_.repeat('foo'), '');
-    equals(_.repeat('foo', 3), 'foofoofoo');
-    equals(_.repeat('foo', '3'), 'foofoofoo');
-    equals(_.repeat(123, 2), '123123');
-    equals(_.repeat(1234, 2, '*'), '1234*1234');
-    equals(_.repeat(1234, 2, 5), '123451234');
-    equals(_.repeat('', 2), '');
-    equals(_.repeat(null, 2), '');
-    equals(_.repeat(undefined, 2), '');
+    equal(_.repeat('foo'), '');
+    equal(_.repeat('foo', 3), 'foofoofoo');
+    equal(_.repeat('foo', '3'), 'foofoofoo');
+    equal(_.repeat(123, 2), '123123');
+    equal(_.repeat(1234, 2, '*'), '1234*1234');
+    equal(_.repeat(1234, 2, 5), '123451234');
+    equal(_.repeat('', 2), '');
+    equal(_.repeat(null, 2), '');
+    equal(_.repeat(undefined, 2), '');
   });
 
 });
