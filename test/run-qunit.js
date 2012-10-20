@@ -1,45 +1,45 @@
-function waitFor(test, complete, timeout) {
-  var result, start = new Date().getTime()
-  setInterval(function interval() {
+function waitFor(test, complete, timeout){
+  var result, start = new Date().getTime();
+  setInterval(function interval(){
     if ((new Date().getTime() - start < timeout) && !result) {
-      result = test()
+      result = test();
     } else {
       if (!result) {
-        phantom.exit(1)
+        phantom.exit(1);
       } else {
-        complete()
-        clearInterval(interval)
+        complete();
+        clearInterval(interval);
       }
     }
-  }, 100)
+  }, 100);
 }
 
 
 var fs = require('fs'), page = require('webpage').create();
 var url = 'file://localhost' + fs.workingDirectory + '/' + phantom.args[0];
 
-page.onConsoleMessage = function(msg) {
-  console.log(msg)
-}
+page.onConsoleMessage = function(msg) { console.log(msg) }
 
-page.open(url, function(status) {
-  waitFor(function() {
+page.open(url, function(status){
+  waitFor(function(){
     return page.evaluate(function(){
-      var el = document.getElementById('qunit-testresult')
-      return el && el.innerText.match('completed')
+      var el = document.getElementById('qunit-testresult');
+      return el && el.innerText.match('completed');
     })
-  }, function() {
-    var failures = page.evaluate(function() {
+  }, function(){
+    var failures = page.evaluate(function(){
       var el    = document.getElementById('qunit-testresult'),
-          fails = document.getElementsByClassName('fail')
+          fails = document.getElementsByClassName('fail');
+
+      console.log(document.title);
 
       for (var i = 0; i < fails.length; i++)
-        console.log(fails[i].innerText)
+        console.log(fails[i].innerText);
 
-      console.log(el.innerText)
+      console.log(el.innerText);
 
-      return parseInt(el.getElementsByClassName('failed')[0].innerHTML)
-    })
-    phantom.exit(failures > 0 ? 1 : 0)
-  }, 10000)
-})
+      return parseInt(el.getElementsByClassName('failed')[0].innerHTML);
+    });
+    phantom.exit(failures > 0 ? 1 : 0);
+  }, 10000);
+});

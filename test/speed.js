@@ -1,148 +1,75 @@
 (function() {
 
-  JSLitmus.test('levenshtein', function() {
-    return [
-      _.levenshtein('pineapple', 'potato'),
-      _.levenshtein('seven', 'eight'),
-      _.levenshtein('the very same string', 'the very same string'),
-      _.levenshtein('very very very long string', 'something completely different')
-    ];
+  var numbers = [];
+  for (var i=0; i<1000; i++) numbers.push(i);
+  var objects = _.map(numbers, function(n){ return {num : n}; });
+  var randomized = _.sortBy(numbers, function(){ return Math.random(); });
+  var deep = _.map(_.range(100), function() { return _.range(1000); });
+
+  JSLitmus.test('_.each()', function() {
+    var timesTwo = [];
+    _.each(numbers, function(num){ timesTwo.push(num * 2); });
+    return timesTwo;
   });
 
-
-  JSLitmus.test('trimNoNative', function() {
-    return _.trim("  foobar  ", " ");
+  JSLitmus.test('_(list).each()', function() {
+    var timesTwo = [];
+    _(numbers).each(function(num){ timesTwo.push(num * 2); });
+    return timesTwo;
   });
 
-  JSLitmus.test('trim', function() {
-    return _.trim("  foobar  ");
+  JSLitmus.test('jQuery.each()', function() {
+    var timesTwo = [];
+    jQuery.each(numbers, function(){ timesTwo.push(this * 2); });
+    return timesTwo;
   });
 
-  JSLitmus.test('trim object-oriented', function() {
-    return _("  foobar  ").trim();
+  JSLitmus.test('_.map()', function() {
+    return _.map(objects, function(obj){ return obj.num; });
   });
 
-  JSLitmus.test('trim jQuery', function() {
-    return jQuery.trim("  foobar  ");
+  JSLitmus.test('jQuery.map()', function() {
+    return jQuery.map(objects, function(obj){ return obj.num; });
   });
 
-  JSLitmus.test('ltrimp', function() {
-    return _.ltrim("  foobar  ", " ");
+  JSLitmus.test('_.pluck()', function() {
+    return _.pluck(objects, 'num');
   });
 
-  JSLitmus.test('rtrimp', function() {
-    return _.rtrim("  foobar  ", " ");
+  JSLitmus.test('_.uniq()', function() {
+    return _.uniq(randomized);
   });
 
-  JSLitmus.test('startsWith', function() {
-    return _.startsWith("foobar", "foo");
+  JSLitmus.test('_.uniq() (sorted)', function() {
+    return _.uniq(numbers, true);
   });
 
-  JSLitmus.test('endsWith', function() {
-    return _.endsWith("foobar", "xx");
+  JSLitmus.test('_.sortBy()', function() {
+    return _.sortBy(numbers, function(num){ return -num; });
   });
 
-  JSLitmus.test('chop', function(){
-    return _('whitespace').chop(2);
+  JSLitmus.test('_.isEqual()', function() {
+    return _.isEqual(numbers, randomized);
   });
 
-  JSLitmus.test('count', function(){
-    return _('Hello worls').count('l');
+  JSLitmus.test('_.keys()', function() {
+    return _.keys(objects);
   });
 
-  JSLitmus.test('insert', function() {
-    return _('Hello ').insert(6, 'world');
+  JSLitmus.test('_.values()', function() {
+    return _.values(objects);
   });
 
-  JSLitmus.test('splice', function() {
-    return _('https://edtsech@bitbucket.org/edtsech/underscore.strings').splice(30, 7, 'epeli');
+  JSLitmus.test('_.intersection()', function() {
+    return _.intersection(numbers, randomized);
   });
 
-  JSLitmus.test('succ', function(){
-    var let = 'a', alphabet = [];
-
-    for (var i=0; i < 26; i++) {
-        alphabet.push(let);
-        let = _(let).succ();
-    }
-
-    return alphabet;
+  JSLitmus.test('_.range()', function() {
+    return _.range(1000);
   });
 
-  JSLitmus.test('titleize', function(){
-    return _('the titleize string method').titleize();
-  });
-
-  JSLitmus.test('truncate', function(){
-    return _('Hello world').truncate(5);
-  });
-
-  JSLitmus.test('prune', function(){
-    return _('Hello world').prune(5);
-  });
-  
-  JSLitmus.test('isBlank', function(){
-    return _('').isBlank();
-  });
-
-  JSLitmus.test('escapeHTML', function(){
-    _('<div>Blah blah blah</div>').escapeHTML();
-  });
-
-  JSLitmus.test('unescapeHTML', function(){
-    _('&lt;div&gt;Blah blah blah&lt;/div&gt;').unescapeHTML();
-  });
-
-  JSLitmus.test('reverse', function(){
-    _('Hello World').reverse();
-  });
-
-  JSLitmus.test('pad default', function(){
-    _('foo').pad(12);
-  });
-
-  JSLitmus.test('pad hash left', function(){
-    _('foo').pad(12, '#');
-  });
-
-  JSLitmus.test('pad hash right', function(){
-    _('foo').pad(12, '#', 'right');
-  });
-
-  JSLitmus.test('pad hash both', function(){
-    _('foo').pad(12, '#', 'both');
-  });
-
-  JSLitmus.test('pad hash both longPad', function(){
-    _('foo').pad(12, 'f00f00f00', 'both');
-  });
-
-  JSLitmus.test('toNumber', function(){
-      _('10.232323').toNumber(2);
-  });
-
-  JSLitmus.test('strRight', function(){
-    _('aaa_bbb_ccc').strRight('_');
-  });
-
-  JSLitmus.test('strRightBack', function(){
-    _('aaa_bbb_ccc').strRightBack('_');
-  });
-
-  JSLitmus.test('strLeft', function(){
-    _('aaa_bbb_ccc').strLeft('_');
-  });
-
-  JSLitmus.test('strLeftBack', function(){
-    _('aaa_bbb_ccc').strLeftBack('_');
-  });
-  
-  JSLitmus.test('join', function(){
-    _('separator').join(1, 2, 3, 4, 5, 6, 7, 8, 'foo', 'bar', 'lol', 'wut');
-  });
-
-  JSLitmus.test('slugify', function(){
-    _("Un éléphant à l'orée du bois").slugify();
+  JSLitmus.test('_.flatten()', function() {
+    return _.flatten(deep);
   });
 
 })();

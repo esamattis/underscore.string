@@ -13,11 +13,5 @@ end
 
 desc 'Run tests'
 task :test do
-  puts "Running underscore.string test suite."
-  result1 = system %{phantomjs ./test/run-qunit.js "test/test.html"}
-
-  puts "Running Underscore test suite."
-  result2 = system %{phantomjs ./test/run-qunit.js "test/test_underscore/index.html"}
-
-  exit(result1 && result2 ? 0 : 1)
+  exit(system('phantomjs ./test/run-qunit.js "test/index.html"'))
 end
