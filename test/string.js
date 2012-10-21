@@ -650,8 +650,12 @@ $(function(){
     var assert = assertMethod('numberFormat');
 
     assert(9000).equal('9,000');
+    assert('9000').equal('9,000');
     assert(9000, 0).equal('9,000');
     assert(90000, 2).equal('90,000.00');
+    assert(90000, '2').equal('90,000.00');
+    assert('90000', '2').equal('90,000.00');
+    assert('90000', 2).equal('90,000.00');
     assert(1000.754).equal('1,001');
     assert(1000.754, 2).equal('1,000.75');
     assert(1000.754, 0, ',', '.').equal('1.001');
