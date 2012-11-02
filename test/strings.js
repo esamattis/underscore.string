@@ -362,7 +362,7 @@ $(document).ready(function() {
 
   test('String: escapeHTML', function(){
     equal(_('<div>Blah & "blah" & \'blah\'</div>').escapeHTML(),
-             '&lt;div&gt;Blah &amp; &quot;blah&quot; &amp; &apos;blah&apos;&lt;/div&gt;');
+             '&lt;div&gt;Blah &amp; &quot;blah&quot; &amp; &#39;blah&#39;&lt;/div&gt;');
     equal(_('&lt;').escapeHTML(), '&amp;lt;');
     equal(_(5).escapeHTML(), '5');
     equal(_('').escapeHTML(), '');
@@ -371,9 +371,10 @@ $(document).ready(function() {
   });
 
   test('String: unescapeHTML', function(){
-    equal(_('&lt;div&gt;Blah &amp; &quot;blah&quot; &amp; &apos;blah&apos;&lt;/div&gt;').unescapeHTML(),
+    equal(_('&lt;div&gt;Blah &amp; &quot;blah&quot; &amp; &apos;blah&#39;&lt;/div&gt;').unescapeHTML(),
              '<div>Blah & "blah" & \'blah\'</div>');
     equal(_('&amp;lt;').unescapeHTML(), '&lt;');
+    equal(_('&apos;').unescapeHTML(), '\'');
     equal(_('&#39;').unescapeHTML(), '\'');
     equal(_('&#0039;').unescapeHTML(), '\'');
     equal(_('&#x4a;').unescapeHTML(), 'J');
