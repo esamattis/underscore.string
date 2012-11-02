@@ -132,19 +132,19 @@ _.swapCase('hELLO')
 => 'Hello'
 ```
 
-**includes** _.includes(string, substring)
+**include** available only through _.str object, because Underscore has function with the same name.
+
+```javascript
+_.str.include("foobar", "ob")
+=> true
+```
+
+(removed) **includes** _.includes(string, substring)
 
 Tests if string contains a substring.
 
 ```javascript
 _.includes("foobar", "ob")
-=> true
-```
-
-**include** available only through _.str object, because Underscore has function with the same name.
-
-```javascript
-_.str.include("foobar", "ob")
 => true
 ```
 
@@ -545,7 +545,7 @@ The same as `toSentence`, but adjusts delimeters to use [Serial comma](http://en
 
 ```javascript
 _.toSentenceSerial(['jQuery', 'Mootools'])
-=> 'Mootools and Prototype';
+=> 'jQuery and Mootools';
 
 _.toSentenceSerial(['jQuery', 'Mootools', 'Prototype'])
 => 'jQuery, Mootools, and Prototype'
