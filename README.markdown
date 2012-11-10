@@ -510,7 +510,7 @@ The same as `toSentence`, but adjusts delimeters to use [Serial comma](http://en
 
 ```javascript
 _.toSentenceSerial(['jQuery', 'Mootools'])
-=> 'Mootools and Prototype'
+=> 'jQuery and Mootools'
 
 _.toSentenceSerial(['jQuery', 'Mootools', 'Prototype'])
 => 'jQuery, Mootools, and Prototype'
