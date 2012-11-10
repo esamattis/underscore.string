@@ -653,6 +653,7 @@ $(function(){
     assert(9000).equal('9,000');
     assert('9000').equal('9,000');
     assert(9000, 0).equal('9,000');
+    assert(9000, 0, '', '').equal('9000');
     assert(90000, 2).equal('90,000.00');
     assert(90000, '2').equal('90,000.00');
     assert('90000', '2').equal('90,000.00');
