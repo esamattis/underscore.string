@@ -498,6 +498,7 @@ $(document).ready(function() {
   test('String: numberFormat', function() {
     equal(_.numberFormat(9000), '9,000');
     equal(_.numberFormat(9000, 0), '9,000');
+    equal(_.numberFormat(9000, 0, '', ''), '9000');
     equal(_.numberFormat(90000, 2), '90,000.00');
     equal(_.numberFormat(1000.754), '1,001');
     equal(_.numberFormat(1000.754, 2), '1,000.75');
