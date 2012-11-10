@@ -208,7 +208,7 @@ $(function(){
   test('escapeHTML', function(){
     var assert = assertMethod('escapeHTML');
 
-    assert('<div>Blah & "blah" & \'blah\'</div>').equal('&lt;div&gt;Blah &amp; &quot;blah&quot; &amp; &apos;blah&apos;&lt;/div&gt;');
+    assert('<div>Blah & "blah" & \'blah\'</div>').equal('&lt;div&gt;Blah &amp; &quot;blah&quot; &amp; &#39;blah&#39;&lt;/div&gt;');
     assert('&lt;').equal('&amp;lt;');
     assert(5).equal('5');
     assert('').equal('');
@@ -220,6 +220,7 @@ $(function(){
     var assert = assertMethod('unescapeHTML');
 
     assert('&lt;div&gt;Blah &amp; &quot;blah&quot; &amp; &apos;blah&apos;&lt;/div&gt;').equal('<div>Blah & "blah" & \'blah\'</div>');
+    assert('&lt;div&gt;Blah &amp; &quot;blah&quot; &amp; &#39;blah&#39;&lt;/div&gt;').equal('<div>Blah & "blah" & \'blah\'</div>');
     assert('&amp;lt;').equal('&lt;');
     assert('&#39;').equal('\'');
     assert('&#0039;').equal('\'');
