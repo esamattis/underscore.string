@@ -4,8 +4,8 @@ $(function(){
   function Assertion(method, args){
     this.method = method;
     this.args = args;
-    this.object = this.args[0];
-    this.wrappedArgs = this.args.slice(1);
+    this.object = args[0];
+    this.wrappedArgs = args.slice(1);
   }
 
   $.extend(Assertion.prototype, {
