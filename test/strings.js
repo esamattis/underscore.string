@@ -478,9 +478,13 @@ $(document).ready(function() {
   });
 
   test('String: toNumber', function() {
-    deepEqual(_('not a number').toNumber(), Number.NaN);
+    deepEqual(_('not a number').toNumber(), NaN);
     equal(_(0).toNumber(), 0);
     equal(_('0').toNumber(), 0);
+    equal(_('0.0').toNumber(), 0);
+    equal(_('0.1').toNumber(), 0);
+    equal(_('0.1').toNumber(1), 0.1);
+    equal(_('  0.1 ').toNumber(1), 0.1);
     equal(_('0000').toNumber(), 0);
     equal(_('2.345').toNumber(), 2);
     equal(_('2.345').toNumber(NaN), 2);
