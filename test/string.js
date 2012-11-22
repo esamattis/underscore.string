@@ -633,6 +633,10 @@ $(function(){
     assert('not a number').deepEqual(NaN);
     assert(0).equal(0);
     assert('0').equal(0);
+    assert('0.0').equal(0);
+    assert('0.1').equal(0);
+    assert('0.1', 1).equal(0.1);
+    assert(' 0.1   ', 1).equal(0.1);
     assert('0000').equal(0);
     assert('2.345').equal(2);
     assert('2.345', NaN).equal(2);
