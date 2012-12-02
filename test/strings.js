@@ -297,6 +297,8 @@ $(document).ready(function() {
   test('String: classify', function(){
     equal(_.classify(1), '1');
     equal(_('some_class_name').classify(), 'SomeClassName');
+    equal(_('my wonderfull class_name').classify(), 'MyWonderfullClassName');
+    equal(_('my wonderfull.class.name').classify(), 'MyWonderfullClassName');
   });
 
   test('String: humanize', function(){
