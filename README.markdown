@@ -630,6 +630,13 @@ _ = _.string
 
 ## Changelog ##
 
+### 2.3.1 ###
+
+* Changed integration logic, now trying everything in order
+* Fixed classify method to chew some unexpected input
+* Fixed toNumber method failing to recognize '0.0' as a proper number
+
+
 ### 2.3.0 ###
 
 * Added `numberformat` method
