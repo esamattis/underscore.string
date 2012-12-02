@@ -418,6 +418,8 @@ $(function(){
     var assert = assertMethod('classify');
 
     assert('some_class_name').equal('SomeClassName');
+    assert('my wonderfull class_name').equal('MyWonderfullClassName');
+    assert('my wonderfull.class.name').equal('MyWonderfullClassName');
     assert(1).equal('1');
     assert(null).equal('');
     assert(undefined).equal('');
