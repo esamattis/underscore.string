@@ -621,6 +621,12 @@ $(document).ready(function() {
     equal(_.q(undefined), '""');
   });
 
+  test('Strings: unquote', function(){
+    equal(_.unquote('"foo"'), 'foo');
+    equal(_.unquote('""foo""'), '"foo"');
+    equal(_.unquote('"1"'), '1');
+  });
+
   test('Strings: surround', function(){
     equal(_.surround('foo', 'ab'), 'abfooab');
     equal(_.surround(1, 'ab'), 'ab1ab');
