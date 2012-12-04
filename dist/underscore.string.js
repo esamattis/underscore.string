@@ -1,3 +1,10 @@
+// underscore.string - 2012-12-03
+// Copyright (c) 2012 Esa-Matti Suuronen; 
+// Underscore.string is freely distributable under the terms of the MIT license. 
+// Documentation: * http://epeli.github.com/underscore.string/
+// Some code is borrowed from MooTools and Alexandru Marasteanu.
+// Version 2.3.0
+
 !function(root, String){
   'use strict';
 
