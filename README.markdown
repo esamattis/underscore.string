@@ -38,7 +38,7 @@ _("   epeli  ").chain().trim().capitalize().value()
 var _s = require('underscore.string');
 ```
 
-**Integrate with Underscore.js**:
+**Integrate with Underscore.js using RequireJS**:
 
 ```javascript
 var _  = require('underscore');
@@ -51,6 +51,15 @@ _.mixin(_.str.exports());
 
 // All functions, include conflict, will be available through _.str object
 _.str.include('Underscore.string', 'string'); // => true
+```
+
+**Or Integrate with Underscore.js without module loading**
+
+Run the following expression after Underscore.js and Underscore.string are loaded
+```javascript
+// _.str becomes a global variable if no module loading is detected
+// Mix in non-conflict functions to Underscore namespace
+_.mixin(_.str.exports());
 ```
 
 ## String Functions ##
