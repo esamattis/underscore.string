@@ -1,4 +1,4 @@
-//  underscore.string//  (c) 2012 Esa-Matti Suuronen <esa-matti aet suuronen dot org>
+//  underscore.string//  (c) 2013 Esa-Matti Suuronen <esa-matti aet suuronen dot org>
 //  Underscore.string is freely distributable under the terms of the MIT license.
 //  Documentation http://epeli.github.com/underscore.string/
 //  Some code is borrowed from MooTools and Alexandru Marasteanu.
@@ -563,8 +563,8 @@
   _s.slugify = function(str) {
     if (str == null) return '';
 
-    var from  = 'ąàáäâãåæćęèéëêìíïîłńòóöôõøùúüûñçżź',
-        to    = 'aaaaaaaaceeeeeiiiilnoooooouuuunczz',
+    var from  = 'ąàáäâãåæćęèéëêìíïîłńòóöôõøśùúüûñçżź',
+        to    = 'aaaaaaaaceeeeeiiiilnoooooosuuuunczz',
         regex = new RegExp(defaultToWhiteSpace(from), 'g');
 
     str = String(str).toLowerCase().replace(regex, function(c){
