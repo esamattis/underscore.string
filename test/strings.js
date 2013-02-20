@@ -258,6 +258,7 @@ $(document).ready(function() {
   test('String: underscored', function(){
     equal(_('the-underscored-string-method').underscored(), 'the_underscored_string_method');
     equal(_('theUnderscoredStringMethod').underscored(), 'the_underscored_string_method');
+    equal(_('theUUnderscoredStringMethod').underscored(), 'the_u_underscored_string_method');
     equal(_('TheUnderscoredStringMethod').underscored(), 'the_underscored_string_method');
     equal(_(' the underscored  string method').underscored(), 'the_underscored_string_method');
     equal(_('').underscored(), '');
