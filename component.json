@@ -3,5 +3,5 @@
   "description": "underscore.string component",
   "dependencies": {},
   "scripts": ["lib/underscore.string.js"]
-  "main": "scripts": "lib/underscore.string.js"
+  "main": "lib/underscore.string.js"
 }
