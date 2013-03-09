@@ -1,0 +1,6 @@
+{
+  "name": "underscore.string",
+  "description": "underscore.string component",
+  "dependencies": {},
+  "scripts": ["./lib/underscore.string"]
+}
