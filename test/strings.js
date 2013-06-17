@@ -291,6 +291,7 @@ $(document).ready(function() {
     equal(_('').camelize(), '');
     equal(_(null).camelize(), '');
     equal(_(undefined).camelize(), '');
+    equal(_("_som eWeird---name-").camelize(), 'SomEWeirdName');
   });
 
   test('String: join', function(){
