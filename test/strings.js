@@ -603,7 +603,7 @@ $(document).ready(function() {
   test('Strings: slugify', function() {
     equal(_('Jack & Jill like numbers 1,2,3 and 4 and silly characters ?%.$!/').slugify(), 'jack-jill-like-numbers-123-and-4-and-silly-characters');
     equal(_('Un éléphant à l\'orée du bois').slugify(), 'un-elephant-a-loree-du-bois');
-    equal(_('I know latin characters: á í ó ú ç ã õ ñ ü').slugify(), 'i-know-latin-characters-a-i-o-u-c-a-o-n-u');
+    equal(_('I know latin characters: á í ó ú ç ã õ ñ ü ă ș ț').slugify(), 'i-know-latin-characters-a-i-o-u-c-a-o-n-u-a-s-t');
     equal(_('I am a word too, even though I am but a single letter: i!').slugify(), 'i-am-a-word-too-even-though-i-am-but-a-single-letter-i');
     equal(_('').slugify(), '');
     equal(_(null).slugify(), '');
