@@ -655,6 +655,7 @@ _ = _.string
 * Add ă, ș, ț and ś to `slugify`
 * Doc updates
 * Add support for [component](http://component.io/)
+* [Full changelog](https://github.com/epeli/underscore.string/compare/v2.3.1...v2.3.2)
 
 ### 2.3.1 ###
 
