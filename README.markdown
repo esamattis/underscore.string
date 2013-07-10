@@ -38,7 +38,7 @@ _("   epeli  ").chain().trim().capitalize().value()
 var _s = require('underscore.string');
 ```
 
-**Integrate with Underscore.js using RequireJS**:
+**Integrate with Underscore.js**:
 
 ```javascript
 var _  = require('underscore');
