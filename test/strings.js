@@ -644,5 +644,39 @@ $(document).ready(function() {
     equal(_.repeat(null, 2), '');
     equal(_.repeat(undefined, 2), '');
   });
+  
+  
+  test('String: search', function() {
+    equal(_.search('foo','match foo this'), true);
+    equal(_.search('foo','match bar this'), false);
+    equal(_.search('foo bar','match foo this'), false);
+    equal(_.search('foo bar','match foo this bar'), true);
+    equal(_.search(['foo','bar'],'match foo this bar'), true);
+    equal(_.search(['foo bar'],'match foo this bar'), false);
+    equal(_.search(['foo bar'],'match foo bar this'), true, 'Array search words should match exactly');
+    
+    equal(_.search(['foo bar','match foo'],'match foo bar this'), true);
+    equal(_.search(['foo bar','no match here'],'no match foo bar here'), false);
+    
+    equal(_.search('foo bar',['here is foo','here is bar']), true);
+    equal(_.search(['is foo','bar'],['here is foo','here is bar']), true);
+    
+    equal(_.search('','empty search string'), false, 'empty search string never matches');
+    equal(_.search([''],'empty'), false, 'empty search never matches');
+    equal(_.search([],'empty'), false, 'empty search never matches');
+    equal(_.search(null,'empty'), false, 'null search never matches');
+    equal(_.search([null],'empty'), false, 'null search never matches');
+    equal(_.search(['',null],'empty'), false, 'empty/null search never matches');
+    
+    equal(_.search('search',null), false, 'null haystack');
+    equal(_.search('search',[null]), false, 'null array haystack');
+    equal(_.search('search',[]), false, 'empty haystack');
+    
+    equal(_.search('1',[null,'1',null]), true, 'ok for haystack to have nulls as long as criteria is met');
+    equal(_.search('1',[null,'2',null]), false);
+    
+    equal(_.search([null,'1'],[null,'1',null]), false);
+    equal(_.search([null,'1'],[null,'2',null]), false);
+  });
 
 });
