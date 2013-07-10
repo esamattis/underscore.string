@@ -673,6 +673,10 @@ _ = _.string
 * Added `toSentenceSerial` method
 * Added `surround` and `quote` methods
 
+### 2.2.1 ###
+
+* Same as 2.2.0 (2.2.0rc on npm) to fix some npm drama
+
 ### 2.2.0 ###
 
 * Capitalize method behavior changed
