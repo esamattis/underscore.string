@@ -668,6 +668,7 @@ $(document).ready(function() {
     strictEqual(_.toBoolean("foo true bar"), undefined);
     strictEqual(_.toBoolean("foo true bar", /true/), true);
     strictEqual(_.toBoolean("foo FALSE bar", null, /FALSE/), false);
+    strictEqual(_.toBoolean(" true  "), true);
   });
 
 });
