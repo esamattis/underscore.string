@@ -639,6 +639,13 @@ _ = _.string
 
 ## Changelog ##
 
+### 2.3.1 ###
+
+* Bug fixes to `escapeHTML`, `classify`, `substr`
+* Faster `count`
+* Documentation fixes
+* [Full changelog](https://github.com/epeli/underscore.string/compare/v2.3.0...v2.3.1)
+
 ### 2.3.0 ###
 
 * Added `numberformat` method
