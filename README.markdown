@@ -614,6 +614,28 @@ Naturally sort strings like humans would do.
 => [ 'foo5', 'foo20' ]
 ```
 
+**toBoolean** _.toBoolean(string) or _.toBool(string)
+
+Turn strings that can be commonly considered as booleas to real booleans. Such as "true", "false", "1" and "0". This function is case insensitive.
+
+```javascript
+_.toBoolean("true")
+=> true
+_.toBoolean("FALSE")
+=> false
+_.toBoolean("random")
+=> undefined
+```
+
+It can be customized by giving arrays of truth and falsy value matcher as parameters. Matchers can be also RegExp objects.
+
+```javascript
+_.toBoolean("truthy", ["truthy"], ["falsy"])
+=> true
+_.toBoolean("true only at start", [/^true/])
+=> true
+```
+
 ## Roadmap ##
 
 Any suggestions or bug reports are welcome. Just email me or more preferably open an issue.
@@ -647,6 +669,10 @@ _ = _.string
 ```
 
 ## Changelog ##
+
+### 2.x.x (unreleased) ###
+
+* Add toBoolean
 
 ### 2.3.2 ###
 

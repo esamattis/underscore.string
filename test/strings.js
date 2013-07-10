@@ -646,18 +646,28 @@ $(document).ready(function() {
   });
 
   test('String: toBoolean', function() {
-    equal(_("false").toBoolean(), false);
-    equal(_.toBoolean("false"), false);
-    equal(_.toBoolean("False"), false);
-    equal(_.toBoolean("Falsy",null,["false", "falsy"]), false);
-    equal(_.toBoolean("true"), true);
-    equal(_.toBoolean("the truth", "the truth", "this is falsy"), true);
-    equal(_.toBoolean("this is falsy", "the truth", "this is falsy"), false);
-    equal(_("true").toBoolean(), true);
-    equal(_.toBoolean("trUe"), true);
-    equal(_.toBoolean("trUe", /tru?/i), true);
-    equal(_.toBoolean("this is True"), true);
-    equal(_.toBoolean("something else"), null);
-  })
+    strictEqual(_("false").toBoolean(), false);
+    strictEqual(_.toBoolean("false"), false);
+    strictEqual(_.toBoolean("False"), false);
+    strictEqual(_.toBoolean("Falsy",null,["false", "falsy"]), false);
+    strictEqual(_.toBoolean("true"), true);
+    strictEqual(_.toBoolean("the truth", "the truth", "this is falsy"), true);
+    strictEqual(_.toBoolean("this is falsy", "the truth", "this is falsy"), false);
+    strictEqual(_("true").toBoolean(), true);
+    strictEqual(_.toBoolean("trUe"), true);
+    strictEqual(_.toBoolean("trUe", /tru?/i), true);
+    strictEqual(_.toBoolean("something else"), undefined);
+    strictEqual(_.toBoolean(function(){}), true);
+    strictEqual(_.toBoolean(/regexp/), true);
+    strictEqual(_.toBoolean(""), undefined);
+    strictEqual(_.toBoolean(0), false);
+    strictEqual(_.toBoolean(1), true);
+    strictEqual(_.toBoolean("1"), true);
+    strictEqual(_.toBoolean("0"), false);
+    strictEqual(_.toBoolean(2), undefined);
+    strictEqual(_.toBoolean("foo true bar"), undefined);
+    strictEqual(_.toBoolean("foo true bar", /true/), true);
+    strictEqual(_.toBoolean("foo FALSE bar", null, /FALSE/), false);
+  });
 
 });
