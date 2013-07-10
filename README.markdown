@@ -605,6 +605,15 @@ _.slugify("Un éléphant à l'orée du bois")
 
 ***Caution: this function is charset dependent***
 
+**naturalCmp** array.sort(_.naturalCmp)
+
+Naturally sort strings like humans would do.
+
+```javascript
+['foo20', 'foo5'].sort(_.naturalCmp)
+=> [ 'foo5', 'foo20' ]
+```
+
 ## Roadmap ##
 
 Any suggestions or bug reports are welcome. Just email me or more preferably open an issue.
