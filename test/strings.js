@@ -645,4 +645,19 @@ $(document).ready(function() {
     equal(_.repeat(undefined, 2), '');
   });
 
+  test('String: toBoolean', function() {
+    equal(_("false").toBoolean(), false);
+    equal(_.toBoolean("false"), false);
+    equal(_.toBoolean("False"), false);
+    equal(_.toBoolean("Falsy",null,["false", "falsy"]), false);
+    equal(_.toBoolean("true"), true);
+    equal(_.toBoolean("the truth", "the truth", "this is falsy"), true);
+    equal(_.toBoolean("this is falsy", "the truth", "this is falsy"), false);
+    equal(_("true").toBoolean(), true);
+    equal(_.toBoolean("trUe"), true);
+    equal(_.toBoolean("trUe", /tru?/i), true);
+    equal(_.toBoolean("this is True"), true);
+    equal(_.toBoolean("something else"), null);
+  })
+
 });
