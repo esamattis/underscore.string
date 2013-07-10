@@ -648,6 +648,14 @@ _ = _.string
 
 ## Changelog ##
 
+### 2.3.2 ###
+
+* Add `naturalCmp`
+* Bug fix to `camelize`
+* Add ă, ș, ț and ś to `slugify`
+* Doc updates
+* Add support for [component](http://component.io/)
+
 ### 2.3.1 ###
 
 * Bug fixes to `escapeHTML`, `classify`, `substr`
