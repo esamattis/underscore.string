@@ -614,6 +614,8 @@ $(document).ready(function() {
     equal(_.quote('foo'), '"foo"');
     equal(_.quote('"foo"'), '""foo""');
     equal(_.quote(1), '"1"');
+    equal(_.quote("foo", "'"), "'foo'");
+
     // alias
     equal(_.q('foo'), '"foo"');
     equal(_.q(''), '""');
@@ -625,6 +627,7 @@ $(document).ready(function() {
     equal(_.unquote('"foo"'), 'foo');
     equal(_.unquote('""foo""'), '"foo"');
     equal(_.unquote('"1"'), '1');
+    equal(_.unquote("'foo'", "'"), 'foo');
   });
 
   test('Strings: surround', function(){

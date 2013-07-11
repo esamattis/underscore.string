@@ -584,21 +584,22 @@ _.surround("foo", "ab")
 => 'abfooab';
 ```
 
-**quote** _.quote(string) or _.q(string)
+**quote** _.quote(string, quoteChar) or _.q(string, quoteChar)
 
-Quotes a string.
+Quotes a string. `quoteChar` defaults to `"`.
 
 ```javascript
-_.quote('foo')
+_.quote('foo', quoteChar)
 => '"foo"';
 ```
+**unquote** _.unquote(string, quoteChar)
 
-**unquote** _.unquote(string)
-
-Unquotes a string.
+Unquotes a string. `quoteChar` defaults to `"`.
 
 ```javascript
 _.unquote('"foo"')
+=> 'foo';
+_.unquote("'foo'", "'")
 => 'foo';
 ```
 
@@ -681,7 +682,9 @@ _ = _.string
 
 ### 2.x.x (unreleased) ###
 
-* Add toBoolean
+* Add `toBoolean`
+* Add `unquote`
+* Add quote char option to `quote`
 
 ### 2.3.2 ###
 
