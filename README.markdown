@@ -593,6 +593,15 @@ _.quote('foo')
 => '"foo"';
 ```
 
+**unquote** _.unquote(string)
+
+Unquotes a string.
+
+```javascript
+_.unquote('"foo"')
+=> 'foo';
+```
+
 
 **slugify** _.slugify(string)
 
