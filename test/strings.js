@@ -240,6 +240,8 @@ $(document).ready(function() {
     equal(_(null).titleize(), '', 'Titleize null returns empty string');
     equal(_(undefined).titleize(), '', 'Titleize undefined returns empty string');
     equal(_('let\'s have some fun').titleize(), 'Let\'s Have Some Fun');
+    equal(_('a-dash-separated-string').titleize(), 'A-Dash-Separated-String');
+    equal(_('A-DASH-SEPARATED-STRING').titleize(), 'A-Dash-Separated-String');
     equal(_(123).titleize(), '123');
   });
 
