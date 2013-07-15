@@ -686,6 +686,7 @@ _ = _.string
 * Add `unquote`
 * Add quote char option to `quote`
 * Support dash-separated words in `titleize`
+* [Full changelog](https://github.com/epeli/underscore.string/compare/v2.3.2...2.3.3)
 
 ### 2.3.2 ###
 
