@@ -680,7 +680,7 @@ _ = _.string
 
 ## Changelog ##
 
-### 2.x.x (unreleased) ###
+### 2.3.3 ###
 
 * Add `toBoolean`
 * Add `unquote`
