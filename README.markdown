@@ -685,6 +685,7 @@ _ = _.string
 * Add `toBoolean`
 * Add `unquote`
 * Add quote char option to `quote`
+* Support dash-separated words in `titleize`
 
 ### 2.3.2 ###
 
