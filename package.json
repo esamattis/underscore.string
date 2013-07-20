@@ -35,5 +35,8 @@
     {
       "type": "MIT"
     }
+  ],
+  "files": [
+    "lib/underscore.string.js"  
   ]
 }
