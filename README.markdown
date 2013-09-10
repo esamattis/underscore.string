@@ -307,6 +307,15 @@ _('some_class_name').classify()
 => 'SomeClassName'
 ```
 
+**propertify** _.propertify(string)
+
+Converts string to camelized property name with the first character lowercased
+
+```javascript
+_('some_property_name').propertify()
+=> 'somePropertyName'
+```
+
 **underscored** _.underscored(string)
 
 Converts a camelized or dasherized string into an underscored one
