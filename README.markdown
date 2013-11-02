@@ -528,6 +528,17 @@ words("   ")
 // => []
 ```
 
+#### sformat(string format, ...arguments) => string
+
+String formatting with indexed parameter placeholders, which allows
+changing their order or repeating them in the format string.
+This is especially useful when using localized format strings.
+
+```javascript
+sformat("See also: {0} (page {1})", "Architecture", 10)
+// => "See also: Architecture (page 10)"
+```
+
 #### sprintf(string format, ...arguments) => string
 
 C like string formatting. Makes use of the [sprintf-js](https://npmjs.org/package/sprintf-js) package.
