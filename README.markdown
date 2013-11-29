@@ -415,7 +415,7 @@ C like string formatting.
 Credits goes to [Alexandru Marasteanu][o].
 For more detailed documentation, see the [original page][o].
 
-[o]: http://www.diveintojavascript.com/projects/sprintf-for-javascript
+[o]: http://www.diveintojavascript.com/projects/javascript-sprintf
 
 ```javascript
 _.sprintf("%.1f", 1.17)
