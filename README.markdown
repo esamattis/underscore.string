@@ -148,17 +148,6 @@ _.str.include("foobar", "ob")
 => true
 ```
 
-(removed) **includes** _.includes(string, substring)
-
-Tests if string contains a substring.
-
-```javascript
-_.includes("foobar", "ob")
-=> true
-```
-
-**includes** function was removed
-
 But you can create it in this way, for compatibility with previous versions:
 
 ```javascript
