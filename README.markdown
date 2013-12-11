@@ -141,7 +141,7 @@ _.swapCase('hELLO')
 => 'Hello'
 ```
 
-**include** available only through _.str object, because Underscore has function with the same name.
+**include** is only available through the _.str object because Underscore has a function with the same name.
 
 ```javascript
 _.str.include("foobar", "ob")
