@@ -291,16 +291,19 @@ _('my name is epeli').titleize()
 
 **camelize** _.camelize(string)
 
-Converts underscored or dasherized string to a camelized one
+Converts underscored or dasherized string to a camelized one. Begins with 
+a lower case letter unless it starts with an underscore or string
 
 ```javascript
+_('moz-transform').camelize()
+=> 'mozTransform'
 _('-moz-transform').camelize()
 => 'MozTransform'
 ```
 
 **classify** _.classify(string)
 
-Converts string to camelized class name
+Converts string to camelized class name. First letter is always upper case
 
 ```javascript
 _('some_class_name').classify()
