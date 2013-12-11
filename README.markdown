@@ -148,12 +148,6 @@ _.str.include("foobar", "ob")
 => true
 ```
 
-But you can create it in this way, for compatibility with previous versions:
-
-```javascript
-_.includes = _.str.include
-```
-
 **count** _.count(string, substring)
 
 ```javascript
