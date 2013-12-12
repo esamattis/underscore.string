@@ -610,6 +610,7 @@ $(document).ready(function() {
     equal(_('').slugify(), '');
     equal(_(null).slugify(), '');
     equal(_(undefined).slugify(), '');
+    equal(_('Jack & Jill like numbers 1,2,3 and 4 and silly characters ?%.$!/').slugify('_'), 'jack_jill_like_numbers_123_and_4_and_silly_characters');
   });
 
   test('Strings: quote', function(){
