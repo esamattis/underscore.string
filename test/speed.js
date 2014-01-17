@@ -145,4 +145,8 @@
     _("Un éléphant à l'orée du bois").slugify();
   });
 
+  JSLitmus.test('toCurrency', function(){
+    _.toCurrency(1000, 'R$', ',', '.');
+  });
+
 })();

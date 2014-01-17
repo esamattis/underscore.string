@@ -681,5 +681,16 @@ $(document).ready(function() {
     strictEqual(_.toBoolean("foo FALSE bar", null, /FALSE/), false);
     strictEqual(_.toBoolean(" true  "), true);
   });
+  
+  test('String: toCurrency', function() {
+    strictEqual(_.toCurrency(1000), '$ 1,000.00');
+    strictEqual(_.toCurrency(200000, 'R$', ',', '.', 0), 'R$ 200.000');
+    strictEqual(_.toCurrency(1), '$ 1.00');
+    strictEqual(_.toCurrency(100.050), '$ 100.05');
+    strictEqual(_.toCurrency(undefined), "");
+    strictEqual(_.toCurrency(null), "");
+    strictEqual(_.toCurrency(500700100.60, '€', ',', '.', 0), '€ 500.700.101');
+    strictEqual(_.toCurrency(500700100.07, '€', ',', '.', 1), '€ 500.700.100,1');
+  });
 
 });

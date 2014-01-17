@@ -649,6 +649,19 @@ _.toBoolean("true only at start", [/^true/])
 => true
 ```
 
+
+**toCurrency** _.toCurrency(number, [symbol='$', decimalSeparator='.', orderSeparator=',', decimals=0])) 
+
+Formats the numbers including currency symbol.
+
+```javascript
+_.toCurrency(1000)
+=> "$ 1,000.00"
+
+_.toCurrency(123456789.123, "R$", ',', '.')
+=> "R$ 123.456.789,12"
+```
+
 ## Roadmap ##
 
 Any suggestions or bug reports are welcome. Just email me or more preferably open an issue.
