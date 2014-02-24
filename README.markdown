@@ -301,6 +301,18 @@ _('-moz-transform').camelize()
 => 'MozTransform'
 ```
 
+**uncamelize** _.uncamelize(string)
+
+Converts underscored or dasherized string to a camelized one. Begins with 
+a lower case letter unless it starts with an underscore or string
+
+```javascript
+_('mozTransform').uncamelize()
+=> 'moz-transform'
+_('MozTransform').camelize()
+=> '-moz-transform'
+```
+
 **classify** _.classify(string)
 
 Converts string to camelized class name. First letter is always upper case
