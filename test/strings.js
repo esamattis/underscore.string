@@ -257,6 +257,16 @@ $(document).ready(function() {
     equal(_(123).camelize(), '123');
   });
 
+  test('String: uncamelize', function(){
+    equal(_('theCamelizeStringMethod').uncamelize("_"), 'the_camelize_string_method');
+    equal(_('TheCamelizeStringMethod').uncamelize(), '-the-camelize-string-method');
+    equal(_('theCamelizeStringMethod').uncamelize(" "), 'the camelize string method');
+    equal(_('').uncamelize(), '', 'Uncamelize empty string returns empty string');
+    equal(_(null).uncamelize(), '', 'Uncamelize null returns empty string');
+    equal(_(undefined).uncamelize(), '', 'Uncamelize undefined returns empty string');
+    equal(_(123).uncamelize(), '123');
+  });
+
   test('String: underscored', function(){
     equal(_('the-underscored-string-method').underscored(), 'the_underscored_string_method');
     equal(_('theUnderscoredStringMethod').underscored(), 'the_underscored_string_method');
