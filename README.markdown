@@ -303,8 +303,9 @@ _('-moz-transform').camelize()
 
 **uncamelize** _.uncamelize(string)
 
-Converts underscored or dasherized string to a camelized one. Begins with 
-a lower case letter unless it starts with an underscore or string
+Converts a camelized string into a splittable equivalente. If the string is capitalized
+the first character will be the separater character for consistency with the camelize method. 
+(this migth be a pitfall if u plan on splitting the string as the first index would be an empty string)
 
 ```javascript
 _('mozTransform').uncamelize()
