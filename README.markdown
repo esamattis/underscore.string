@@ -310,7 +310,7 @@ the first character will be the separater character for consistency with the cam
 ```javascript
 _('mozTransform').uncamelize()
 => 'moz-transform'
-_('MozTransform').camelize()
+_('MozTransform').uncamelize()
 => '-moz-transform'
 ```
 
