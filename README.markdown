@@ -303,13 +303,13 @@ _('-moz-transform').camelize()
 
 **uncamelize** _.uncamelize(string)
 
-Converts a camelized string into a splittable equivalente. If the string is capitalized
-the first character will be the separater character for consistency with the camelize method. 
-(this migth be a pitfall if u plan on splitting the string as the first index would be an empty string)
+Converts a camelized string into a splittable equivalente. Accepts as an optional argument a string to be used as a delimiter. If the string is capitalized the first character will be the delimeter (note this migth be a pitfall when splitting the string as the first index in the resulting array would be an empty string). 
 
 ```javascript
 _('mozTransform').uncamelize()
 => 'moz-transform'
+_('mozTransform').uncamelize('_')
+=> 'moz_transform'
 _('MozTransform').uncamelize()
 => '-moz-transform'
 ```
