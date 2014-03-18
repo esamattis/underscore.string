@@ -28,17 +28,20 @@ _("   epeli  ").chain().trim().capitalize().value()
 
 ## Node.js installation ##
 
-**npm package**
+### npm 
+**package**
 
     npm install underscore.string
 
-**Standalone usage**:
+### Standalone 
+**usage:**
 
 ```javascript
 var _s = require('underscore.string');
 ```
 
-**Integrate with Underscore.js**:
+### Integrate 
+**with Underscore.js:**
 
 ```javascript
 var _  = require('underscore');
@@ -76,8 +79,69 @@ otherwise functions from examples will be available through _.string or _.str ob
 _.str.capitalize('epeli')
 => "Epeli"
 ```
+- [numberFormat](#numberformat) — Formats the numbers.
+- [levenshtein](#levenshtein) — Calculates (Levenshtein distance)[http://en.wikipedia.org/wiki/Levenshtein_distance] between two strings.
+- [capitalize](#capitalize) Converts first letter of the string to uppercase.
+- [chop](#chop)
+- [clean](#clean) — Compress some whitespaces to one.
+- [chars](#chars)
+- [swapCase](#swapcase) — Returns a copy of the string in which all the case-based characters have had their case swapped.
+- [include](#include) — Tests if string contains a substring.
+- [includes](#includes)
+- [count](#count)
+- [escapeHTML](#escapehtml) — Converts HTML special characters to their entity equivalents.
+- [unescapeHTML](#unescapehtml) — Converts entity characters to HTML equivalents.
+- [insert](#insert)
+- [isBlank](#isblank)
+- [join](#join) — Joins strings together with given separator.
+- [lines](#lines)
+- [reverse](#reverse) — Return reversed string.
+- [splice](#splice) — Like a array splice.
+- [startsWith](#startswith) — This method checks whether string starts with starts.
+- [endsWith](#endswith) — This method checks whether string ends with ends.
+- [succ](#succ) — Returns the successor to str.
+- [supplant](#supplant)
+- [strip](#strip) — alias for trim
+- [lstrip](#lstrip) — alias for ltrim
+- [rstrip](#rstrip) — alias for rtrim
+- [titleize](#titleize)
+- [camelize](#camelize) — Converts underscored or dasherized string to a camelized one. Begins with a lower case letter unless it starts with an underscore or string
+- [classify](#classify) — Converts string to camelized class name. First letter is always upper case.
+- [underscored](#underscored) — Converts a camelized or dasherized string into an underscored one.
+- [dasherize](#dasherize) — Converts a underscored or camelized string into an dasherized one
+- [humanize](#humanize) — Converts an underscored, camelized, or dasherized string into a humanized one. Also removes beginning and ending whitespace, and removes the postfix '_id'.
+- [trim](#trim) — trims defined characters from begining and ending of the string. Defaults to whitespace characters.
+- [ltrim](#ltrim) — Left trim. Similar to trim, but only for left side.
+- [rtrim](#rtrim) – Right trim. Similar to trim, but only for right side.
+- [truncate](#truncate)
+- [prune](#prune) — Elegant version of truncate. Makes sure the pruned string does not exceed the original length. Avoid half-chopped words when truncating.
+- [words](#words) — Split string by delimiter (String or RegExp), /\s+/ by default.
+- [sprintf](#sprintf) — C like string formatting. Credits goes to Alexandru Marasteanu. For more detailed documentation, see the original page.
+- [pad](#pad) — pads the str with characters until the total string length is equal to the passed length parameter. By default, pads on the left with the space char (" "). padStr is truncated to a single character if necessary.
+- [lpad](#lpad) — left-pad a string
+- [rpad](#rpad) — right-pad a string
+- [lrpad](#lrpad) — left/right-pad a string
+- [center*](#center*) — alias for lrpad
+- [ljust](#ljust) — alias for rpad
+- [rjust](#rjust) — alias for lpad
+- [toNumber](#tonumber) — Parse string to number. Returns NaN if string can't be parsed to number.
+- [strRight](#strright) — Searches a string from left to right for a pattern and returns a substring consisting of the characters in the string that are to the right of the pattern or all string if no match found.
+- [strRightBack](#strrightback) — Searches a string from right to left for a pattern and returns a substring consisting of the characters in the string that are to the right of the pattern or all string if no match found.
+- [strLeft](#strleft) — Searches a string from left to right for a pattern and returns a substring consisting of the characters in the string that are to the left of the pattern or all string if no match found.
+- [strLeftBack](#strleftback) — Searches a string from right to left for a pattern and returns a substring consisting of the characters in the string that are to the left of the pattern or all string if no match found.
+- [stripTags](#stripTags) — Removes all html tags from string.
+- [toSentence](#tosentence) — Join an array into a human readable sentence.
+- [toSentenceSerial](#tosentenceserial) — The same as toSentence, but adjusts delimeters to use Serial comma.
+- [repeat](#repeat) — Repeats a string count times.
+- [surround](#surround) — Surround a string with another string.
+- [quote](#quote) — Quotes a string. quoteChar defaults to ".
+- [unquote](#unquote) — Unquotes a string. quoteChar defaults to ".
+- [slugify](#slugify) — Transform text into a URL slug. Replaces whitespaces, accentuated, and special characters with a dash.
+- [naturalCmp](#naturalcmp) — Naturally sort strings like humans would do.
+- [toBoolean](#toboolean) — Turn strings that can be commonly considered as booleas to real booleans. Such as "true", "false", "1" and "0". This function is case insensitive.
 
-**numberFormat** _.numberFormat(number, [ decimals=0, decimalSeparator='.', orderSeparator=','])
+#### numberFormat 
+**_.numberFormat(number, [ decimals=0, decimalSeparator='.', orderSeparator=','])**
 
 Formats the numbers.
 
@@ -90,17 +154,19 @@ _.numberFormat(123456789.123, 5, '.', ',')
 ```
 
 
-**levenshtein** _.levenshtein(string1, string2)
+#### levenshtein 
+**_.levenshtein(string1, string2)**
 
-Calculates [Levenshtein distance][ld] between two strings.
-[ld]: http://en.wikipedia.org/wiki/Levenshtein_distance
+Calculates (Levenshtein distance)[http://en.wikipedia.org/wiki/Levenshtein_distance] between two strings.
 
 ```javascript
 _.levenshtein('kitten', 'kittah')
 => 2
 ```
 
-**capitalize** _.capitalize(string)
+#### capitalize
+
+**_.capitalize(string)**
 
 Converts first letter of the string to uppercase.
 
@@ -109,14 +175,17 @@ _.capitalize("foo Bar")
 => "Foo Bar"
 ```
 
-**chop** _.chop(string, step)
+#### chop
+
+**_.chop(string, step)**
 
 ```javascript
 _.chop('whitespace', 3)
 => ['whi','tes','pac','e']
 ```
 
-**clean** _.clean(str)
+#### clean 
+**_.clean(str)**
 
 Compress some whitespaces to one.
 
@@ -125,14 +194,16 @@ _.clean(" foo    bar   ")
 => 'foo bar'
 ```
 
-**chars** _.chars(str)
+#### chars 
+**_.chars(str)**
 
 ```javascript
 _.chars('Hello')
 => ['H','e','l','l','o']
 ```
 
-**swapCase** _.swapCase(str)
+#### swapCase 
+**_.swapCase(str)**
 
 Returns a copy of the string in which all the case-based characters have had their case swapped.
 
@@ -141,7 +212,8 @@ _.swapCase('hELLO')
 => 'Hello'
 ```
 
-**include** available only through _.str object, because Underscore has function with the same name.
+#### include 
+**available only through _.str object, because Underscore has function with the same name.**
 
 ```javascript
 _.str.include("foobar", "ob")
@@ -157,7 +229,8 @@ _.includes("foobar", "ob")
 => true
 ```
 
-**includes** function was removed
+#### includes 
+**function was removed**
 
 But you can create it in this way, for compatibility with previous versions:
 
@@ -165,14 +238,16 @@ But you can create it in this way, for compatibility with previous versions:
 _.includes = _.str.include
 ```
 
-**count** _.count(string, substring)
+#### count 
+**_.count(string, substring)**
 
 ```javascript
 _('Hello world').count('l')
 => 3
 ```
 
-**escapeHTML** _.escapeHTML(string)
+#### escapeHTML 
+**_.escapeHTML(string)**
 
 Converts HTML special characters to their entity equivalents.
 
@@ -181,7 +256,8 @@ _('<div>Blah blah blah</div>').escapeHTML();
 => '&lt;div&gt;Blah blah blah&lt;/div&gt;'
 ```
 
-**unescapeHTML** _.unescapeHTML(string)
+#### unescapeHTML 
+**_.unescapeHTML(string)**
 
 Converts entity characters to HTML equivalents.
 
@@ -190,14 +266,16 @@ _('&lt;div&gt;Blah blah blah&lt;/div&gt;').unescapeHTML();
 => '<div>Blah blah blah</div>'
 ```
 
-**insert** _.insert(string, index, substing)
+#### insert 
+**_.insert(string, index, substing)**
 
 ```javascript
 _('Hello ').insert(6, 'world')
 => 'Hello world'
 ```
 
-**isBlank** _.isBlank(string)
+#### isBlank 
+**_.isBlank(string)**
 
 ```javascript
 _('').isBlank(); // => true
@@ -206,7 +284,8 @@ _(' ').isBlank(); // => true
 _('a').isBlank(); // => false
 ```
 
-**join** _.join(separator, *strings)
+#### join 
+**_.join(separator, *strings)**
 
 Joins strings together with given separator
 
@@ -215,14 +294,16 @@ _.join(" ", "foo", "bar")
 => "foo bar"
 ```
 
-**lines** _.lines(str)
+#### lines 
+**_.lines(str)**
 
 ```javascript
 _.lines("Hello\nWorld")
 => ["Hello", "World"]
 ```
 
-**reverse** available only through _.str object, because Underscore has function with the same name.
+#### reverse 
+**available only through _.str object, because Underscore has function with the same name.**
 
 Return reversed string:
 
@@ -231,7 +312,8 @@ _.str.reverse("foobar")
 => 'raboof'
 ```
 
-**splice**  _.splice(string, index, howmany, substring)
+#### splice 
+**_.splice(string, index, howmany, substring)**
 
 Like a array splice.
 
@@ -240,7 +322,8 @@ _('https://edtsech@bitbucket.org/edtsech/underscore.strings').splice(30, 7, 'epe
 => 'https://edtsech@bitbucket.org/epeli/underscore.strings'
 ```
 
-**startsWith** _.startsWith(string, starts)
+#### startsWith 
+**_.startsWith(string, starts)**
 
 This method checks whether string starts with starts.
 
@@ -249,7 +332,8 @@ _("image.gif").startsWith("image")
 => true
 ```
 
-**endsWith** _.endsWith(string, ends)
+#### endsWith 
+**_.endsWith(string, ends)**
 
 This method checks whether string ends with ends.
 
@@ -258,7 +342,8 @@ _("image.gif").endsWith("gif")
 => true
 ```
 
-**succ**  _.succ(str)
+#### succ 
+**_.succ(str)**
 
 Returns the successor to str.
 
@@ -270,26 +355,32 @@ _('A').succ()
 => 'B'
 ```
 
-**supplant**
+#### supplant
 
+****
 Supplant function was removed, use Underscore.js [template function][p].
 
 [p]: http://documentcloud.github.com/underscore/#template
 
-**strip** alias for *trim*
+#### strip 
+**alias for *trim***
 
-**lstrip** alias for *ltrim*
+#### lstrip 
+**alias for *ltrim***
 
-**rstrip** alias for *rtrim*
+#### rstrip 
+**alias for *rtrim***
 
-**titleize** _.titleize(string)
+#### titleize 
+**_.titleize(string)**
 
 ```javascript
 _('my name is epeli').titleize()
 => 'My Name Is Epeli'
 ```
 
-**camelize** _.camelize(string)
+#### camelize 
+**_.camelize(string)**
 
 Converts underscored or dasherized string to a camelized one. Begins with 
 a lower case letter unless it starts with an underscore or string
@@ -301,7 +392,8 @@ _('-moz-transform').camelize()
 => 'MozTransform'
 ```
 
-**classify** _.classify(string)
+#### classify 
+**_.classify(string)**
 
 Converts string to camelized class name. First letter is always upper case
 
@@ -310,7 +402,8 @@ _('some_class_name').classify()
 => 'SomeClassName'
 ```
 
-**underscored** _.underscored(string)
+#### underscored 
+**_.underscored(string)**
 
 Converts a camelized or dasherized string into an underscored one
 
@@ -319,7 +412,8 @@ _('MozTransform').underscored()
 => 'moz_transform'
 ```
 
-**dasherize** _.dasherize(string)
+#### dasherize 
+**_.dasherize(string)**
 
 Converts a underscored or camelized string into an dasherized one
 
@@ -328,7 +422,8 @@ _('MozTransform').dasherize()
 => '-moz-transform'
 ```
 
-**humanize** _.humanize(string)
+#### humanize 
+**_.humanize(string)**
 
 Converts an underscored, camelized, or dasherized string into a humanized one.
 Also removes beginning and ending whitespace, and removes the postfix '_id'.
@@ -338,7 +433,8 @@ _('  capitalize dash-CamelCase_underscore trim  ').humanize()
 => 'Capitalize dash camel case underscore trim'
 ```
 
-**trim** _.trim(string, [characters])
+#### trim 
+**_.trim(string, [characters])**
 
 trims defined characters from begining and ending of the string.
 Defaults to whitespace characters.
@@ -352,16 +448,19 @@ _.trim("_-foobar-_", "_-")
 ```
 
 
-**ltrim** _.ltrim(string, [characters])
+#### ltrim 
+**_.ltrim(string, [characters])**
 
 Left trim. Similar to trim, but only for left side.
 
 
-**rtrim** _.rtrim(string, [characters])
+#### rtrim 
+**_.rtrim(string, [characters])**
 
 Right trim. Similar to trim, but only for right side.
 
-**truncate** _.truncate(string, length, truncateString)
+#### truncate 
+**_.truncate(string, length, truncateString)**
 
 ```javascript
 _('Hello world').truncate(5)
@@ -371,7 +470,8 @@ _('Hello').truncate(10)
 => 'Hello'
 ```
 
-**prune** _.prune(string, length, pruneString)
+#### prune 
+**_.prune(string, length, pruneString)**
 
 Elegant version of truncate.
 Makes sure the pruned string does not exceed the original length.
@@ -394,7 +494,8 @@ _('Hello').prune(10)
 => 'Hello'
 ```
 
-**words** _.words(str, delimiter=/\s+/)
+#### words 
+**_.words(str, delimiter=/\s+/)**
 
 Split string by delimiter (String or RegExp), /\s+/ by default.
 
@@ -412,7 +513,8 @@ _.words("   ")
 => []
 ```
 
-**sprintf** _.sprintf(string format, *arguments)
+#### sprintf 
+**_.sprintf(string format, *arguments)**
 
 C like string formatting.
 Credits goes to [Alexandru Marasteanu][o].
@@ -425,7 +527,8 @@ _.sprintf("%.1f", 1.17)
 "1.2"
 ```
 
-**pad** _.pad(str, length, [padStr, type])
+#### pad 
+**_.pad(str, length, [padStr, type])**
 
 pads the `str` with characters until the total string length is equal to the passed `length` parameter. By default, pads on the **left** with the space char (`" "`). `padStr` is truncated to a single character if necessary.
 
@@ -446,7 +549,8 @@ _.pad("1", 8, 'bleepblorp', 'both')
 -> "bbbb1bbb";
 ```
 
-**lpad** _.lpad(str, length, [padStr])
+#### lpad 
+**_.lpad(str, length, [padStr])**
 
 left-pad a string. Alias for `pad(str, length, padStr, 'left')`
 
@@ -455,7 +559,8 @@ _.lpad("1", 8, '0')
 -> "00000001";
 ```
 
-**rpad** _.rpad(str, length, [padStr])
+#### rpad 
+**_.rpad(str, length, [padStr])**
 
 right-pad a string. Alias for `pad(str, length, padStr, 'right')`
 
@@ -464,7 +569,8 @@ _.rpad("1", 8, '0')
 -> "10000000";
 ```
 
-**lrpad** _.lrpad(str, length, [padStr])
+#### lrpad 
+**_.lrpad(str, length, [padStr])**
 
 left/right-pad a string. Alias for `pad(str, length, padStr, 'both')`
 
@@ -473,13 +579,17 @@ _.lrpad("1", 8, '0')
 -> "00001000";
 ```
 
-**center** alias for **lrpad**
+#### center*
+alias for `lrpad`
 
-**ljust** alias for *rpad*
+#### ljust 
+alias for `rpad`
 
-**rjust** alias for *lpad*
+#### rjust 
+alias for `lpad`
 
-**toNumber**  _.toNumber(string, [decimals])
+#### toNumber 
+**_.toNumber(string, [decimals])**
 
 Parse string to number. Returns NaN if string can't be parsed to number.
 
@@ -491,7 +601,8 @@ _('2.556').toNumber(1)
 => 2.6
 ```
 
-**strRight**  _.strRight(string, pattern)
+#### strRight 
+**_.strRight(string, pattern)**
 
 Searches a string from left to right for a pattern and returns a substring consisting of the characters in the string that are to the right of the pattern or all string if no match found.
 
@@ -500,7 +611,8 @@ _('This_is_a_test_string').strRight('_')
 => "is_a_test_string";
 ```
 
-**strRightBack**  _.strRightBack(string, pattern)
+#### strRightBack 
+**_.strRightBack(string, pattern)**
 
 Searches a string from right to left for a pattern and returns a substring consisting of the characters in the string that are to the right of the pattern or all string if no match found.
 
@@ -509,7 +621,8 @@ _('This_is_a_test_string').strRightBack('_')
 => "string";
 ```
 
-**strLeft**  _.strLeft(string, pattern)
+#### strLeft 
+**_.strLeft(string, pattern)**
 
 Searches a string from left to right for a pattern and returns a substring consisting of the characters in the string that are to the left of the pattern or all string if no match found.
 
@@ -518,7 +631,8 @@ _('This_is_a_test_string').strLeft('_')
 => "This";
 ```
 
-**strLeftBack**  _.strLeftBack(string, pattern)
+#### strLeftBack 
+**_.strLeftBack(string, pattern)**
 
 Searches a string from right to left for a pattern and returns a substring consisting of the characters in the string that are to the left of the pattern or all string if no match found.
 
@@ -527,8 +641,9 @@ _('This_is_a_test_string').strLeftBack('_')
 => "This_is_a_test";
 ```
 
-**stripTags**
+#### stripTags
 
+****
 Removes all html tags from string.
 
 ```javascript
@@ -539,7 +654,8 @@ _('a <a href="#">link</a><script>alert("hello world!")</script>').stripTags()
 => 'a linkalert("hello world!")'
 ```
 
-**toSentence**  _.toSentence(array, [delimiter, lastDelimiter])
+#### toSentence 
+**_.toSentence(array, [delimiter, lastDelimiter])**
 
 Join an array into a human readable sentence.
 
@@ -551,7 +667,8 @@ _.toSentence(['jQuery', 'Mootools', 'Prototype'], ', ', ' unt ')
 => 'jQuery, Mootools unt Prototype';
 ```
 
-**toSentenceSerial**  _.toSentenceSerial(array, [delimiter, lastDelimiter])
+#### toSentenceSerial 
+**_.toSentenceSerial(array, [delimiter, lastDelimiter])**
 
 The same as `toSentence`, but adjusts delimeters to use [Serial comma](http://en.wikipedia.org/wiki/Serial_comma).
 
@@ -566,7 +683,8 @@ _.toSentenceSerial(['jQuery', 'Mootools', 'Prototype'], ', ', ' unt ');
 => 'jQuery, Mootools, unt Prototype';
 ```
 
-**repeat** _.repeat(string, count, [separator])
+#### repeat 
+**_.repeat(string, count, [separator])**
 
 Repeats a string count times.
 
@@ -578,7 +696,8 @@ _.repeat("foo", 3, "bar")
 => 'foobarfoobarfoo'
 ```
 
-**surround** _.surround(string, wrap)
+#### surround 
+**_.surround(string, wrap)**
 
 Surround a string with another string.
 
@@ -587,7 +706,8 @@ _.surround("foo", "ab")
 => 'abfooab';
 ```
 
-**quote** _.quote(string, quoteChar) or _.q(string, quoteChar)
+#### quote 
+**_.quote(string, quoteChar) or _.q(string, quoteChar)**
 
 Quotes a string. `quoteChar` defaults to `"`.
 
@@ -595,7 +715,8 @@ Quotes a string. `quoteChar` defaults to `"`.
 _.quote('foo', quoteChar)
 => '"foo"';
 ```
-**unquote** _.unquote(string, quoteChar)
+#### unquote 
+**_.unquote(string, quoteChar)**
 
 Unquotes a string. `quoteChar` defaults to `"`.
 
@@ -607,7 +728,8 @@ _.unquote("'foo'", "'")
 ```
 
 
-**slugify** _.slugify(string)
+#### slugify 
+**_.slugify(string)**
 
 Transform text into a URL slug. Replaces whitespaces, accentuated, and special characters with a dash.
 
@@ -616,9 +738,10 @@ _.slugify("Un éléphant à l'orée du bois")
 => 'un-elephant-a-loree-du-bois';
 ```
 
-***Caution: this function is charset dependent***
+——Caution: this function is charset dependent——
 
-**naturalCmp** array.sort(_.naturalCmp)
+#### naturalCmp 
+**array.sort(_.naturalCmp)**
 
 Naturally sort strings like humans would do.
 
@@ -627,7 +750,8 @@ Naturally sort strings like humans would do.
 => [ 'foo5', 'foo20' ]
 ```
 
-**toBoolean** _.toBoolean(string) or _.toBool(string)
+#### toBoolean 
+**_.toBoolean(string) or _.toBool(string)**
 
 Turn strings that can be commonly considered as booleas to real booleans. Such as "true", "false", "1" and "0". This function is case insensitive.
 
@@ -655,6 +779,7 @@ Any suggestions or bug reports are welcome. Just email me or more preferably ope
 
 #### Problems
 
+****
 We lose two things for `include` and `reverse` methods from `_.string`:
 
 * Calls like `_('foobar').include('bar')` aren't available;
@@ -672,7 +797,8 @@ _.mixin({
 _('foobar').chain().reverseString().includeString('rab').value()
 ```
 
-#### Standalone Usage
+#### Standalone 
+**Usage**
 
 If you are using Underscore.string without Underscore. You also have `_.string` namespace for it and `_.str` alias
 But of course you can just reassign `_` variable with `_.string`
