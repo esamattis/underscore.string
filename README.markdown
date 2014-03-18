@@ -28,20 +28,17 @@ _("   epeli  ").chain().trim().capitalize().value()
 
 ## Node.js installation ##
 
-### npm 
-**package**
+### npm package
 
     npm install underscore.string
 
-### Standalone 
-**usage:**
+### Standalone usage:
 
 ```javascript
 var _s = require('underscore.string');
 ```
 
-### Integrate 
-**with Underscore.js:**
+### Integrate with Underscore.js:**
 
 ```javascript
 var _  = require('underscore');
@@ -359,7 +356,6 @@ _('A').succ()
 
 ****
 Supplant function was removed, use Underscore.js [template function][p].
-
 [p]: http://documentcloud.github.com/underscore/#template
 
 #### strip 
@@ -643,7 +639,6 @@ _('This_is_a_test_string').strLeftBack('_')
 
 #### stripTags
 
-****
 Removes all html tags from string.
 
 ```javascript
@@ -715,6 +710,7 @@ Quotes a string. `quoteChar` defaults to `"`.
 _.quote('foo', quoteChar)
 => '"foo"';
 ```
+
 #### unquote 
 **_.unquote(string, quoteChar)**
 
@@ -738,7 +734,7 @@ _.slugify("Un éléphant à l'orée du bois")
 => 'un-elephant-a-loree-du-bois';
 ```
 
-——Caution: this function is charset dependent——
+_Caution: this function is charset dependent_
 
 #### naturalCmp 
 **array.sort(_.naturalCmp)**
@@ -779,7 +775,6 @@ Any suggestions or bug reports are welcome. Just email me or more preferably ope
 
 #### Problems
 
-****
 We lose two things for `include` and `reverse` methods from `_.string`:
 
 * Calls like `_('foobar').include('bar')` aren't available;
@@ -797,8 +792,7 @@ _.mixin({
 _('foobar').chain().reverseString().includeString('rab').value()
 ```
 
-#### Standalone 
-**Usage**
+#### Standalone Usage
 
 If you are using Underscore.string without Underscore. You also have `_.string` namespace for it and `_.str` alias
 But of course you can just reassign `_` variable with `_.string`
