@@ -118,7 +118,7 @@ _.str.capitalize('epeli')
 - [lpad](#lpad) — left-pad a string
 - [rpad](#rpad) — right-pad a string
 - [lrpad](#lrpad) — left/right-pad a string
-- [center*](#center*) — alias for lrpad
+- [center](#center) — alias for lrpad
 - [ljust](#ljust) — alias for rpad
 - [rjust](#rjust) — alias for lpad
 - [toNumber](#tonumber) — Parse string to number. Returns NaN if string can't be parsed to number.
@@ -126,7 +126,7 @@ _.str.capitalize('epeli')
 - [strRightBack](#strrightback) — Searches a string from right to left for a pattern and returns a substring consisting of the characters in the string that are to the right of the pattern or all string if no match found.
 - [strLeft](#strleft) — Searches a string from left to right for a pattern and returns a substring consisting of the characters in the string that are to the left of the pattern or all string if no match found.
 - [strLeftBack](#strleftback) — Searches a string from right to left for a pattern and returns a substring consisting of the characters in the string that are to the left of the pattern or all string if no match found.
-- [stripTags](#stripTags) — Removes all html tags from string.
+- [stripTags](#striptags) — Removes all html tags from string.
 - [toSentence](#tosentence) — Join an array into a human readable sentence.
 - [toSentenceSerial](#tosentenceserial) — The same as toSentence, but adjusts delimeters to use Serial comma.
 - [repeat](#repeat) — Repeats a string count times.
@@ -575,7 +575,7 @@ _.lrpad("1", 8, '0')
 -> "00001000";
 ```
 
-#### center*
+#### center
 alias for `lrpad`
 
 #### ljust 
