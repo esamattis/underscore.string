@@ -17,7 +17,7 @@
     "underscore",
     "string"
   ],
-  "main": "./lib/underscore.string",
+  "main": "./lib/underscore.string.js",
   "directories": {
     "lib": "./lib"
   },
