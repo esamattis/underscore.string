@@ -13,7 +13,7 @@ As name states this an extension for [Underscore.js][u], but it can be used
 independently from **_s**-global variable. But with Underscore.js you can
 use Object-Oriented style and chaining:
 
-[u]: http://documentcloud.github.com/underscore/
+[u]: http://underscorejs.org/
 
 ```javascript
 _("   epeli  ").chain().trim().capitalize().value()
