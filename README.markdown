@@ -649,9 +649,9 @@ _.toBoolean("true only at start", [/^true/])
 => true
 ```
 
-**toQueryString** _.toQueryString(hash)
+**toQueryString** _.toQueryString(object)
 
-Convert a hash into a URL query string.
+Convert an object into a URL query string.
 
 ```javascript
 _.toQueryString({foo: 'a and b', bar: [1, 2], foobar: null, baz: undefined})
