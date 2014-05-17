@@ -682,4 +682,15 @@ $(document).ready(function() {
     strictEqual(_.toBoolean(" true  "), true);
   });
 
+  test('String: toQueryString', function() {
+    equal(_.toQueryString({}), '');
+    equal(_.toQueryString(null), '');
+    equal(_.toQueryString({foo: 'a'}), 'foo=a');
+    equal(_.toQueryString({foo: null}), 'foo=');
+    equal(_.toQueryString({foo: undefined}), 'foo');
+    equal(_.toQueryString({'foo and bar': 'a'}), 'foo%20and%20bar=a');
+    equal(_.toQueryString({foo: 'a and b'}), 'foo=a%20and%20b');
+    equal(_.toQueryString({foo: 'a', foo2: 'b'}), 'foo=a&foo2=b');
+    equal(_.toQueryString({foo: ["a", "b"]}), 'foo=a&foo=b');
+  });
 });

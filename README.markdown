@@ -649,6 +649,15 @@ _.toBoolean("true only at start", [/^true/])
 => true
 ```
 
+**toQueryString** _.toQueryString(hash)
+
+Convert a hash into a URL query string.
+
+```javascript
+_.toQueryString({foo: 'a and b', bar: [1, 2], foobar: null, baz: undefined})
+=> 'foo=a%20and%20b&bar=1&bar=2&foobar=&baz'
+```
+
 ## Roadmap ##
 
 Any suggestions or bug reports are welcome. Just email me or more preferably open an issue.
