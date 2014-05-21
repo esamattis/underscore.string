@@ -18,12 +18,6 @@
     "string"
   ],
   "main": "./lib/underscore.string.js",
-  "directories": {
-    "lib": "./lib"
-  },
-  "engines": {
-    "node": "*"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/epeli/underscore.string.git"
