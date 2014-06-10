@@ -308,6 +308,8 @@ $(document).ready(function() {
     equal(_('some_class_name').classify(), 'SomeClassName');
     equal(_('my wonderfull class_name').classify(), 'MyWonderfullClassName');
     equal(_('my wonderfull.class.name').classify(), 'MyWonderfullClassName');
+    equal(_('myLittleCamel').classify(), 'MyLittleCamel');
+    equal(_('myLittleCamel.class.name').classify(), 'MyLittleCamelClassName');
   });
 
   test('String: humanize', function(){
