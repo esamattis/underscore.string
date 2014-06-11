@@ -527,6 +527,7 @@ $(document).ready(function() {
     equal(_.numberFormat(null, '.', ','), '');
     equal(_.numberFormat(undefined, '.', ','), '');
     equal(_.numberFormat(new Number(5000)), '5,000');
+    equal(_.numberFormat(10000.123,3,'.',',',true),'10,000.123');
   });
 
   test('String: strRight', function() {
