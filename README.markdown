@@ -100,6 +100,21 @@ _.levenshtein('kitten', 'kittah')
 => 2
 ```
 
+**brackets** _.brackets(string, [bracketCharOpen='(', bracketCharClose=')', include=false, recursive=false])
+
+Returns array of strings inside `bracketCharOpen` and `bracketCharClose`.
+
+```javascript
+_.brackets('text outside brackets (and inside brackets), and outside (again)')
+=> ["and inside brackets", "again"]
+
+_.brackets('squire [brackets]', '[', ']', true)
+=> ["[brackets]"]
+
+_.brackets('find (nested brackets (recursively))', '[', ']', false, true)
+=> ["nested brackets (recursively)", ["recursively"]]
+```
+
 **capitalize** _.capitalize(string)
 
 Converts first letter of the string to uppercase.
@@ -291,7 +306,7 @@ _('my name is epeli').titleize()
 
 **camelize** _.camelize(string)
 
-Converts underscored or dasherized string to a camelized one. Begins with 
+Converts underscored or dasherized string to a camelized one. Begins with
 a lower case letter unless it starts with an underscore or string
 
 ```javascript
