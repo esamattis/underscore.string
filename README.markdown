@@ -108,7 +108,7 @@ Returns array of strings inside `bracketCharOpen` and `bracketCharClose`.
 _.brackets('text outside brackets (and inside brackets), and outside (again)')
 => ["and inside brackets", "again"]
 
-_.brackets('squire [brackets]', '[', ']', true)
+_.brackets('square [brackets]', '[', ']', true)
 => ["[brackets]"]
 
 _.brackets('find (nested brackets (recursively))', '[', ']', false, true)
