@@ -262,6 +262,10 @@ $(document).ready(function() {
     equal(_('theUnderscoredStringMethod').underscored(), 'the_underscored_string_method');
     equal(_('TheUnderscoredStringMethod').underscored(), 'the_underscored_string_method');
     equal(_(' the underscored  string method').underscored(), 'the_underscored_string_method');
+    equal(_('TheUnderscoredStringMethodIsATest').underscored(), 'the_underscored_string_method_is_a_test');
+    equal(_('1TheUnderscoredStringMethod').underscored(), '1_the_underscored_string_method');
+    equal(_('1-the-underscored-string-method').underscored(), '1_the_underscored_string_method');
+    equal(_('the-underscored-string-1-method').underscored(), 'the_underscored_string_1_method');
     equal(_('').underscored(), '');
     equal(_(null).underscored(), '');
     equal(_(undefined).underscored(), '');
@@ -316,6 +320,7 @@ $(document).ready(function() {
     equal(_('the humanize string method').humanize(), 'The humanize string method');
     equal(_('the humanize_id string method_id').humanize(), 'The humanize id string method');
     equal(_('the  humanize string method  ').humanize(), 'The humanize string method');
+    equal(_('TheHumanizeStringMethodIsATest').humanize(), 'The humanize string method is a test');
     equal(_('   capitalize dash-CamelCase_underscore trim  ').humanize(), 'Capitalize dash camel case underscore trim');
     equal(_(123).humanize(), '123');
     equal(_('').humanize(), '');
