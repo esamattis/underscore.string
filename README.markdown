@@ -655,11 +655,11 @@ Python like string formatting, you can use a string, array or object as argument
 
 ```javascript
 _.format('http://{0}.com', 'foo')
-=> http://foo.com
+=> 'http://foo.com'
 _.format('http://{0}-{1}.com', ['foo', 'bar'])
-=> http://foo-bar.com
+=> 'http://foo-bar.com'
 _.format('http://{hostname}.com:{port}', {hostname:'foo', port:3000})
-=> http://foo.com:3000
+=> 'http://foo.com:3000'
 ```
 
 ## Roadmap ##
