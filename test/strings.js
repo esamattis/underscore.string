@@ -682,4 +682,23 @@ $(document).ready(function() {
     strictEqual(_.toBoolean(" true  "), true);
   });
 
+  test('String: format', function() {
+    // with string
+    strictEqual(_.format('http://{0}.com', 'foo'), 'http://foo.com');
+    strictEqual(_.format('http://www.{0}{1}.com', 'foo'), 'http://www.foo{1}.com');
+    strictEqual(_.format('http://www.{1}{2}.com', 'foo'), 'http://www.{1}{2}.com');
+
+    //with array
+    strictEqual(_.format('http://{0}.com', ['foo']), 'http://foo.com');
+    strictEqual(_.format('http://www.{0}{1}.com', ['foo']), 'http://www.foo{1}.com');
+    strictEqual(_.format('http://www.{0}-{1}.com', ['foo', 'en']), 'http://www.foo-en.com');
+    strictEqual(_.format('http://www.{2}-{1}.com', ['foo', 'en']), 'http://www.{2}-en.com');
+
+    // with object
+    strictEqual(_.format('http://{hostname}.com', {hostname: 'foo'}), 'http://foo.com');
+    strictEqual(_.format('http://{hos.-/tname}.com', {'hos.-/tname': 'foo'}), 'http://foo.com');
+    strictEqual(_.format('http://{hostname}.{tld}', {hostname: 'foo',tld: 'com'}), 'http://foo.com');
+    strictEqual(_.format('{protocol}://{hostname}.{tld}', {hostname: 'foo',tld: 'com',protocol: 'http'}), 'http://foo.com');
+  });
+
 });
