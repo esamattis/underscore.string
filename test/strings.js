@@ -192,6 +192,17 @@ $(document).ready(function() {
     ok(_(12345).chop(1).length === 5, 'output [1, 2, 3,  4, 5]');
   });
 
+  test('String: rchop', function(){
+    ok(_('whitespace').rchop(2).length === 5, 'output [wh, it, es, pa, ce]');
+    ok(_('whitespace').rchop(3).length === 4, 'output [w, hit, esp, ace]');
+    ok(_('whitespace').rchop()[0].length === 10, 'output [whitespace]');
+    ok(_('whitespace').rchop(-1)[0].length === 10, 'output [whitespace]');
+    ok(_('whitespace').rchop(NaN)[0].length === 10, 'output [whitespace]');
+    ok(_('whitespace').rchop(null)[0].length === 10, 'output [whitespace]');
+    ok(_('whitespace').rchop({})[0].length === 10, 'output [whitespace]');
+    ok(_(12345).rchop(1).length === 5, 'output [1, 2, 3, 4, 5]');
+  });
+
   test('String: clean', function(){
     equal(_.clean(' foo     bar   '), 'foo bar');
     equal(_.clean(''), '');
