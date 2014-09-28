@@ -119,7 +119,7 @@ _.chop('whitespace', 3)
 **rchop** _.rchop(string, step)
 
 ```javascript
-_.chop('whitespace', 3)
+_.rchop('whitespace', 3)
 => ['w', 'hit', 'esp', 'ace']
 ```
 
