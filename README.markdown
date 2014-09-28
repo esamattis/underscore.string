@@ -116,6 +116,13 @@ _.chop('whitespace', 3)
 => ['whi','tes','pac','e']
 ```
 
+**rchop** _.rchop(string, step)
+
+```javascript
+_.chop('whitespace', 3)
+=> ['w', 'hit', 'esp', 'ace']
+```
+
 **clean** _.clean(str)
 
 Compress some whitespaces to one.
