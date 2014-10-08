@@ -319,6 +319,15 @@ _('MozTransform').underscored()
 => 'moz_transform'
 ```
 
+**environmentalize** _.environmentalize(string)
+
+Converts a camelized or dasherized string into an upper case underscored one
+
+```javascript
+_('MozTransform').environmentalize()
+=> 'MOZ_TRANSFORM'
+```
+
 **dasherize** _.dasherize(string)
 
 Converts a underscored or camelized string into an dasherized one
