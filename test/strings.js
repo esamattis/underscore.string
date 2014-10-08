@@ -268,6 +268,17 @@ $(document).ready(function() {
     equal(_(123).underscored(), '123');
   });
 
+  test('String: environmentalize', function(){
+    equal(_('the-environmentalize-string-method').environmentalize(), 'THE_ENVIRONMENTALIZE_STRING_METHOD');
+    equal(_('theEnvironmentalizeStringMethod').environmentalize(), 'THE_ENVIRONMENTALIZE_STRING_METHOD');
+    equal(_('TheEnvironmentalizeStringMethod').environmentalize(), 'THE_ENVIRONMENTALIZE_STRING_METHOD');
+    equal(_(' the environmentalize  string method').environmentalize(), 'THE_ENVIRONMENTALIZE_STRING_METHOD');
+    equal(_('').environmentalize(), '');
+    equal(_(null).environmentalize(), '');
+    equal(_(undefined).environmentalize(), '');
+    equal(_(123).environmentalize(), '123');
+  });
+
   test('String: dasherize', function(){
     equal(_('the_dasherize_string_method').dasherize(), 'the-dasherize-string-method');
     equal(_('TheDasherizeStringMethod').dasherize(), '-the-dasherize-string-method');
