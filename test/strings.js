@@ -146,14 +146,17 @@ $(document).ready(function() {
   });
 
   test('Strings: join', function() {
-    equal(_.join('', 'foo', 'bar'), 'foobar', 'basic join');
-    equal(_.join('', 1, 'foo', 2), '1foo2', 'join numbers and strings');
-    equal(_.join(' ','foo', 'bar'), 'foo bar', 'join with spaces');
-    equal(_.join('1', '2', '2'), '212', 'join number strings');
-    equal(_.join(1, 2, 2), '212', 'join numbers');
-    equal(_.join('','foo', null), 'foo', 'join null with string returns string');
-    equal(_.join(null,'foo', 'bar'), 'foobar', 'join strings with null returns string');
-    equal(_(' ').join('foo', 'bar'), 'foo bar', 'join object oriented');
+    equal(s.join('', 'foo', 'bar'), 'foobar', 'basic join');
+    equal(s.join('', 1, 'foo', 2), '1foo2', 'join numbers and strings');
+    equal(s.join(' ','foo', 'bar'), 'foo bar', 'join with spaces');
+    equal(s.join('1', '2', '2'), '212', 'join number strings');
+    equal(s.join(1, 2, 2), '212', 'join numbers');
+    equal(s.join('','foo', null), 'foo', 'join null with string returns string');
+    equal(s.join(null,'foo', 'bar'), 'foobar', 'join strings with null returns string');
+    equal(s.join(1, 2, 3, 4), '21314');
+    equal(s.join('|', 'foo', 'bar', 'baz'), 'foo|bar|baz');
+    equal(s.join('',2,3,null), '23');
+    equal(s.join(null,2,3), '23');
   });
 
   test('Strings: reverse', function() {
@@ -442,13 +445,6 @@ $(document).ready(function() {
     equal(_(null).dasherize(), '');
     equal(_(undefined).dasherize(), '');
     equal(_(123).dasherize(), '123');
-  });
-
-  test('String: join', function(){
-    equal(_.join(1, 2, 3, 4), '21314');
-    equal(_.join('|', 'foo', 'bar', 'baz'), 'foo|bar|baz');
-    equal(_.join('',2,3,null), '23');
-    equal(_.join(null,2,3), '23');
   });
 
   test('String: classify', function(){
