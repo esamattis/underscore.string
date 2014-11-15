@@ -36,6 +36,9 @@
       "type": "MIT"
     }
   ],
+  "scripts": {
+    "test": "gulp test"
+  },
   "devDependencies": {
     "gulp": "~3.8.10",
     "gulp-uglify": "~1.0.1",
