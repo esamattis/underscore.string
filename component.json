@@ -2,7 +2,7 @@
   "name": "underscore.string",
   "repo": "epeli/underscore.string",
   "description": "String manipulation extensions for Underscore.js javascript library",
-  "version": "2.3.3",
+  "version": "2.4.0",
   "keywords": ["underscore", "string"],
   "dependencies": {},
   "development": {},

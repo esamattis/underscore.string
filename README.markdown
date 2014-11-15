@@ -291,7 +291,7 @@ _('my name is epeli').titleize()
 
 **camelize** _.camelize(string)
 
-Converts underscored or dasherized string to a camelized one. Begins with 
+Converts underscored or dasherized string to a camelized one. Begins with
 a lower case letter unless it starts with an underscore or string
 
 ```javascript
@@ -682,6 +682,13 @@ _ = _.string
 ```
 
 ## Changelog ##
+
+### 2.4.0 ###
+
+* Move from rake to gulp
+* Add support form classify camelcase strings
+* Fix bower.json
+* [Full changelog](https://github.com/epeli/underscore.string/compare/v2.3.3...2.4.0)
 
 ### 2.3.3 ###
 
