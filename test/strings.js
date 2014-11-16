@@ -684,4 +684,23 @@ $(document).ready(function() {
     strictEqual(_.toBoolean(" true  "), true);
   });
 
+  test('String: toQueryString', function() {
+    equal(_.toQueryString({}), '');
+    equal(_.toQueryString(null), '');
+    equal(_.toQueryString({foo: 'a'}), 'foo=a');
+    equal(_.toQueryString({foo: null}), 'foo=');
+    equal(_.toQueryString({foo: undefined}), 'foo');
+    equal(_.toQueryString({'foo and bar': 'a'}), 'foo%20and%20bar=a');
+    equal(_.toQueryString({foo: 'a and b'}), 'foo=a%20and%20b');
+    equal(_.toQueryString({foo: 'a', foo2: 'b'}), 'foo=a&foo2=b');
+    equal(_.toQueryString({foo: ["a", "b"]}), 'foo=a&foo=b');
+  });
+
+  test('String: toQueryParams', function() {
+    deepEqual(_.toQueryParams(''), {});
+    deepEqual(_.toQueryParams('www.foobar.com?foo=a&bar=b'), {'foo': 'a', 'bar': 'b'});
+    deepEqual(_.toQueryParams('foo=a&bar=b&bar=c'), {'foo': 'a', 'bar': ['b', 'c']});
+    deepEqual(_.toQueryParams('foo=a+and+b&bar=c%20and%20d'), {'foo': 'a and b', 'bar': 'c and d'});
+    deepEqual(_.toQueryParams('foo=a&bar'), {'foo': 'a', 'bar': undefined});
+  });
 });

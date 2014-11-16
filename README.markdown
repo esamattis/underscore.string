@@ -649,6 +649,24 @@ _.toBoolean("true only at start", [/^true/])
 => true
 ```
 
+**toQueryString** _.toQueryString(object)
+
+Convert an object into a URL query string.
+
+```javascript
+_.toQueryString({foo: 'a and b', bar: [1, 2], foobar: null, baz: undefined})
+=> 'foo=a%20and%20b&bar=1&bar=2&foobar=&baz'
+```
+
+**toQueryParams** _.toQueryParams(string)
+
+Convert URI-like query string and returns an object formed by parameter/value pairs.
+
+```javascript
+_.toQueryParam('www.foobar.com?foo=a&bar=1&bar=2&foobar)
+=> {'foo': 'a', bar: [1, 2], foobar: undefined}
+```
+
 ## Roadmap ##
 
 Any suggestions or bug reports are welcome. Just email me or more preferably open an issue.
