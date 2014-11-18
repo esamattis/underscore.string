@@ -11,6 +11,35 @@ $(document).ready(function() {
     deepEqual(arr.sort(_.naturalCmp), sorted);
   });
 
+  test("Strings: naturalCmp", function() {
+    // Should be associative
+    _.each([
+      ['abc', '123'],
+      ['def', 'abc'],
+      ['ab', 'a'],
+      ['r69', 'r9'],
+      ['123', '122'],
+      ['ac2', 'ab3'],
+      ['a-12', 'a-11'],
+      ['11', '-12'],
+      ['15.05', '15']
+    ], function(vals) {
+      var a = vals[0], b = vals[1];
+      equal(_.naturalCmp(a, b), 1, '\'' + a + '\' >= \'' + b + '\'');
+      equal(_.naturalCmp(b, a), -1, '\'' + b + '\' <= \'' + a + '\'');
+    });
+    _.each([
+      ['123', '123'],
+      ['abc', 'abc'],
+      ['r12', 'r12'],
+      ['12a', '12a']
+    ], function(vals) {
+      var a = vals[0], b = vals[1];
+      equal(_.naturalCmp(a, b), 0, '\'' + a + '\' == \'' + b + '\'');
+      equal(_.naturalCmp(b, a), 0, '\'' + b + '\' == \'' + a + '\'');
+    });
+  });
+
   test('Strings: trim', function() {
     equal(_.trim(123), '123', 'Non string');
     equal(_(' foo').trim(), 'foo');
