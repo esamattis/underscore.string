@@ -100,6 +100,21 @@ _.levenshtein('kitten', 'kittah')
 => 2
 ```
 
+**brackets** _.brackets(string, [bracketCharOpen='(', bracketCharClose=')', include=false, recursive=false])
+
+Returns array of strings inside `bracketCharOpen` and `bracketCharClose`.
+
+```javascript
+_.brackets('text outside brackets (and inside brackets), and outside (again)')
+=> ["and inside brackets", "again"]
+
+_.brackets('square [brackets]', '[', ']', true)
+=> ["[brackets]"]
+
+_.brackets('find (nested brackets (recursively))', '[', ']', false, true)
+=> ["nested brackets (recursively)", ["recursively"]]
+```
+
 **capitalize** _.capitalize(string)
 
 Converts first letter of the string to uppercase.
