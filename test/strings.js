@@ -584,6 +584,8 @@ $(document).ready(function() {
     equal(_('a <a href="#">link</a>').stripTags(), 'a link');
     equal(_('a <a href="#">link</a><script>alert("hello world!")</scr'+'ipt>').stripTags(), 'a linkalert("hello world!")');
     equal(_('<html><body>hello world</body></html>').stripTags(), 'hello world');
+    equal(_('<html><body><span class="underline">hello</span> <em>world</em></body><!--comment--></html>').stripTags('<span><em>'), '<span class="underline">hello</span> <em>world</em>');
+    equal(_('<html><body><span class="underline">hello</span> <em>world</em></body></html>').stripTags('inline'), '<span class="underline">hello</span> <em>world</em>');
     equal(_(123).stripTags(), '123');
     equal(_('').stripTags(), '');
     equal(_(null).stripTags(), '');
