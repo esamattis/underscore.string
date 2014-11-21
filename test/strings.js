@@ -26,7 +26,10 @@ $(document).ready(function() {
       ['15ac', '15ab32'],
       ['16', '15ab'],
       ['15a123', '15a122'],
-      ['15ab16', '15ab']
+      ['15ab16', '15ab'],
+      ['abc', 'Abc'],
+      ['abc', 'aBc'],
+      ['aBc', 'Abc']
     ], function(vals) {
       var a = vals[0], b = vals[1];
       equal(_.naturalCmp(a, b), 1, '\'' + a + '\' >= \'' + b + '\'');
