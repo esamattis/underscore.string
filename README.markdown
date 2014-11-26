@@ -109,6 +109,15 @@ _.capitalize("foo Bar")
 => "Foo Bar"
 ```
 
+**uncapitalize** _.uncapitalize(string)
+
+Converts first letter of the string to lowercase.
+
+```javascript
+_.uncapitalize("Foo Bar")
+=> "foo Bar"
+```
+
 **chop** _.chop(string, step)
 
 ```javascript
