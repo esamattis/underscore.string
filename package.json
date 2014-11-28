@@ -44,6 +44,9 @@
     "gulp-clean": "~0.3.1",
     "gulp-qunit": "~1.0.0",
     "gulp-rename": "~1.2.0",
-    "gulp-uglify": "~1.0.1"
+    "gulp-uglify": "~1.0.1",
+    "gulp-param": "~0.6.1",
+    "gulp-bump": "~0.1.11",
+    "gulp-replace": "~0.5.0"
   }
 }
