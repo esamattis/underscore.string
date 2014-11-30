@@ -125,7 +125,7 @@ $(document).ready(function() {
   test('Strings: capitalize', function() {
     equal(_('fabio').capitalize(), 'Fabio', 'First letter is upper case');
     equal(_.capitalize('fabio'), 'Fabio', 'First letter is upper case');
-    equal(_.capitalize('FOO'), 'FOO', 'Other letters unchanged');
+    equal(_.capitalize('FABIO'), 'Fabio', 'Rest of the letters are lowercase');
     equal(_(123).capitalize(), '123', 'Non string');
     equal(_.capitalize(''), '', 'Capitalizing empty string returns empty string');
     equal(_.capitalize(null), '', 'Capitalizing null returns empty string');
