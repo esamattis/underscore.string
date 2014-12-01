@@ -198,6 +198,7 @@ $(document).ready(function() {
 
   test('Strings: endsWith', function() {
     ok(_('foobar').endsWith('bar'), 'foobar ends with bar');
+    ok(_('foobarfoobar').endsWith('bar'), 'foobar ends with bar');
     ok(_.endsWith('foobar', 'bar'), 'foobar ends with bar');
     ok(_.endsWith('00018-0000062.Plone.sdh264.1a7264e6912a91aa4a81b64dc5517df7b8875994.mp4', 'mp4'), 'endsWith .mp4');
     ok(!_('fooba').endsWith('bar'), 'fooba does not end with bar');
