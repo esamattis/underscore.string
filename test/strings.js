@@ -194,6 +194,7 @@ $(document).ready(function() {
     ok(_('').startsWith(''), 'empty string starts with empty string');
     ok(_(null).startsWith(''), 'null starts with empty string');
     ok(!_(null).startsWith('foo'), 'null starts with foo');
+    ok(_('foobar').startsWith('bar', 3), 'foobar starts with foo at position 3');
   });
 
   test('Strings: endsWith', function() {
