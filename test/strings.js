@@ -470,9 +470,9 @@ $(document).ready(function() {
     equal(_('Hello\nWorld').lines().length, 2);
     equal(_('Hello World').lines().length, 1);
     equal(_(123).lines().length, 1);
-    equal(_('').lines().length, 1);
-    equal(_(null).lines().length, 0);
-    equal(_(undefined).lines().length, 0);
+    deepEqual(_('').lines(), ['']);
+    deepEqual(_(null).lines(), []);
+    deepEqual(_(undefined).lines(), []);
   });
 
   test('String: pad', function() {
