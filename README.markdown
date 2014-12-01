@@ -215,10 +215,15 @@ _.join(" ", "foo", "bar")
 => "foo bar"
 ```
 
-**lines** _.lines(str)
+**lines** _.lines(str, [linebreak])
+
+Breaks a string into an array of lines
 
 ```javascript
 _.lines("Hello\nWorld")
+=> ["Hello", "World"]
+
+_.lines("Hello\r\nWorld", "\r\n")
 => ["Hello", "World"]
 ```
 
