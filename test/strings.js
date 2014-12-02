@@ -468,7 +468,7 @@ $(document).ready(function() {
 
   test('String: lines', function() {
     equal(_('Hello\nWorld').lines().length, 2);
-    equal(_('Hello\r\nWorld', '\r\n').lines().length, 2);
+    equal(_('Hello\r\nWorld').lines('\r\n').length, 2);
     equal(_('Hello\r\nWorld').lines().length, 2);
     equal(_('Hello World').lines().length, 1);
     equal(_(123).lines().length, 1);
