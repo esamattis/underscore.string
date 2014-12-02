@@ -194,7 +194,10 @@ $(document).ready(function() {
     ok(_('').startsWith(''), 'empty string starts with empty string');
     ok(_(null).startsWith(''), 'null starts with empty string');
     ok(!_(null).startsWith('foo'), 'null starts with foo');
-    ok(_('foobar').startsWith('bar', 3), 'foobar starts with foo at position 3');
+    ok(_('-foobar').startsWith('foo', 1), 'foobar starts with foo at position 1');
+    ok(_('foobar').startsWith('foo', 0), 'foobar starts with foo at position 0');
+    ok(!_('foobar').startsWith('foo', 1), 'foobar starts not with foo at position 1');
+    ok(_('Äpfel').startsWith('Ä'), 'string starts with a unicode');
   });
 
   test('Strings: endsWith', function() {
@@ -208,6 +211,10 @@ $(document).ready(function() {
     ok(_('').endsWith(''), 'empty string ends with empty string');
     ok(_(null).endsWith(''), 'null ends with empty string');
     ok(!_(null).endsWith('foo'), 'null ends with foo');
+    ok(_('foobar?').endsWith('bar', 6), 'foobar ends with bar at position 6');
+    ok(_(12345).endsWith(34, 4), 'number ends with 34 at position 4');
+    ok(!_(12345).endsWith(45, 4), 'number ends not with 45 at position 4');
+    ok(_('foobä').endsWith('ä'), 'string ends with a unicode');
   });
 
   test('Strings: include', function() {
