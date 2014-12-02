@@ -215,9 +215,9 @@ _.join(" ", "foo", "bar")
 => "foo bar"
 ```
 
-**lines** _.lines(str, [linebreak])
+**lines** _.lines(str, [linebreak=/\r?\n/])
 
-Breaks a string into an array of lines
+Breaks a string into an array of lines by delimiter (String or RegExp), /\r?\n/ by default.
 
 ```javascript
 _.lines("Hello\nWorld")
