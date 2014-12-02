@@ -258,7 +258,7 @@ This method checks whether string ends with ends at position (default: string.le
 ```javascript
 _("image.gif").endsWith("gif")
 => true
-_("image.old.gif").endsWith("old", 10)
+_("image.old.gif").endsWith("old", 9)
 => true
 ```
 
