@@ -118,7 +118,7 @@ _.chop('whitespace', 3)
 
 **clean** _.clean(str)
 
-Compress some whitespaces to one.
+Trim and replace multiple spaces with a single space.
 
 ```javascript
 _.clean(" foo    bar   ")
@@ -233,7 +233,7 @@ _.str.reverse("foobar")
 
 **splice**  _.splice(string, index, howmany, substring)
 
-Like a array splice.
+Like an array splice.
 
 ```javascript
 _('https://edtsech@bitbucket.org/edtsech/underscore.strings').splice(30, 7, 'epeli')
@@ -242,7 +242,7 @@ _('https://edtsech@bitbucket.org/edtsech/underscore.strings').splice(30, 7, 'epe
 
 **startsWith** _.startsWith(string, starts, [position])
 
-This method checks whether string starts with starts at position (default: 0).
+This method checks whether the string begins with `starts` at `position` (default: 0).
 
 ```javascript
 _("image.gif").startsWith("image")
@@ -253,7 +253,7 @@ _(".vimrc").startsWith("vim", 1)
 
 **endsWith** _.endsWith(string, ends, [position])
 
-This method checks whether string ends with ends at position (default: string.length).
+This method checks whether the string ends with `ends` at `position` (default: string.length).
 
 ```javascript
 _("image.gif").endsWith("gif")
