@@ -1,0 +1,10 @@
+{
+  "name": "underscore.string",
+  "version": "2.4.0",
+  "homepage": "https://github.com/epeli/underscore.string",
+  "authors": [],
+  "license": "MIT",
+  "dependencies": {
+    "underscore.string": "*"
+  }
+}

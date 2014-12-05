@@ -42,8 +42,8 @@
     </div>
     <h2><span class="desc">Downloads</span></h2>
       <ul>
-        <li><a href="lib/underscore.string.js">Development Version</a> (2.4.0) 19kb, Uncompressed with Comments</li>
-        <li><a href="dist/underscore.string.min.js">Production Version</a> (2.4.0) 9kb, Packed and Gzipped</li>
+        <li><a href="dist/underscore.string/lib/underscore.string.js">Development Version</a> (2.4.0) 19kb, Uncompressed with Comments</li>
+        <li><a href="dist/underscore.string/dist/underscore.string.min.js">Production Version</a> (2.4.0) 9kb, Packed and Gzipped</li>
       </ul>
       <p>
       You can also install the Underscore.string <a href="https://www.npmjs.org/package/underscore.string">NPM package</a>
@@ -65,7 +65,16 @@
 
   </script>
   <!-- Include Underscore, so you can play with it in the console. -->
-  <script type="text/javascript" src="test/underscore.js"></script>
-  <script type="text/javascript" src="lib/underscore.string.js"></script>
+  <script type="text/javascript" src="dist/underscore.string/lib/underscore.string.js"></script>
+  <script type="text/javascript" src="node_modules/log-with-style/log.min.js"></script>
+
+  <script>
+    (function(){
+        var style = 'font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 20px; color: #bababa; padding: 8px 0; line-height: 40px',
+        code = 'font-family: "Courier New"; font-size: 15px; color: #333; padding: 8px 0; line-height: 20px';
+        log.l('%cUnderscore.string ' + _.str.VERSION, style);
+        log.l('%c_.str.camelize(\'foo bar\') // Try this in the console', code);
+    })();
+  </script>
 </body>
 </html>

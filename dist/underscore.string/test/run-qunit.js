@@ -15,13 +15,14 @@ function waitFor(test, complete, timeout) {
 }
 
 
-var page = new WebPage()
+var fs = require('fs'), page = require('webpage').create();
+var url = 'file://localhost' + fs.workingDirectory + '/' + phantom.args[0];
 
 page.onConsoleMessage = function(msg) {
   console.log(msg)
 }
 
-page.open(phantom.args[0], function(status) {
+page.open(url, function(status) {
   waitFor(function() {
     return page.evaluate(function(){
       var el = document.getElementById('qunit-testresult')
