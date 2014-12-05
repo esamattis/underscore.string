@@ -624,7 +624,7 @@ _.slugify("Un éléphant à l'orée du bois")
 
 **naturalCmp** array.sort(_.naturalCmp)
 
-Naturally sort strings like humans would do.
+Naturally sort strings like humans would do. None numbers are compared by their [ASCII values](http://www.asciitable.com/). Note: this means "a" > "A". Use `.toLowerCase` if this isn't to be desired.
 
 ```javascript
 ['foo20', 'foo5'].sort(_.naturalCmp)
