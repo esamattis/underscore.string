@@ -296,7 +296,7 @@ _('my name is epeli').titleize()
 **camelize** _.camelize(string)
 
 Converts underscored or dasherized string to a camelized one. Begins with
-a lower case letter unless it starts with an underscore or string
+a lower case letter unless it starts with an underscore, dash or an upper case letter.
 
 ```javascript
 _('moz-transform').camelize()
