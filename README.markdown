@@ -240,21 +240,25 @@ _('https://edtsech@bitbucket.org/edtsech/underscore.strings').splice(30, 7, 'epe
 => 'https://edtsech@bitbucket.org/epeli/underscore.strings'
 ```
 
-**startsWith** _.startsWith(string, starts)
+**startsWith** _.startsWith(string, starts, [position])
 
-This method checks whether string begins with `starts`.
+This method checks whether the string begins with `starts` at `position` (default: 0).
 
 ```javascript
 _("image.gif").startsWith("image")
 => true
+_(".vimrc").startsWith("vim", 1)
+=> true
 ```
 
-**endsWith** _.endsWith(string, ends)
+**endsWith** _.endsWith(string, ends, [position])
 
-This method checks whether the string ends with `ends`.
+This method checks whether the string ends with `ends` at `position` (default: string.length).
 
 ```javascript
 _("image.gif").endsWith("gif")
+=> true
+_("image.old.gif").endsWith("old", 9)
 => true
 ```
 
