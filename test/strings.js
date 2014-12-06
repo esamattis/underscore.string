@@ -201,6 +201,23 @@ $(document).ready(function() {
     ok(_('foobar').startsWith('foo', 0), 'foobar starts with foo at position 0');
     ok(!_('foobar').startsWith('foo', 1), 'foobar starts not with foo at position 1');
     ok(_('Äpfel').startsWith('Ä'), 'string starts with a unicode');
+
+    strictEqual(_('hello').startsWith('hell'), true);
+    strictEqual(_('HELLO').startsWith('HELL'), true);
+    strictEqual(_('HELLO').startsWith('hell'), false);
+    strictEqual(_('HELLO').startsWith('hell'), false);
+    strictEqual(_('hello').startsWith('hell', 0), true);
+    strictEqual(_('HELLO').startsWith('HELL', 0), true);
+    strictEqual(_('HELLO').startsWith('hell', 0), false);
+    strictEqual(_('HELLO').startsWith('hell', 0), false);
+    strictEqual(_('HELLO').startsWith(), false);
+    strictEqual(_('hello').startsWith('hell', -20), true);
+    strictEqual(_('hello').startsWith('hell', 1), false);
+    strictEqual(_('hello').startsWith('hell', 2), false);
+    strictEqual(_('hello').startsWith('hell', 3), false);
+    strictEqual(_('hello').startsWith('hell', 4), false);
+    strictEqual(_('hello').startsWith('hell', 5), false);
+    strictEqual(_('hello').startsWith('hell', 20), false);
   });
 
   test('Strings: endsWith', function() {
@@ -218,6 +235,23 @@ $(document).ready(function() {
     ok(_(12345).endsWith(34, 4), 'number ends with 34 at position 4');
     ok(!_(12345).endsWith(45, 4), 'number ends not with 45 at position 4');
     ok(_('foobä').endsWith('ä'), 'string ends with a unicode');
+
+    strictEqual(_('vader').endsWith('der'), true);
+    strictEqual(_('VADER').endsWith('DER'), true);
+    strictEqual(_('VADER').endsWith('der'), false);
+    strictEqual(_('VADER').endsWith('DeR'), false);
+    strictEqual(_('VADER').endsWith(), false);
+    strictEqual(_('vader').endsWith('der', 5), true);
+    strictEqual(_('VADER').endsWith('DER', 5), true);
+    strictEqual(_('VADER').endsWith('der', 5), false);
+    strictEqual(_('VADER').endsWith('DER', 5), true);
+    strictEqual(_('VADER').endsWith('der', 5), false);
+    strictEqual(_('vader').endsWith('der', -20), false);
+    strictEqual(_('vader').endsWith('der', 0), false);
+    strictEqual(_('vader').endsWith('der', 1), false);
+    strictEqual(_('vader').endsWith('der', 2), false);
+    strictEqual(_('vader').endsWith('der', 3), false);
+    strictEqual(_('vader').endsWith('der', 4), false);
   });
 
   test('Strings: include', function() {
