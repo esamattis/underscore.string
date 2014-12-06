@@ -211,6 +211,8 @@ $(document).ready(function() {
     strictEqual(_('HELLO').startsWith('hell', 0), false);
     strictEqual(_('HELLO').startsWith('hell', 0), false);
     strictEqual(_('HELLO').startsWith(), false);
+    strictEqual(_('undefined').startsWith(), true);
+    strictEqual(_('null').startsWith(null), true);
     strictEqual(_('hello').startsWith('hell', -20), true);
     strictEqual(_('hello').startsWith('hell', 1), false);
     strictEqual(_('hello').startsWith('hell', 2), false);
@@ -241,6 +243,8 @@ $(document).ready(function() {
     strictEqual(_('VADER').endsWith('der'), false);
     strictEqual(_('VADER').endsWith('DeR'), false);
     strictEqual(_('VADER').endsWith(), false);
+    strictEqual(_('undefined').endsWith(), true);
+    strictEqual(_('null').endsWith(null), true);
     strictEqual(_('vader').endsWith('der', 5), true);
     strictEqual(_('VADER').endsWith('DER', 5), true);
     strictEqual(_('VADER').endsWith('der', 5), false);
