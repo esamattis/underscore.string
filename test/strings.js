@@ -135,6 +135,16 @@ $(document).ready(function() {
     equal(_.capitalize(undefined), '', 'Capitalizing undefined returns empty string');
   });
 
+  test('Strings: decapitalize', function() {
+    equal(_('Fabio').decapitalize(), 'fabio', 'First letter is lower case');
+    equal(_.decapitalize('Fabio'), 'fabio', 'First letter is lower case');
+    equal(_.decapitalize('FOO'), 'fOO', 'Other letters unchanged');
+    equal(_(123).decapitalize(), '123', 'Non string');
+    equal(_.decapitalize(''), '', 'Decapitalizing empty string returns empty string');
+    equal(_.decapitalize(null), '', 'Decapitalizing null returns empty string');
+    equal(_.decapitalize(undefined), '', 'Decapitalizing undefined returns empty string');
+  });
+
   test('Strings: join', function() {
     equal(_.join('', 'foo', 'bar'), 'foobar', 'basic join');
     equal(_.join('', 1, 'foo', 2), '1foo2', 'join numbers and strings');
