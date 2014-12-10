@@ -622,11 +622,11 @@ _.unquote("'foo'", "'")
 
 **slugify** _.slugify(string)
 
-Transform text into a URL slug. Replaces whitespaces, accentuated, and special characters with a dash.
+Transform text into an ascii slug which can be used in safely in URLs. Replaces whitespaces, accentuated, and special characters with a dash. Limited set of non-ascii characters are transformed to similar versions in the ascii character set such as `ä` to `a`.
 
 ```javascript
-_.slugify("Un éléphant à l'orée du bois")
-=> 'un-elephant-a-loree-du-bois';
+_.slugify("Un éléphant à l\'orée du bois")
+=> 'un-elephant-a-l-oree-du-bois';
 ```
 
 ***Caution: this function is charset dependent***
