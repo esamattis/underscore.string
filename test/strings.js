@@ -778,4 +778,12 @@ $(document).ready(function() {
     strictEqual(_.toBoolean(" true  "), true);
   });
 
+  test('String: pluralForm', function() {
+    equal(_.pluralForm(1, 'яблоко', 'яблока', 'яблок'), 'яблоко');
+    equal(_.pluralForm(2, 'яблоко', 'яблока', 'яблок'), 'яблока');
+    equal(_.pluralForm(5, 'яблоко', 'яблока', 'яблок'), 'яблок');
+    equal(_.pluralForm(11, 'яблоко', 'яблока', 'яблок'), 'яблок');
+    equal(_.pluralForm(31, 'яблоко', 'яблока', 'яблок'), 'яблоко');
+  });
+
 });
