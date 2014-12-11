@@ -662,6 +662,21 @@ _.toBoolean("true only at start", [/^true/])
 => true
 ```
 
+**pluralForm** _.pluralForm(number, form1, form2, form5)
+
+Returns one of the three forms (`form1`, `form2` or `form5`) based on the `number` parameter
+
+```javascript
+_.pluralForm(1, 'яблоко', 'яблока', 'яблок')
+=> 'яблоко'
+_.pluralForm(2, 'яблоко', 'яблока', 'яблок')
+=> 'яблока'
+_.pluralForm(5, 'яблоко', 'яблока', 'яблок')
+=> 'яблок'
+_.pluralForm(11, 'яблоко', 'яблока', 'яблок')
+=> 'яблок'
+```
+
 ## Roadmap ##
 
 Any suggestions or bug reports are welcome. Just email me or more preferably open an issue.
