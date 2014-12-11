@@ -5,6 +5,11 @@ $(document).ready(function() {
 
   module('String extensions');
 
+  test('Strings: exports', function() {
+    equal(_.has(_.str.exports(), 'join'), true);
+    equal(_.has(_.str.exports({ strict: true }), 'join'), false);
+  });
+
   test('Strings: naturalSort', function() {
     var arr =  ['foo2', 'foo1', 'foo10', 'foo30', 'foo100', 'foo10bar'],
       sorted = ['foo1', 'foo2', 'foo10', 'foo10bar', 'foo30', 'foo100'];
