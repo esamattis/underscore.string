@@ -335,6 +335,13 @@ $(document).ready(function() {
     equal(_.splice(12345, 1, 2, 321), '132145', 'Non strings');
   });
 
+  test('String: pred', function(){
+    equal(_('b').pred(), 'a');
+    equal(_('B').pred(), 'A');
+    equal(_(',').pred(), '+');
+    equal(_(2).pred(), '1');
+  });
+
   test('String: succ', function(){
     equal(_('a').succ(), 'b');
     equal(_('A').succ(), 'B');

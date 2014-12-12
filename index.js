@@ -36,6 +36,7 @@ s.lines            = require('./lines');
 s.reverse          = require('./reverse');
 s.startsWith       = require('./startsWith');
 s.endsWith         = require('./endsWith');
+s.pred             = require('./pred');
 s.succ             = require('./succ');
 s.titleize         = require('./titleize');
 s.camelize         = require('./camelize');
