@@ -53,7 +53,7 @@ gulp.task('bump', ['bump-in-js'], function(semver) {
     .pipe(gulp.dest('./'));
 });
 
-gulp.task('build', ['test', 'clean'], function() {
+gulp.task('build', ['test', 'modules', 'clean'], function() {
   return gulp.src(COMPILED)
     .pipe(uglify())
     .pipe(rename(MIN_FILE))
