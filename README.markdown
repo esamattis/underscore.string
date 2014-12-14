@@ -314,6 +314,19 @@ _('-moz-transform').camelize()
 => 'MozTransform'
 ```
 
+**uncamelize** _.uncamelize(string)
+
+Converts a camelized string into a splittable equivalente. Accepts as an optional argument a string to be used as a delimiter. If the string is capitalized the first character will be the delimeter (note this migth be a pitfall when splitting the string as the first index in the resulting array would be an empty string). 
+
+```javascript
+_('mozTransform').uncamelize()
+=> 'moz-transform'
+_('mozTransform').uncamelize('_')
+=> 'moz_transform'
+_('MozTransform').uncamelize()
+=> '-moz-transform'
+```
+
 **classify** _.classify(string)
 
 Converts string to camelized class name. First letter is always upper case
