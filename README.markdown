@@ -22,7 +22,7 @@ _("   epeli  ").chain().trim().capitalize().value()
 
 ## Download ##
 
-  * [Development version](https://raw.github.com/epeli/underscore.string/master/lib/underscore.string.js) *Uncompressed with Comments 18kb*
+  * [Development version](https://raw.github.com/epeli/underscore.string/master/underscore.string.js) *Uncompressed with Comments 18kb*
   * [Production version](https://github.com/epeli/underscore.string/raw/master/dist/underscore.string.min.js) *Minified 7kb*
 
 
@@ -36,6 +36,16 @@ _("   epeli  ").chain().trim().capitalize().value()
 
 ```javascript
 var _s = require('underscore.string');
+```
+
+**Import specific modules (browserify/node)**:
+
+```javascript
+var capitalize = require('underscore.string/capitalize');
+var trim = require('underscore.string/trim');
+
+capitalize(trim("   epeli  "));
+=> "Epeli"
 ```
 
 **Integrate with Underscore.js**:

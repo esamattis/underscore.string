@@ -6,6 +6,6 @@
   "keywords": ["underscore", "string"],
   "dependencies": {},
   "development": {},
-  "main": "lib/underscore.string.js",
-  "scripts": ["lib/underscore.string.js"]
+  "main": "underscore.string.js",
+  "scripts": ["underscore.string.js"]
 }
