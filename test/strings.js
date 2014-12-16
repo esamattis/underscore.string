@@ -146,14 +146,13 @@ $(document).ready(function() {
   });
 
   test('Strings: join', function() {
-    equal(_.join('', 'foo', 'bar'), 'foobar', 'basic join');
-    equal(_.join('', 1, 'foo', 2), '1foo2', 'join numbers and strings');
-    equal(_.join(' ','foo', 'bar'), 'foo bar', 'join with spaces');
-    equal(_.join('1', '2', '2'), '212', 'join number strings');
-    equal(_.join(1, 2, 2), '212', 'join numbers');
-    equal(_.join('','foo', null), 'foo', 'join null with string returns string');
-    equal(_.join(null,'foo', 'bar'), 'foobar', 'join strings with null returns string');
-    equal(_(' ').join('foo', 'bar'), 'foo bar', 'join object oriented');
+    equal(_.str.join('', 'foo', 'bar'), 'foobar', 'basic join');
+    equal(_.str.join('', 1, 'foo', 2), '1foo2', 'join numbers and strings');
+    equal(_.str.join(' ','foo', 'bar'), 'foo bar', 'join with spaces');
+    equal(_.str.join('1', '2', '2'), '212', 'join number strings');
+    equal(_.str.join(1, 2, 2), '212', 'join numbers');
+    equal(_.str.join('','foo', null), 'foo', 'join null with string returns string');
+    equal(_.str.join(null,'foo', 'bar'), 'foobar', 'join strings with null returns string');
   });
 
   test('Strings: reverse', function() {
@@ -390,10 +389,10 @@ $(document).ready(function() {
   });
 
   test('String: join', function(){
-    equal(_.join(1, 2, 3, 4), '21314');
-    equal(_.join('|', 'foo', 'bar', 'baz'), 'foo|bar|baz');
-    equal(_.join('',2,3,null), '23');
-    equal(_.join(null,2,3), '23');
+    equal(_.str.join(1, 2, 3, 4), '21314');
+    equal(_.str.join('|', 'foo', 'bar', 'baz'), 'foo|bar|baz');
+    equal(_.str.join('',2,3,null), '23');
+    equal(_.str.join(null,2,3), '23');
   });
 
   test('String: classify', function(){
