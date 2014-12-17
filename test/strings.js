@@ -778,4 +778,15 @@ $(document).ready(function() {
     strictEqual(_.toBoolean(" true  "), true);
   });
 
+  test('String: ln2br', function() {
+    equal(_.ln2br('foo\nbar', false), 'foo<br>\nbar');
+    equal(_.ln2br('foo\n\nbar', false), 'foo<br>\n<br>\nbar');
+    equal(_.ln2br('\nfoo\n\nbar\n', false), '<br>\nfoo<br>\n<br>\nbar<br>\n');
+    equal(_.ln2br('\n\nfoo\n\nbar\n\n', false), '<br>\n<br>\nfoo<br>\n<br>\nbar<br>\n<br>\n');
+    equal(_.ln2br('foo\nbar'), 'foo<br />\nbar');
+    equal(_.ln2br('foo\n\nbar'), 'foo<br />\n<br />\nbar');
+    equal(_.ln2br('\nfoo\n\nbar\n'), '<br />\nfoo<br />\n<br />\nbar<br />\n');
+    equal(_.ln2br('foo\nbar\nfoo\nbar'), 'foo<br />\nbar<br />\nfoo<br />\nbar');
+    equal(_.ln2br('\n\nfoo\n\nbar\n\n'), '<br />\n<br />\nfoo<br />\n<br />\nbar<br />\n<br />\n');
+  });
 });
