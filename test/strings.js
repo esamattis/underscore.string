@@ -405,6 +405,13 @@ $(document).ready(function() {
     equal(_('myLittleCamel.class.name').classify(), 'MyLittleCamelClassName');
   });
 
+  test('String: propertify', function(){
+    equal(_.propertify(1), '1');
+    equal(_('some_property_name').propertify(), 'somePropertyName');
+    equal(_('my wonderfull property_name').propertify(), 'myWonderfullPropertyName');
+    equal(_('my wonderfull.property.name').propertify(), 'myWonderfullPropertyName');
+  });
+
   test('String: humanize', function(){
     equal(_('the_humanize_string_method').humanize(), 'The humanize string method');
     equal(_('ThehumanizeStringMethod').humanize(), 'Thehumanize string method');
