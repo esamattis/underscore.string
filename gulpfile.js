@@ -55,8 +55,12 @@ gulp.task('bump', ['bump-in-js'], function(semver) {
 });
 
 gulp.task('build', ['test', 'clean'], function() {
-  return gulp.src(SRC_COMPILED)
+  gulp.src(SRC_COMPILED)
     .pipe(uglify())
     .pipe(rename(MIN_FILE))
+    .pipe(gulp.dest(DEST));
+
+  gulp.src(SRC_COMPILED)
+    .pipe(rename(SRC))
     .pipe(gulp.dest(DEST));
 });

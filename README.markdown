@@ -22,7 +22,7 @@ _("   epeli  ").chain().trim().capitalize().value()
 
 ## Download ##
 
-  * [Development version](https://raw.github.com/epeli/underscore.string/master/underscore.string.js) *Uncompressed with Comments 18kb*
+  * [Development version](https://raw.github.com/epeli/underscore.string/master/dist/underscore.string.js) *Uncompressed with Comments 18kb*
   * [Production version](https://github.com/epeli/underscore.string/raw/master/dist/underscore.string.min.js) *Minified 7kb*
 
 
