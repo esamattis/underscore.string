@@ -22,7 +22,7 @@ gulp.task('browserify', function() {
   return gulp.src(SRC)
     .pipe(browserify({
       detectGlobals: true,
-      standalone: 'underscore.string'
+      standalone: 's'
     }))
     .pipe(rename('underscore.string.js'))
     .pipe(gulp.dest(DEST));
