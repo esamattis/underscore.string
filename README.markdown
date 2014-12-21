@@ -1,7 +1,5 @@
 # Underscore.string [![Build Status](https://secure.travis-ci.org/epeli/underscore.string.png?branch=master)](http://travis-ci.org/epeli/underscore.string) #
 
-
-
 Javascript lacks complete string manipulation operations.
 This an attempt to fill that gap. List of build-in methods can be found
 for example from [Dive Into JavaScript][d].
@@ -9,440 +7,399 @@ for example from [Dive Into JavaScript][d].
 [d]: http://www.diveintojavascript.com/core-javascript-reference/the-string-object
 
 
-As name states this an extension for [Underscore.js][u] (and [Lo-Dash](http://lodash.com/)), but it can be used
-independently from **_s**-global variable. But with Underscore.js you can
-use Object-Oriented style and chaining:
-
-[u]: http://underscorejs.org/
-
-```javascript
-_("   epeli  ").chain().trim().capitalize().value()
-=> "Epeli"
-```
-
-## Download ##
-
-  * [Development version](https://raw.github.com/epeli/underscore.string/master/dist/underscore.string.js) *Uncompressed with Comments 18kb*
-  * [Production version](https://github.com/epeli/underscore.string/raw/master/dist/underscore.string.min.js) *Minified 7kb*
+Originally started as an Underscore.js extension but is a full standalone
+library nowadays.
 
 
-## Node.js installation ##
+## Usage in Node.js and Browserify
 
-**npm package**
+Install from npm
 
     npm install underscore.string
 
-**Standalone usage**:
+Require individual functions
 
 ```javascript
-var _s = require('underscore.string');
+var slugify = require("underscore.string/slugify");
+
+slugify("Hello world!")
+// => hello-world
 ```
 
-**Import specific modules (browserify/node)**:
+or load the full library to enable chaining
 
 ```javascript
-var capitalize = require('underscore.string/capitalize');
-var trim = require('underscore.string/trim');
-
-capitalize(trim("   epeli  "));
-=> "Epeli"
+var s = require("underscore.string");
+s("   epeli  ").trim().capitalize().value();
+// => "Epeli"
 ```
 
-**Integrate with Underscore.js**:
+but especially when using with [Browserify][] the individual function approach
+is recommended because using it you only add those functions to your bundle you
+use.
+
+[Browserify]: http://browserify.org/
+
+## Others
+
+The `dist/underscore.string.js` file is an [UMD][] build. You can load it using
+an AMD loader such as [RequireJS][] or just stick it to a web page and access
+the library from the ***s*** global.
+
+[UMD]: https://github.com/umdjs/umd
+[RequireJS]: http://requirejs.org/
+
+### Download
+
+  * [Development version](https://raw.github.com/epeli/underscore.string/master/dist/underscore.string.js) *Uncompressed with Comments*
+  * [Production version](https://github.com/epeli/underscore.string/raw/master/dist/underscore.string.min.js) *Minified*
+
+
+## Underscore.js/Lo-Dash integration
+
+It is still possible use as Underscore.js/Lo-Dash extension
 
 ```javascript
-var _  = require('underscore');
-
-// Import Underscore.string to separate object, because there are conflict functions (include, reverse, contains)
-_.str = require('underscore.string');
-
-// Mix in non-conflict functions to Underscore namespace if you want
-_.mixin(_.str.exports());
-
-// All functions, include conflict, will be available through _.str object
-_.str.include('Underscore.string', 'string'); // => true
+_.mixin(s.exports());
 ```
+But it's not recommended since some of the are dropped because they collide
+with the functions already defined by Underscore.js.
 
-**Or Integrate with Underscore.js without module loading**
 
-Run the following expression after Underscore.js and Underscore.string are loaded
-```javascript
-// _.str becomes a global variable if no module loading is detected
-// Mix in non-conflict functions to Underscore namespace
-_.mixin(_.str.exports());
-```
+## API
 
-## String Functions ##
+### Individual functions
 
-For availability of functions in this way you need to mix in Underscore.string functions:
-
-```javascript
-_.mixin(_.string.exports());
-```
-
-otherwise functions from examples will be available through _.string or _.str objects:
-
-```javascript
-_.str.capitalize('epeli')
-=> "Epeli"
-```
-
-**numberFormat** _.numberFormat(number, [ decimals=0, decimalSeparator='.', orderSeparator=','])
+#### numberFormat(number, [ decimals=0, decimalSeparator='.', orderSeparator=',']) => string
 
 Formats the numbers.
 
 ```javascript
-_.numberFormat(1000, 2)
-=> "1,000.00"
+numberFormat(1000, 2)
+// => "1,000.00"
 
-_.numberFormat(123456789.123, 5, '.', ',')
-=> "123,456,789.12300"
+numberFormat(123456789.123, 5, '.', ',')
+// => "123,456,789.12300"
 ```
 
 
-**levenshtein** _.levenshtein(string1, string2)
+#### levenshtein(string1, string2) => number
 
 Calculates [Levenshtein distance][ld] between two strings.
 [ld]: http://en.wikipedia.org/wiki/Levenshtein_distance
 
 ```javascript
-_.levenshtein('kitten', 'kittah')
-=> 2
+levenshtein('kitten', 'kittah')
+// => 2
 ```
 
-**capitalize** _.capitalize(string)
+#### capitalize(string) => string
 
 Converts first letter of the string to uppercase.
 
 ```javascript
-_.capitalize("foo Bar")
-=> "Foo Bar"
+capitalize("foo Bar")
+// => "Foo Bar"
 ```
 
-**decapitalize** _.decapitalize(string)
+#### decapitalize(string) => string
 
 Converts first letter of the string to lowercase.
 
 ```javascript
-_.decapitalize("Foo Bar")
-=> "foo Bar"
+decapitalize("Foo Bar") => string
+// => "foo Bar"
 ```
 
-**chop** _.chop(string, step)
+#### chop(string, step) => array
 
 ```javascript
-_.chop('whitespace', 3)
-=> ['whi','tes','pac','e']
+chop('whitespace', 3)
+// => ['whi','tes','pac','e']
 ```
 
-**clean** _.clean(str)
+#### clean(string) => string
 
 Trim and replace multiple spaces with a single space.
 
 ```javascript
-_.clean(" foo    bar   ")
-=> 'foo bar'
+clean(" foo    bar   ") => string
+// => 'foo bar'
 ```
 
-**chars** _.chars(str)
+#### chars(string) => array
 
 ```javascript
-_.chars('Hello')
-=> ['H','e','l','l','o']
+chars('Hello')
+// => ['H','e','l','l','o']
 ```
 
-**swapCase** _.swapCase(str)
+#### swapCase(string) => string
 
 Returns a copy of the string in which all the case-based characters have had their case swapped.
 
 ```javascript
-_.swapCase('hELLO')
-=> 'Hello'
+swapCase('hELLO')
+// => 'Hello'
 ```
 
-**include** available only through _.str object, because Underscore has function with the same name.
-
-```javascript
-_.str.include("foobar", "ob")
-=> true
-```
-
-(removed) **includes** _.includes(string, substring)
+#### include(string) => boolean
 
 Tests if string contains a substring.
 
 ```javascript
-_.includes("foobar", "ob")
-=> true
+include("foobar", "ob")
+// => true
 ```
 
-**includes** function was removed
-
-But you can create it in this way, for compatibility with previous versions:
+#### count(string, substring) => number
 
 ```javascript
-_.includes = _.str.include
+count('Hello world', 'l')
+// => 3
 ```
 
-**count** _.count(string, substring)
-
-```javascript
-_('Hello world').count('l')
-=> 3
-```
-
-**escapeHTML** _.escapeHTML(string)
+#### escapeHTML(string) => string
 
 Converts HTML special characters to their entity equivalents.
 
 ```javascript
-_('<div>Blah blah blah</div>').escapeHTML();
-=> '&lt;div&gt;Blah blah blah&lt;/div&gt;'
+escapeHTML('<div>Blah blah blah</div>');
+// => '&lt;div&gt;Blah blah blah&lt;/div&gt;'
 ```
 
-**unescapeHTML** _.unescapeHTML(string)
+#### unescapeHTML(string) => string
 
 Converts entity characters to HTML equivalents.
 
 ```javascript
-_('&lt;div&gt;Blah blah blah&lt;/div&gt;').unescapeHTML();
-=> '<div>Blah blah blah</div>'
+unescapeHTML('&lt;div&gt;Blah blah blah&lt;/div&gt;');
+// => '<div>Blah blah blah</div>'
 ```
 
-**insert** _.insert(string, index, substing)
+#### insert(string, index, substing) => string
 
 ```javascript
-_('Hello ').insert(6, 'world')
-=> 'Hello world'
+insert('Hello ', 6, 'world')
+// => 'Hello world'
 ```
 
-**replaceAll** _.replaceAll(string, find, replace, [ignorecase=false])
+#### replaceAll(string, find, replace, [ignorecase=false]) => string
 
 ```javascript
-_('foo').replaceAll('o', 'a')
+replaceAll('foo', 'o', 'a')
 => 'faa'
 ```
 
-**isBlank** _.isBlank(string)
+#### isBlank(string) => boolean
 
 ```javascript
-_('').isBlank(); // => true
-_('\n').isBlank(); // => true
-_(' ').isBlank(); // => true
-_('a').isBlank(); // => false
+isBlank(''); // => true
+isBlank('\n'); // => true
+isBlank(' '); // => true
+isBlank('a'); // => false
 ```
 
-**join** _.join(separator, *strings)
+#### join(separator, ...strings) => string
 
 Joins strings together with given separator
 
 ```javascript
-_.join(" ", "foo", "bar")
-=> "foo bar"
+join(" ", "foo", "bar")
+// => "foo bar"
 ```
 
-**lines** _.lines(str)
+#### lines(str) => array
+
+Split lines to an array
 
 ```javascript
-_.lines("Hello\nWorld")
-=> ["Hello", "World"]
+lines("Hello\nWorld")
+// => ["Hello", "World"]
 ```
 
-**reverse** available only through _.str object, because Underscore has function with the same name.
+#### reverse(string) => string
 
 Return reversed string:
 
 ```javascript
-_.str.reverse("foobar")
-=> 'raboof'
+reverse("foobar")
+// => 'raboof'
 ```
 
-**splice**  _.splice(string, index, howmany, substring)
+#### splice(string, index, howmany, substring) => string
 
 Like an array splice.
 
 ```javascript
-_('https://edtsech@bitbucket.org/edtsech/underscore.strings').splice(30, 7, 'epeli')
-=> 'https://edtsech@bitbucket.org/epeli/underscore.strings'
+splice('https://edtsech@bitbucket.org/edtsech/underscore.strings', 30, 7, 'epeli')
+// => 'https://edtsech@bitbucket.org/epeli/underscore.strings'
 ```
 
-**startsWith** _.startsWith(string, starts, [position])
+#### startsWith(string, starts, [position]) => boolean
 
 This method checks whether the string begins with `starts` at `position` (default: 0).
 
 ```javascript
-_("image.gif").startsWith("image")
-=> true
-_(".vimrc").startsWith("vim", 1)
-=> true
+startsWith('image.gif', 'image')
+// => true
+startsWith('.vimrc', 'vim', 1)
+// => true
 ```
 
-**endsWith** _.endsWith(string, ends, [position])
+#### endsWith(string, ends, [position]) => boolean
 
 This method checks whether the string ends with `ends` at `position` (default: string.length).
 
 ```javascript
-_("image.gif").endsWith("gif")
-=> true
-_("image.old.gif").endsWith("old", 9)
-=> true
+endsWith('image.gif', 'gif')
+// => true
+endsWith('image.old.gif', 'old', 9)
+// => true
 ```
 
-**succ**  _.succ(str)
+#### succ(str) => string
 
 Returns the successor to str.
 
 ```javascript
-_('a').succ()
-=> 'b'
+succ('a')
+// => 'b'
 
-_('A').succ()
-=> 'B'
+succ('A')
+// => 'B'
 ```
 
-**supplant**
 
-Supplant function was removed, use Underscore.js [template function][p].
-
-[p]: http://documentcloud.github.com/underscore/#template
-
-**strip** alias for *trim*
-
-**lstrip** alias for *ltrim*
-
-**rstrip** alias for *rtrim*
-
-**titleize** _.titleize(string)
+#### titleize(string) => string
 
 ```javascript
-_('my name is epeli').titleize()
-=> 'My Name Is Epeli'
+titleize('my name is epeli')
+// => 'My Name Is Epeli'
 ```
 
-**camelize** _.camelize(string)
+#### camelize(string) => string
 
 Converts underscored or dasherized string to a camelized one. Begins with
 a lower case letter unless it starts with an underscore, dash or an upper case letter.
 
 ```javascript
-_('moz-transform').camelize()
-=> 'mozTransform'
-_('-moz-transform').camelize()
-=> 'MozTransform'
+camelize('moz-transform')
+// => 'mozTransform'
+camelize('-moz-transform')
+// => 'MozTransform'
 ```
 
-**classify** _.classify(string)
+#### classify(string) => string
 
 Converts string to camelized class name. First letter is always upper case
 
 ```javascript
-_('some_class_name').classify()
-=> 'SomeClassName'
+classify('some_class_name')
+// => 'SomeClassName'
 ```
 
-**underscored** _.underscored(string)
+#### underscored(string) => string
 
 Converts a camelized or dasherized string into an underscored one
 
 ```javascript
-_('MozTransform').underscored()
-=> 'moz_transform'
+underscored('MozTransform')
+// => 'moz_transform'
 ```
 
-**dasherize** _.dasherize(string)
+#### dasherize(string) => string
 
 Converts a underscored or camelized string into an dasherized one
 
 ```javascript
-_('MozTransform').dasherize()
-=> '-moz-transform'
+dasherize('MozTransform')
+// => '-moz-transform'
 ```
 
-**humanize** _.humanize(string)
+#### humanize(string) => string
 
 Converts an underscored, camelized, or dasherized string into a humanized one.
 Also removes beginning and ending whitespace, and removes the postfix '_id'.
 
 ```javascript
-_('  capitalize dash-CamelCase_underscore trim  ').humanize()
-=> 'Capitalize dash camel case underscore trim'
+humanize('  capitalize dash-CamelCase_underscore trim  ')
+// => 'Capitalize dash camel case underscore trim'
 ```
 
-**trim** _.trim(string, [characters])
+#### trim(string, [characters]) => string
 
-trims defined characters from begining and ending of the string.
+Trims defined characters from begining and ending of the string.
 Defaults to whitespace characters.
 
 ```javascript
-_.trim("  foobar   ")
-=> "foobar"
+trim("  foobar   ")
+// => "foobar"
 
-_.trim("_-foobar-_", "_-")
-=> "foobar"
+trim("_-foobar-_", "_-")
+// => "foobar"
 ```
 
 
-**ltrim** _.ltrim(string, [characters])
+#### ltrim(string, [characters]) => string
 
 Left trim. Similar to trim, but only for left side.
 
-
-**rtrim** _.rtrim(string, [characters])
+#### rtrim(string, [characters]) => string
 
 Right trim. Similar to trim, but only for right side.
 
-**truncate** _.truncate(string, length, truncateString)
+#### truncate(string, length, truncateString) => string
 
 ```javascript
-_('Hello world').truncate(5)
-=> 'Hello...'
+truncate('Hello world', 5)
+// => 'Hello...'
 
-_('Hello').truncate(10)
-=> 'Hello'
+truncate('Hello', 10)
+// => 'Hello'
 ```
 
-**prune** _.prune(string, length, pruneString)
+#### prune(string, length, pruneString) => string
 
-Elegant version of truncate.
-Makes sure the pruned string does not exceed the original length.
-Avoid half-chopped words when truncating.
+Elegant version of truncate.  Makes sure the pruned string does not exceed the
+original length.  Avoid half-chopped words when truncating.
 
 ```javascript
-_('Hello, world').prune(5)
-=> 'Hello...'
+prune('Hello, world', 5)
+// => 'Hello...'
 
-_('Hello, world').prune(8)
-=> 'Hello...'
+prune('Hello, world', 8)
+// => 'Hello...'
 
-_('Hello, world').prune(5, ' (read a lot more)')
-=> 'Hello, world' (as adding "(read a lot more)" would be longer than the original string)
+prune('Hello, world', 5, ' (read a lot more)')
+// => 'Hello, world' (as adding "(read a lot more)" would be longer than the original string)
 
-_('Hello, cruel world').prune(15)
-=> 'Hello, cruel...'
+prune('Hello, cruel world', 15)
+// => 'Hello, cruel...'
 
-_('Hello').prune(10)
-=> 'Hello'
+prune('Hello', 10)
+// => 'Hello'
 ```
 
-**words** _.words(str, delimiter=/\s+/)
+#### words(str, delimiter=/\s+/) => array
 
 Split string by delimiter (String or RegExp), /\s+/ by default.
 
 ```javascript
-_.words("   I   love   you   ")
-=> ["I","love","you"]
+words("   I   love   you   ")
+// => ["I","love","you"]
 
-_.words("I_love_you", "_")
-=> ["I","love","you"]
+words("I_love_you", "_")
+// => ["I","love","you"]
 
-_.words("I-love-you", /-/)
-=> ["I","love","you"]
+words("I-love-you", /-/)
+// => ["I","love","you"]
 
-_.words("   ")
-=> []
+words("   ")
+// => []
 ```
 
-**sprintf** _.sprintf(string format, *arguments)
+#### sprintf(string format, ...arguments) => string
 
 C like string formatting.
 Credits goes to [Alexandru Marasteanu][o].
@@ -451,383 +408,282 @@ For more detailed documentation, see the [original page][o].
 [o]: http://www.diveintojavascript.com/projects/javascript-sprintf
 
 ```javascript
-_.sprintf("%.1f", 1.17)
+sprintf("%.1f", 1.17)
 "1.2"
 ```
 
-**pad** _.pad(str, length, [padStr, type])
+#### pad(str, length, [padStr, type]) => string
 
 pads the `str` with characters until the total string length is equal to the passed `length` parameter. By default, pads on the **left** with the space char (`" "`). `padStr` is truncated to a single character if necessary.
 
 ```javascript
-_.pad("1", 8)
--> "       1";
+pad("1", 8)
+// => "       1";
 
-_.pad("1", 8, '0')
--> "00000001";
+pad("1", 8, '0')
+// => "00000001";
 
-_.pad("1", 8, '0', 'right')
--> "10000000";
+pad("1", 8, '0', 'right')
+// => "10000000";
 
-_.pad("1", 8, '0', 'both')
--> "00001000";
+pad("1", 8, '0', 'both')
+// => "00001000";
 
-_.pad("1", 8, 'bleepblorp', 'both')
--> "bbbb1bbb";
+pad("1", 8, 'bleepblorp', 'both')
+// => "bbbb1bbb";
 ```
 
-**lpad** _.lpad(str, length, [padStr])
+#### lpad(str, length, [padStr]) => string
 
 left-pad a string. Alias for `pad(str, length, padStr, 'left')`
 
 ```javascript
-_.lpad("1", 8, '0')
--> "00000001";
+lpad("1", 8, '0')
+// => "00000001";
 ```
 
-**rpad** _.rpad(str, length, [padStr])
+#### rpad(str, length, [padStr]) => string
 
 right-pad a string. Alias for `pad(str, length, padStr, 'right')`
 
 ```javascript
-_.rpad("1", 8, '0')
--> "10000000";
+rpad("1", 8, '0')
+// => "10000000";
 ```
 
-**lrpad** _.lrpad(str, length, [padStr])
+#### lrpad(str, length, [padStr]) => string
 
 left/right-pad a string. Alias for `pad(str, length, padStr, 'both')`
 
 ```javascript
-_.lrpad("1", 8, '0')
--> "00001000";
+lrpad("1", 8, '0')
+// => "00001000";
 ```
 
-**center** alias for **lrpad**
 
-**ljust** alias for *rpad*
-
-**rjust** alias for *lpad*
-
-**toNumber**  _.toNumber(string, [decimals])
+#### toNumber(string, [decimals]) => number
 
 Parse string to number. Returns NaN if string can't be parsed to number.
 
 ```javascript
-_('2.556').toNumber()
-=> 3
+toNumber('2.556')
+// => 3
 
-_('2.556').toNumber(1)
-=> 2.6
+toNumber('2.556', 1)
+// => 2.6
 ```
 
-**strRight**  _.strRight(string, pattern)
+#### strRight(string, pattern) => string
 
 Searches a string from left to right for a pattern and returns a substring consisting of the characters in the string that are to the right of the pattern or all string if no match found.
 
 ```javascript
-_('This_is_a_test_string').strRight('_')
-=> "is_a_test_string";
+strRight('This_is_a_test_string', '_')
+// => "is_a_test_string";
 ```
 
-**strRightBack**  _.strRightBack(string, pattern)
+#### strRightBack(string, pattern) => string
 
 Searches a string from right to left for a pattern and returns a substring consisting of the characters in the string that are to the right of the pattern or all string if no match found.
 
 ```javascript
-_('This_is_a_test_string').strRightBack('_')
-=> "string";
+strRightBack('This_is_a_test_string', '_')
+// => "string";
 ```
 
-**strLeft**  _.strLeft(string, pattern)
+#### strLeft(string, pattern) => string
 
 Searches a string from left to right for a pattern and returns a substring consisting of the characters in the string that are to the left of the pattern or all string if no match found.
 
 ```javascript
-_('This_is_a_test_string').strLeft('_')
-=> "This";
+strLeft('This_is_a_test_string', '_')
+// => "This";
 ```
 
-**strLeftBack**  _.strLeftBack(string, pattern)
+#### strLeftBack(string, pattern) => string
 
 Searches a string from right to left for a pattern and returns a substring consisting of the characters in the string that are to the left of the pattern or all string if no match found.
 
 ```javascript
-_('This_is_a_test_string').strLeftBack('_')
-=> "This_is_a_test";
+strLeftBack('This_is_a_test_string', '_')
+// => "This_is_a_test";
 ```
 
-**stripTags**
+#### stripTags(string) => string
 
 Removes all html tags from string.
 
 ```javascript
-_('a <a href="#">link</a>').stripTags()
-=> 'a link'
+stripTags('a <a href="#">link</a>')
+// => 'a link'
 
-_('a <a href="#">link</a><script>alert("hello world!")</script>').stripTags()
-=> 'a linkalert("hello world!")'
+stripTags('a <a href="#">link</a><script>alert("hello world!")</script>')
+// => 'a linkalert("hello world!")'
 ```
 
-**toSentence**  _.toSentence(array, [delimiter, lastDelimiter])
+#### toSentence(array, [delimiter, lastDelimiter]) => string
 
 Join an array into a human readable sentence.
 
 ```javascript
-_.toSentence(['jQuery', 'Mootools', 'Prototype'])
-=> 'jQuery, Mootools and Prototype';
+toSentence(['jQuery', 'Mootools', 'Prototype']) => string
+// => 'jQuery, Mootools and Prototype';
 
-_.toSentence(['jQuery', 'Mootools', 'Prototype'], ', ', ' unt ')
-=> 'jQuery, Mootools unt Prototype';
+toSentence(['jQuery', 'Mootools', 'Prototype'], ', ', ' unt ')
+// => 'jQuery, Mootools unt Prototype';
 ```
 
-**toSentenceSerial**  _.toSentenceSerial(array, [delimiter, lastDelimiter])
+#### toSentenceSerial(array, [delimiter, lastDelimiter]) => string
 
 The same as `toSentence`, but adjusts delimeters to use [Serial comma](http://en.wikipedia.org/wiki/Serial_comma).
 
 ```javascript
-_.toSentenceSerial(['jQuery', 'Mootools'])
-=> 'jQuery and Mootools';
+toSentenceSerial(['jQuery', 'Mootools'])
+// => 'jQuery and Mootools';
 
-_.toSentenceSerial(['jQuery', 'Mootools', 'Prototype'])
-=> 'jQuery, Mootools, and Prototype'
+toSentenceSerial(['jQuery', 'Mootools', 'Prototype'])
+// => 'jQuery, Mootools, and Prototype'
 
-_.toSentenceSerial(['jQuery', 'Mootools', 'Prototype'], ', ', ' unt ');
-=> 'jQuery, Mootools, unt Prototype';
+toSentenceSerial(['jQuery', 'Mootools', 'Prototype'], ', ', ' unt ');
+// => 'jQuery, Mootools, unt Prototype';
 ```
 
-**repeat** _.repeat(string, count, [separator])
+#### repeat(string, count, [separator]) => string
 
 Repeats a string count times.
 
 ```javascript
-_.repeat("foo", 3)
-=> 'foofoofoo';
+repeat("foo", 3)
+// => 'foofoofoo';
 
-_.repeat("foo", 3, "bar")
-=> 'foobarfoobarfoo'
+repeat("foo", 3, "bar")
+// => 'foobarfoobarfoo'
 ```
 
-**surround** _.surround(string, wrap)
+#### surround(string, wrap) => string
 
 Surround a string with another string.
 
 ```javascript
-_.surround("foo", "ab")
-=> 'abfooab';
+surround("foo", "ab")
+// => 'abfooab';
 ```
 
-**quote** _.quote(string, quoteChar) or _.q(string, quoteChar)
+#### quote(string, quoteChar) or q(string, quoteChar) => string
 
 Quotes a string. `quoteChar` defaults to `"`.
 
 ```javascript
-_.quote('foo', quoteChar)
-=> '"foo"';
+quote('foo', quoteChar)
+// => '"foo"';
 ```
-**unquote** _.unquote(string, quoteChar)
+#### unquote(string, quoteChar) => string
 
 Unquotes a string. `quoteChar` defaults to `"`.
 
 ```javascript
-_.unquote('"foo"')
-=> 'foo';
-_.unquote("'foo'", "'")
-=> 'foo';
+unquote('"foo"')
+// => 'foo';
+unquote("'foo'", "'")
+// => 'foo';
 ```
 
 
-**slugify** _.slugify(string)
+#### slugify(string) => string
 
 Transform text into an ascii slug which can be used in safely in URLs. Replaces whitespaces, accentuated, and special characters with a dash. Limited set of non-ascii characters are transformed to similar versions in the ascii character set such as `ä` to `a`.
 
 ```javascript
-_.slugify("Un éléphant à l\'orée du bois")
-=> 'un-elephant-a-l-oree-du-bois';
+slugify("Un éléphant à l\'orée du bois")
+// => 'un-elephant-a-l-oree-du-bois';
 ```
 
 ***Caution: this function is charset dependent***
 
-**naturalCmp** array.sort(_.naturalCmp)
+#### naturalCmp(string1, string2) => number
 
 Naturally sort strings like humans would do. None numbers are compared by their [ASCII values](http://www.asciitable.com/). Note: this means "a" > "A". Use `.toLowerCase` if this isn't to be desired.
 
+Just past it to `Array#sort`.
+
 ```javascript
-['foo20', 'foo5'].sort(_.naturalCmp)
-=> [ 'foo5', 'foo20' ]
+['foo20', 'foo5'].sort(naturalCmp)
+// => [ 'foo5', 'foo20' ]
 ```
 
-**toBoolean** _.toBoolean(string) or _.toBool(string)
+#### toBoolean(string) => boolean
 
 Turn strings that can be commonly considered as booleas to real booleans. Such as "true", "false", "1" and "0". This function is case insensitive.
 
 ```javascript
-_.toBoolean("true")
-=> true
-_.toBoolean("FALSE")
-=> false
-_.toBoolean("random")
-=> undefined
+toBoolean("true")
+// => true
+toBoolean("FALSE")
+// => false
+toBoolean("random")
+// => undefined
 ```
 
 It can be customized by giving arrays of truth and falsy value matcher as parameters. Matchers can be also RegExp objects.
 
 ```javascript
-_.toBoolean("truthy", ["truthy"], ["falsy"])
-=> true
-_.toBoolean("true only at start", [/^true/])
-=> true
+toBoolean("truthy", ["truthy"], ["falsy"])
+// => true
+toBoolean("true only at start", [/^true/])
+// => true
 ```
 
-## Roadmap ##
+### Library functions
 
-Any suggestions or bug reports are welcome. Just email me or more preferably open an issue.
+If you require the full library you can use chaining and aliases
 
-#### Problems
+#### s(string) => chain
 
-We lose two things for `include` and `reverse` methods from `_.string`:
+Start a chain. Returns an immutable chain object with the string functions as
+methods which return a new chain object instead of the plain string value.
 
-* Calls like `_('foobar').include('bar')` aren't available;
-* Chaining isn't available too.
+#### chain.value()
 
-But if you need this functionality you can create aliases for conflict functions which will be convenient for you:
+Return the string value from the chain
 
 ```javascript
-_.mixin({
-    includeString: _.str.include,
-    reverseString: _.str.reverse
-})
-
-// Now wrapper calls and chaining are available.
-_('foobar').chain().reverseString().includeString('rab').value()
+s("  foo  ").trim().capitalize().value();
+// => "Foo"
 ```
 
-#### Standalone Usage
-
-If you are using Underscore.string without Underscore. You also have `_.string` namespace for it and `_.str` alias
-But of course you can just reassign `_` variable with `_.string`
+When calling a method which does not return a string the resulting value is
+immediately returned
 
 ```javascript
-_ = _.string
+s(" foobar ").trim().startsWith("foo");
+// => true
 ```
 
-## Changelog ##
+#### chain.tap(function) => chain
 
-### 2.4.0 ###
-
-* Move from rake to gulp
-* Add support form classify camelcase strings
-* Fix bower.json
-* [Full changelog](https://github.com/epeli/underscore.string/compare/v2.3.3...2.4.0)
-
-### 2.3.3 ###
-
-* Add `toBoolean`
-* Add `unquote`
-* Add quote char option to `quote`
-* Support dash-separated words in `titleize`
-* [Full changelog](https://github.com/epeli/underscore.string/compare/v2.3.2...2.3.3)
-
-### 2.3.2 ###
-
-* Add `naturalCmp`
-* Bug fix to `camelize`
-* Add ă, ș, ț and ś to `slugify`
-* Doc updates
-* Add support for [component](http://component.io/)
-* [Full changelog](https://github.com/epeli/underscore.string/compare/v2.3.1...v2.3.2)
-
-### 2.3.1 ###
-
-* Bug fixes to `escapeHTML`, `classify`, `substr`
-* Faster `count`
-* Documentation fixes
-* [Full changelog](https://github.com/epeli/underscore.string/compare/v2.3.0...v2.3.1)
-
-### 2.3.0 ###
-
-* Added `numberformat` method
-* Added `levenshtein` method (Levenshtein distance calculation)
-* Added `swapCase` method
-* Changed default behavior of `words` method
-* Added `toSentenceSerial` method
-* Added `surround` and `quote` methods
-
-### 2.2.1 ###
-
-* Same as 2.2.0 (2.2.0rc on npm) to fix some npm drama
-
-### 2.2.0 ###
-
-* Capitalize method behavior changed
-* Various perfomance tweaks
-
-### 2.1.1###
-
-* Fixed words method bug
-* Added classify method
-
-### 2.1.0 ###
-
-* AMD support
-* Added toSentence method
-* Added slugify method
-* Lots of speed optimizations
-
-### 2.0.0 ###
-
-* Added prune, humanize functions
-* Added _.string (_.str) namespace for Underscore.string library
-* Removed includes function
-
-For upgrading to this version you need to mix in Underscore.string library to Underscore object:
+Tap into the chain with a custom function
 
 ```javascript
-_.mixin(_.string.exports());
+s("foo").tap(function(value){
+  return value + "bar"
+}).value();
+// => "foobar"
 ```
 
-and all non-conflict Underscore.string functions will be available through Underscore object.
-Also function `includes` has been removed, you should replace this function by `_.str.include`
-or create alias `_.includes = _.str.include` and all your code will work fine.
 
-### 1.1.6 ###
+#### Aliases
 
-* Fixed reverse and truncate
-* Added isBlank, stripTags, inlude(alias for includes)
-* Added uglifier compression
-
-### 1.1.5 ###
-
-* Added strRight, strRightBack, strLeft, strLeftBack
-
-### 1.1.4 ###
-
-* Added pad, lpad, rpad, lrpad methods and aliases center, ljust, rjust
-* Integration with Underscore 1.1.6
-
-### 1.1.3 ###
-
-* Added methods: underscored, camelize, dasherize
-* Support newer version of npm
-
-### 1.1.2 ###
-
-* Created functions: lines, chars, words functions
-
-### 1.0.2 ###
-
-* Created integration test suite with underscore.js 1.1.4 (now it's absolutely compatible)
-* Removed 'reverse' function, because this function override underscore.js 'reverse'
-
-## Contribute ##
-
-* Fork & pull request. Don't forget about tests.
-* If you planning add some feature please create issue before.
-
-Otherwise changes will be rejected.
-
-## Contributors list ##
-[Can be found here](https://github.com/epeli/underscore.string/graphs/contributors).
+```javascript
+strip    = trim
+lstrip   = ltrim
+rstrip   = rtrim
+center   = lrpad
+rjust    = lpad
+ljust    = rpad
+contains = include
+q        = quote
+toBool   = toBoolean
+```
 
 
 ## Licence ##
