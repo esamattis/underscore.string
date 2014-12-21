@@ -3,4 +3,4 @@
 .project
 .tmp_*
 node_modules
-underscore.string.compiled.js
+dist/*
