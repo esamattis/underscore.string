@@ -7,88 +7,105 @@
 
 'use strict';
 
-// Defining underscore.string
-var _s = {
-  VERSION: '2.4.0'
-};
+function s(value) {
+  /* jshint validthis: true */
+  if (!(this instanceof s)) return new s(value);
+  this._wrapped = value;
+}
 
-_s.isBlank          = require('./isBlank');
-_s.stripTags        = require('./stripTags');
-_s.capitalize       = require('./capitalize');
-_s.decapitalize     = require('./decapitalize');
-_s.chop             = require('./chop');
-_s.trim             = require('./trim');
-_s.clean            = require('./clean');
-_s.count            = require('./count');
-_s.chars            = require('./chars');
-_s.swapCase         = require('./swapCase');
-_s.escapeHTML       = require('./escapeHTML');
-_s.unescapeHTML     = require('./unescapeHTML');
-_s.splice           = require('./splice');
-_s.insert           = require('./insert');
-_s.replaceAll       = require('./replaceAll');
-_s.include          = require('./include');
-_s.join             = require('./join');
-_s.lines            = require('./lines');
-_s.reverse          = require('./reverse');
-_s.startsWith       = require('./startsWith');
-_s.endsWith         = require('./endsWith');
-_s.succ             = require('./succ');
-_s.titleize         = require('./titleize');
-_s.camelize         = require('./camelize');
-_s.underscored      = require('./underscored');
-_s.dasherize        = require('./dasherize');
-_s.classify         = require('./classify');
-_s.humanize         = require('./humanize');
-_s.ltrim            = require('./ltrim');
-_s.rtrim            = require('./rtrim');
-_s.truncate         = require('./truncate');
-_s.prune            = require('./prune');
-_s.words            = require('./words');
-_s.pad              = require('./pad');
-_s.lpad             = require('./lpad');
-_s.rpad             = require('./rpad');
-_s.lrpad            = require('./lrpad');
-_s.sprintf          = require('./sprintf');
-_s.vsprintf         = require('./vsprintf');
-_s.toNumber         = require('./toNumber');
-_s.numberFormat     = require('./numberFormat');
-_s.strRight         = require('./strRight');
-_s.strRightBack     = require('./strRightBack');
-_s.strLeft          = require('./strLeft');
-_s.strLeftBack      = require('./strLeftBack');
-_s.toSentence       = require('./toSentence');
-_s.toSentenceSerial = require('./toSentenceSerial');
-_s.slugify          = require('./slugify');
-_s.surround         = require('./surround');
-_s.quote            = require('./quote');
-_s.unquote          = require('./unquote');
-_s.repeat           = require('./repeat');
-_s.naturalCmp       = require('./naturalCmp');
-_s.levenshtein      = require('./levenshtein');
-_s.toBoolean        = require('./toBoolean');
-_s.exports          = require('./exports');
-_s.escapeRegExp     = require('./helper/escapeRegExp');
+s.VERSION = '2.4.0';
+
+s.isBlank          = require('./isBlank');
+s.stripTags        = require('./stripTags');
+s.capitalize       = require('./capitalize');
+s.decapitalize     = require('./decapitalize');
+s.chop             = require('./chop');
+s.trim             = require('./trim');
+s.clean            = require('./clean');
+s.count            = require('./count');
+s.chars            = require('./chars');
+s.swapCase         = require('./swapCase');
+s.escapeHTML       = require('./escapeHTML');
+s.unescapeHTML     = require('./unescapeHTML');
+s.splice           = require('./splice');
+s.insert           = require('./insert');
+s.replaceAll       = require('./replaceAll');
+s.include          = require('./include');
+s.join             = require('./join');
+s.lines            = require('./lines');
+s.reverse          = require('./reverse');
+s.startsWith       = require('./startsWith');
+s.endsWith         = require('./endsWith');
+s.succ             = require('./succ');
+s.titleize         = require('./titleize');
+s.camelize         = require('./camelize');
+s.underscored      = require('./underscored');
+s.dasherize        = require('./dasherize');
+s.classify         = require('./classify');
+s.humanize         = require('./humanize');
+s.ltrim            = require('./ltrim');
+s.rtrim            = require('./rtrim');
+s.truncate         = require('./truncate');
+s.prune            = require('./prune');
+s.words            = require('./words');
+s.pad              = require('./pad');
+s.lpad             = require('./lpad');
+s.rpad             = require('./rpad');
+s.lrpad            = require('./lrpad');
+s.sprintf          = require('./sprintf');
+s.vsprintf         = require('./vsprintf');
+s.toNumber         = require('./toNumber');
+s.numberFormat     = require('./numberFormat');
+s.strRight         = require('./strRight');
+s.strRightBack     = require('./strRightBack');
+s.strLeft          = require('./strLeft');
+s.strLeftBack      = require('./strLeftBack');
+s.toSentence       = require('./toSentence');
+s.toSentenceSerial = require('./toSentenceSerial');
+s.slugify          = require('./slugify');
+s.surround         = require('./surround');
+s.quote            = require('./quote');
+s.unquote          = require('./unquote');
+s.repeat           = require('./repeat');
+s.naturalCmp       = require('./naturalCmp');
+s.levenshtein      = require('./levenshtein');
+s.toBoolean        = require('./toBoolean');
+s.exports          = require('./exports');
+s.escapeRegExp     = require('./helper/escapeRegExp');
 
 // Aliases
-_s.strip    = _s.trim;
-_s.lstrip   = _s.ltrim;
-_s.rstrip   = _s.rtrim;
-_s.center   = _s.lrpad;
-_s.rjust    = _s.lpad;
-_s.ljust    = _s.rpad;
-_s.contains = _s.include;
-_s.q        = _s.quote;
-_s.toBool   = _s.toBoolean;
+s.strip    = s.trim;
+s.lstrip   = s.ltrim;
+s.rstrip   = s.rtrim;
+s.center   = s.lrpad;
+s.rjust    = s.lpad;
+s.ljust    = s.rpad;
+s.contains = s.include;
+s.q        = s.quote;
+s.toBool   = s.toBoolean;
 
-// Exporting
-// Integrate with Underscore.js if defined
-// or create our own underscore object.
-global._ = global._ || {};
-global._.string = global._.str = _s;
-this._ = this._ || {};
-this._.string = this._.str = _s;
 
-// CommonJS module is defined
-module.exports = _s;
-exports._s = _s;
+// Implement chaining
+s.prototype = {
+  value: function() {
+    return this._wrapped;
+  },
+  tap: function(fn) {
+    return new s(fn(this._wrapped));
+  }
+};
+
+function fn2method(key, fn) {
+    if (typeof fn !== "function") return;
+    s.prototype[key] = function() {
+      var args = [this._wrapped].concat(Array.prototype.slice.call(arguments));
+      var res = fn.apply(null, args);
+      // if the result is non-string stop the chain and return the value
+      return typeof res === 'string' ? new s(res) : res;
+    };
+}
+
+// Copy functions to instance methods for chaining
+for (var key in s) fn2method(key, s[key]);
+
+module.exports = s;

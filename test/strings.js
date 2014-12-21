@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
   // Include Underscore.string methods to Underscore namespace
-  _.mixin(_.str.exports());
+  _.mixin(s.exports());
 
   module('String extensions');
 
@@ -157,15 +157,15 @@ $(document).ready(function() {
   });
 
   test('Strings: reverse', function() {
-    equal(_.str.reverse('foo'), 'oof' );
-    equal(_.str.reverse('foobar'), 'raboof' );
-    equal(_.str.reverse('foo bar'), 'rab oof' );
-    equal(_.str.reverse('saippuakauppias'), 'saippuakauppias' );
-    equal(_.str.reverse(123), '321', 'Non string');
-    equal(_.str.reverse(123.45), '54.321', 'Non string');
-    equal(_.str.reverse(''), '', 'reversing empty string returns empty string' );
-    equal(_.str.reverse(null), '', 'reversing null returns empty string' );
-    equal(_.str.reverse(undefined), '', 'reversing undefined returns empty string' );
+    equal(s.reverse('foo'), 'oof' );
+    equal(s.reverse('foobar'), 'raboof' );
+    equal(s.reverse('foo bar'), 'rab oof' );
+    equal(s.reverse('saippuakauppias'), 'saippuakauppias' );
+    equal(s.reverse(123), '321', 'Non string');
+    equal(s.reverse(123.45), '54.321', 'Non string');
+    equal(s.reverse(''), '', 'reversing empty string returns empty string' );
+    equal(s.reverse(null), '', 'reversing null returns empty string' );
+    equal(s.reverse(undefined), '', 'reversing undefined returns empty string' );
   });
 
   test('Strings: clean', function() {
@@ -269,13 +269,13 @@ $(document).ready(function() {
   });
 
   test('Strings: include', function() {
-    ok(_.str.include('foobar', 'bar'), 'foobar includes bar');
-    ok(!_.str.include('foobar', 'buzz'), 'foobar does not includes buzz');
-    ok(_.str.include(12345, 34), '12345 includes 34');
-    ok(!_.str.contains(12345, 6), '12345 does not includes 6');
-    ok(!_.str.include('', 34), 'empty string includes 34');
-    ok(!_.str.include(null, 34), 'null includes 34');
-    ok(_.str.include(null, ''), 'null includes empty string');
+    ok(s.include('foobar', 'bar'), 'foobar includes bar');
+    ok(!s.include('foobar', 'buzz'), 'foobar does not includes buzz');
+    ok(s.include(12345, 34), '12345 includes 34');
+    ok(!s.contains(12345, 6), '12345 does not includes 6');
+    ok(!s.include('', 34), 'empty string includes 34');
+    ok(!s.include(null, 34), 'null includes 34');
+    ok(s.include(null, ''), 'null includes empty string');
   });
 
   test('String: chop', function(){
