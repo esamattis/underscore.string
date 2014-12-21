@@ -533,6 +533,8 @@ $(document).ready(function() {
     deepEqual(_('').lines(), ['']);
     deepEqual(_(null).lines(), []);
     deepEqual(_(undefined).lines(), []);
+    deepEqual(_('Hello\rWorld').lines(), ['Hello\rWorld']);
+    deepEqual(_('Hello\r\nWorld').lines(), ['Hello', 'World']);
   });
 
   test('String: pad', function() {
