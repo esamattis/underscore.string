@@ -6,6 +6,6 @@
   "keywords": ["underscore", "string"],
   "dependencies": {},
   "development": {},
-  "main": "underscore.string.js",
-  "scripts": ["underscore.string.js"]
+  "main": "index.js",
+  "scripts": ["index.js"]
 }
