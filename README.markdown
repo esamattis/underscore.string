@@ -216,6 +216,13 @@ _('Hello ').insert(6, 'world')
 => 'Hello world'
 ```
 
+**replaceAll** _.replaceAll(string, find, replace, [ignorecase=false])
+
+```javascript
+_('foo').replaceAll('o', 'a')
+=> 'faa'
+```
+
 **isBlank** _.isBlank(string)
 
 ```javascript

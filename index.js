@@ -26,6 +26,7 @@ _s.escapeHTML       = require('./escapeHTML');
 _s.unescapeHTML     = require('./unescapeHTML');
 _s.splice           = require('./splice');
 _s.insert           = require('./insert');
+_s.replaceAll       = require('./replaceAll');
 _s.include          = require('./include');
 _s.join             = require('./join');
 _s.lines            = require('./lines');

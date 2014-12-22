@@ -313,6 +313,22 @@ $(document).ready(function() {
     equal(_(12345).insert(6, 'Jessy'), '12345Jessy');
   });
 
+  test('String: replaceAll', function(){
+    equal(_('a').replaceAll('a', 'b'), 'b');
+    equal(_('aa').replaceAll('a', 'b'), 'bb');
+    equal(_('aca').replaceAll('a', 'b'), 'bcb');
+    equal(_('ccc').replaceAll('a', 'b'), 'ccc');
+    equal(_('AAa').replaceAll('a', 'b'), 'AAb');
+    equal(_('Aa').replaceAll('a', 'b', true), 'bb');
+    equal(_('foo bar foo').replaceAll('foo', 'moo'), 'moo bar moo');
+    equal(_('foo bar\n foo').replaceAll('foo', 'moo'), 'moo bar\n moo');
+    equal(_('foo bar FoO').replaceAll('foo', 'moo', true), 'moo bar moo');
+    equal(_('').replaceAll('a', 'b'), '');
+    equal(_(null).replaceAll('a', 'b'), '');
+    equal(_(undefined).replaceAll('a', 'b'), '');
+    equal(_(12345).replaceAll('a', 'b'), 12345);
+  });
+
   test('String: splice', function(){
     equal(_('https://edtsech@bitbucket.org/edtsech/underscore.strings').splice(30, 7, 'epeli'),
            'https://edtsech@bitbucket.org/epeli/underscore.strings');
