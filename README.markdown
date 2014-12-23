@@ -471,6 +471,9 @@ toNumber('2.556')
 
 toNumber('2.556', 1)
 // => 2.6
+
+toNumber('999.999', -1)
+// => 990
 ```
 
 #### strRight(string, pattern) => string
