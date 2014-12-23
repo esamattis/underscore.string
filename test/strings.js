@@ -553,6 +553,36 @@ $(document).ready(function() {
     deepEqual(_('Hello\r\nWorld').lines(), ['Hello', 'World']);
   });
 
+  test('String: dedent', function() {
+    equal(_('Hello\nWorld').dedent(), 'Hello\nWorld');
+    equal(_('Hello\t\nWorld').dedent(), 'Hello\t\nWorld');
+    equal(_('Hello \nWorld').dedent(), 'Hello \nWorld');
+    equal(_('Hello\n  World').dedent(), 'Hello\n  World');
+    equal(_('    Hello\n  World').dedent(), '  Hello\nWorld');
+    equal(_('  Hello\nWorld').dedent(), '  Hello\nWorld');
+    equal(_('  Hello World').dedent(), 'Hello World');
+    equal(_('  Hello\n  World').dedent(), 'Hello\nWorld');
+    equal(_('  Hello\n    World').dedent(), 'Hello\n  World');
+    equal(_('\t\tHello\tWorld').dedent(), 'Hello\tWorld');
+    equal(_('\t\tHello\n\t\tWorld').dedent(), 'Hello\nWorld');
+    equal(_('Hello\n\t\tWorld').dedent(), 'Hello\n\t\tWorld');
+    equal(_('\t\tHello\n\t\t\t\tWorld').dedent(), 'Hello\n\t\tWorld');
+    equal(_('\t\tHello\r\n\t\t\t\tWorld').dedent(), 'Hello\r\n\t\tWorld');
+    equal(_('\t\tHello\r\n\r\n\t\t\t\tWorld').dedent(), 'Hello\r\n\r\n\t\tWorld');
+    equal(_('\t\tHello\n\n\n\n\t\t\t\tWorld').dedent(), 'Hello\n\n\n\n\t\tWorld');
+    equal(_('\t\t\tHello\n\t\tWorld').dedent('\\t'), '\t\tHello\n\tWorld');
+    equal(_('    Hello\n    World').dedent('  '), '  Hello\n  World');
+    equal(_('    Hello\n    World').dedent(''), '    Hello\n    World');
+    equal(_('\t\tHello\n\n\n\n\t\t\t\tWorld').dedent('\\t'), '\tHello\n\n\n\n\t\t\tWorld');
+    equal(_('Hello\n\t\tWorld').dedent('\t'), 'Hello\n\t\tWorld');
+    equal(_('Hello\n  World').dedent(' '), 'Hello\n  World');
+    equal(_('  Hello\nWorld').dedent(' '), '  Hello\nWorld');
+    deepEqual(_(123).dedent(), '123');
+    deepEqual(_('').dedent(), '');
+    deepEqual(_(null).dedent(), '');
+    deepEqual(_(undefined).dedent(), '');
+  });
+
   test('String: pad', function() {
     equal(_('1').pad(8), '       1');
     equal(_(1).pad(8), '       1');

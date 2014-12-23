@@ -218,6 +218,22 @@ lines("Hello\nWorld")
 // => ["Hello", "World"]
 ```
 
+#### dedent(str, [pattern]) => string
+
+Dedent unnecessary indentation or dedent by a pattern.
+
+Credits go to @sindresorhus.
+This implementation is similar to https://github.com/sindresorhus/strip-indent
+
+```javascript
+dedent("  Hello\n    World")
+// => "Hello\n  World"
+dedent("\t\tHello\n\t\t\t\tWorld")
+// => "Hello\n\t\tWorld"
+dedent("    Hello\n    World", "  ") // Dedent by 2 spaces
+// => "  Hello\n  World"
+```
+
 #### reverse(string) => string
 
 Return reversed string:
