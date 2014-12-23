@@ -3,9 +3,8 @@ var parseNumber = function(source) {
   return source * 1 || 0;
 };
 
-module.exports = function toNumber(str, decimals) {
-  if (!str) return 0;
-  str = trim(str);
-  if (!str.match(/^-?\d+(?:\.\d+)?$/)) return NaN;
-  return parseNumber(parseNumber(str).toFixed(~~decimals));
+module.exports = function toNumber(num, precision) {
+  if (num == null) return 0;
+  var factor = Math.pow(10, isFinite(precision) ? precision : 0);
+  return Math.round(num * factor) / factor;
 };

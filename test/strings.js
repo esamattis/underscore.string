@@ -602,10 +602,14 @@ $(document).ready(function() {
   });
 
   test('String: toNumber', function() {
-    deepEqual(_('not a number').toNumber(), NaN);
+    _.each(['not a number', NaN, {}, [/a/], 'alpha6'], function(val) {
+      deepEqual(_('not a number').toNumber(), NaN);
+      equal(_(Math.PI).toNumber(val), 3);
+    });
     equal(_(0).toNumber(), 0);
     equal(_('0').toNumber(), 0);
     equal(_('0.0').toNumber(), 0);
+    equal(_('        0.0    ').toNumber(), 0);
     equal(_('0.1').toNumber(), 0);
     equal(_('0.1').toNumber(1), 0.1);
     equal(_('  0.1 ').toNumber(1), 0.1);
@@ -618,9 +622,22 @@ $(document).ready(function() {
     equal(_(2).toNumber(2), 2.00);
     equal(_(-2).toNumber(), -2);
     equal(_('-2').toNumber(), -2);
-    equal(_('').toNumber(), 0);
-    equal(_(null).toNumber(), 0);
-    equal(_(undefined).toNumber(), 0);
+    equal(_(-2.5123).toNumber(3), -2.512);
+
+    // Negative precisions
+    equal(_(-234).toNumber(-1), -230);
+    equal(_(234).toNumber(-2), 200);
+    equal(_('234').toNumber(-2), 200);
+
+    _.each(['', null, undefined], function(val) {
+      equal(_(val).toNumber(), 0);
+    });
+
+    _.each([Infinity, -Infinity], function(val) {
+      equal(_(val).toNumber(), val);
+      equal(_(val).toNumber(val), val);
+      equal(_(1).toNumber(val), 1);
+    });
   });
 
   test('String: numberFormat', function() {
