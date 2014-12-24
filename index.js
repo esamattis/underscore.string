@@ -31,6 +31,7 @@ s.splice           = require('./splice');
 s.insert           = require('./insert');
 s.replaceAll       = require('./replaceAll');
 s.include          = require('./include');
+s.includes          = require('./includes');
 s.join             = require('./join');
 s.lines            = require('./lines');
 s.reverse          = require('./reverse');
