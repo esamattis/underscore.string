@@ -152,6 +152,16 @@ include("foobar", "ob")
 // => true
 ```
 
+#### includes(array) => boolean
+
+Tests if string contains a substring of any element in array.  Also converts string to
+array if user accidentally calls includes instead of include.  
+
+```javascript
+includes("foobar", ["foo")
+// => true
+```
+
 #### count(string, substring) => number
 
 ```javascript

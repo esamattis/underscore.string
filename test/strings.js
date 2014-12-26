@@ -278,6 +278,14 @@ $(document).ready(function() {
     ok(s.include(null, ''), 'null includes empty string');
   });
 
+
+  test('Strings: includes', function() {
+    ok(!s.includes('foobar', 'bar'), 'string converted to array, value not found');
+    ok(s.includes('foobar', 'foo'), 'string converted to array, value found');
+    ok(s.includes('foobar', ['foo', 'fon']), 'one value of array found');
+    ok(!s.includes('foobar', ['no', 'none']), 'no values of array found');
+  });
+
   test('String: chop', function(){
     ok(_('whitespace').chop(2).length === 5, 'output [wh, it, es, pa, ce]');
     ok(_('whitespace').chop(3).length === 4, 'output [whi, tes, pac, e]');
