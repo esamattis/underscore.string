@@ -258,7 +258,19 @@ endsWith('image.old.gif', 'old', 9)
 // => true
 ```
 
-#### succ(str) => string
+#### pred(string) => string
+
+Returns the predecessor to str.
+
+```javascript
+pred('b')
+// => 'a'
+
+pred('B')
+// => 'A'
+```
+
+#### succ(string) => string
 
 Returns the successor to str.
 
