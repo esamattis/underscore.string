@@ -340,6 +340,14 @@ $(document).ready(function() {
     equal(_('B').pred(), 'A');
     equal(_(',').pred(), '+');
     equal(_(2).pred(), '1');
+    deepEqual(_().pred().length, 0);
+    deepEqual(_('').pred().length, 0);
+    deepEqual(_(null).pred().length, 0);
+    deepEqual(_(undefined).pred().length, 0);
+    deepEqual(_().pred(), '');
+    deepEqual(_('').pred(), '');
+    deepEqual(_(null).pred(), '');
+    deepEqual(_(undefined).pred(), '');
   });
 
   test('String: succ', function(){
@@ -347,6 +355,14 @@ $(document).ready(function() {
     equal(_('A').succ(), 'B');
     equal(_('+').succ(), ',');
     equal(_(1).succ(), '2');
+    deepEqual(_().succ().length, 0);
+    deepEqual(_('').succ().length, 0);
+    deepEqual(_(null).succ().length, 0);
+    deepEqual(_(undefined).succ().length, 0);
+    deepEqual(_().succ(), '');
+    deepEqual(_('').succ(), '');
+    deepEqual(_(null).succ(), '');
+    deepEqual(_(undefined).succ(), '');
   });
 
   test('String: titleize', function(){
