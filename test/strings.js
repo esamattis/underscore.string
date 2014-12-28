@@ -426,6 +426,10 @@ $(document).ready(function() {
     equal(_('my wonderfull.class.name').classify(), 'MyWonderfullClassName');
     equal(_('myLittleCamel').classify(), 'MyLittleCamel');
     equal(_('myLittleCamel.class.name').classify(), 'MyLittleCamelClassName');
+    equal(_(123).classify(), '123');
+    equal(_('').classify(), '');
+    equal(_(null).classify(), '');
+    equal(_(undefined).classify(), '');
   });
 
   test('String: humanize', function(){
