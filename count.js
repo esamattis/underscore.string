@@ -4,6 +4,8 @@ module.exports = function(str, substr) {
   str = makeString(str);
   substr = makeString(substr);
 
+  if (str.length === 0 || substr.length === 0) return 0;
+
   var count = 0,
     pos = 0,
     length = substr.length;

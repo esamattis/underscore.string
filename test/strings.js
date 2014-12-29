@@ -302,6 +302,12 @@ $(document).ready(function() {
     equal(_(undefined).count('x'), 0);
     equal(_(12345).count(1), 1);
     equal(_(11345).count(1), 2);
+    equal(_('Hello World').count(''), 0);
+    equal(_('Hello World').count(null), 0);
+    equal(_('Hello World').count(undefined), 0);
+    equal(_('').count(''), 0);
+    equal(_(null).count(null), 0);
+    equal(_(undefined).count(undefined), 0);
   });
 
   test('String: insert', function(){
