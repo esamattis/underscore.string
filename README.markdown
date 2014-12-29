@@ -290,7 +290,7 @@ titleize('my name is epeli')
 // => 'My Name Is Epeli'
 ```
 
-#### camelize(string) => string
+#### camelize(string, [decapitalize=false]) => string
 
 Converts underscored or dasherized string to a camelized one. Begins with
 a lower case letter unless it starts with an underscore, dash or an upper case letter.
@@ -300,6 +300,12 @@ camelize('moz-transform')
 // => 'mozTransform'
 camelize('-moz-transform')
 // => 'MozTransform'
+camelize('_moz_transform')
+// => 'MozTransform'
+camelize('Moz-transform')
+// => 'MozTransform'
+camelize('-moz-transform', true)
+// => 'mozTransform'
 ```
 
 #### classify(string) => string
@@ -689,15 +695,16 @@ s("foo").tap(function(value){
 #### Aliases
 
 ```javascript
-strip    = trim
-lstrip   = ltrim
-rstrip   = rtrim
-center   = lrpad
-rjust    = lpad
-ljust    = rpad
-contains = include
-q        = quote
-toBool   = toBoolean
+strip     = trim
+lstrip    = ltrim
+rstrip    = rtrim
+center    = lrpad
+rjust     = lpad
+ljust     = rpad
+contains  = include
+q         = quote
+toBool    = toBoolean
+camelcase = camelize
 ```
 
 

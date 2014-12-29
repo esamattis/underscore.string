@@ -75,15 +75,16 @@ s.exports          = require('./exports');
 s.escapeRegExp     = require('./helper/escapeRegExp');
 
 // Aliases
-s.strip    = s.trim;
-s.lstrip   = s.ltrim;
-s.rstrip   = s.rtrim;
-s.center   = s.lrpad;
-s.rjust    = s.lpad;
-s.ljust    = s.rpad;
-s.contains = s.include;
-s.q        = s.quote;
-s.toBool   = s.toBoolean;
+s.strip     = s.trim;
+s.lstrip    = s.ltrim;
+s.rstrip    = s.rtrim;
+s.center    = s.lrpad;
+s.rjust     = s.lpad;
+s.ljust     = s.rpad;
+s.contains  = s.include;
+s.q         = s.quote;
+s.toBool    = s.toBoolean;
+s.camelcase = s.camelize;
 
 
 // Implement chaining
