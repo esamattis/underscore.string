@@ -202,6 +202,7 @@ $(document).ready(function() {
   test('Strings: startsWith', function() {
     ok(_('foobar').startsWith('foo'), 'foobar starts with foo');
     ok(!_('oobar').startsWith('foo'), 'oobar does not start with foo');
+    ok(_('oobar').startsWith('o'), 'oobar starts with o');
     ok(_(12345).startsWith(123), '12345 starts with 123');
     ok(!_(2345).startsWith(123), '2345 does not start with 123');
     ok(_('').startsWith(''), 'empty string starts with empty string');
@@ -235,6 +236,7 @@ $(document).ready(function() {
   test('Strings: endsWith', function() {
     ok(_('foobar').endsWith('bar'), 'foobar ends with bar');
     ok(_('foobarfoobar').endsWith('bar'), 'foobar ends with bar');
+    ok(_('foo').endsWith('o'), 'foobar ends with o');
     ok(_.endsWith('foobar', 'bar'), 'foobar ends with bar');
     ok(_.endsWith('00018-0000062.Plone.sdh264.1a7264e6912a91aa4a81b64dc5517df7b8875994.mp4', 'mp4'), 'endsWith .mp4');
     ok(!_('fooba').endsWith('bar'), 'fooba does not end with bar');
