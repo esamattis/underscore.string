@@ -387,14 +387,33 @@ $(document).ready(function() {
 
   test('String: camelize', function(){
     equal(_('the_camelize_string_method').camelize(), 'theCamelizeStringMethod');
+    equal(_('webkit-transform').camelize(), 'webkitTransform');
     equal(_('-the-camelize-string-method').camelize(), 'TheCamelizeStringMethod');
+    equal(_('_the_camelize_string_method').camelize(), 'TheCamelizeStringMethod');
+    equal(_('The-camelize-string-method').camelize(), 'TheCamelizeStringMethod');
     equal(_('the camelize string method').camelize(), 'theCamelizeStringMethod');
     equal(_(' the camelize  string method').camelize(), 'theCamelizeStringMethod');
     equal(_('the camelize   string method').camelize(), 'theCamelizeStringMethod');
+    equal(_(' with   spaces').camelize(), 'withSpaces');
+    equal(_("_som eWeird---name-").camelize(), 'SomEWeirdName');
     equal(_('').camelize(), '', 'Camelize empty string returns empty string');
     equal(_(null).camelize(), '', 'Camelize null returns empty string');
     equal(_(undefined).camelize(), '', 'Camelize undefined returns empty string');
     equal(_(123).camelize(), '123');
+    equal(_('the_camelize_string_method').camelize(true), 'theCamelizeStringMethod');
+    equal(_('webkit-transform').camelize(true), 'webkitTransform');
+    equal(_('-the-camelize-string-method').camelize(true), 'theCamelizeStringMethod');
+    equal(_('_the_camelize_string_method').camelize(true), 'theCamelizeStringMethod');
+    equal(_('The-camelize-string-method').camelize(true), 'theCamelizeStringMethod');
+    equal(_('the camelize string method').camelize(true), 'theCamelizeStringMethod');
+    equal(_(' the camelize  string method').camelize(true), 'theCamelizeStringMethod');
+    equal(_('the camelize   string method').camelize(true), 'theCamelizeStringMethod');
+    equal(_(' with   spaces').camelize(true), 'withSpaces');
+    equal(_("_som eWeird---name-").camelize(true), 'somEWeirdName');
+    equal(_('').camelize(true), '', 'Camelize empty string returns empty string');
+    equal(_(null).camelize(true), '', 'Camelize null returns empty string');
+    equal(_(undefined).camelize(true), '', 'Camelize undefined returns empty string');
+    equal(_(123).camelize(true), '123');
   });
 
   test('String: underscored', function(){
@@ -423,17 +442,6 @@ $(document).ready(function() {
     equal(_(null).dasherize(), '');
     equal(_(undefined).dasherize(), '');
     equal(_(123).dasherize(), '123');
-  });
-
-  test('String: camelize', function(){
-    equal(_.camelize('-moz-transform'), 'MozTransform');
-    equal(_.camelize('webkit-transform'), 'webkitTransform');
-    equal(_.camelize('under_scored'), 'underScored');
-    equal(_.camelize(' with   spaces'), 'withSpaces');
-    equal(_('').camelize(), '');
-    equal(_(null).camelize(), '');
-    equal(_(undefined).camelize(), '');
-    equal(_("_som eWeird---name-").camelize(), 'SomEWeirdName');
   });
 
   test('String: join', function(){
