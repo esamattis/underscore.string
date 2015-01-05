@@ -1,3 +1,10 @@
+<span class="github-only">
+
+This documentation for the development version. The documentation for the production version is here  <https://github.com/epeli/underscore.string/blob/2.4.0/README.markdown>
+<!-- TODO change to gh-pages url once ready -->
+
+</span>
+
 # Underscore.string [![Build Status](https://secure.travis-ci.org/epeli/underscore.string.png?branch=master)](http://travis-ci.org/epeli/underscore.string) #
 
 Javascript lacks complete string manipulation operations.
