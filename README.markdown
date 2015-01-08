@@ -184,7 +184,7 @@ unescapeHTML('&lt;div&gt;Blah blah blah&lt;/div&gt;');
 // => '<div>Blah blah blah</div>'
 ```
 
-#### insert(string, index, substing) => string
+#### insert(string, index, substring) => string
 
 ```javascript
 insert('Hello ', 6, 'world')
