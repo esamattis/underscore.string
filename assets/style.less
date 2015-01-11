@@ -1,0 +1,92 @@
+@import "./bootstrap/less/bootstrap.less";
+
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  background: #f0f0f0;
+  position: relative;
+  margin-top: 70px;
+  overflow: hidden;
+}
+
+#content {
+  overflow: auto;
+  height: 100%;
+}
+
+.navbar {
+  box-shadow: 0px 0px 15px #888;
+}
+
+@font-face {
+  font-family: 'MyReforma';
+  src: url(fonts/RFG69_.ttf);
+}
+
+@font-face {
+  font-family: 'MyAndrogyne';
+  src: url(fonts/Androgyne_TB.otf);
+}
+
+@font-face {
+  font-family: 'MyCambria';
+  src: url(fonts/cambriaz.ttf);
+}
+
+h1 {
+  font-family: MyReforma;
+  font-size: 6em;
+  font-weight: normal;
+}
+
+h2 {
+  color: #00695C;
+  padding-top: 50px;
+}
+
+h4 {
+  color: #00796B;
+  margin-top: 40px;
+}
+
+h3,h4 {
+  a:hover {
+    text-decoration: none;
+  }
+  &:hover .header-link {
+    display: inline;
+    color: #78909C;
+    &:hover {
+      text-decoration: none;
+      color: #546E7A;
+    }
+  }
+}
+
+.header-link {
+  display: none;
+  font-size: 0.8em;
+  line-height: 1.2em;
+  padding-left: 1em;
+}
+
+a, p a {
+  text-decoration: underline;
+}
+
+a:hover, p a:hover {
+  color: #004D40;
+  text-decoration: underline;
+}
+
+a {
+  color: #00695C;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
