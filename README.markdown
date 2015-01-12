@@ -10,15 +10,13 @@ This documentation for the development version. The documentation for the produc
 Javascript lacks complete string manipulation operations.
 This an attempt to fill that gap. List of build-in methods can be found
 for example from [Dive Into JavaScript][d].
-
-[d]: http://www.diveintojavascript.com/core-javascript-reference/the-string-object
-
-
 Originally started as an Underscore.js extension but is a full standalone
 library nowadays.
 
 
-## Usage in Node.js and Browserify
+## Usage 
+
+### In Node.js and Browserify
 
 Install from npm
 
@@ -47,7 +45,7 @@ use.
 
 [Browserify]: http://browserify.org/
 
-## Others
+### Others
 
 The `dist/underscore.string.js` file is an [UMD][] build. You can load it using
 an AMD loader such as [RequireJS][] or just stick it to a web page and access
@@ -56,13 +54,7 @@ the library from the ***s*** global.
 [UMD]: https://github.com/umdjs/umd
 [RequireJS]: http://requirejs.org/
 
-### Download
-
-  * [Development version](https://raw.github.com/epeli/underscore.string/master/dist/underscore.string.js) *Uncompressed with Comments*
-  * [Production version](https://github.com/epeli/underscore.string/raw/master/dist/underscore.string.min.js) *Minified*
-
-
-## Underscore.js/Lo-Dash integration
+### Underscore.js/Lo-Dash integration
 
 It is still possible use as Underscore.js/Lo-Dash extension
 
@@ -72,6 +64,10 @@ _.mixin(s.exports());
 But it's not recommended since some of the are dropped because they collide
 with the functions already defined by Underscore.js.
 
+## Download
+
+  * [Development version](https://raw.github.com/epeli/underscore.string/master/dist/underscore.string.js) *Uncompressed with Comments*
+  * [Production version](https://github.com/epeli/underscore.string/raw/master/dist/underscore.string.min.js) *Minified*
 
 ## API
 
@@ -738,3 +734,6 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
+
+
+[d]: http://www.diveintojavascript.com/core-javascript-reference/the-string-object
