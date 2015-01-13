@@ -429,7 +429,7 @@ $(document).ready(function() {
 
   test('String: dasherize', function(){
     equal(_('the_dasherize_string_method').dasherize(), 'the-dasherize-string-method');
-    equal(_('TheDasherizeStringMethod').dasherize(), '-the-dasherize-string-method');
+    equal(_('TheDasherizeStringMethod').dasherize(), 'the-dasherize-string-method');
     equal(_('thisIsATest').dasherize(), 'this-is-a-test');
     equal(_('this Is A Test').dasherize(), 'this-is-a-test');
     equal(_('thisIsATest123').dasherize(), 'this-is-a-test123');
