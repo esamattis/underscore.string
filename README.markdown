@@ -1,6 +1,6 @@
 <span class="github-only">
 
-This documentation for the development version. The documentation for the production version is here  <https://github.com/epeli/underscore.string/blob/2.4.0/README.markdown>
+This documentation is for the development version. The documentation for the production version is here  <https://github.com/epeli/underscore.string/blob/2.4.0/README.markdown>
 <!-- TODO change to gh-pages url once ready -->
 
 </span>
