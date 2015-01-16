@@ -35,7 +35,7 @@ gulp.task('clean', function() {
 
 gulp.task('bump-in-js', function(semver) {
   return gulp.src(SRC)
-    .pipe(replace(/(version:?\s\')([\d\.]*)\'/gi, '$1' + semver + "'"))
+    .pipe(replace(/(version\s?=?\s\')([\d\.]*)\'/gi, '$1' + semver + "'"))
     .pipe(gulp.dest('./'));
 });
 
