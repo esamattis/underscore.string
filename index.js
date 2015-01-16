@@ -33,6 +33,7 @@ s.replaceAll       = require('./replaceAll');
 s.include          = require('./include');
 s.join             = require('./join');
 s.lines            = require('./lines');
+s.dedent           = require('./dedent');
 s.reverse          = require('./reverse');
 s.startsWith       = require('./startsWith');
 s.endsWith         = require('./endsWith');
