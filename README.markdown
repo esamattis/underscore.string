@@ -1,6 +1,6 @@
 <span class="github-only">
 
-The stable release documentation can be found here <epeli.github.io/underscore.string/>
+The stable release documentation can be found here https://epeli.github.io/underscore.string/
 
 </span>
 
