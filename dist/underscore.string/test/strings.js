@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
   // Include Underscore.string methods to Underscore namespace
-  _.mixin(_.str.exports());
+  _.mixin(s.exports());
 
   module('String extensions');
 
@@ -9,6 +9,42 @@ $(document).ready(function() {
     var arr =  ['foo2', 'foo1', 'foo10', 'foo30', 'foo100', 'foo10bar'],
       sorted = ['foo1', 'foo2', 'foo10', 'foo10bar', 'foo30', 'foo100'];
     deepEqual(arr.sort(_.naturalCmp), sorted);
+  });
+
+  test("Strings: naturalCmp", function() {
+    // Should be associative
+    _.each([
+      ['abc', '123'],
+      ['def', 'abc'],
+      ['ab', 'a'],
+      ['r69', 'r9'],
+      ['123', '122'],
+      ['ac2', 'ab3'],
+      ['a-12', 'a-11'],
+      ['11', '-12'],
+      ['15.05', '15'],
+      ['15ac', '15ab32'],
+      ['16', '15ab'],
+      ['15a123', '15a122'],
+      ['15ab16', '15ab'],
+      ['abc', 'Abc'],
+      ['abc', 'aBc'],
+      ['aBc', 'Abc']
+    ], function(vals) {
+      var a = vals[0], b = vals[1];
+      equal(_.naturalCmp(a, b), 1, '\'' + a + '\' >= \'' + b + '\'');
+      equal(_.naturalCmp(b, a), -1, '\'' + b + '\' <= \'' + a + '\'');
+    });
+    _.each([
+      ['123', '123'],
+      ['abc', 'abc'],
+      ['r12', 'r12'],
+      ['12a', '12a']
+    ], function(vals) {
+      var a = vals[0], b = vals[1];
+      equal(_.naturalCmp(a, b), 0, '\'' + a + '\' == \'' + b + '\'');
+      equal(_.naturalCmp(b, a), 0, '\'' + b + '\' == \'' + a + '\'');
+    });
   });
 
   test('Strings: trim', function() {
@@ -99,27 +135,40 @@ $(document).ready(function() {
     equal(_.capitalize(undefined), '', 'Capitalizing undefined returns empty string');
   });
 
+  test('Strings: decapitalize', function() {
+    equal(_('Fabio').decapitalize(), 'fabio', 'First letter is lower case');
+    equal(_.decapitalize('Fabio'), 'fabio', 'First letter is lower case');
+    equal(_.decapitalize('FOO'), 'fOO', 'Other letters unchanged');
+    equal(_(123).decapitalize(), '123', 'Non string');
+    equal(_.decapitalize(''), '', 'Decapitalizing empty string returns empty string');
+    equal(_.decapitalize(null), '', 'Decapitalizing null returns empty string');
+    equal(_.decapitalize(undefined), '', 'Decapitalizing undefined returns empty string');
+  });
+
   test('Strings: join', function() {
-    equal(_.join('', 'foo', 'bar'), 'foobar', 'basic join');
-    equal(_.join('', 1, 'foo', 2), '1foo2', 'join numbers and strings');
-    equal(_.join(' ','foo', 'bar'), 'foo bar', 'join with spaces');
-    equal(_.join('1', '2', '2'), '212', 'join number strings');
-    equal(_.join(1, 2, 2), '212', 'join numbers');
-    equal(_.join('','foo', null), 'foo', 'join null with string returns string');
-    equal(_.join(null,'foo', 'bar'), 'foobar', 'join strings with null returns string');
-    equal(_(' ').join('foo', 'bar'), 'foo bar', 'join object oriented');
+    equal(s.join('', 'foo', 'bar'), 'foobar', 'basic join');
+    equal(s.join('', 1, 'foo', 2), '1foo2', 'join numbers and strings');
+    equal(s.join(' ','foo', 'bar'), 'foo bar', 'join with spaces');
+    equal(s.join('1', '2', '2'), '212', 'join number strings');
+    equal(s.join(1, 2, 2), '212', 'join numbers');
+    equal(s.join('','foo', null), 'foo', 'join null with string returns string');
+    equal(s.join(null,'foo', 'bar'), 'foobar', 'join strings with null returns string');
+    equal(s.join(1, 2, 3, 4), '21314');
+    equal(s.join('|', 'foo', 'bar', 'baz'), 'foo|bar|baz');
+    equal(s.join('',2,3,null), '23');
+    equal(s.join(null,2,3), '23');
   });
 
   test('Strings: reverse', function() {
-    equal(_.str.reverse('foo'), 'oof' );
-    equal(_.str.reverse('foobar'), 'raboof' );
-    equal(_.str.reverse('foo bar'), 'rab oof' );
-    equal(_.str.reverse('saippuakauppias'), 'saippuakauppias' );
-    equal(_.str.reverse(123), '321', 'Non string');
-    equal(_.str.reverse(123.45), '54.321', 'Non string');
-    equal(_.str.reverse(''), '', 'reversing empty string returns empty string' );
-    equal(_.str.reverse(null), '', 'reversing null returns empty string' );
-    equal(_.str.reverse(undefined), '', 'reversing undefined returns empty string' );
+    equal(s.reverse('foo'), 'oof' );
+    equal(s.reverse('foobar'), 'raboof' );
+    equal(s.reverse('foo bar'), 'rab oof' );
+    equal(s.reverse('saippuakauppias'), 'saippuakauppias' );
+    equal(s.reverse(123), '321', 'Non string');
+    equal(s.reverse(123.45), '54.321', 'Non string');
+    equal(s.reverse(''), '', 'reversing empty string returns empty string' );
+    equal(s.reverse(null), '', 'reversing null returns empty string' );
+    equal(s.reverse(undefined), '', 'reversing undefined returns empty string' );
   });
 
   test('Strings: clean', function() {
@@ -156,15 +205,41 @@ $(document).ready(function() {
   test('Strings: startsWith', function() {
     ok(_('foobar').startsWith('foo'), 'foobar starts with foo');
     ok(!_('oobar').startsWith('foo'), 'oobar does not start with foo');
+    ok(_('oobar').startsWith('o'), 'oobar starts with o');
     ok(_(12345).startsWith(123), '12345 starts with 123');
     ok(!_(2345).startsWith(123), '2345 does not start with 123');
     ok(_('').startsWith(''), 'empty string starts with empty string');
     ok(_(null).startsWith(''), 'null starts with empty string');
     ok(!_(null).startsWith('foo'), 'null starts with foo');
+    ok(_('-foobar').startsWith('foo', 1), 'foobar starts with foo at position 1');
+    ok(_('foobar').startsWith('foo', 0), 'foobar starts with foo at position 0');
+    ok(!_('foobar').startsWith('foo', 1), 'foobar starts not with foo at position 1');
+    ok(_('Äpfel').startsWith('Ä'), 'string starts with a unicode');
+
+    strictEqual(_('hello').startsWith('hell'), true);
+    strictEqual(_('HELLO').startsWith('HELL'), true);
+    strictEqual(_('HELLO').startsWith('hell'), false);
+    strictEqual(_('HELLO').startsWith('hell'), false);
+    strictEqual(_('hello').startsWith('hell', 0), true);
+    strictEqual(_('HELLO').startsWith('HELL', 0), true);
+    strictEqual(_('HELLO').startsWith('hell', 0), false);
+    strictEqual(_('HELLO').startsWith('hell', 0), false);
+    strictEqual(_('HELLO').startsWith(), false);
+    strictEqual(_('undefined').startsWith(), true);
+    strictEqual(_('null').startsWith(null), true);
+    strictEqual(_('hello').startsWith('hell', -20), true);
+    strictEqual(_('hello').startsWith('hell', 1), false);
+    strictEqual(_('hello').startsWith('hell', 2), false);
+    strictEqual(_('hello').startsWith('hell', 3), false);
+    strictEqual(_('hello').startsWith('hell', 4), false);
+    strictEqual(_('hello').startsWith('hell', 5), false);
+    strictEqual(_('hello').startsWith('hell', 20), false);
   });
 
   test('Strings: endsWith', function() {
     ok(_('foobar').endsWith('bar'), 'foobar ends with bar');
+    ok(_('foobarfoobar').endsWith('bar'), 'foobar ends with bar');
+    ok(_('foo').endsWith('o'), 'foobar ends with o');
     ok(_.endsWith('foobar', 'bar'), 'foobar ends with bar');
     ok(_.endsWith('00018-0000062.Plone.sdh264.1a7264e6912a91aa4a81b64dc5517df7b8875994.mp4', 'mp4'), 'endsWith .mp4');
     ok(!_('fooba').endsWith('bar'), 'fooba does not end with bar');
@@ -173,16 +248,39 @@ $(document).ready(function() {
     ok(_('').endsWith(''), 'empty string ends with empty string');
     ok(_(null).endsWith(''), 'null ends with empty string');
     ok(!_(null).endsWith('foo'), 'null ends with foo');
+    ok(_('foobar?').endsWith('bar', 6), 'foobar ends with bar at position 6');
+    ok(_(12345).endsWith(34, 4), 'number ends with 34 at position 4');
+    ok(!_(12345).endsWith(45, 4), 'number ends not with 45 at position 4');
+    ok(_('foobä').endsWith('ä'), 'string ends with a unicode');
+
+    strictEqual(_('vader').endsWith('der'), true);
+    strictEqual(_('VADER').endsWith('DER'), true);
+    strictEqual(_('VADER').endsWith('der'), false);
+    strictEqual(_('VADER').endsWith('DeR'), false);
+    strictEqual(_('VADER').endsWith(), false);
+    strictEqual(_('undefined').endsWith(), true);
+    strictEqual(_('null').endsWith(null), true);
+    strictEqual(_('vader').endsWith('der', 5), true);
+    strictEqual(_('VADER').endsWith('DER', 5), true);
+    strictEqual(_('VADER').endsWith('der', 5), false);
+    strictEqual(_('VADER').endsWith('DER', 5), true);
+    strictEqual(_('VADER').endsWith('der', 5), false);
+    strictEqual(_('vader').endsWith('der', -20), false);
+    strictEqual(_('vader').endsWith('der', 0), false);
+    strictEqual(_('vader').endsWith('der', 1), false);
+    strictEqual(_('vader').endsWith('der', 2), false);
+    strictEqual(_('vader').endsWith('der', 3), false);
+    strictEqual(_('vader').endsWith('der', 4), false);
   });
 
   test('Strings: include', function() {
-    ok(_.str.include('foobar', 'bar'), 'foobar includes bar');
-    ok(!_.str.include('foobar', 'buzz'), 'foobar does not includes buzz');
-    ok(_.str.include(12345, 34), '12345 includes 34');
-    ok(!_.str.contains(12345, 6), '12345 does not includes 6');
-    ok(!_.str.include('', 34), 'empty string includes 34');
-    ok(!_.str.include(null, 34), 'null includes 34');
-    ok(_.str.include(null, ''), 'null includes empty string');
+    ok(s.include('foobar', 'bar'), 'foobar includes bar');
+    ok(!s.include('foobar', 'buzz'), 'foobar does not includes buzz');
+    ok(s.include(12345, 34), '12345 includes 34');
+    ok(!s.contains(12345, 6), '12345 does not includes 6');
+    ok(!s.include('', 34), 'empty string includes 34');
+    ok(!s.include(null, 34), 'null includes 34');
+    ok(s.include(null, ''), 'null includes empty string');
   });
 
   test('String: chop', function(){
@@ -209,6 +307,12 @@ $(document).ready(function() {
     equal(_(undefined).count('x'), 0);
     equal(_(12345).count(1), 1);
     equal(_(11345).count(1), 2);
+    equal(_('Hello World').count(''), 0);
+    equal(_('Hello World').count(null), 0);
+    equal(_('Hello World').count(undefined), 0);
+    equal(_('').count(''), 0);
+    equal(_(null).count(null), 0);
+    equal(_(undefined).count(undefined), 0);
   });
 
   test('String: insert', function(){
@@ -220,10 +324,41 @@ $(document).ready(function() {
     equal(_(12345).insert(6, 'Jessy'), '12345Jessy');
   });
 
+  test('String: replaceAll', function(){
+    equal(_('a').replaceAll('a', 'b'), 'b');
+    equal(_('aa').replaceAll('a', 'b'), 'bb');
+    equal(_('aca').replaceAll('a', 'b'), 'bcb');
+    equal(_('ccc').replaceAll('a', 'b'), 'ccc');
+    equal(_('AAa').replaceAll('a', 'b'), 'AAb');
+    equal(_('Aa').replaceAll('a', 'b', true), 'bb');
+    equal(_('foo bar foo').replaceAll('foo', 'moo'), 'moo bar moo');
+    equal(_('foo bar\n foo').replaceAll('foo', 'moo'), 'moo bar\n moo');
+    equal(_('foo bar FoO').replaceAll('foo', 'moo', true), 'moo bar moo');
+    equal(_('').replaceAll('a', 'b'), '');
+    equal(_(null).replaceAll('a', 'b'), '');
+    equal(_(undefined).replaceAll('a', 'b'), '');
+    equal(_(12345).replaceAll('a', 'b'), 12345);
+  });
+
   test('String: splice', function(){
     equal(_('https://edtsech@bitbucket.org/edtsech/underscore.strings').splice(30, 7, 'epeli'),
            'https://edtsech@bitbucket.org/epeli/underscore.strings');
     equal(_.splice(12345, 1, 2, 321), '132145', 'Non strings');
+  });
+
+  test('String: pred', function(){
+    equal(_('b').pred(), 'a');
+    equal(_('B').pred(), 'A');
+    equal(_(',').pred(), '+');
+    equal(_(2).pred(), '1');
+    deepEqual(_().pred().length, 0);
+    deepEqual(_('').pred().length, 0);
+    deepEqual(_(null).pred().length, 0);
+    deepEqual(_(undefined).pred().length, 0);
+    deepEqual(_().pred(), '');
+    deepEqual(_('').pred(), '');
+    deepEqual(_(null).pred(), '');
+    deepEqual(_(undefined).pred(), '');
   });
 
   test('String: succ', function(){
@@ -231,6 +366,14 @@ $(document).ready(function() {
     equal(_('A').succ(), 'B');
     equal(_('+').succ(), ',');
     equal(_(1).succ(), '2');
+    deepEqual(_().succ().length, 0);
+    deepEqual(_('').succ().length, 0);
+    deepEqual(_(null).succ().length, 0);
+    deepEqual(_(undefined).succ().length, 0);
+    deepEqual(_().succ(), '');
+    deepEqual(_('').succ(), '');
+    deepEqual(_(null).succ(), '');
+    deepEqual(_(undefined).succ(), '');
   });
 
   test('String: titleize', function(){
@@ -247,14 +390,33 @@ $(document).ready(function() {
 
   test('String: camelize', function(){
     equal(_('the_camelize_string_method').camelize(), 'theCamelizeStringMethod');
+    equal(_('webkit-transform').camelize(), 'webkitTransform');
     equal(_('-the-camelize-string-method').camelize(), 'TheCamelizeStringMethod');
+    equal(_('_the_camelize_string_method').camelize(), 'TheCamelizeStringMethod');
+    equal(_('The-camelize-string-method').camelize(), 'TheCamelizeStringMethod');
     equal(_('the camelize string method').camelize(), 'theCamelizeStringMethod');
     equal(_(' the camelize  string method').camelize(), 'theCamelizeStringMethod');
     equal(_('the camelize   string method').camelize(), 'theCamelizeStringMethod');
+    equal(_(' with   spaces').camelize(), 'withSpaces');
+    equal(_("_som eWeird---name-").camelize(), 'SomEWeirdName');
     equal(_('').camelize(), '', 'Camelize empty string returns empty string');
     equal(_(null).camelize(), '', 'Camelize null returns empty string');
     equal(_(undefined).camelize(), '', 'Camelize undefined returns empty string');
     equal(_(123).camelize(), '123');
+    equal(_('the_camelize_string_method').camelize(true), 'theCamelizeStringMethod');
+    equal(_('webkit-transform').camelize(true), 'webkitTransform');
+    equal(_('-the-camelize-string-method').camelize(true), 'theCamelizeStringMethod');
+    equal(_('_the_camelize_string_method').camelize(true), 'theCamelizeStringMethod');
+    equal(_('The-camelize-string-method').camelize(true), 'theCamelizeStringMethod');
+    equal(_('the camelize string method').camelize(true), 'theCamelizeStringMethod');
+    equal(_(' the camelize  string method').camelize(true), 'theCamelizeStringMethod');
+    equal(_('the camelize   string method').camelize(true), 'theCamelizeStringMethod');
+    equal(_(' with   spaces').camelize(true), 'withSpaces');
+    equal(_("_som eWeird---name-").camelize(true), 'somEWeirdName');
+    equal(_('').camelize(true), '', 'Camelize empty string returns empty string');
+    equal(_(null).camelize(true), '', 'Camelize null returns empty string');
+    equal(_(undefined).camelize(true), '', 'Camelize undefined returns empty string');
+    equal(_(123).camelize(true), '123');
   });
 
   test('String: underscored', function(){
@@ -285,24 +447,6 @@ $(document).ready(function() {
     equal(_(123).dasherize(), '123');
   });
 
-  test('String: camelize', function(){
-    equal(_.camelize('-moz-transform'), 'MozTransform');
-    equal(_.camelize('webkit-transform'), 'webkitTransform');
-    equal(_.camelize('under_scored'), 'underScored');
-    equal(_.camelize(' with   spaces'), 'withSpaces');
-    equal(_('').camelize(), '');
-    equal(_(null).camelize(), '');
-    equal(_(undefined).camelize(), '');
-    equal(_("_som eWeird---name-").camelize(), 'SomEWeirdName');
-  });
-
-  test('String: join', function(){
-    equal(_.join(1, 2, 3, 4), '21314');
-    equal(_.join('|', 'foo', 'bar', 'baz'), 'foo|bar|baz');
-    equal(_.join('',2,3,null), '23');
-    equal(_.join(null,2,3), '23');
-  });
-
   test('String: classify', function(){
     equal(_.classify(1), '1');
     equal(_('some_class_name').classify(), 'SomeClassName');
@@ -310,6 +454,10 @@ $(document).ready(function() {
     equal(_('my wonderfull.class.name').classify(), 'MyWonderfullClassName');
     equal(_('myLittleCamel').classify(), 'MyLittleCamel');
     equal(_('myLittleCamel.class.name').classify(), 'MyLittleCamelClassName');
+    equal(_(123).classify(), '123');
+    equal(_('').classify(), '');
+    equal(_(null).classify(), '');
+    equal(_(undefined).classify(), '');
   });
 
   test('String: humanize', function(){
@@ -437,9 +585,41 @@ $(document).ready(function() {
     equal(_('Hello\nWorld').lines().length, 2);
     equal(_('Hello World').lines().length, 1);
     equal(_(123).lines().length, 1);
-    equal(_('').lines().length, 1);
-    equal(_(null).lines().length, 0);
-    equal(_(undefined).lines().length, 0);
+    deepEqual(_('').lines(), ['']);
+    deepEqual(_(null).lines(), []);
+    deepEqual(_(undefined).lines(), []);
+    deepEqual(_('Hello\rWorld').lines(), ['Hello\rWorld']);
+    deepEqual(_('Hello\r\nWorld').lines(), ['Hello', 'World']);
+  });
+
+  test('String: dedent', function() {
+    equal(_('Hello\nWorld').dedent(), 'Hello\nWorld');
+    equal(_('Hello\t\nWorld').dedent(), 'Hello\t\nWorld');
+    equal(_('Hello \nWorld').dedent(), 'Hello \nWorld');
+    equal(_('Hello\n  World').dedent(), 'Hello\n  World');
+    equal(_('    Hello\n  World').dedent(), '  Hello\nWorld');
+    equal(_('  Hello\nWorld').dedent(), '  Hello\nWorld');
+    equal(_('  Hello World').dedent(), 'Hello World');
+    equal(_('  Hello\n  World').dedent(), 'Hello\nWorld');
+    equal(_('  Hello\n    World').dedent(), 'Hello\n  World');
+    equal(_('\t\tHello\tWorld').dedent(), 'Hello\tWorld');
+    equal(_('\t\tHello\n\t\tWorld').dedent(), 'Hello\nWorld');
+    equal(_('Hello\n\t\tWorld').dedent(), 'Hello\n\t\tWorld');
+    equal(_('\t\tHello\n\t\t\t\tWorld').dedent(), 'Hello\n\t\tWorld');
+    equal(_('\t\tHello\r\n\t\t\t\tWorld').dedent(), 'Hello\r\n\t\tWorld');
+    equal(_('\t\tHello\r\n\r\n\t\t\t\tWorld').dedent(), 'Hello\r\n\r\n\t\tWorld');
+    equal(_('\t\tHello\n\n\n\n\t\t\t\tWorld').dedent(), 'Hello\n\n\n\n\t\tWorld');
+    equal(_('\t\t\tHello\n\t\tWorld').dedent('\\t'), '\t\tHello\n\tWorld');
+    equal(_('    Hello\n    World').dedent('  '), '  Hello\n  World');
+    equal(_('    Hello\n    World').dedent(''), '    Hello\n    World');
+    equal(_('\t\tHello\n\n\n\n\t\t\t\tWorld').dedent('\\t'), '\tHello\n\n\n\n\t\t\tWorld');
+    equal(_('Hello\n\t\tWorld').dedent('\t'), 'Hello\n\t\tWorld');
+    equal(_('Hello\n  World').dedent(' '), 'Hello\n  World');
+    equal(_('  Hello\nWorld').dedent(' '), '  Hello\nWorld');
+    deepEqual(_(123).dedent(), '123');
+    deepEqual(_('').dedent(), '');
+    deepEqual(_(null).dedent(), '');
+    deepEqual(_(undefined).dedent(), '');
   });
 
   test('String: pad', function() {
@@ -491,10 +671,14 @@ $(document).ready(function() {
   });
 
   test('String: toNumber', function() {
-    deepEqual(_('not a number').toNumber(), NaN);
+    _.each(['not a number', NaN, {}, [/a/], 'alpha6'], function(val) {
+      deepEqual(_('not a number').toNumber(), NaN);
+      equal(_(Math.PI).toNumber(val), 3);
+    });
     equal(_(0).toNumber(), 0);
     equal(_('0').toNumber(), 0);
     equal(_('0.0').toNumber(), 0);
+    equal(_('        0.0    ').toNumber(), 0);
     equal(_('0.1').toNumber(), 0);
     equal(_('0.1').toNumber(1), 0.1);
     equal(_('  0.1 ').toNumber(1), 0.1);
@@ -507,9 +691,22 @@ $(document).ready(function() {
     equal(_(2).toNumber(2), 2.00);
     equal(_(-2).toNumber(), -2);
     equal(_('-2').toNumber(), -2);
-    equal(_('').toNumber(), 0);
-    equal(_(null).toNumber(), 0);
-    equal(_(undefined).toNumber(), 0);
+    equal(_(-2.5123).toNumber(3), -2.512);
+
+    // Negative precisions
+    equal(_(-234).toNumber(-1), -230);
+    equal(_(234).toNumber(-2), 200);
+    equal(_('234').toNumber(-2), 200);
+
+    _.each(['', null, undefined], function(val) {
+      equal(_(val).toNumber(), 0);
+    });
+
+    _.each([Infinity, -Infinity], function(val) {
+      equal(_(val).toNumber(), val);
+      equal(_(val).toNumber(val), val);
+      equal(_(1).toNumber(val), 1);
+    });
   });
 
   test('String: numberFormat', function() {
@@ -605,10 +802,11 @@ $(document).ready(function() {
   });
 
   test('Strings: slugify', function() {
-    equal(_('Jack & Jill like numbers 1,2,3 and 4 and silly characters ?%.$!/').slugify(), 'jack-jill-like-numbers-123-and-4-and-silly-characters');
-    equal(_('Un éléphant à l\'orée du bois').slugify(), 'un-elephant-a-loree-du-bois');
+    equal(_('Jack & Jill like numbers 1,2,3 and 4 and silly characters ?%.$!/').slugify(), 'jack-jill-like-numbers-1-2-3-and-4-and-silly-characters');
+    equal(_('Un éléphant à l\'orée du bois').slugify(), 'un-elephant-a-l-oree-du-bois');
     equal(_('I know latin characters: á í ó ú ç ã õ ñ ü ă ș ț').slugify(), 'i-know-latin-characters-a-i-o-u-c-a-o-n-u-a-s-t');
     equal(_('I am a word too, even though I am but a single letter: i!').slugify(), 'i-am-a-word-too-even-though-i-am-but-a-single-letter-i');
+    equal(_('Some asian 天地人 characters').slugify(), 'some-asian-characters');
     equal(_('').slugify(), '');
     equal(_(null).slugify(), '');
     equal(_(undefined).slugify(), '');

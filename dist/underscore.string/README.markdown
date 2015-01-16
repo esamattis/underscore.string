@@ -1,7 +1,6 @@
 <span class="github-only">
 
-This documentation for the development version. The documentation for the production version is here  <https://github.com/epeli/underscore.string/blob/2.4.0/README.markdown>
-<!-- TODO change to gh-pages url once ready -->
+The stable release documentation can be found here https://epeli.github.io/underscore.string/
 
 </span>
 
@@ -61,8 +60,8 @@ It is still possible use as Underscore.js/Lo-Dash extension
 ```javascript
 _.mixin(s.exports());
 ```
-But it's not recommended since some of the are dropped because they collide
-with the functions already defined by Underscore.js.
+But it's not recommended since `include`, `contains`, `reverse` and `join` 
+are dropped because they collide with the functions already defined by Underscore.js.
 
 ## Download
 
@@ -219,6 +218,22 @@ Split lines to an array
 ```javascript
 lines("Hello\nWorld")
 // => ["Hello", "World"]
+```
+
+#### dedent(str, [pattern]) => string
+
+Dedent unnecessary indentation or dedent by a pattern.
+
+Credits go to @sindresorhus.
+This implementation is similar to https://github.com/sindresorhus/strip-indent
+
+```javascript
+dedent("  Hello\n    World")
+// => "Hello\n  World"
+dedent("\t\tHello\n\t\t\t\tWorld")
+// => "Hello\n\t\tWorld"
+dedent("    Hello\n    World", "  ") // Dedent by 2 spaces
+// => "  Hello\n  World"
 ```
 
 #### reverse(string) => string
@@ -666,6 +681,17 @@ If you require the full library you can use chaining and aliases
 Start a chain. Returns an immutable chain object with the string functions as
 methods which return a new chain object instead of the plain string value.
 
+The chain object includes also following native Javascript string methods:
+
+  - [toUpperCase](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/toUpperCase)
+  - [toLowerCase](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/toLowerCase)
+  - [split](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split)
+  - [replace](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace)
+  - [slice](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/slice)
+  - [substring](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String/substring)
+  - [substr](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/substr)
+  - [concat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/concat)
+
 #### chain.value()
 
 Return the string value from the chain
@@ -710,6 +736,12 @@ toBool    = toBoolean
 camelcase = camelize
 ```
 
+## Maintainers ##
+
+This library is maintained by
+
+  - Esa-Matti Suuronen – ***[@epeli](https://github.com/epeli)***
+  - Christoph Hermann – ***[@stoeffel](https://github.com/stoeffel)***
 
 ## Licence ##
 

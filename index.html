@@ -79,8 +79,8 @@ the library from the <strong><em>s</em></strong> global.</p>
 <h3 id="underscore-js-lo-dash-integration">Underscore.js/Lo-Dash integration<a class="anchor" href="#underscore-js-lo-dash-integration"><span class="glyphicon glyphicon-link header-link"></span></a></h3><p>It is still possible use as Underscore.js/Lo-Dash extension</p>
 <pre><code class="lang-javascript">_.mixin(s.exports());
 </code></pre>
-<p>But it&#39;s not recommended since some of the are dropped because they collide
-with the functions already defined by Underscore.js.</p>
+<p>But it&#39;s not recommended since <code>include</code>, <code>contains</code>, <code>reverse</code> and <code>join</code> 
+are dropped because they collide with the functions already defined by Underscore.js.</p>
 <h2 id="download">Download<a class="anchor" href="#download"><span class="glyphicon glyphicon-link header-link"></span></a></h2><ul>
 <li><a href="https://raw.github.com/epeli/underscore.string/master/dist/underscore.string.js">Development version</a> <em>Uncompressed with Comments</em></li>
 <li><a href="https://github.com/epeli/underscore.string/raw/master/dist/underscore.string.min.js">Production version</a> <em>Minified</em></li>
@@ -151,6 +151,16 @@ isBlank(&#39;a&#39;); // =&gt; false
 <h4 id="lines-str-gt-array">lines(str) =&gt; array<a class="anchor" href="#lines-str-gt-array"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Split lines to an array</p>
 <pre><code class="lang-javascript">lines(&quot;Hello\nWorld&quot;)
 // =&gt; [&quot;Hello&quot;, &quot;World&quot;]
+</code></pre>
+<h4 id="dedent-str-pattern-gt-string">dedent(str, [pattern]) =&gt; string<a class="anchor" href="#dedent-str-pattern-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Dedent unnecessary indentation or dedent by a pattern.</p>
+<p>Credits go to @sindresorhus.
+This implementation is similar to <a href="https://github.com/sindresorhus/strip-indent">https://github.com/sindresorhus/strip-indent</a></p>
+<pre><code class="lang-javascript">dedent(&quot;  Hello\n    World&quot;)
+// =&gt; &quot;Hello\n  World&quot;
+dedent(&quot;\t\tHello\n\t\t\t\tWorld&quot;)
+// =&gt; &quot;Hello\n\t\tWorld&quot;
+dedent(&quot;    Hello\n    World&quot;, &quot;  &quot;) // Dedent by 2 spaces
+// =&gt; &quot;  Hello\n  World&quot;
 </code></pre>
 <h4 id="reverse-string-gt-string">reverse(string) =&gt; string<a class="anchor" href="#reverse-string-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Return reversed string:</p>
 <pre><code class="lang-javascript">reverse(&quot;foobar&quot;)
@@ -397,6 +407,17 @@ toBoolean(&quot;true only at start&quot;, [/^true/])
 <h3 id="library-functions">Library functions<a class="anchor" href="#library-functions"><span class="glyphicon glyphicon-link header-link"></span></a></h3><p>If you require the full library you can use chaining and aliases</p>
 <h4 id="s-string-gt-chain">s(string) =&gt; chain<a class="anchor" href="#s-string-gt-chain"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Start a chain. Returns an immutable chain object with the string functions as
 methods which return a new chain object instead of the plain string value.</p>
+<p>The chain object includes also following native Javascript string methods:</p>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/toUpperCase">toUpperCase</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/toLowerCase">toLowerCase</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split">split</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace">replace</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/slice">slice</a></li>
+<li><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String/substring">substring</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/substr">substr</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/concat">concat</a></li>
+</ul>
 <h4 id="chain-value-">chain.value()<a class="anchor" href="#chain-value-"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Return the string value from the chain</p>
 <pre><code class="lang-javascript">s(&quot;  foo  &quot;).trim().capitalize().value();
 // =&gt; &quot;Foo&quot;
@@ -423,6 +444,11 @@ q         = quote
 toBool    = toBoolean
 camelcase = camelize
 </code></pre>
+<h2 id="maintainers">Maintainers<a class="anchor" href="#maintainers"><span class="glyphicon glyphicon-link header-link"></span></a></h2><p>This library is maintained by</p>
+<ul>
+<li>Esa-Matti Suuronen – <strong><em><a href="https://github.com/epeli">@epeli</a></em></strong></li>
+<li>Christoph Hermann – <strong><em><a href="https://github.com/stoeffel">@stoeffel</a></em></strong></li>
+</ul>
 <h2 id="licence">Licence<a class="anchor" href="#licence"><span class="glyphicon glyphicon-link header-link"></span></a></h2><p>The MIT License</p>
 <p>Copyright (c) 2011 Esa-Matti Suuronen esa-matti@suuronen.org</p>
 <p>Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -453,14 +479,14 @@ THE SOFTWARE.</p>
     <script src="assets/bootstrap/dist/js/bootstrap.min.js"></script>
 
     <!-- Include Underscore, so you can play with it in the console. -->
-    <script type="text/javascript" src="dist/underscore.string/lib/underscore.string.js"></script>
+    <script type="text/javascript" src="dist/underscore.string/dist/underscore.string.js"></script>
     <script type="text/javascript" src="assets/log.min.js"></script>
     <script>
     (function(){
         var style = 'font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 20px; color: #bababa; padding: 8px 0; line-height: 40px',
         code = 'font-family: "Courier New"; font-size: 15px; color: #333; padding: 8px 0; line-height: 20px';
-        log.l('%cUnderscore.string ' + _.str.VERSION, style);
-        log.l('%c_.str.camelize(\'foo bar\') // Try this in the console', code);
+        log.l('%cUnderscore.string ' + s.VERSION, style);
+        log.l('%cs.camelize(\'foo bar\') // Try this in the console', code);
 
         $('p').first().addClass('lead')
     })();

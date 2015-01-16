@@ -17,7 +17,7 @@
     "underscore",
     "string"
   ],
-  "main": "./lib/underscore.string.js",
+  "main": "./dist/underscore.string.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/epeli/underscore.string.git"
