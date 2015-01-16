@@ -61,8 +61,8 @@ It is still possible use as Underscore.js/Lo-Dash extension
 ```javascript
 _.mixin(s.exports());
 ```
-But it's not recommended since some of the are dropped because they collide
-with the functions already defined by Underscore.js.
+But it's not recommended since `include`, `contains`, `reverse` and `join` 
+are dropped because they collide with the functions already defined by Underscore.js.
 
 ## Download
 
