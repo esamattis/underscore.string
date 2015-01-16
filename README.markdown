@@ -12,6 +12,9 @@ for example from [Dive Into JavaScript][d].
 Originally started as an Underscore.js extension but is a full standalone
 library nowadays.
 
+Upgrading from 2.x to 3.x? Please read the [changelog][c].
+
+[c]: https://github.com/epeli/underscore.string/blob/master/CHANGELOG.markdown#300
 
 ## Usage 
 
