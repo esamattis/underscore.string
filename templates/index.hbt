@@ -1,0 +1,80 @@
+<html lang="en" data-ember-extension="1"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>underscore.string</title>
+
+    <!-- Custom styles for this template -->
+    <link href="assets/style.css" rel="stylesheet">
+    <link href="assets/github-theme.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="assets/rainbow-custom.min.js"></script>
+    <script>
+        Rainbow.color();
+    </script>
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#home">Underscore.string</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#usage">Usage</a></li>
+            <li><a href="#download">Download</a></li>
+            <li><a href="#api">API</a></li>
+            <li><a href="https://github.com/epeli/underscore.string">Fork on GitHub</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div id="content" class="" data-spy="scroll" data-target=".navbar" data-offset="40">
+        <div class="container">
+            <div id="home"></div>
+
+                {{{ contents }}}
+
+        </div><!-- /.container -->
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="assets/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- Include Underscore, so you can play with it in the console. -->
+    <script type="text/javascript" src="dist/underscore.string/lib/underscore.string.js"></script>
+    <script type="text/javascript" src="assets/log.min.js"></script>
+    <script>
+    (function(){
+        var style = 'font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 20px; color: #bababa; padding: 8px 0; line-height: 40px',
+        code = 'font-family: "Courier New"; font-size: 15px; color: #333; padding: 8px 0; line-height: 20px';
+        log.l('%cUnderscore.string ' + _.str.VERSION, style);
+        log.l('%c_.str.camelize(\'foo bar\') // Try this in the console', code);
+
+        $('p').first().addClass('lead')
+    })();
+    </script>
+</body></html>
