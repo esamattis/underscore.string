@@ -193,7 +193,7 @@ insert('Hello ', 6, 'world')
 
 ```javascript
 replaceAll('foo', 'o', 'a')
-=> 'faa'
+// => 'faa'
 ```
 
 #### isBlank(string) => boolean
