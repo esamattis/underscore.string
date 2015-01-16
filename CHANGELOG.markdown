@@ -1,19 +1,24 @@
 
 # Changelog
 
-### 3.0.0 UNRELEASED
+### 3.0.0
 
 * Each function is now extracted to individual CommonJS modules
   * Browserify users can now load only the functions they actually use
 * The prebuild library now exports a `s` global instead of `_s` and trying to
   stick itself to existing underscore instances
+* New gh-pages with documentation
 * Implement chaining without Underscore.js
+* String.prototype methods can be chained with underscore.string functions [#383](https://github.com/epeli/underscore.string/pull/383)
 * Don't compare lowercase versions of strings in naturalCmp [#326](https://github.com/epeli/underscore.string/issues/326)
 * Always return +-1 or 0 in naturalCmp [#324](https://github.com/epeli/underscore.string/pull/324)
 * Align [starts|ends]With with the ES6 spec [#345](https://github.com/epeli/underscore.string/pull/345)
-* New functions `decapitalize`
+* New functions `decapitalize`, `pred`, `dedent` and `replaceAll`
 * `slugify` now actually replaces all special chars with a dash
 * `slugify` supports Easter E languages [#340](https://github.com/epeli/underscore.string/pull/340)
+* `join` is now a conflicting function [#320](https://github.com/epeli/underscore.string/pull/320)
+* New decapitalize flag for `camelize` [#370](https://github.com/epeli/underscore.string/pull/370)
+* `toNumber` allows negative decimal precision [#332](https://github.com/epeli/underscore.string/pull/332)
 
 ## 2.4.0
 
