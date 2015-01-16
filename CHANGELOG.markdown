@@ -5,6 +5,7 @@
 
 * Each function is now extracted to individual CommonJS modules
   * Browserify users can now load only the functions they actually use
+* Usage as Underscore.js or Lo-Dash mixin is now discouraged as there is too many colliding methods
 * The prebuild library now exports a `s` global instead of `_s` and trying to
   stick itself to existing underscore instances
 * New gh-pages with documentation
