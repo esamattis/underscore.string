@@ -148,7 +148,7 @@ swapCase('hELLO')
 // => 'Hello'
 ```
 
-#### include(string) => boolean
+#### include(string, substring) => boolean
 
 Tests if string contains a substring.
 
