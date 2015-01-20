@@ -18,6 +18,7 @@
     "string"
   ],
   "main": "./dist/underscore.string.js",
+  "ignore": [],
   "repository": {
     "type": "git",
     "url": "https://github.com/epeli/underscore.string.git"
