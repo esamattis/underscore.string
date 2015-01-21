@@ -463,6 +463,7 @@ $(document).ready(function() {
   test('String: humanize', function(){
     equal(_('the_humanize_string_method').humanize(), 'The humanize string method');
     equal(_('ThehumanizeStringMethod').humanize(), 'Thehumanize string method');
+    equal(_('-ThehumanizeStringMethod').humanize(), 'Thehumanize string method');
     equal(_('the humanize string method').humanize(), 'The humanize string method');
     equal(_('the humanize_id string method_id').humanize(), 'The humanize id string method');
     equal(_('the  humanize string method  ').humanize(), 'The humanize string method');
