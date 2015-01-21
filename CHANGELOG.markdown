@@ -20,6 +20,7 @@
 * `join` is now a conflicting function [#320](https://github.com/epeli/underscore.string/pull/320)
 * New decapitalize flag for `camelize` [#370](https://github.com/epeli/underscore.string/pull/370)
 * `toNumber` allows negative decimal precision [#332](https://github.com/epeli/underscore.string/pull/332)
+* [Full changelog](https://github.com/epeli/underscore.string/compare/2.4.0...3.0.0)
 
 ## 2.4.0
 
