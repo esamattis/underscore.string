@@ -11,6 +11,6 @@
   "development": {},
   "main": "index.js",
   "scripts": [
-    "index.js"
+    "*.js"
   ]
 }
