@@ -24,6 +24,7 @@ of scope.
 
   - Upgrade version number `gulp bump --semver <version>`
   - Build the library `gulp build`
+  - Force commit `dist`
   - Write a changelog entry to `CHANGELOG.markdown`
     - Use Github compare to see what has changed from previous tag. Ex https://github.com/epeli/underscore.string/compare/3.0.0...master 
   - Add git tag
