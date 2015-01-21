@@ -11,7 +11,7 @@ var gulp = require('gulp-param')(require('gulp'), process.argv),
   SRC_COMPILED = 'underscore.string.js',
   MIN_FILE = 'underscore.string.min.js',
   TEST_SUITES = ['test/test.html', 'test/test_standalone.html', 'test/test_underscore/index.html'],
-  VERSION_FILES = ['./package.json', './component.json'];
+  VERSION_FILES = ['./package.json', './component.json', './bower.json'];
 
 gulp.task('test', ['browserify'], function() {
   return gulp.src(TEST_SUITES)
