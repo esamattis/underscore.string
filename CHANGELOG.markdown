@@ -1,6 +1,13 @@
 
 # Changelog
 
+### 3.0.1
+
+* Minor fixes in the documentation [#390](https://github.com/epeli/underscore.string/pull/390) and [5135cb9](https://github.com/epeli/underscore.string/commit/5135cb9026034e9ea206c2ed8588db1eeb3ce95a)
+* Fix bower warnings [#393](https://github.com/epeli/underscore.string/pull/393)
+* `humanize` now uses `trim` [#392](https://github.com/epeli/underscore.string/pull/392)
+* [Full changelog](https://github.com/epeli/underscore.string/compare/3.0.0...3.0.1)
+
 ### 3.0.0
 
 * Each function is now extracted to individual CommonJS modules

@@ -169,7 +169,7 @@ module.exports = function() {
 //  Underscore.string is freely distributable under the terms of the MIT license.
 //  Documentation: https://github.com/epeli/underscore.string
 //  Some code is borrowed from MooTools and Alexandru Marasteanu.
-//  Version '3.0.0'
+//  Version '3.0.1'
 
 'use strict';
 
@@ -179,7 +179,7 @@ function s(value) {
   this._wrapped = value;
 }
 
-s.VERSION = '3.0.0';
+s.VERSION = '3.0.1';
 
 s.isBlank          = _dereq_('./isBlank');
 s.stripTags        = _dereq_('./stripTags');
@@ -370,12 +370,13 @@ module.exports = function toPositive(number) {
 },{}],22:[function(_dereq_,module,exports){
 var capitalize = _dereq_('./capitalize');
 var underscored = _dereq_('./underscored');
+var trim = _dereq_('./trim');
 
 module.exports = function humanize(str) {
-  return capitalize(underscored(str).replace(/_id$/, '').replace(/_/g, ' '));
+  return capitalize(trim(underscored(str).replace(/_id$/, '').replace(/_/g, ' ')));
 };
 
-},{"./capitalize":2,"./underscored":62}],23:[function(_dereq_,module,exports){
+},{"./capitalize":2,"./trim":60,"./underscored":62}],23:[function(_dereq_,module,exports){
 var makeString = _dereq_('./helper/makeString');
 
 module.exports = function include(str, needle) {
