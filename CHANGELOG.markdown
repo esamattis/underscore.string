@@ -5,7 +5,7 @@
 
 * Fix .gitignore for bower [#400](https://github.com/epeli/underscore.string/issues/400)
 * Some docs cleanup
-* * [Full changelog](https://github.com/epeli/underscore.string/compare/3.0.1...3.0.2)
+* [Full changelog](https://github.com/epeli/underscore.string/compare/3.0.1...3.0.2)
 
 ### 3.0.1
 
