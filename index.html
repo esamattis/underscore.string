@@ -63,11 +63,12 @@ library nowadays.</p>
 </code></pre><p>Require individual functions</p>
 <pre><code class="lang-javascript">var slugify = require(&quot;underscore.string/slugify&quot;);
 
-slugify(&quot;Hello world!&quot;)
+slugify(&quot;Hello world!&quot;);
 // =&gt; hello-world
 </code></pre>
 <p>or load the full library to enable chaining</p>
 <pre><code class="lang-javascript">var s = require(&quot;underscore.string&quot;);
+
 s(&quot;   epeli  &quot;).trim().capitalize().value();
 // =&gt; &quot;Epeli&quot;
 </code></pre>
@@ -87,191 +88,199 @@ are dropped because they collide with the functions already defined by Underscor
 <li><a href="https://github.com/epeli/underscore.string/raw/master/dist/underscore.string.min.js">Production version</a> <em>Minified</em></li>
 </ul>
 <h2 id="api">API<a class="anchor" href="#api"><span class="glyphicon glyphicon-link header-link"></span></a></h2><h3 id="individual-functions">Individual functions<a class="anchor" href="#individual-functions"><span class="glyphicon glyphicon-link header-link"></span></a></h3><h4 id="numberformat-number-decimals-0-decimalseparator-39-39-orderseparator-39-39-gt-string">numberFormat(number, [ decimals=0, decimalSeparator=&#39;.&#39;, orderSeparator=&#39;,&#39;]) =&gt; string<a class="anchor" href="#numberformat-number-decimals-0-decimalseparator-39-39-orderseparator-39-39-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Formats the numbers.</p>
-<pre><code class="lang-javascript">numberFormat(1000, 2)
+<pre><code class="lang-javascript">numberFormat(1000, 2);
 // =&gt; &quot;1,000.00&quot;
 
-numberFormat(123456789.123, 5, &#39;.&#39;, &#39;,&#39;)
+numberFormat(123456789.123, 5, &quot;.&quot;, &quot;,&quot;);
 // =&gt; &quot;123,456,789.12300&quot;
 </code></pre>
 <h4 id="levenshtein-string1-string2-gt-number">levenshtein(string1, string2) =&gt; number<a class="anchor" href="#levenshtein-string1-string2-gt-number"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Calculates <a href="http://en.wikipedia.org/wiki/Levenshtein_distance">Levenshtein distance</a> between two strings.</p>
-<pre><code class="lang-javascript">levenshtein(&#39;kitten&#39;, &#39;kittah&#39;)
+<pre><code class="lang-javascript">levenshtein(&quot;kitten&quot;, &quot;kittah&quot;);
 // =&gt; 2
 </code></pre>
 <h4 id="capitalize-string-gt-string">capitalize(string) =&gt; string<a class="anchor" href="#capitalize-string-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Converts first letter of the string to uppercase.</p>
-<pre><code class="lang-javascript">capitalize(&quot;foo Bar&quot;)
+<pre><code class="lang-javascript">capitalize(&quot;foo Bar&quot;);
 // =&gt; &quot;Foo Bar&quot;
 </code></pre>
 <h4 id="decapitalize-string-gt-string">decapitalize(string) =&gt; string<a class="anchor" href="#decapitalize-string-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Converts first letter of the string to lowercase.</p>
-<pre><code class="lang-javascript">decapitalize(&quot;Foo Bar&quot;) =&gt; string
+<pre><code class="lang-javascript">decapitalize(&quot;Foo Bar&quot;);
 // =&gt; &quot;foo Bar&quot;
 </code></pre>
-<h4 id="chop-string-step-gt-array">chop(string, step) =&gt; array<a class="anchor" href="#chop-string-step-gt-array"><span class="glyphicon glyphicon-link header-link"></span></a></h4><pre><code class="lang-javascript">chop(&#39;whitespace&#39;, 3)
-// =&gt; [&#39;whi&#39;,&#39;tes&#39;,&#39;pac&#39;,&#39;e&#39;]
+<h4 id="chop-string-step-gt-array">chop(string, step) =&gt; array<a class="anchor" href="#chop-string-step-gt-array"><span class="glyphicon glyphicon-link header-link"></span></a></h4><pre><code class="lang-javascript">chop(&quot;whitespace&quot;, 3);
+// =&gt; [&quot;whi&quot;, &quot;tes&quot;, &quot;pac&quot;, &quot;e&quot;]
 </code></pre>
 <h4 id="clean-string-gt-string">clean(string) =&gt; string<a class="anchor" href="#clean-string-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Trim and replace multiple spaces with a single space.</p>
-<pre><code class="lang-javascript">clean(&quot; foo    bar   &quot;) =&gt; string
-// =&gt; &#39;foo bar&#39;
+<pre><code class="lang-javascript">clean(&quot; foo    bar   &quot;);
+// =&gt; &quot;foo bar&quot;
 </code></pre>
-<h4 id="chars-string-gt-array">chars(string) =&gt; array<a class="anchor" href="#chars-string-gt-array"><span class="glyphicon glyphicon-link header-link"></span></a></h4><pre><code class="lang-javascript">chars(&#39;Hello&#39;)
-// =&gt; [&#39;H&#39;,&#39;e&#39;,&#39;l&#39;,&#39;l&#39;,&#39;o&#39;]
+<h4 id="chars-string-gt-array">chars(string) =&gt; array<a class="anchor" href="#chars-string-gt-array"><span class="glyphicon glyphicon-link header-link"></span></a></h4><pre><code class="lang-javascript">chars(&quot;Hello&quot;);
+// =&gt; [&quot;H&quot;, &quot;e&quot;, &quot;l&quot;, &quot;l&quot;, &quot;o&quot;]
 </code></pre>
 <h4 id="swapcase-string-gt-string">swapCase(string) =&gt; string<a class="anchor" href="#swapcase-string-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Returns a copy of the string in which all the case-based characters have had their case swapped.</p>
-<pre><code class="lang-javascript">swapCase(&#39;hELLO&#39;)
-// =&gt; &#39;Hello&#39;
+<pre><code class="lang-javascript">swapCase(&quot;hELLO&quot;);
+// =&gt; &quot;Hello&quot;
 </code></pre>
 <h4 id="include-string-substring-gt-boolean">include(string, substring) =&gt; boolean<a class="anchor" href="#include-string-substring-gt-boolean"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Tests if string contains a substring.</p>
-<pre><code class="lang-javascript">include(&quot;foobar&quot;, &quot;ob&quot;)
+<pre><code class="lang-javascript">include(&quot;foobar&quot;, &quot;ob&quot;);
 // =&gt; true
 </code></pre>
-<h4 id="count-string-substring-gt-number">count(string, substring) =&gt; number<a class="anchor" href="#count-string-substring-gt-number"><span class="glyphicon glyphicon-link header-link"></span></a></h4><pre><code class="lang-javascript">count(&#39;Hello world&#39;, &#39;l&#39;)
+<h4 id="count-string-substring-gt-number">count(string, substring) =&gt; number<a class="anchor" href="#count-string-substring-gt-number"><span class="glyphicon glyphicon-link header-link"></span></a></h4><pre><code class="lang-javascript">count(&quot;Hello world&quot;, &quot;l&quot;);
 // =&gt; 3
 </code></pre>
 <h4 id="escapehtml-string-gt-string">escapeHTML(string) =&gt; string<a class="anchor" href="#escapehtml-string-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Converts HTML special characters to their entity equivalents.</p>
-<pre><code class="lang-javascript">escapeHTML(&#39;&lt;div&gt;Blah blah blah&lt;/div&gt;&#39;);
-// =&gt; &#39;&amp;lt;div&amp;gt;Blah blah blah&amp;lt;/div&amp;gt;&#39;
+<pre><code class="lang-javascript">escapeHTML(&quot;&lt;div&gt;Blah blah blah&lt;/div&gt;&quot;);
+// =&gt; &quot;&amp;lt;div&amp;gt;Blah blah blah&amp;lt;/div&amp;gt;&quot;
 </code></pre>
 <h4 id="unescapehtml-string-gt-string">unescapeHTML(string) =&gt; string<a class="anchor" href="#unescapehtml-string-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Converts entity characters to HTML equivalents.</p>
-<pre><code class="lang-javascript">unescapeHTML(&#39;&amp;lt;div&amp;gt;Blah blah blah&amp;lt;/div&amp;gt;&#39;);
-// =&gt; &#39;&lt;div&gt;Blah blah blah&lt;/div&gt;&#39;
+<pre><code class="lang-javascript">unescapeHTML(&quot;&amp;lt;div&amp;gt;Blah blah blah&amp;lt;/div&amp;gt;&quot;);
+// =&gt; &quot;&lt;div&gt;Blah blah blah&lt;/div&gt;&quot;
 </code></pre>
-<h4 id="insert-string-index-substring-gt-string">insert(string, index, substring) =&gt; string<a class="anchor" href="#insert-string-index-substring-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><pre><code class="lang-javascript">insert(&#39;Hello &#39;, 6, &#39;world&#39;)
-// =&gt; &#39;Hello world&#39;
+<h4 id="insert-string-index-substring-gt-string">insert(string, index, substring) =&gt; string<a class="anchor" href="#insert-string-index-substring-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><pre><code class="lang-javascript">insert(&quot;Hello &quot;, 6, &quot;world&quot;);
+// =&gt; &quot;Hello world&quot;
 </code></pre>
-<h4 id="replaceall-string-find-replace-ignorecase-false-gt-string">replaceAll(string, find, replace, [ignorecase=false]) =&gt; string<a class="anchor" href="#replaceall-string-find-replace-ignorecase-false-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><pre><code class="lang-javascript">replaceAll(&#39;foo&#39;, &#39;o&#39;, &#39;a&#39;)
-=&gt; &#39;faa&#39;
+<h4 id="replaceall-string-find-replace-ignorecase-false-gt-string">replaceAll(string, find, replace, [ignorecase=false]) =&gt; string<a class="anchor" href="#replaceall-string-find-replace-ignorecase-false-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><pre><code class="lang-javascript">replaceAll(&quot;foo&quot;, &quot;o&quot;, &quot;a&quot;);
+// =&gt; &quot;faa&quot;
 </code></pre>
-<h4 id="isblank-string-gt-boolean">isBlank(string) =&gt; boolean<a class="anchor" href="#isblank-string-gt-boolean"><span class="glyphicon glyphicon-link header-link"></span></a></h4><pre><code class="lang-javascript">isBlank(&#39;&#39;); // =&gt; true
-isBlank(&#39;\n&#39;); // =&gt; true
-isBlank(&#39; &#39;); // =&gt; true
-isBlank(&#39;a&#39;); // =&gt; false
+<h4 id="isblank-string-gt-boolean">isBlank(string) =&gt; boolean<a class="anchor" href="#isblank-string-gt-boolean"><span class="glyphicon glyphicon-link header-link"></span></a></h4><pre><code class="lang-javascript">isBlank(&quot;&quot;); // =&gt; true
+isBlank(&quot;\n&quot;); // =&gt; true
+isBlank(&quot; &quot;); // =&gt; true
+isBlank(&quot;a&quot;); // =&gt; false
 </code></pre>
 <h4 id="join-separator-strings-gt-string">join(separator, ...strings) =&gt; string<a class="anchor" href="#join-separator-strings-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Joins strings together with given separator</p>
-<pre><code class="lang-javascript">join(&quot; &quot;, &quot;foo&quot;, &quot;bar&quot;)
+<pre><code class="lang-javascript">join(&quot; &quot;, &quot;foo&quot;, &quot;bar&quot;);
 // =&gt; &quot;foo bar&quot;
 </code></pre>
 <h4 id="lines-str-gt-array">lines(str) =&gt; array<a class="anchor" href="#lines-str-gt-array"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Split lines to an array</p>
-<pre><code class="lang-javascript">lines(&quot;Hello\nWorld&quot;)
+<pre><code class="lang-javascript">lines(&quot;Hello\nWorld&quot;);
 // =&gt; [&quot;Hello&quot;, &quot;World&quot;]
 </code></pre>
 <h4 id="dedent-str-pattern-gt-string">dedent(str, [pattern]) =&gt; string<a class="anchor" href="#dedent-str-pattern-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Dedent unnecessary indentation or dedent by a pattern.</p>
 <p>Credits go to @sindresorhus.
 This implementation is similar to <a href="https://github.com/sindresorhus/strip-indent">https://github.com/sindresorhus/strip-indent</a></p>
-<pre><code class="lang-javascript">dedent(&quot;  Hello\n    World&quot;)
+<pre><code class="lang-javascript">dedent(&quot;  Hello\n    World&quot;);
 // =&gt; &quot;Hello\n  World&quot;
-dedent(&quot;\t\tHello\n\t\t\t\tWorld&quot;)
+
+dedent(&quot;\t\tHello\n\t\t\t\tWorld&quot;);
 // =&gt; &quot;Hello\n\t\tWorld&quot;
-dedent(&quot;    Hello\n    World&quot;, &quot;  &quot;) // Dedent by 2 spaces
+
+dedent(&quot;    Hello\n    World&quot;, &quot;  &quot;); // Dedent by 2 spaces
 // =&gt; &quot;  Hello\n  World&quot;
 </code></pre>
 <h4 id="reverse-string-gt-string">reverse(string) =&gt; string<a class="anchor" href="#reverse-string-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Return reversed string:</p>
-<pre><code class="lang-javascript">reverse(&quot;foobar&quot;)
-// =&gt; &#39;raboof&#39;
+<pre><code class="lang-javascript">reverse(&quot;foobar&quot;);
+// =&gt; &quot;raboof&quot;
 </code></pre>
 <h4 id="splice-string-index-howmany-substring-gt-string">splice(string, index, howmany, substring) =&gt; string<a class="anchor" href="#splice-string-index-howmany-substring-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Like an array splice.</p>
-<pre><code class="lang-javascript">splice(&#39;https://edtsech@bitbucket.org/edtsech/underscore.strings&#39;, 30, 7, &#39;epeli&#39;)
-// =&gt; &#39;https://edtsech@bitbucket.org/epeli/underscore.strings&#39;
+<pre><code class="lang-javascript">splice(&quot;https://edtsech@bitbucket.org/edtsech/underscore.strings&quot;, 30, 7, &quot;epeli&quot;);
+// =&gt; &quot;https://edtsech@bitbucket.org/epeli/underscore.strings&quot;
 </code></pre>
 <h4 id="startswith-string-starts-position-gt-boolean">startsWith(string, starts, [position]) =&gt; boolean<a class="anchor" href="#startswith-string-starts-position-gt-boolean"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>This method checks whether the string begins with <code>starts</code> at <code>position</code> (default: 0).</p>
-<pre><code class="lang-javascript">startsWith(&#39;image.gif&#39;, &#39;image&#39;)
+<pre><code class="lang-javascript">startsWith(&quot;image.gif&quot;, &quot;image&quot;);
 // =&gt; true
-startsWith(&#39;.vimrc&#39;, &#39;vim&#39;, 1)
+
+startsWith(&quot;.vimrc&quot;, &quot;vim&quot;, 1);
 // =&gt; true
 </code></pre>
 <h4 id="endswith-string-ends-position-gt-boolean">endsWith(string, ends, [position]) =&gt; boolean<a class="anchor" href="#endswith-string-ends-position-gt-boolean"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>This method checks whether the string ends with <code>ends</code> at <code>position</code> (default: string.length).</p>
-<pre><code class="lang-javascript">endsWith(&#39;image.gif&#39;, &#39;gif&#39;)
+<pre><code class="lang-javascript">endsWith(&quot;image.gif&quot;, &quot;gif&quot;);
 // =&gt; true
-endsWith(&#39;image.old.gif&#39;, &#39;old&#39;, 9)
+
+endsWith(&quot;image.old.gif&quot;, &quot;old&quot;, 9);
 // =&gt; true
 </code></pre>
 <h4 id="pred-string-gt-string">pred(string) =&gt; string<a class="anchor" href="#pred-string-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Returns the predecessor to str.</p>
-<pre><code class="lang-javascript">pred(&#39;b&#39;)
-// =&gt; &#39;a&#39;
+<pre><code class="lang-javascript">pred(&quot;b&quot;);
+// =&gt; &quot;a&quot;
 
-pred(&#39;B&#39;)
-// =&gt; &#39;A&#39;
+pred(&quot;B&quot;);
+// =&gt; &quot;A&quot;
 </code></pre>
 <h4 id="succ-string-gt-string">succ(string) =&gt; string<a class="anchor" href="#succ-string-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Returns the successor to str.</p>
-<pre><code class="lang-javascript">succ(&#39;a&#39;)
-// =&gt; &#39;b&#39;
+<pre><code class="lang-javascript">succ(&quot;a&quot;);
+// =&gt; &quot;b&quot;
 
-succ(&#39;A&#39;)
-// =&gt; &#39;B&#39;
+succ(&quot;A&quot;);
+// =&gt; &quot;B&quot;
 </code></pre>
-<h4 id="titleize-string-gt-string">titleize(string) =&gt; string<a class="anchor" href="#titleize-string-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><pre><code class="lang-javascript">titleize(&#39;my name is epeli&#39;)
-// =&gt; &#39;My Name Is Epeli&#39;
+<h4 id="titleize-string-gt-string">titleize(string) =&gt; string<a class="anchor" href="#titleize-string-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><pre><code class="lang-javascript">titleize(&quot;my name is epeli&quot;);
+// =&gt; &quot;My Name Is Epeli&quot;
 </code></pre>
 <h4 id="camelize-string-decapitalize-false-gt-string">camelize(string, [decapitalize=false]) =&gt; string<a class="anchor" href="#camelize-string-decapitalize-false-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Converts underscored or dasherized string to a camelized one. Begins with
 a lower case letter unless it starts with an underscore, dash or an upper case letter.</p>
-<pre><code class="lang-javascript">camelize(&#39;moz-transform&#39;)
-// =&gt; &#39;mozTransform&#39;
-camelize(&#39;-moz-transform&#39;)
-// =&gt; &#39;MozTransform&#39;
-camelize(&#39;_moz_transform&#39;)
-// =&gt; &#39;MozTransform&#39;
-camelize(&#39;Moz-transform&#39;)
-// =&gt; &#39;MozTransform&#39;
-camelize(&#39;-moz-transform&#39;, true)
-// =&gt; &#39;mozTransform&#39;
+<pre><code class="lang-javascript">camelize(&quot;moz-transform&quot;);
+// =&gt; &quot;mozTransform&quot;
+
+camelize(&quot;-moz-transform&quot;);
+// =&gt; &quot;MozTransform&quot;
+
+camelize(&quot;_moz_transform&quot;);
+// =&gt; &quot;MozTransform&quot;
+
+camelize(&quot;Moz-transform&quot;);
+// =&gt; &quot;MozTransform&quot;
+
+camelize(&quot;-moz-transform&quot;, true);
+// =&gt; &quot;mozTransform&quot;
 </code></pre>
 <h4 id="classify-string-gt-string">classify(string) =&gt; string<a class="anchor" href="#classify-string-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Converts string to camelized class name. First letter is always upper case</p>
-<pre><code class="lang-javascript">classify(&#39;some_class_name&#39;)
-// =&gt; &#39;SomeClassName&#39;
+<pre><code class="lang-javascript">classify(&quot;some_class_name&quot;);
+// =&gt; &quot;SomeClassName&quot;
 </code></pre>
 <h4 id="underscored-string-gt-string">underscored(string) =&gt; string<a class="anchor" href="#underscored-string-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Converts a camelized or dasherized string into an underscored one</p>
-<pre><code class="lang-javascript">underscored(&#39;MozTransform&#39;)
-// =&gt; &#39;moz_transform&#39;
+<pre><code class="lang-javascript">underscored(&quot;MozTransform&quot;);
+// =&gt; &quot;moz_transform&quot;
 </code></pre>
 <h4 id="dasherize-string-gt-string">dasherize(string) =&gt; string<a class="anchor" href="#dasherize-string-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Converts a underscored or camelized string into an dasherized one</p>
-<pre><code class="lang-javascript">dasherize(&#39;MozTransform&#39;)
-// =&gt; &#39;-moz-transform&#39;
+<pre><code class="lang-javascript">dasherize(&quot;MozTransform&quot;);
+// =&gt; &quot;-moz-transform&quot;
 </code></pre>
 <h4 id="humanize-string-gt-string">humanize(string) =&gt; string<a class="anchor" href="#humanize-string-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Converts an underscored, camelized, or dasherized string into a humanized one.
 Also removes beginning and ending whitespace, and removes the postfix &#39;_id&#39;.</p>
-<pre><code class="lang-javascript">humanize(&#39;  capitalize dash-CamelCase_underscore trim  &#39;)
-// =&gt; &#39;Capitalize dash camel case underscore trim&#39;
+<pre><code class="lang-javascript">humanize(&quot;  capitalize dash-CamelCase_underscore trim  &quot;);
+// =&gt; &quot;Capitalize dash camel case underscore trim&quot;
 </code></pre>
 <h4 id="trim-string-characters-gt-string">trim(string, [characters]) =&gt; string<a class="anchor" href="#trim-string-characters-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Trims defined characters from begining and ending of the string.
 Defaults to whitespace characters.</p>
-<pre><code class="lang-javascript">trim(&quot;  foobar   &quot;)
+<pre><code class="lang-javascript">trim(&quot;  foobar   &quot;);
 // =&gt; &quot;foobar&quot;
 
-trim(&quot;_-foobar-_&quot;, &quot;_-&quot;)
+trim(&quot;_-foobar-_&quot;, &quot;_-&quot;);
 // =&gt; &quot;foobar&quot;
 </code></pre>
 <h4 id="ltrim-string-characters-gt-string">ltrim(string, [characters]) =&gt; string<a class="anchor" href="#ltrim-string-characters-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Left trim. Similar to trim, but only for left side.</p>
 <h4 id="rtrim-string-characters-gt-string">rtrim(string, [characters]) =&gt; string<a class="anchor" href="#rtrim-string-characters-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Right trim. Similar to trim, but only for right side.</p>
-<h4 id="truncate-string-length-truncatestring-gt-string">truncate(string, length, truncateString) =&gt; string<a class="anchor" href="#truncate-string-length-truncatestring-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><pre><code class="lang-javascript">truncate(&#39;Hello world&#39;, 5)
-// =&gt; &#39;Hello...&#39;
+<h4 id="truncate-string-length-truncatestring-gt-string">truncate(string, length, truncateString) =&gt; string<a class="anchor" href="#truncate-string-length-truncatestring-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><pre><code class="lang-javascript">truncate(&quot;Hello world&quot;, 5);
+// =&gt; &quot;Hello...&quot;
 
-truncate(&#39;Hello&#39;, 10)
-// =&gt; &#39;Hello&#39;
+truncate(&quot;Hello&quot;, 10);
+// =&gt; &quot;Hello&quot;
 </code></pre>
 <h4 id="prune-string-length-prunestring-gt-string">prune(string, length, pruneString) =&gt; string<a class="anchor" href="#prune-string-length-prunestring-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Elegant version of truncate.  Makes sure the pruned string does not exceed the
 original length.  Avoid half-chopped words when truncating.</p>
-<pre><code class="lang-javascript">prune(&#39;Hello, world&#39;, 5)
-// =&gt; &#39;Hello...&#39;
+<pre><code class="lang-javascript">prune(&quot;Hello, world&quot;, 5);
+// =&gt; &quot;Hello...&quot;
 
-prune(&#39;Hello, world&#39;, 8)
-// =&gt; &#39;Hello...&#39;
+prune(&quot;Hello, world&quot;, 8);
+// =&gt; &quot;Hello...&quot;
 
-prune(&#39;Hello, world&#39;, 5, &#39; (read a lot more)&#39;)
-// =&gt; &#39;Hello, world&#39; (as adding &quot;(read a lot more)&quot; would be longer than the original string)
+prune(&quot;Hello, world&quot;, 5, &quot; (read a lot more)&quot;);
+// =&gt; &quot;Hello, world&quot; (as adding &quot;(read a lot more)&quot; would be longer than the original string)
 
-prune(&#39;Hello, cruel world&#39;, 15)
-// =&gt; &#39;Hello, cruel...&#39;
+prune(&quot;Hello, cruel world&quot;, 15);
+// =&gt; &quot;Hello, cruel...&quot;
 
-prune(&#39;Hello&#39;, 10)
-// =&gt; &#39;Hello&#39;
+prune(&quot;Hello&quot;, 10);
+// =&gt; &quot;Hello&quot;
 </code></pre>
 <h4 id="words-str-delimiter-s-gt-array">words(str, delimiter=/\s+/) =&gt; array<a class="anchor" href="#words-str-delimiter-s-gt-array"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Split string by delimiter (String or RegExp), /\s+/ by default.</p>
-<pre><code class="lang-javascript">words(&quot;   I   love   you   &quot;)
-// =&gt; [&quot;I&quot;,&quot;love&quot;,&quot;you&quot;]
+<pre><code class="lang-javascript">words(&quot;   I   love   you   &quot;);
+// =&gt; [&quot;I&quot;, &quot;love&quot;, &quot;you&quot;]
 
-words(&quot;I_love_you&quot;, &quot;_&quot;)
-// =&gt; [&quot;I&quot;,&quot;love&quot;,&quot;you&quot;]
+words(&quot;I_love_you&quot;, &quot;_&quot;);
+// =&gt; [&quot;I&quot;, &quot;love&quot;, &quot;you&quot;]
 
-words(&quot;I-love-you&quot;, /-/)
-// =&gt; [&quot;I&quot;,&quot;love&quot;,&quot;you&quot;]
+words(&quot;I-love-you&quot;, /-/);
+// =&gt; [&quot;I&quot;, &quot;love&quot;, &quot;you&quot;]
 
 words(&quot;   &quot;)
 // =&gt; []
@@ -279,130 +288,134 @@ words(&quot;   &quot;)
 <h4 id="sprintf-string-format-arguments-gt-string">sprintf(string format, ...arguments) =&gt; string<a class="anchor" href="#sprintf-string-format-arguments-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>C like string formatting.
 Credits goes to <a href="http://www.diveintojavascript.com/projects/javascript-sprintf">Alexandru Marasteanu</a>.
 For more detailed documentation, see the <a href="http://www.diveintojavascript.com/projects/javascript-sprintf">original page</a>.</p>
-<pre><code class="lang-javascript">sprintf(&quot;%.1f&quot;, 1.17)
-&quot;1.2&quot;
+<pre><code class="lang-javascript">sprintf(&quot;%.1f&quot;, 1.17);
+// =&gt; &quot;1.2&quot;
 </code></pre>
 <h4 id="pad-str-length-padstr-type-gt-string">pad(str, length, [padStr, type]) =&gt; string<a class="anchor" href="#pad-str-length-padstr-type-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>pads the <code>str</code> with characters until the total string length is equal to the passed <code>length</code> parameter. By default, pads on the <strong>left</strong> with the space char (<code>&quot; &quot;</code>). <code>padStr</code> is truncated to a single character if necessary.</p>
-<pre><code class="lang-javascript">pad(&quot;1&quot;, 8)
-// =&gt; &quot;       1&quot;;
+<pre><code class="lang-javascript">pad(&quot;1&quot;, 8);
+// =&gt; &quot;       1&quot;
 
-pad(&quot;1&quot;, 8, &#39;0&#39;)
-// =&gt; &quot;00000001&quot;;
+pad(&quot;1&quot;, 8, &quot;0&quot;);
+// =&gt; &quot;00000001&quot;
 
-pad(&quot;1&quot;, 8, &#39;0&#39;, &#39;right&#39;)
-// =&gt; &quot;10000000&quot;;
+pad(&quot;1&quot;, 8, &quot;0&quot;, &quot;right&quot;);
+// =&gt; &quot;10000000&quot;
 
-pad(&quot;1&quot;, 8, &#39;0&#39;, &#39;both&#39;)
-// =&gt; &quot;00001000&quot;;
+pad(&quot;1&quot;, 8, &quot;0&quot;, &quot;both&quot;);
+// =&gt; &quot;00001000&quot;
 
-pad(&quot;1&quot;, 8, &#39;bleepblorp&#39;, &#39;both&#39;)
-// =&gt; &quot;bbbb1bbb&quot;;
+pad(&quot;1&quot;, 8, &quot;bleepblorp&quot;, &quot;both&quot;);
+// =&gt; &quot;bbbb1bbb&quot;
 </code></pre>
-<h4 id="lpad-str-length-padstr-gt-string">lpad(str, length, [padStr]) =&gt; string<a class="anchor" href="#lpad-str-length-padstr-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>left-pad a string. Alias for <code>pad(str, length, padStr, &#39;left&#39;)</code></p>
-<pre><code class="lang-javascript">lpad(&quot;1&quot;, 8, &#39;0&#39;)
-// =&gt; &quot;00000001&quot;;
+<h4 id="lpad-str-length-padstr-gt-string">lpad(str, length, [padStr]) =&gt; string<a class="anchor" href="#lpad-str-length-padstr-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>left-pad a string. Alias for <code>pad(str, length, padStr, &quot;left&quot;)</code></p>
+<pre><code class="lang-javascript">lpad(&quot;1&quot;, 8, &quot;0&quot;);
+// =&gt; &quot;00000001&quot;
 </code></pre>
-<h4 id="rpad-str-length-padstr-gt-string">rpad(str, length, [padStr]) =&gt; string<a class="anchor" href="#rpad-str-length-padstr-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>right-pad a string. Alias for <code>pad(str, length, padStr, &#39;right&#39;)</code></p>
-<pre><code class="lang-javascript">rpad(&quot;1&quot;, 8, &#39;0&#39;)
-// =&gt; &quot;10000000&quot;;
+<h4 id="rpad-str-length-padstr-gt-string">rpad(str, length, [padStr]) =&gt; string<a class="anchor" href="#rpad-str-length-padstr-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>right-pad a string. Alias for <code>pad(str, length, padStr, &quot;right&quot;)</code></p>
+<pre><code class="lang-javascript">rpad(&quot;1&quot;, 8, &quot;0&quot;);
+// =&gt; &quot;10000000&quot;
 </code></pre>
-<h4 id="lrpad-str-length-padstr-gt-string">lrpad(str, length, [padStr]) =&gt; string<a class="anchor" href="#lrpad-str-length-padstr-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>left/right-pad a string. Alias for <code>pad(str, length, padStr, &#39;both&#39;)</code></p>
-<pre><code class="lang-javascript">lrpad(&quot;1&quot;, 8, &#39;0&#39;)
-// =&gt; &quot;00001000&quot;;
+<h4 id="lrpad-str-length-padstr-gt-string">lrpad(str, length, [padStr]) =&gt; string<a class="anchor" href="#lrpad-str-length-padstr-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>left/right-pad a string. Alias for <code>pad(str, length, padStr, &quot;both&quot;)</code></p>
+<pre><code class="lang-javascript">lrpad(&quot;1&quot;, 8, &#39;0&#39;);
+// =&gt; &quot;00001000&quot;
 </code></pre>
 <h4 id="tonumber-string-decimals-gt-number">toNumber(string, [decimals]) =&gt; number<a class="anchor" href="#tonumber-string-decimals-gt-number"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Parse string to number. Returns NaN if string can&#39;t be parsed to number.</p>
-<pre><code class="lang-javascript">toNumber(&#39;2.556&#39;)
+<pre><code class="lang-javascript">toNumber(&quot;2.556&quot;);
 // =&gt; 3
 
-toNumber(&#39;2.556&#39;, 1)
+toNumber(&quot;2.556&quot;, 1);
 // =&gt; 2.6
 
-toNumber(&#39;999.999&#39;, -1)
+toNumber(&quot;999.999&quot;, -1);
 // =&gt; 990
 </code></pre>
 <h4 id="strright-string-pattern-gt-string">strRight(string, pattern) =&gt; string<a class="anchor" href="#strright-string-pattern-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Searches a string from left to right for a pattern and returns a substring consisting of the characters in the string that are to the right of the pattern or all string if no match found.</p>
-<pre><code class="lang-javascript">strRight(&#39;This_is_a_test_string&#39;, &#39;_&#39;)
-// =&gt; &quot;is_a_test_string&quot;;
+<pre><code class="lang-javascript">strRight(&quot;This_is_a_test_string&quot;, &quot;_&quot;);
+// =&gt; &quot;is_a_test_string&quot;
 </code></pre>
 <h4 id="strrightback-string-pattern-gt-string">strRightBack(string, pattern) =&gt; string<a class="anchor" href="#strrightback-string-pattern-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Searches a string from right to left for a pattern and returns a substring consisting of the characters in the string that are to the right of the pattern or all string if no match found.</p>
-<pre><code class="lang-javascript">strRightBack(&#39;This_is_a_test_string&#39;, &#39;_&#39;)
-// =&gt; &quot;string&quot;;
+<pre><code class="lang-javascript">strRightBack(&quot;This_is_a_test_string&quot;, &quot;_&quot;);
+// =&gt; &quot;string&quot;
 </code></pre>
 <h4 id="strleft-string-pattern-gt-string">strLeft(string, pattern) =&gt; string<a class="anchor" href="#strleft-string-pattern-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Searches a string from left to right for a pattern and returns a substring consisting of the characters in the string that are to the left of the pattern or all string if no match found.</p>
-<pre><code class="lang-javascript">strLeft(&#39;This_is_a_test_string&#39;, &#39;_&#39;)
+<pre><code class="lang-javascript">strLeft(&quot;This_is_a_test_string&quot;, &quot;_&quot;);
 // =&gt; &quot;This&quot;;
 </code></pre>
 <h4 id="strleftback-string-pattern-gt-string">strLeftBack(string, pattern) =&gt; string<a class="anchor" href="#strleftback-string-pattern-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Searches a string from right to left for a pattern and returns a substring consisting of the characters in the string that are to the left of the pattern or all string if no match found.</p>
-<pre><code class="lang-javascript">strLeftBack(&#39;This_is_a_test_string&#39;, &#39;_&#39;)
+<pre><code class="lang-javascript">strLeftBack(&quot;This_is_a_test_string&quot;, &quot;_&quot;);
 // =&gt; &quot;This_is_a_test&quot;;
 </code></pre>
 <h4 id="striptags-string-gt-string">stripTags(string) =&gt; string<a class="anchor" href="#striptags-string-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Removes all html tags from string.</p>
-<pre><code class="lang-javascript">stripTags(&#39;a &lt;a href=&quot;#&quot;&gt;link&lt;/a&gt;&#39;)
-// =&gt; &#39;a link&#39;
+<pre><code class="lang-javascript">stripTags(&quot;a &lt;a href=&quot;#&quot;&gt;link&lt;/a&gt;&quot;);
+// =&gt; &quot;a link&quot;
 
-stripTags(&#39;a &lt;a href=&quot;#&quot;&gt;link&lt;/a&gt;&lt;script&gt;alert(&quot;hello world!&quot;)&lt;/script&gt;&#39;)
-// =&gt; &#39;a linkalert(&quot;hello world!&quot;)&#39;
+stripTags(&quot;a &lt;a href=&quot;#&quot;&gt;link&lt;/a&gt;&lt;script&gt;alert(&quot;hello world!&quot;)&lt;/script&gt;&quot;);
+// =&gt; &quot;a linkalert(&quot;hello world!&quot;)&quot;
 </code></pre>
 <h4 id="tosentence-array-delimiter-lastdelimiter-gt-string">toSentence(array, [delimiter, lastDelimiter]) =&gt; string<a class="anchor" href="#tosentence-array-delimiter-lastdelimiter-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Join an array into a human readable sentence.</p>
-<pre><code class="lang-javascript">toSentence([&#39;jQuery&#39;, &#39;Mootools&#39;, &#39;Prototype&#39;]) =&gt; string
-// =&gt; &#39;jQuery, Mootools and Prototype&#39;;
+<pre><code class="lang-javascript">toSentence([&quot;jQuery&quot;, &quot;Mootools&quot;, &quot;Prototype&quot;]);
+// =&gt; &quot;jQuery, Mootools and Prototype&quot;;
 
-toSentence([&#39;jQuery&#39;, &#39;Mootools&#39;, &#39;Prototype&#39;], &#39;, &#39;, &#39; unt &#39;)
-// =&gt; &#39;jQuery, Mootools unt Prototype&#39;;
+toSentence([&quot;jQuery&quot;, &quot;Mootools&quot;, &quot;Prototype&quot;], &quot;, &quot;, &quot; unt &#39;);
+// =&gt; &quot;jQuery, Mootools unt Prototype&quot;;
 </code></pre>
 <h4 id="tosentenceserial-array-delimiter-lastdelimiter-gt-string">toSentenceSerial(array, [delimiter, lastDelimiter]) =&gt; string<a class="anchor" href="#tosentenceserial-array-delimiter-lastdelimiter-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>The same as <code>toSentence</code>, but adjusts delimeters to use <a href="http://en.wikipedia.org/wiki/Serial_comma">Serial comma</a>.</p>
-<pre><code class="lang-javascript">toSentenceSerial([&#39;jQuery&#39;, &#39;Mootools&#39;])
-// =&gt; &#39;jQuery and Mootools&#39;;
+<pre><code class="lang-javascript">toSentenceSerial([&quot;jQuery&quot;, &quot;Mootools&quot;]);
+// =&gt; &quot;jQuery and Mootools&quot;
 
-toSentenceSerial([&#39;jQuery&#39;, &#39;Mootools&#39;, &#39;Prototype&#39;])
-// =&gt; &#39;jQuery, Mootools, and Prototype&#39;
+toSentenceSerial([&quot;jQuery&quot;, &quot;Mootools&quot;, &quot;Prototype&quot;]);
+// =&gt; &quot;jQuery, Mootools, and Prototype&quot;
 
-toSentenceSerial([&#39;jQuery&#39;, &#39;Mootools&#39;, &#39;Prototype&#39;], &#39;, &#39;, &#39; unt &#39;);
-// =&gt; &#39;jQuery, Mootools, unt Prototype&#39;;
+toSentenceSerial([&quot;jQuery&quot;, &quot;Mootools&quot;, &quot;Prototype&quot;], &quot;, &quot;, &quot; unt &#39;);
+// =&gt; &quot;jQuery, Mootools, unt Prototype&quot;
 </code></pre>
 <h4 id="repeat-string-count-separator-gt-string">repeat(string, count, [separator]) =&gt; string<a class="anchor" href="#repeat-string-count-separator-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Repeats a string count times.</p>
-<pre><code class="lang-javascript">repeat(&quot;foo&quot;, 3)
-// =&gt; &#39;foofoofoo&#39;;
+<pre><code class="lang-javascript">repeat(&quot;foo&quot;, 3);
+// =&gt; &quot;foofoofoo&quot;
 
-repeat(&quot;foo&quot;, 3, &quot;bar&quot;)
-// =&gt; &#39;foobarfoobarfoo&#39;
+repeat(&quot;foo&quot;, 3, &quot;bar&quot;);
+// =&gt; &quot;foobarfoobarfoo&quot;
 </code></pre>
 <h4 id="surround-string-wrap-gt-string">surround(string, wrap) =&gt; string<a class="anchor" href="#surround-string-wrap-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Surround a string with another string.</p>
-<pre><code class="lang-javascript">surround(&quot;foo&quot;, &quot;ab&quot;)
-// =&gt; &#39;abfooab&#39;;
+<pre><code class="lang-javascript">surround(&quot;foo&quot;, &quot;ab&quot;);
+// =&gt; &quot;abfooab&quot;
 </code></pre>
 <h4 id="quote-string-quotechar-or-q-string-quotechar-gt-string">quote(string, quoteChar) or q(string, quoteChar) =&gt; string<a class="anchor" href="#quote-string-quotechar-or-q-string-quotechar-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Quotes a string. <code>quoteChar</code> defaults to <code>&quot;</code>.</p>
-<pre><code class="lang-javascript">quote(&#39;foo&#39;, quoteChar)
+<pre><code class="lang-javascript">quote(&quot;foo&quot;, &#39;&quot;&#39;);
 // =&gt; &#39;&quot;foo&quot;&#39;;
 </code></pre>
 <h4 id="unquote-string-quotechar-gt-string">unquote(string, quoteChar) =&gt; string<a class="anchor" href="#unquote-string-quotechar-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Unquotes a string. <code>quoteChar</code> defaults to <code>&quot;</code>.</p>
-<pre><code class="lang-javascript">unquote(&#39;&quot;foo&quot;&#39;)
-// =&gt; &#39;foo&#39;;
-unquote(&quot;&#39;foo&#39;&quot;, &quot;&#39;&quot;)
-// =&gt; &#39;foo&#39;;
+<pre><code class="lang-javascript">unquote(&#39;&quot;foo&quot;&#39;);
+// =&gt; &quot;foo&quot;
+
+unquote(&quot;&#39;foo&#39;&quot;, &quot;&#39;&quot;);
+// =&gt; &quot;foo&quot;
 </code></pre>
 <h4 id="slugify-string-gt-string">slugify(string) =&gt; string<a class="anchor" href="#slugify-string-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Transform text into an ascii slug which can be used in safely in URLs. Replaces whitespaces, accentuated, and special characters with a dash. Limited set of non-ascii characters are transformed to similar versions in the ascii character set such as <code>ä</code> to <code>a</code>.</p>
-<pre><code class="lang-javascript">slugify(&quot;Un éléphant à l\&#39;orée du bois&quot;)
-// =&gt; &#39;un-elephant-a-l-oree-du-bois&#39;;
+<pre><code class="lang-javascript">slugify(&quot;Un éléphant à l\&#39;orée du bois&quot;);
+// =&gt; &quot;un-elephant-a-l-oree-du-bois&quot;
 </code></pre>
 <p><strong><em>Caution: this function is charset dependent</em></strong></p>
 <h4 id="naturalcmp-string1-string2-gt-number">naturalCmp(string1, string2) =&gt; number<a class="anchor" href="#naturalcmp-string1-string2-gt-number"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Naturally sort strings like humans would do. None numbers are compared by their <a href="http://www.asciitable.com/">ASCII values</a>. Note: this means &quot;a&quot; &gt; &quot;A&quot;. Use <code>.toLowerCase</code> if this isn&#39;t to be desired.</p>
 <p>Just past it to <code>Array#sort</code>.</p>
-<pre><code class="lang-javascript">[&#39;foo20&#39;, &#39;foo5&#39;].sort(naturalCmp)
-// =&gt; [ &#39;foo5&#39;, &#39;foo20&#39; ]
+<pre><code class="lang-javascript">[&quot;foo20&quot;, &quot;foo5&quot;].sort(naturalCmp);
+// =&gt; [&quot;foo5&quot;, &quot;foo20&quot;]
 </code></pre>
 <h4 id="toboolean-string-gt-boolean">toBoolean(string) =&gt; boolean<a class="anchor" href="#toboolean-string-gt-boolean"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Turn strings that can be commonly considered as booleas to real booleans. Such as &quot;true&quot;, &quot;false&quot;, &quot;1&quot; and &quot;0&quot;. This function is case insensitive.</p>
-<pre><code class="lang-javascript">toBoolean(&quot;true&quot;)
+<pre><code class="lang-javascript">toBoolean(&quot;true&quot;);
 // =&gt; true
-toBoolean(&quot;FALSE&quot;)
+
+toBoolean(&quot;FALSE&quot;);
 // =&gt; false
-toBoolean(&quot;random&quot;)
+
+toBoolean(&quot;random&quot;);
 // =&gt; undefined
 </code></pre>
 <p>It can be customized by giving arrays of truth and falsy value matcher as parameters. Matchers can be also RegExp objects.</p>
-<pre><code class="lang-javascript">toBoolean(&quot;truthy&quot;, [&quot;truthy&quot;], [&quot;falsy&quot;])
+<pre><code class="lang-javascript">toBoolean(&quot;truthy&quot;, [&quot;truthy&quot;], [&quot;falsy&quot;]);
 // =&gt; true
-toBoolean(&quot;true only at start&quot;, [/^true/])
+
+toBoolean(&quot;true only at start&quot;, [/^true/]);
 // =&gt; true
 </code></pre>
 <h3 id="library-functions">Library functions<a class="anchor" href="#library-functions"><span class="glyphicon glyphicon-link header-link"></span></a></h3><p>If you require the full library you can use chaining and aliases</p>
@@ -430,7 +443,7 @@ immediately returned</p>
 </code></pre>
 <h4 id="chain-tap-function-gt-chain">chain.tap(function) =&gt; chain<a class="anchor" href="#chain-tap-function-gt-chain"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Tap into the chain with a custom function</p>
 <pre><code class="lang-javascript">s(&quot;foo&quot;).tap(function(value){
-  return value + &quot;bar&quot;
+  return value + &quot;bar&quot;;
 }).value();
 // =&gt; &quot;foobar&quot;
 </code></pre>

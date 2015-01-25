@@ -29,7 +29,7 @@ Require individual functions
 ```javascript
 var slugify = require("underscore.string/slugify");
 
-slugify("Hello world!")
+slugify("Hello world!");
 // => hello-world
 ```
 
@@ -37,6 +37,7 @@ or load the full library to enable chaining
 
 ```javascript
 var s = require("underscore.string");
+
 s("   epeli  ").trim().capitalize().value();
 // => "Epeli"
 ```
@@ -80,10 +81,10 @@ are dropped because they collide with the functions already defined by Underscor
 Formats the numbers.
 
 ```javascript
-numberFormat(1000, 2)
+numberFormat(1000, 2);
 // => "1,000.00"
 
-numberFormat(123456789.123, 5, '.', ',')
+numberFormat(123456789.123, 5, ".", ",");
 // => "123,456,789.12300"
 ```
 
@@ -94,7 +95,7 @@ Calculates [Levenshtein distance][ld] between two strings.
 [ld]: http://en.wikipedia.org/wiki/Levenshtein_distance
 
 ```javascript
-levenshtein('kitten', 'kittah')
+levenshtein("kitten", "kittah");
 // => 2
 ```
 
@@ -103,7 +104,7 @@ levenshtein('kitten', 'kittah')
 Converts first letter of the string to uppercase.
 
 ```javascript
-capitalize("foo Bar")
+capitalize("foo Bar");
 // => "Foo Bar"
 ```
 
@@ -112,15 +113,15 @@ capitalize("foo Bar")
 Converts first letter of the string to lowercase.
 
 ```javascript
-decapitalize("Foo Bar") => string
+decapitalize("Foo Bar");
 // => "foo Bar"
 ```
 
 #### chop(string, step) => array
 
 ```javascript
-chop('whitespace', 3)
-// => ['whi','tes','pac','e']
+chop("whitespace", 3);
+// => ["whi", "tes", "pac", "e"]
 ```
 
 #### clean(string) => string
@@ -128,15 +129,15 @@ chop('whitespace', 3)
 Trim and replace multiple spaces with a single space.
 
 ```javascript
-clean(" foo    bar   ") => string
-// => 'foo bar'
+clean(" foo    bar   ");
+// => "foo bar"
 ```
 
 #### chars(string) => array
 
 ```javascript
-chars('Hello')
-// => ['H','e','l','l','o']
+chars("Hello");
+// => ["H", "e", "l", "l", "o"]
 ```
 
 #### swapCase(string) => string
@@ -144,8 +145,8 @@ chars('Hello')
 Returns a copy of the string in which all the case-based characters have had their case swapped.
 
 ```javascript
-swapCase('hELLO')
-// => 'Hello'
+swapCase("hELLO");
+// => "Hello"
 ```
 
 #### include(string, substring) => boolean
@@ -153,14 +154,14 @@ swapCase('hELLO')
 Tests if string contains a substring.
 
 ```javascript
-include("foobar", "ob")
+include("foobar", "ob");
 // => true
 ```
 
 #### count(string, substring) => number
 
 ```javascript
-count('Hello world', 'l')
+count("Hello world", "l");
 // => 3
 ```
 
@@ -169,8 +170,8 @@ count('Hello world', 'l')
 Converts HTML special characters to their entity equivalents.
 
 ```javascript
-escapeHTML('<div>Blah blah blah</div>');
-// => '&lt;div&gt;Blah blah blah&lt;/div&gt;'
+escapeHTML("<div>Blah blah blah</div>");
+// => "&lt;div&gt;Blah blah blah&lt;/div&gt;"
 ```
 
 #### unescapeHTML(string) => string
@@ -178,31 +179,31 @@ escapeHTML('<div>Blah blah blah</div>');
 Converts entity characters to HTML equivalents.
 
 ```javascript
-unescapeHTML('&lt;div&gt;Blah blah blah&lt;/div&gt;');
-// => '<div>Blah blah blah</div>'
+unescapeHTML("&lt;div&gt;Blah blah blah&lt;/div&gt;");
+// => "<div>Blah blah blah</div>"
 ```
 
 #### insert(string, index, substring) => string
 
 ```javascript
-insert('Hello ', 6, 'world')
-// => 'Hello world'
+insert("Hello ", 6, "world");
+// => "Hello world"
 ```
 
 #### replaceAll(string, find, replace, [ignorecase=false]) => string
 
 ```javascript
-replaceAll('foo', 'o', 'a')
-// => 'faa'
+replaceAll("foo", "o", "a");
+// => "faa"
 ```
 
 #### isBlank(string) => boolean
 
 ```javascript
-isBlank(''); // => true
-isBlank('\n'); // => true
-isBlank(' '); // => true
-isBlank('a'); // => false
+isBlank(""); // => true
+isBlank("\n"); // => true
+isBlank(" "); // => true
+isBlank("a"); // => false
 ```
 
 #### join(separator, ...strings) => string
@@ -210,7 +211,7 @@ isBlank('a'); // => false
 Joins strings together with given separator
 
 ```javascript
-join(" ", "foo", "bar")
+join(" ", "foo", "bar");
 // => "foo bar"
 ```
 
@@ -219,7 +220,7 @@ join(" ", "foo", "bar")
 Split lines to an array
 
 ```javascript
-lines("Hello\nWorld")
+lines("Hello\nWorld");
 // => ["Hello", "World"]
 ```
 
@@ -231,11 +232,13 @@ Credits go to @sindresorhus.
 This implementation is similar to https://github.com/sindresorhus/strip-indent
 
 ```javascript
-dedent("  Hello\n    World")
+dedent("  Hello\n    World");
 // => "Hello\n  World"
-dedent("\t\tHello\n\t\t\t\tWorld")
+
+dedent("\t\tHello\n\t\t\t\tWorld");
 // => "Hello\n\t\tWorld"
-dedent("    Hello\n    World", "  ") // Dedent by 2 spaces
+
+dedent("    Hello\n    World", "  "); // Dedent by 2 spaces
 // => "  Hello\n  World"
 ```
 
@@ -244,8 +247,8 @@ dedent("    Hello\n    World", "  ") // Dedent by 2 spaces
 Return reversed string:
 
 ```javascript
-reverse("foobar")
-// => 'raboof'
+reverse("foobar");
+// => "raboof"
 ```
 
 #### splice(string, index, howmany, substring) => string
@@ -253,8 +256,8 @@ reverse("foobar")
 Like an array splice.
 
 ```javascript
-splice('https://edtsech@bitbucket.org/edtsech/underscore.strings', 30, 7, 'epeli')
-// => 'https://edtsech@bitbucket.org/epeli/underscore.strings'
+splice("https://edtsech@bitbucket.org/edtsech/underscore.strings", 30, 7, "epeli");
+// => "https://edtsech@bitbucket.org/epeli/underscore.strings"
 ```
 
 #### startsWith(string, starts, [position]) => boolean
@@ -262,9 +265,10 @@ splice('https://edtsech@bitbucket.org/edtsech/underscore.strings', 30, 7, 'epeli
 This method checks whether the string begins with `starts` at `position` (default: 0).
 
 ```javascript
-startsWith('image.gif', 'image')
+startsWith("image.gif", "image");
 // => true
-startsWith('.vimrc', 'vim', 1)
+
+startsWith(".vimrc", "vim", 1);
 // => true
 ```
 
@@ -273,9 +277,10 @@ startsWith('.vimrc', 'vim', 1)
 This method checks whether the string ends with `ends` at `position` (default: string.length).
 
 ```javascript
-endsWith('image.gif', 'gif')
+endsWith("image.gif", "gif");
 // => true
-endsWith('image.old.gif', 'old', 9)
+
+endsWith("image.old.gif", "old", 9);
 // => true
 ```
 
@@ -284,11 +289,11 @@ endsWith('image.old.gif', 'old', 9)
 Returns the predecessor to str.
 
 ```javascript
-pred('b')
-// => 'a'
+pred("b");
+// => "a"
 
-pred('B')
-// => 'A'
+pred("B");
+// => "A"
 ```
 
 #### succ(string) => string
@@ -296,19 +301,19 @@ pred('B')
 Returns the successor to str.
 
 ```javascript
-succ('a')
-// => 'b'
+succ("a");
+// => "b"
 
-succ('A')
-// => 'B'
+succ("A");
+// => "B"
 ```
 
 
 #### titleize(string) => string
 
 ```javascript
-titleize('my name is epeli')
-// => 'My Name Is Epeli'
+titleize("my name is epeli");
+// => "My Name Is Epeli"
 ```
 
 #### camelize(string, [decapitalize=false]) => string
@@ -317,16 +322,20 @@ Converts underscored or dasherized string to a camelized one. Begins with
 a lower case letter unless it starts with an underscore, dash or an upper case letter.
 
 ```javascript
-camelize('moz-transform')
-// => 'mozTransform'
-camelize('-moz-transform')
-// => 'MozTransform'
-camelize('_moz_transform')
-// => 'MozTransform'
-camelize('Moz-transform')
-// => 'MozTransform'
-camelize('-moz-transform', true)
-// => 'mozTransform'
+camelize("moz-transform");
+// => "mozTransform"
+
+camelize("-moz-transform");
+// => "MozTransform"
+
+camelize("_moz_transform");
+// => "MozTransform"
+
+camelize("Moz-transform");
+// => "MozTransform"
+
+camelize("-moz-transform", true);
+// => "mozTransform"
 ```
 
 #### classify(string) => string
@@ -334,8 +343,8 @@ camelize('-moz-transform', true)
 Converts string to camelized class name. First letter is always upper case
 
 ```javascript
-classify('some_class_name')
-// => 'SomeClassName'
+classify("some_class_name");
+// => "SomeClassName"
 ```
 
 #### underscored(string) => string
@@ -343,8 +352,8 @@ classify('some_class_name')
 Converts a camelized or dasherized string into an underscored one
 
 ```javascript
-underscored('MozTransform')
-// => 'moz_transform'
+underscored("MozTransform");
+// => "moz_transform"
 ```
 
 #### dasherize(string) => string
@@ -352,8 +361,8 @@ underscored('MozTransform')
 Converts a underscored or camelized string into an dasherized one
 
 ```javascript
-dasherize('MozTransform')
-// => '-moz-transform'
+dasherize("MozTransform");
+// => "-moz-transform"
 ```
 
 #### humanize(string) => string
@@ -362,8 +371,8 @@ Converts an underscored, camelized, or dasherized string into a humanized one.
 Also removes beginning and ending whitespace, and removes the postfix '_id'.
 
 ```javascript
-humanize('  capitalize dash-CamelCase_underscore trim  ')
-// => 'Capitalize dash camel case underscore trim'
+humanize("  capitalize dash-CamelCase_underscore trim  ");
+// => "Capitalize dash camel case underscore trim"
 ```
 
 #### trim(string, [characters]) => string
@@ -372,10 +381,10 @@ Trims defined characters from begining and ending of the string.
 Defaults to whitespace characters.
 
 ```javascript
-trim("  foobar   ")
+trim("  foobar   ");
 // => "foobar"
 
-trim("_-foobar-_", "_-")
+trim("_-foobar-_", "_-");
 // => "foobar"
 ```
 
@@ -391,11 +400,11 @@ Right trim. Similar to trim, but only for right side.
 #### truncate(string, length, truncateString) => string
 
 ```javascript
-truncate('Hello world', 5)
-// => 'Hello...'
+truncate("Hello world", 5);
+// => "Hello..."
 
-truncate('Hello', 10)
-// => 'Hello'
+truncate("Hello", 10);
+// => "Hello"
 ```
 
 #### prune(string, length, pruneString) => string
@@ -404,20 +413,20 @@ Elegant version of truncate.  Makes sure the pruned string does not exceed the
 original length.  Avoid half-chopped words when truncating.
 
 ```javascript
-prune('Hello, world', 5)
-// => 'Hello...'
+prune("Hello, world", 5);
+// => "Hello..."
 
-prune('Hello, world', 8)
-// => 'Hello...'
+prune("Hello, world", 8);
+// => "Hello..."
 
-prune('Hello, world', 5, ' (read a lot more)')
-// => 'Hello, world' (as adding "(read a lot more)" would be longer than the original string)
+prune("Hello, world", 5, " (read a lot more)");
+// => "Hello, world" (as adding "(read a lot more)" would be longer than the original string)
 
-prune('Hello, cruel world', 15)
-// => 'Hello, cruel...'
+prune("Hello, cruel world", 15);
+// => "Hello, cruel..."
 
-prune('Hello', 10)
-// => 'Hello'
+prune("Hello", 10);
+// => "Hello"
 ```
 
 #### words(str, delimiter=/\s+/) => array
@@ -425,14 +434,14 @@ prune('Hello', 10)
 Split string by delimiter (String or RegExp), /\s+/ by default.
 
 ```javascript
-words("   I   love   you   ")
-// => ["I","love","you"]
+words("   I   love   you   ");
+// => ["I", "love", "you"]
 
-words("I_love_you", "_")
-// => ["I","love","you"]
+words("I_love_you", "_");
+// => ["I", "love", "you"]
 
-words("I-love-you", /-/)
-// => ["I","love","you"]
+words("I-love-you", /-/);
+// => ["I", "love", "you"]
 
 words("   ")
 // => []
@@ -447,8 +456,8 @@ For more detailed documentation, see the [original page][o].
 [o]: http://www.diveintojavascript.com/projects/javascript-sprintf
 
 ```javascript
-sprintf("%.1f", 1.17)
-"1.2"
+sprintf("%.1f", 1.17);
+// => "1.2"
 ```
 
 #### pad(str, length, [padStr, type]) => string
@@ -456,47 +465,47 @@ sprintf("%.1f", 1.17)
 pads the `str` with characters until the total string length is equal to the passed `length` parameter. By default, pads on the **left** with the space char (`" "`). `padStr` is truncated to a single character if necessary.
 
 ```javascript
-pad("1", 8)
-// => "       1";
+pad("1", 8);
+// => "       1"
 
-pad("1", 8, '0')
-// => "00000001";
+pad("1", 8, "0");
+// => "00000001"
 
-pad("1", 8, '0', 'right')
-// => "10000000";
+pad("1", 8, "0", "right");
+// => "10000000"
 
-pad("1", 8, '0', 'both')
-// => "00001000";
+pad("1", 8, "0", "both");
+// => "00001000"
 
-pad("1", 8, 'bleepblorp', 'both')
-// => "bbbb1bbb";
+pad("1", 8, "bleepblorp", "both");
+// => "bbbb1bbb"
 ```
 
 #### lpad(str, length, [padStr]) => string
 
-left-pad a string. Alias for `pad(str, length, padStr, 'left')`
+left-pad a string. Alias for `pad(str, length, padStr, "left")`
 
 ```javascript
-lpad("1", 8, '0')
-// => "00000001";
+lpad("1", 8, "0");
+// => "00000001"
 ```
 
 #### rpad(str, length, [padStr]) => string
 
-right-pad a string. Alias for `pad(str, length, padStr, 'right')`
+right-pad a string. Alias for `pad(str, length, padStr, "right")`
 
 ```javascript
-rpad("1", 8, '0')
-// => "10000000";
+rpad("1", 8, "0");
+// => "10000000"
 ```
 
 #### lrpad(str, length, [padStr]) => string
 
-left/right-pad a string. Alias for `pad(str, length, padStr, 'both')`
+left/right-pad a string. Alias for `pad(str, length, padStr, "both")`
 
 ```javascript
-lrpad("1", 8, '0')
-// => "00001000";
+lrpad("1", 8, '0');
+// => "00001000"
 ```
 
 
@@ -505,13 +514,13 @@ lrpad("1", 8, '0')
 Parse string to number. Returns NaN if string can't be parsed to number.
 
 ```javascript
-toNumber('2.556')
+toNumber("2.556");
 // => 3
 
-toNumber('2.556', 1)
+toNumber("2.556", 1);
 // => 2.6
 
-toNumber('999.999', -1)
+toNumber("999.999", -1);
 // => 990
 ```
 
@@ -520,8 +529,8 @@ toNumber('999.999', -1)
 Searches a string from left to right for a pattern and returns a substring consisting of the characters in the string that are to the right of the pattern or all string if no match found.
 
 ```javascript
-strRight('This_is_a_test_string', '_')
-// => "is_a_test_string";
+strRight("This_is_a_test_string", "_");
+// => "is_a_test_string"
 ```
 
 #### strRightBack(string, pattern) => string
@@ -529,8 +538,8 @@ strRight('This_is_a_test_string', '_')
 Searches a string from right to left for a pattern and returns a substring consisting of the characters in the string that are to the right of the pattern or all string if no match found.
 
 ```javascript
-strRightBack('This_is_a_test_string', '_')
-// => "string";
+strRightBack("This_is_a_test_string", "_");
+// => "string"
 ```
 
 #### strLeft(string, pattern) => string
@@ -538,7 +547,7 @@ strRightBack('This_is_a_test_string', '_')
 Searches a string from left to right for a pattern and returns a substring consisting of the characters in the string that are to the left of the pattern or all string if no match found.
 
 ```javascript
-strLeft('This_is_a_test_string', '_')
+strLeft("This_is_a_test_string", "_");
 // => "This";
 ```
 
@@ -547,7 +556,7 @@ strLeft('This_is_a_test_string', '_')
 Searches a string from right to left for a pattern and returns a substring consisting of the characters in the string that are to the left of the pattern or all string if no match found.
 
 ```javascript
-strLeftBack('This_is_a_test_string', '_')
+strLeftBack("This_is_a_test_string", "_");
 // => "This_is_a_test";
 ```
 
@@ -556,11 +565,11 @@ strLeftBack('This_is_a_test_string', '_')
 Removes all html tags from string.
 
 ```javascript
-stripTags('a <a href="#">link</a>')
-// => 'a link'
+stripTags("a <a href="#">link</a>");
+// => "a link"
 
-stripTags('a <a href="#">link</a><script>alert("hello world!")</script>')
-// => 'a linkalert("hello world!")'
+stripTags("a <a href="#">link</a><script>alert("hello world!")</script>");
+// => "a linkalert("hello world!")"
 ```
 
 #### toSentence(array, [delimiter, lastDelimiter]) => string
@@ -568,11 +577,11 @@ stripTags('a <a href="#">link</a><script>alert("hello world!")</script>')
 Join an array into a human readable sentence.
 
 ```javascript
-toSentence(['jQuery', 'Mootools', 'Prototype']) => string
-// => 'jQuery, Mootools and Prototype';
+toSentence(["jQuery", "Mootools", "Prototype"]);
+// => "jQuery, Mootools and Prototype";
 
-toSentence(['jQuery', 'Mootools', 'Prototype'], ', ', ' unt ')
-// => 'jQuery, Mootools unt Prototype';
+toSentence(["jQuery", "Mootools", "Prototype"], ", ", " unt ');
+// => "jQuery, Mootools unt Prototype";
 ```
 
 #### toSentenceSerial(array, [delimiter, lastDelimiter]) => string
@@ -580,14 +589,14 @@ toSentence(['jQuery', 'Mootools', 'Prototype'], ', ', ' unt ')
 The same as `toSentence`, but adjusts delimeters to use [Serial comma](http://en.wikipedia.org/wiki/Serial_comma).
 
 ```javascript
-toSentenceSerial(['jQuery', 'Mootools'])
-// => 'jQuery and Mootools';
+toSentenceSerial(["jQuery", "Mootools"]);
+// => "jQuery and Mootools"
 
-toSentenceSerial(['jQuery', 'Mootools', 'Prototype'])
-// => 'jQuery, Mootools, and Prototype'
+toSentenceSerial(["jQuery", "Mootools", "Prototype"]);
+// => "jQuery, Mootools, and Prototype"
 
-toSentenceSerial(['jQuery', 'Mootools', 'Prototype'], ', ', ' unt ');
-// => 'jQuery, Mootools, unt Prototype';
+toSentenceSerial(["jQuery", "Mootools", "Prototype"], ", ", " unt ');
+// => "jQuery, Mootools, unt Prototype"
 ```
 
 #### repeat(string, count, [separator]) => string
@@ -595,11 +604,11 @@ toSentenceSerial(['jQuery', 'Mootools', 'Prototype'], ', ', ' unt ');
 Repeats a string count times.
 
 ```javascript
-repeat("foo", 3)
-// => 'foofoofoo';
+repeat("foo", 3);
+// => "foofoofoo"
 
-repeat("foo", 3, "bar")
-// => 'foobarfoobarfoo'
+repeat("foo", 3, "bar");
+// => "foobarfoobarfoo"
 ```
 
 #### surround(string, wrap) => string
@@ -607,8 +616,8 @@ repeat("foo", 3, "bar")
 Surround a string with another string.
 
 ```javascript
-surround("foo", "ab")
-// => 'abfooab';
+surround("foo", "ab");
+// => "abfooab"
 ```
 
 #### quote(string, quoteChar) or q(string, quoteChar) => string
@@ -616,7 +625,7 @@ surround("foo", "ab")
 Quotes a string. `quoteChar` defaults to `"`.
 
 ```javascript
-quote('foo', quoteChar)
+quote("foo", '"');
 // => '"foo"';
 ```
 #### unquote(string, quoteChar) => string
@@ -624,10 +633,11 @@ quote('foo', quoteChar)
 Unquotes a string. `quoteChar` defaults to `"`.
 
 ```javascript
-unquote('"foo"')
-// => 'foo';
-unquote("'foo'", "'")
-// => 'foo';
+unquote('"foo"');
+// => "foo"
+
+unquote("'foo'", "'");
+// => "foo"
 ```
 
 
@@ -636,8 +646,8 @@ unquote("'foo'", "'")
 Transform text into an ascii slug which can be used in safely in URLs. Replaces whitespaces, accentuated, and special characters with a dash. Limited set of non-ascii characters are transformed to similar versions in the ascii character set such as `ä` to `a`.
 
 ```javascript
-slugify("Un éléphant à l\'orée du bois")
-// => 'un-elephant-a-l-oree-du-bois';
+slugify("Un éléphant à l\'orée du bois");
+// => "un-elephant-a-l-oree-du-bois"
 ```
 
 ***Caution: this function is charset dependent***
@@ -649,8 +659,8 @@ Naturally sort strings like humans would do. None numbers are compared by their 
 Just past it to `Array#sort`.
 
 ```javascript
-['foo20', 'foo5'].sort(naturalCmp)
-// => [ 'foo5', 'foo20' ]
+["foo20", "foo5"].sort(naturalCmp);
+// => ["foo5", "foo20"]
 ```
 
 #### toBoolean(string) => boolean
@@ -658,20 +668,23 @@ Just past it to `Array#sort`.
 Turn strings that can be commonly considered as booleas to real booleans. Such as "true", "false", "1" and "0". This function is case insensitive.
 
 ```javascript
-toBoolean("true")
+toBoolean("true");
 // => true
-toBoolean("FALSE")
+
+toBoolean("FALSE");
 // => false
-toBoolean("random")
+
+toBoolean("random");
 // => undefined
 ```
 
 It can be customized by giving arrays of truth and falsy value matcher as parameters. Matchers can be also RegExp objects.
 
 ```javascript
-toBoolean("truthy", ["truthy"], ["falsy"])
+toBoolean("truthy", ["truthy"], ["falsy"]);
 // => true
-toBoolean("true only at start", [/^true/])
+
+toBoolean("true only at start", [/^true/]);
 // => true
 ```
 
@@ -718,7 +731,7 @@ Tap into the chain with a custom function
 
 ```javascript
 s("foo").tap(function(value){
-  return value + "bar"
+  return value + "bar";
 }).value();
 // => "foobar"
 ```
