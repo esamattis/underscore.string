@@ -6302,6 +6302,16 @@ body {
 .navbar {
   box-shadow: 0px 0px 15px #888;
 }
+.navbar .navbar-brand {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+.navbar .logo {
+  background: url(logo.svg) no-repeat center;
+  background-size: auto 200px;
+  width: 200px;
+  height: 100%;
+}
 @font-face {
   font-family: 'MyReforma';
   src: url(fonts/RFG69_.ttf);
