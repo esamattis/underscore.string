@@ -12,6 +12,7 @@ var gulp = require('gulp-param')(require('gulp'), process.argv),
   MIN_FILE = 'underscore.string.min.js',
   TEST_SUITES = ['test/test.html', 'test/test_standalone.html', 'test/test_underscore/index.html'],
   VERSION_FILES = ['./package.json', './component.json', './bower.json'];
+  VERSION_FILES_JS = [SRC, 'package.js'];
 
 gulp.task('test', ['browserify'], function() {
   return gulp.src(TEST_SUITES)
@@ -34,8 +35,8 @@ gulp.task('clean', function() {
 });
 
 gulp.task('bump-in-js', function(semver) {
-  return gulp.src(SRC)
-    .pipe(replace(/(version\s?=?\s\')([\d\.]*)\'/gi, '$1' + semver + "'"))
+  return gulp.src(VERSION_FILES_JS)
+    .pipe(replace(/(version?\s?=?\:?\s\')([\d\.]*)\'/gi, '$1' + semver + "'"))
     .pipe(gulp.dest('./'));
 });
 
