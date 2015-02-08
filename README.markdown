@@ -67,6 +67,25 @@ _.mixin(s.exports());
 But it's not recommended since `include`, `contains`, `reverse` and `join` 
 are dropped because they collide with the functions already defined by Underscore.js.
 
+### Lo-Dash-FP/Ramda integration
+
+If you want to use underscore.string with [ramdajs](http://ramdajs.com/) or [Lo-Dash-FP](https://github.com/lodash/lodash-fp) you can use [underscore.string.fp](https://github.com/stoeffel/underscore.string.fp).
+
+    npm install underscore.string.fp
+
+```javascript
+var S = require('underscore.string.fp');
+var filter = require('lodash-fp').filter;
+var filter = require('ramda').filter;
+
+filter(S.startsWith('.'), [
+  '.vimrc',
+  'foo.md',
+  '.zshrc'
+]);
+// => ['.vimrc', '.zshrc']
+```
+
 ## Download
 
   * [Development version](https://raw.github.com/epeli/underscore.string/master/dist/underscore.string.js) *Uncompressed with Comments*
