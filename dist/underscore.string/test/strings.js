@@ -717,6 +717,8 @@ $(document).ready(function() {
     equal(_.numberFormat(90000, 2), '90,000.00');
     equal(_.numberFormat(1000.754), '1,001');
     equal(_.numberFormat(1000.754, 2), '1,000.75');
+    equal(_.numberFormat(1000.755, 2), '1,000.75');
+    equal(_.numberFormat(1000.756, 2), '1,000.76');
     equal(_.numberFormat(1000.754, 0, ',', '.'), '1.001');
     equal(_.numberFormat(1000.754, 2, ',', '.'), '1.000,75');
     equal(_.numberFormat(1000000.754, 2, ',', '.'), '1.000.000,75');

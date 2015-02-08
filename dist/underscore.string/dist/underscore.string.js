@@ -169,7 +169,7 @@ module.exports = function() {
 //  Underscore.string is freely distributable under the terms of the MIT license.
 //  Documentation: https://github.com/epeli/underscore.string
 //  Some code is borrowed from MooTools and Alexandru Marasteanu.
-//  Version '3.0.2'
+//  Version '3.0.3'
 
 'use strict';
 
@@ -179,7 +179,7 @@ function s(value) {
   this._wrapped = value;
 }
 
-s.VERSION = '3.0.2';
+s.VERSION = '3.0.3';
 
 s.isBlank          = _dereq_('./isBlank');
 s.stripTags        = _dereq_('./stripTags');
