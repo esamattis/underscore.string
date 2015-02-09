@@ -16,7 +16,7 @@ Upgrading from 2.x to 3.x? Please read the [changelog][c].
 
 [c]: https://github.com/epeli/underscore.string/blob/master/CHANGELOG.markdown#300
 
-## Usage 
+## Usage
 
 ### In Node.js and Browserify
 
@@ -48,6 +48,26 @@ use.
 
 [Browserify]: http://browserify.org/
 
+### In Meteor
+
+From your [Meteor][] project folder
+
+```shell
+    meteor add underscorestring:underscore.string
+```
+
+and you'll be able to access the library with the ***s*** global from both the server and the client.
+
+```javascript
+s.slugify("Hello world!");
+// => hello-world
+
+s("   epeli  ").trim().capitalize().value();
+// => "Epeli"
+```
+
+[Meteor]: http://www.meteor.com/
+
 ### Others
 
 The `dist/underscore.string.js` file is an [UMD][] build. You can load it using
@@ -64,7 +84,7 @@ It is still possible use as Underscore.js/Lo-Dash extension
 ```javascript
 _.mixin(s.exports());
 ```
-But it's not recommended since `include`, `contains`, `reverse` and `join` 
+But it's not recommended since `include`, `contains`, `reverse` and `join`
 are dropped because they collide with the functions already defined by Underscore.js.
 
 ## Download
