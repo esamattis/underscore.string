@@ -1,5 +1,6 @@
 var gulp = require('gulp-param')(require('gulp'), process.argv),
-  qunit = require("gulp-qunit"),
+  mocha = require("gulp-mocha"),
+  istanbul = require('gulp-istanbul'),
   uglify = require('gulp-uglify'),
   clean = require('gulp-clean'),
   bump = require('gulp-bump'),
@@ -10,13 +11,31 @@ var gulp = require('gulp-param')(require('gulp'), process.argv),
   DEST = 'dist',
   SRC_COMPILED = 'underscore.string.js',
   MIN_FILE = 'underscore.string.min.js',
-  TEST_SUITES = ['test/test.html', 'test/test_standalone.html', 'test/test_underscore/index.html'],
   VERSION_FILES = ['./package.json', './component.json', './bower.json'];
   VERSION_FILES_JS = [SRC, 'package.js'];
 
-gulp.task('test', ['browserify'], function() {
-  return gulp.src(TEST_SUITES)
-    .pipe(qunit());
+gulp.task('test', ['browserify'], function(cov) {
+  var reporters = ['html'];
+
+  if (cov) {
+    reporters.push('text');
+  } else {
+    reporters.push('text-summary');
+  }
+
+  return gulp.src(['*.js', 'helper/*.js'])
+    .pipe(istanbul())
+    .pipe(istanbul.hookRequire())
+    .on('finish', function () {
+      return gulp.src(['tests/*.js'])
+        .pipe(mocha({
+          ui: 'qunit',
+          reporter: 'dot'
+        }))
+        .pipe(istanbul.writeReports({
+          reporters: reporters
+        }));
+    });
 });
 
 gulp.task('browserify', function() {

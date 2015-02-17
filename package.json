@@ -44,11 +44,14 @@
     "gulp-browserify": "~0.5.0",
     "gulp-bump": "~0.1.11",
     "gulp-clean": "~0.3.1",
+    "gulp-istanbul": "^0.6.0",
+    "gulp-mocha": "^2.0.0",
     "gulp-param": "~0.6.3",
-    "gulp-qunit": "~1.1.0",
     "gulp-rename": "~1.2.0",
     "gulp-replace": "~0.5.0",
-    "gulp-uglify": "~1.0.1"
+    "gulp-uglify": "~1.0.1",
+    "mocha": "^2.1.0",
+    "underscore": "^1.7.0"
   },
   "jshintConfig": {
     "node": true,
@@ -57,5 +60,6 @@
     "globals": {
       "s": true
     }
-  }
+  },
+  "dependencies": {}
 }
