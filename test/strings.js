@@ -133,10 +133,21 @@ $(document).ready(function() {
     equal(_.capitalize('foO', false), 'FoO', 'Other letters unchanged');
     equal(_.capitalize('FOO', true), 'Foo', 'Other letters are lowercased');
     equal(_.capitalize('foO', true), 'Foo', 'Other letters are lowercased');
+    equal(_.capitalize('f', false), 'F', 'Should uppercase 1 letter');
+    equal(_.capitalize('f', true), 'F', 'Should uppercase 1 letter');
+    equal(_.capitalize('f'), 'F', 'Should uppercase 1 letter');
     equal(_(123).capitalize(), '123', 'Non string');
+    equal(_(123, true).capitalize(), '123', 'Non string');
+    equal(_(123, false).capitalize(), '123', 'Non string');
     equal(_.capitalize(''), '', 'Capitalizing empty string returns empty string');
     equal(_.capitalize(null), '', 'Capitalizing null returns empty string');
     equal(_.capitalize(undefined), '', 'Capitalizing undefined returns empty string');
+    equal(_.capitalize('', true), '', 'Capitalizing empty string returns empty string');
+    equal(_.capitalize(null, true), '', 'Capitalizing null returns empty string');
+    equal(_.capitalize(undefined, true), '', 'Capitalizing undefined returns empty string');
+    equal(_.capitalize('', false), '', 'Capitalizing empty string returns empty string');
+    equal(_.capitalize(null, false), '', 'Capitalizing null returns empty string');
+    equal(_.capitalize(undefined, false), '', 'Capitalizing undefined returns empty string');
   });
 
   test('Strings: decapitalize', function() {
