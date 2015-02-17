@@ -138,13 +138,17 @@ levenshtein("kitten", "kittah");
 // => 2
 ```
 
-#### capitalize(string) => string
+#### capitalize(string, [lowercaseRest=false]) => string
 
-Converts first letter of the string to uppercase.
+Converts first letter of the string to uppercase. If `true` is passed as second argument the rest
+of the string will be converted to lower case.
 
 ```javascript
 capitalize("foo Bar");
 // => "Foo Bar"
+
+capitalize("FOO Bar", true);
+// => "Foo bar"
 ```
 
 #### decapitalize(string) => string
