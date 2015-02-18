@@ -1,7 +1,4 @@
 var trim = require('./trim');
-var parseNumber = function(source) {
-  return source * 1 || 0;
-};
 
 module.exports = function toNumber(num, precision) {
   if (num == null) return 0;

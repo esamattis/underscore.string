@@ -5,6 +5,7 @@ var equal = require('assert').equal;
 test("#naturalCmp", function() {
   // Should be associative
   _.each([
+    ['abc', null],
     ['abc', '123'],
     ['def', 'abc'],
     ['ab', 'a'],
