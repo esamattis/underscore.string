@@ -1,6 +1,7 @@
 var gulp = require('gulp-param')(require('gulp'), process.argv),
   mocha = require("gulp-mocha"),
   istanbul = require('gulp-istanbul'),
+  bench = require('gulp-bench'),
   uglify = require('gulp-uglify'),
   clean = require('gulp-clean'),
   bump = require('gulp-bump'),
@@ -36,6 +37,11 @@ gulp.task('test', ['browserify'], function(cov) {
           reporters: reporters
         }));
     });
+});
+
+gulp.task('bench', ['browserify'], function() {
+  return gulp.src('bench/*.js')
+    .pipe(bench());
 });
 
 gulp.task('browserify', function() {

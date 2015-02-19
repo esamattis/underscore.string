@@ -41,6 +41,7 @@
   },
   "devDependencies": {
     "gulp": "^3.8.11",
+    "gulp-bench": "^1.1.0",
     "gulp-browserify": "~0.5.0",
     "gulp-bump": "~0.1.11",
     "gulp-clean": "~0.3.1",
