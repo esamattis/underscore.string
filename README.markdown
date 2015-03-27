@@ -7,7 +7,7 @@ The stable release documentation can be found here https://epeli.github.io/under
 # Underscore.string [![Build Status](https://secure.travis-ci.org/epeli/underscore.string.png?branch=master)](http://travis-ci.org/epeli/underscore.string) #
 
 Javascript lacks complete string manipulation operations.
-This an attempt to fill that gap. List of build-in methods can be found
+This is an attempt to fill that gap. List of build-in methods can be found
 for example from [Dive Into JavaScript][d].
 Originally started as an Underscore.js extension but is a full standalone
 library nowadays.
