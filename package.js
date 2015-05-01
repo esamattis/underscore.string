@@ -1,10 +1,10 @@
 // package metadata file for Meteor.js
 
 Package.describe({
-  name: 'underscorestring:underscore.string',
-  summary: 'underscore.string (official): String manipulation extensions for Underscore.js javascript library.',
-  version: '3.0.3',
-  git: 'https://github.com/epeli/underscore.string.git',
+  name: 'taskputty:underscore.string',
+  summary: 'underscore.string packaging usable from Meteor packages, official version broken',
+  version: '3.0.3_5',
+  git: 'https://github.com/taskputty/underscore.string.git',
   documentation: 'README.markdown'
 });
 
