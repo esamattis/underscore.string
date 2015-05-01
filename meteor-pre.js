@@ -1,4 +1,6 @@
-// Define an object named exports. This will cause underscore.js to put `_` as a
-// field on it, instead of in the global namespace. See also post.js.
+// Defining this will trick dist/underscore.string.js into putting its exports into module.exports
+// Credit to Tim Heckel for this trick - see https://github.com/TimHeckel/meteor-underscore-string
 module = {};
+
+// This also needed, otherwise above doesn't work???
 exports = {};
