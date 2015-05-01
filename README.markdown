@@ -211,6 +211,7 @@ count("Hello world", "l");
 #### escapeHTML(string) => string
 
 Converts HTML special characters to their entity equivalents.
+This function supports cent, yen, euro, pound, lt, gt, copy, reg, quote, amp, apos.
 
 ```javascript
 escapeHTML("<div>Blah blah blah</div>");
@@ -220,9 +221,10 @@ escapeHTML("<div>Blah blah blah</div>");
 #### unescapeHTML(string) => string
 
 Converts entity characters to HTML equivalents.
+This function supports cent, yen, euro, pound, lt, gt, copy, reg, quote, amp, apos, nbsp.
 
 ```javascript
-unescapeHTML("&lt;div&gt;Blah blah blah&lt;/div&gt;");
+unescapeHTML("&lt;div&gt;Blah&nbsp;blah blah&lt;/div&gt;");
 // => "<div>Blah blah blah</div>"
 ```
 
