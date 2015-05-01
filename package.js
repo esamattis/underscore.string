@@ -8,7 +8,9 @@ Package.describe({
   documentation: 'README.markdown'
 });
 
+
 Package.onUse(function (api) {
   api.versionsFrom('METEOR@1.0');
-  api.addFiles('dist/underscore.string.js');
+  api.addFiles(['meteor-pre.js','dist/underscore.string.js','meteor-post.js']);
+  api.export("s");
 });
