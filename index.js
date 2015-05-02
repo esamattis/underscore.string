@@ -74,6 +74,7 @@ s.levenshtein      = require('./levenshtein');
 s.toBoolean        = require('./toBoolean');
 s.exports          = require('./exports');
 s.escapeRegExp     = require('./helper/escapeRegExp');
+s.wrap             = require('./wrap');
 
 // Aliases
 s.strip     = s.trim;

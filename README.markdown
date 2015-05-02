@@ -269,6 +269,25 @@ lines("Hello\nWorld");
 // => ["Hello", "World"]
 ```
 
+#### wrap(str, options) => string
+
+Splits a line `str` (default '') into several lines of size `options.width` (default 75) using a `options.seperator` (default '\n'). If `options.trailingSpaces` is true, make each line at least `width` long using trailing spaces. If `options.cut` is true, create new lines in the middle of words. If `options.preserveSpaces` is true, preserve the space that should be there at the end of a line (only works if options.cut is false). 
+
+```javascript
+wrap("Hello World", { width:5 })
+// => "Hello\nWorld"
+
+wrap("Hello World", { width:6, seperator:'.', trailingSpaces: true })
+// => "Hello .World "
+
+wrap("Hello World", { width:5, seperator:'.', cut:true, trailingSpaces: true })
+// => "Hello. Worl.d    "
+
+wrap("Hello World", { width:5, seperator:'.', preserveSpaces: true })
+// => "Hello .World"
+
+```
+
 #### dedent(str, [pattern]) => string
 
 Dedent unnecessary indentation or dedent by a pattern.
