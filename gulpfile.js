@@ -39,8 +39,9 @@ gulp.task('test', ['browserify'], function(cov) {
     });
 });
 
-gulp.task('bench', ['browserify'], function() {
-  return gulp.src('bench/*.js')
+gulp.task('bench', ['browserify'], function(func) {
+  func = func || '*';
+  return gulp.src('bench/'+ func + '.js')
     .pipe(bench());
 });
 
