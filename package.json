@@ -31,11 +31,7 @@
   "bugs": {
     "url": "https://github.com/epeli/underscore.string/issues"
   },
-  "licenses": [
-    {
-      "type": "MIT"
-    }
-  ],
+  "license": "MIT",
   "scripts": {
     "test": "gulp test"
   },
