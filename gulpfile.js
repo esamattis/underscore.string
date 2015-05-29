@@ -3,7 +3,7 @@ var gulp = require('gulp-param')(require('gulp'), process.argv),
   istanbul = require('gulp-istanbul'),
   bench = require('gulp-bench'),
   uglify = require('gulp-uglify'),
-  clean = require('gulp-clean'),
+  rimraf = require('gulp-rimraf'),
   bump = require('gulp-bump'),
   replace = require('gulp-replace'),
   rename = require('gulp-rename'),
@@ -57,7 +57,7 @@ gulp.task('browserify', function() {
 
 gulp.task('clean', function() {
   return gulp.src(DEST)
-    .pipe(clean());
+    .pipe(rimraf());
 });
 
 gulp.task('bump-in-js', function(semver) {
