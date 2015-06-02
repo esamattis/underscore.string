@@ -5,6 +5,7 @@ test('#levenshtein', function() {
   equal(levenshtein('Godfather', 'Godfather'), 0);
   equal(levenshtein('Godfather', 'Godfathe'), 1);
   equal(levenshtein('Godfather', 'odfather'), 1);
+  equal(levenshtein('Godfather', 'godfather'), 1);
   equal(levenshtein('Godfather', 'Gdfthr'), 3);
   equal(levenshtein('seven', 'eight'), 5);
   equal(levenshtein('123', 123), 0);
