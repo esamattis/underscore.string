@@ -4,6 +4,9 @@ module.exports = function levenshtein(str1, str2) {
   str1 = makeString(str1);
   str2 = makeString(str2);
 
+  if (str1 === str2)
+    return 0;
+
   var current = [],
     prev, value;
 
