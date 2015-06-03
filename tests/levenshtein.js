@@ -17,3 +17,6 @@ test('#levenshtein', function() {
   equal(levenshtein(), 0);
 });
 
+test('#levenshtein non-latin', function() {
+  equal(levenshtein('因為我是中國人所以我會說中文', '因為我是英國人所以我會說英文'), 2);
+});
