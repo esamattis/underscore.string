@@ -5,6 +5,7 @@ test('#levenshtein', function() {
   equal(levenshtein('Godfather', 'Godfather'), 0);
   equal(levenshtein('Godfather', 'Godfathe'), 1);
   equal(levenshtein('Godfather', 'odfather'), 1);
+  equal(levenshtein('Godfather', 'godfather'), 1);
   equal(levenshtein('Godfather', 'Gdfthr'), 3);
   equal(levenshtein('seven', 'eight'), 5);
   equal(levenshtein('123', 123), 0);
@@ -16,3 +17,6 @@ test('#levenshtein', function() {
   equal(levenshtein(), 0);
 });
 
+test('#levenshtein non-latin', function() {
+  equal(levenshtein('因為我是中國人所以我會說中文', '因為我是英國人所以我會說英文'), 2);
+});
