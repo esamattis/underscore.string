@@ -7,7 +7,7 @@ The stable release documentation can be found here https://epeli.github.io/under
 # Underscore.string [![Build Status](https://secure.travis-ci.org/epeli/underscore.string.png?branch=master)](http://travis-ci.org/epeli/underscore.string) #
 
 Javascript lacks complete string manipulation operations.
-This an attempt to fill that gap. List of build-in methods can be found
+This is an attempt to fill that gap. List of build-in methods can be found
 for example from [Dive Into JavaScript][d].
 Originally started as an Underscore.js extension but is a full standalone
 library nowadays.
@@ -16,7 +16,7 @@ Upgrading from 2.x to 3.x? Please read the [changelog][c].
 
 [c]: https://github.com/epeli/underscore.string/blob/master/CHANGELOG.markdown#300
 
-## Usage 
+## Usage
 
 ### In Node.js and Browserify
 
@@ -48,6 +48,26 @@ use.
 
 [Browserify]: http://browserify.org/
 
+### In Meteor
+
+From your [Meteor][] project folder
+
+```shell
+    meteor add underscorestring:underscore.string
+```
+
+and you'll be able to access the library with the ***s*** global from both the server and the client.
+
+```javascript
+s.slugify("Hello world!");
+// => hello-world
+
+s("   epeli  ").trim().capitalize().value();
+// => "Epeli"
+```
+
+[Meteor]: http://www.meteor.com/
+
 ### Others
 
 The `dist/underscore.string.js` file is an [UMD][] build. You can load it using
@@ -64,8 +84,27 @@ It is still possible use as Underscore.js/Lo-Dash extension
 ```javascript
 _.mixin(s.exports());
 ```
-But it's not recommended since `include`, `contains`, `reverse` and `join` 
+But it's not recommended since `include`, `contains`, `reverse` and `join`
 are dropped because they collide with the functions already defined by Underscore.js.
+
+### Lo-Dash-FP/Ramda integration
+
+If you want to use underscore.string with [ramdajs](http://ramdajs.com/) or [Lo-Dash-FP](https://github.com/lodash/lodash-fp) you can use [underscore.string.fp](https://github.com/stoeffel/underscore.string.fp).
+
+    npm install underscore.string.fp
+
+```javascript
+var S = require('underscore.string.fp');
+var filter = require('lodash-fp').filter;
+var filter = require('ramda').filter;
+
+filter(S.startsWith('.'), [
+  '.vimrc',
+  'foo.md',
+  '.zshrc'
+]);
+// => ['.vimrc', '.zshrc']
+```
 
 ## Download
 
@@ -99,13 +138,17 @@ levenshtein("kitten", "kittah");
 // => 2
 ```
 
-#### capitalize(string) => string
+#### capitalize(string, [lowercaseRest=false]) => string
 
-Converts first letter of the string to uppercase.
+Converts first letter of the string to uppercase. If `true` is passed as second argument the rest
+of the string will be converted to lower case.
 
 ```javascript
 capitalize("foo Bar");
 // => "Foo Bar"
+
+capitalize("FOO Bar", true);
+// => "Foo bar"
 ```
 
 #### decapitalize(string) => string
@@ -168,6 +211,7 @@ count("Hello world", "l");
 #### escapeHTML(string) => string
 
 Converts HTML special characters to their entity equivalents.
+This function supports cent, yen, euro, pound, lt, gt, copy, reg, quote, amp, apos.
 
 ```javascript
 escapeHTML("<div>Blah blah blah</div>");
@@ -177,9 +221,10 @@ escapeHTML("<div>Blah blah blah</div>");
 #### unescapeHTML(string) => string
 
 Converts entity characters to HTML equivalents.
+This function supports cent, yen, euro, pound, lt, gt, copy, reg, quote, amp, apos, nbsp.
 
 ```javascript
-unescapeHTML("&lt;div&gt;Blah blah blah&lt;/div&gt;");
+unescapeHTML("&lt;div&gt;Blah&nbsp;blah blah&lt;/div&gt;");
 // => "<div>Blah blah blah</div>"
 ```
 

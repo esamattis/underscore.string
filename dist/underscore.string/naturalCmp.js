@@ -3,7 +3,7 @@ module.exports = function naturalCmp(str1, str2) {
   if (!str1) return -1;
   if (!str2) return 1;
 
-  var cmpRegex = /(\.\d+)|(\d+)|(\D+)/g,
+  var cmpRegex = /(\.\d+|\d+|\D+)/g,
     tokens1 = String(str1).match(cmpRegex),
     tokens2 = String(str2).match(cmpRegex),
     count = Math.min(tokens1.length, tokens2.length);

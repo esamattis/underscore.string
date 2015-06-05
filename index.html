@@ -53,7 +53,7 @@
             <div id="home"></div>
 
                 <h1 id="underscore-string-a-href-http-travis-ci-org-epeli-underscore-string-img-src-https-secure-travis-ci-org-epeli-underscore-string-png-branch-master-alt-build-status-a-">Underscore.string <a href="http://travis-ci.org/epeli/underscore.string"><img src="https://secure.travis-ci.org/epeli/underscore.string.png?branch=master" alt="Build Status"></a><a class="anchor" href="#underscore-string-a-href-http-travis-ci-org-epeli-underscore-string-img-src-https-secure-travis-ci-org-epeli-underscore-string-png-branch-master-alt-build-status-a-"><span class="glyphicon glyphicon-link header-link"></span></a></h1><p>Javascript lacks complete string manipulation operations.
-This an attempt to fill that gap. List of build-in methods can be found
+This is an attempt to fill that gap. List of build-in methods can be found
 for example from <a href="http://www.diveintojavascript.com/core-javascript-reference/the-string-object">Dive Into JavaScript</a>.
 Originally started as an Underscore.js extension but is a full standalone
 library nowadays.</p>
@@ -75,14 +75,37 @@ s(&quot;   epeli  &quot;).trim().capitalize().value();
 <p>but especially when using with <a href="http://browserify.org/">Browserify</a> the individual function approach
 is recommended because using it you only add those functions to your bundle you
 use.</p>
+<h3 id="in-meteor">In Meteor<a class="anchor" href="#in-meteor"><span class="glyphicon glyphicon-link header-link"></span></a></h3><p>From your <a href="http://www.meteor.com/">Meteor</a> project folder</p>
+<pre><code class="lang-shell">    meteor add underscorestring:underscore.string
+</code></pre>
+<p>and you&#39;ll be able to access the library with the <strong><em>s</em></strong> global from both the server and the client.</p>
+<pre><code class="lang-javascript">s.slugify(&quot;Hello world!&quot;);
+// =&gt; hello-world
+
+s(&quot;   epeli  &quot;).trim().capitalize().value();
+// =&gt; &quot;Epeli&quot;
+</code></pre>
 <h3 id="others">Others<a class="anchor" href="#others"><span class="glyphicon glyphicon-link header-link"></span></a></h3><p>The <code>dist/underscore.string.js</code> file is an <a href="https://github.com/umdjs/umd">UMD</a> build. You can load it using
 an AMD loader such as <a href="http://requirejs.org/">RequireJS</a> or just stick it to a web page and access
 the library from the <strong><em>s</em></strong> global.</p>
 <h3 id="underscore-js-lo-dash-integration">Underscore.js/Lo-Dash integration<a class="anchor" href="#underscore-js-lo-dash-integration"><span class="glyphicon glyphicon-link header-link"></span></a></h3><p>It is still possible use as Underscore.js/Lo-Dash extension</p>
 <pre><code class="lang-javascript">_.mixin(s.exports());
 </code></pre>
-<p>But it&#39;s not recommended since <code>include</code>, <code>contains</code>, <code>reverse</code> and <code>join</code> 
+<p>But it&#39;s not recommended since <code>include</code>, <code>contains</code>, <code>reverse</code> and <code>join</code>
 are dropped because they collide with the functions already defined by Underscore.js.</p>
+<h3 id="lo-dash-fp-ramda-integration">Lo-Dash-FP/Ramda integration<a class="anchor" href="#lo-dash-fp-ramda-integration"><span class="glyphicon glyphicon-link header-link"></span></a></h3><p>If you want to use underscore.string with <a href="http://ramdajs.com/">ramdajs</a> or <a href="https://github.com/lodash/lodash-fp">Lo-Dash-FP</a> you can use <a href="https://github.com/stoeffel/underscore.string.fp">underscore.string.fp</a>.</p>
+<pre><code>npm install underscore.string.fp
+</code></pre><pre><code class="lang-javascript">var S = require(&#39;underscore.string.fp&#39;);
+var filter = require(&#39;lodash-fp&#39;).filter;
+var filter = require(&#39;ramda&#39;).filter;
+
+filter(S.startsWith(&#39;.&#39;), [
+  &#39;.vimrc&#39;,
+  &#39;foo.md&#39;,
+  &#39;.zshrc&#39;
+]);
+// =&gt; [&#39;.vimrc&#39;, &#39;.zshrc&#39;]
+</code></pre>
 <h2 id="download">Download<a class="anchor" href="#download"><span class="glyphicon glyphicon-link header-link"></span></a></h2><ul>
 <li><a href="https://raw.github.com/epeli/underscore.string/master/dist/underscore.string.js">Development version</a> <em>Uncompressed with Comments</em></li>
 <li><a href="https://github.com/epeli/underscore.string/raw/master/dist/underscore.string.min.js">Production version</a> <em>Minified</em></li>
@@ -98,9 +121,13 @@ numberFormat(123456789.123, 5, &quot;.&quot;, &quot;,&quot;);
 <pre><code class="lang-javascript">levenshtein(&quot;kitten&quot;, &quot;kittah&quot;);
 // =&gt; 2
 </code></pre>
-<h4 id="capitalize-string-gt-string">capitalize(string) =&gt; string<a class="anchor" href="#capitalize-string-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Converts first letter of the string to uppercase.</p>
+<h4 id="capitalize-string-lowercaserest-false-gt-string">capitalize(string, [lowercaseRest=false]) =&gt; string<a class="anchor" href="#capitalize-string-lowercaserest-false-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Converts first letter of the string to uppercase. If <code>true</code> is passed as second argument the rest
+of the string will be converted to lower case.</p>
 <pre><code class="lang-javascript">capitalize(&quot;foo Bar&quot;);
 // =&gt; &quot;Foo Bar&quot;
+
+capitalize(&quot;FOO Bar&quot;, true);
+// =&gt; &quot;Foo bar&quot;
 </code></pre>
 <h4 id="decapitalize-string-gt-string">decapitalize(string) =&gt; string<a class="anchor" href="#decapitalize-string-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Converts first letter of the string to lowercase.</p>
 <pre><code class="lang-javascript">decapitalize(&quot;Foo Bar&quot;);
@@ -127,12 +154,14 @@ numberFormat(123456789.123, 5, &quot;.&quot;, &quot;,&quot;);
 <h4 id="count-string-substring-gt-number">count(string, substring) =&gt; number<a class="anchor" href="#count-string-substring-gt-number"><span class="glyphicon glyphicon-link header-link"></span></a></h4><pre><code class="lang-javascript">count(&quot;Hello world&quot;, &quot;l&quot;);
 // =&gt; 3
 </code></pre>
-<h4 id="escapehtml-string-gt-string">escapeHTML(string) =&gt; string<a class="anchor" href="#escapehtml-string-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Converts HTML special characters to their entity equivalents.</p>
+<h4 id="escapehtml-string-gt-string">escapeHTML(string) =&gt; string<a class="anchor" href="#escapehtml-string-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Converts HTML special characters to their entity equivalents.
+This function supports cent, yen, euro, pound, lt, gt, copy, reg, quote, amp, apos.</p>
 <pre><code class="lang-javascript">escapeHTML(&quot;&lt;div&gt;Blah blah blah&lt;/div&gt;&quot;);
 // =&gt; &quot;&amp;lt;div&amp;gt;Blah blah blah&amp;lt;/div&amp;gt;&quot;
 </code></pre>
-<h4 id="unescapehtml-string-gt-string">unescapeHTML(string) =&gt; string<a class="anchor" href="#unescapehtml-string-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Converts entity characters to HTML equivalents.</p>
-<pre><code class="lang-javascript">unescapeHTML(&quot;&amp;lt;div&amp;gt;Blah blah blah&amp;lt;/div&amp;gt;&quot;);
+<h4 id="unescapehtml-string-gt-string">unescapeHTML(string) =&gt; string<a class="anchor" href="#unescapehtml-string-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Converts entity characters to HTML equivalents.
+This function supports cent, yen, euro, pound, lt, gt, copy, reg, quote, amp, apos, nbsp.</p>
+<pre><code class="lang-javascript">unescapeHTML(&quot;&amp;lt;div&amp;gt;Blah&amp;nbsp;blah blah&amp;lt;/div&amp;gt;&quot;);
 // =&gt; &quot;&lt;div&gt;Blah blah blah&lt;/div&gt;&quot;
 </code></pre>
 <h4 id="insert-string-index-substring-gt-string">insert(string, index, substring) =&gt; string<a class="anchor" href="#insert-string-index-substring-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><pre><code class="lang-javascript">insert(&quot;Hello &quot;, 6, &quot;world&quot;);
