@@ -1,6 +1,11 @@
 
 # Changelog
 
+### 3.1.1
+
+* Add coverage folder to npmignore
+* [Full changelog](https://github.com/epeli/underscore.string/compare/3.1.0...3.1.1)
+
 ### 3.1.0
 
 * Meteor integration [baeb0da](https://github.com/epeli/underscore.string/commit/baeb0da0053549e5346184630a7e0c5007b8be4f)
