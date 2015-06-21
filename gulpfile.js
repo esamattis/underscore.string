@@ -8,6 +8,7 @@ var gulp = require('gulp-param')(require('gulp'), process.argv),
   replace = require('gulp-replace'),
   rename = require('gulp-rename'),
   browserify = require('gulp-browserify'),
+  header = require('gulp-header'),
   SRC = 'index.js',
   DEST = 'dist',
   SRC_COMPILED = 'underscore.string.js',
@@ -82,8 +83,10 @@ gulp.task('bump', ['bump-in-js'], function(semver) {
 });
 
 gulp.task('build', ['test', 'clean'], function() {
+  var package = require('./package.json');
   gulp.src(DEST + '/' + SRC_COMPILED)
     .pipe(uglify())
+    .pipe(header('// ' + package.name + ' ' + package.version + '\n// ' + package.homepage + '\n\n'))
     .pipe(rename(MIN_FILE))
     .pipe(gulp.dest(DEST));
 });
