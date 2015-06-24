@@ -442,7 +442,7 @@ Left trim. Similar to trim, but only for left side.
 
 Right trim. Similar to trim, but only for right side.
 
-#### truncate(string, length, truncateString) => string
+#### truncate(string, length, [truncateString = '...']) => string
 
 ```javascript
 truncate("Hello world", 5);
