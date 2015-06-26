@@ -13,8 +13,11 @@ var gulp = require('gulp-param')(require('gulp'), process.argv),
   DEST = 'dist',
   SRC_COMPILED = 'underscore.string.js',
   MIN_FILE = 'underscore.string.min.js',
-  VERSION_FILES = ['./package.json', './component.json', './bower.json'];
-  VERSION_FILES_JS = [SRC, 'package.js'];
+  VERSION_FILES = ['./package.json', './component.json', './bower.json'],
+  VERSION_FILES_JS = [SRC, 'package.js'],
+  package = require('./package.json'),
+  headerText = '// ' + package.name + ' ' + package.version + ' | ' +
+               package.license + ' licensed | ' + package.homepage + '\n\n';
 
 gulp.task('test', ['browserify'], function(cov) {
   var reporters = ['html'];
@@ -52,6 +55,7 @@ gulp.task('browserify', function() {
       detectGlobals: true,
       standalone: 's'
     }))
+    .pipe(header(headerText))
     .pipe(rename('underscore.string.js'))
     .pipe(gulp.dest(DEST));
 });
@@ -83,10 +87,9 @@ gulp.task('bump', ['bump-in-js'], function(semver) {
 });
 
 gulp.task('build', ['test', 'clean'], function() {
-  var package = require('./package.json');
   gulp.src(DEST + '/' + SRC_COMPILED)
     .pipe(uglify())
-    .pipe(header('// ' + package.name + ' ' + package.version + '\n// ' + package.homepage + '\n\n'))
+    .pipe(header(headerText))
     .pipe(rename(MIN_FILE))
     .pipe(gulp.dest(DEST));
 });
