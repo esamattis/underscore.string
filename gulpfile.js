@@ -16,8 +16,8 @@ var gulp = require('gulp-param')(require('gulp'), process.argv),
   VERSION_FILES = ['./package.json', './component.json', './bower.json'],
   VERSION_FILES_JS = [SRC, 'package.js'],
   package = require('./package.json'),
-  headerText = '// ' + package.name + ' ' + package.version + ' | ' +
-               package.license + ' licensed | ' + package.homepage + '\n\n';
+  headerText = '/* ' + package.name + ' ' + package.version + ' | ' +
+               package.license + ' licensed | ' + package.homepage + ' */\n\n';
 
 gulp.task('test', ['browserify'], function(cov) {
   var reporters = ['html'];
