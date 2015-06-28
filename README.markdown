@@ -203,6 +203,8 @@ include("foobar", "ob");
 
 #### count(string, substring) => number
 
+Returns number of occurrences of substring in string.
+
 ```javascript
 count("Hello world", "l");
 // => 3
