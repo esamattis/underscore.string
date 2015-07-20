@@ -10,7 +10,7 @@ test('#lines', function() {
   deepEqual(lines(''), ['']);
   deepEqual(lines(null), []);
   deepEqual(lines(undefined), []);
-  deepEqual(lines('Hello\rWorld'), ['Hello\rWorld']);
+  deepEqual(lines('Hello\rWorld'), ['Hello', 'World']);
   deepEqual(lines('Hello\r\nWorld'), ['Hello', 'World']);
 });
 
