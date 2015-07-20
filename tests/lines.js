@@ -5,6 +5,7 @@ var lines = require('../lines');
 
 test('#lines', function() {
   equal(lines('Hello\nWorld').length, 2);
+  equal(lines('Hello\rWorld').length, 2);
   equal(lines('Hello World').length, 1);
   equal(lines(123).length, 1);
   deepEqual(lines(''), ['']);
