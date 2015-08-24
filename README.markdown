@@ -178,11 +178,11 @@ clean(" foo    bar   ");
 
 #### cleanDiacritics(string) => string
 
-Replace [diacritic][d] characters with closest ASCII equivalents. Check the
+Replace [diacritic][dc] characters with closest ASCII equivalents. Check the
 [source][s] for supported characters. [Pull requests][p] welcome for missing
 characters!
 
-[d]: https://en.wikipedia.org/wiki/Diacritic
+[dc]: https://en.wikipedia.org/wiki/Diacritic
 [s]: https://github.com/epeli/underscore.string/blob/master/cleanDiacritics.js
 [p]: https://github.com/epeli/underscore.string/blob/master/CONTRIBUTING.markdown
 
