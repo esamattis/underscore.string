@@ -22,6 +22,7 @@ s.decapitalize     = require('./decapitalize');
 s.chop             = require('./chop');
 s.trim             = require('./trim');
 s.clean            = require('./clean');
+s.cleanDiacritics  = require('./cleanDiacritics');
 s.count            = require('./count');
 s.chars            = require('./chars');
 s.swapCase         = require('./swapCase');
