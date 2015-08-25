@@ -8,6 +8,8 @@
 * `lines`: add support to CR ending lines [#440](https://github.com/epeli/underscore.string/pull/440)
 * Documentation improvements
 * Small performance improvements
+* [Full changelog](https://github.com/epeli/underscore.string/compare/3.1.1...3.2.0)
+
 
 ### 3.1.1
 
