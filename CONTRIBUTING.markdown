@@ -30,5 +30,7 @@ is out of scope.
   - Add git tag
   - [Draft][d] a new Github release for the tag
   - Push new release to npm
+  - Update the [gh-page][ghp] `gulp bump --semver <version> && gulp site`
 
 [d]: https://github.com/epeli/underscore.string/releases
+[ghp]: https://github.com/epeli/underscore.string/tree/gh-pages
