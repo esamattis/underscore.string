@@ -28,4 +28,7 @@ is out of scope.
   - Write a changelog entry to `CHANGELOG.markdown`
     - Use Github compare to see what has changed from previous tag. Ex https://github.com/epeli/underscore.string/compare/3.0.0...master 
   - Add git tag
+  - [Draft][d] a new Github release for the tag
   - Push new release to npm
+
+[d]: https://github.com/epeli/underscore.string/releases
