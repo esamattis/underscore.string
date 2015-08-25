@@ -1,6 +1,14 @@
 
 # Changelog
 
+### 3.2.0
+
+* Add `cleanDiacritics` [#444](https://github.com/epeli/underscore.string/pull/444)
+* Add `wrap` [#410](https://github.com/epeli/underscore.string/pull/410)
+* `lines`: add support to CR ending lines [#440](https://github.com/epeli/underscore.string/pull/440)
+* Documentation improvements
+* Small performance improvements
+
 ### 3.1.1
 
 * Add coverage folder to npmignore
@@ -101,7 +109,7 @@
 ## 2.2.0
 
 * Capitalize method behavior changed
-* Various perfomance tweaks
+* Various performance tweaks
 
 ## 2.1.1
 
