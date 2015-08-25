@@ -30,7 +30,11 @@ is out of scope.
   - Add git tag
   - [Draft][d] a new Github release for the tag
   - Push new release to npm
-  - Update the [gh-page][ghp] `gulp bump --semver <version> && gulp site`
+  - Update the [gh-pages][ghp] branch `gulp bump --semver <version> && gulp site`
+    - You need global installation of bower for this to work
+    - Local workaround:
+      - `npm install bower`
+      - `export PATH=$(pwd)/node_modules/.bin/:$PATH`
 
 [d]: https://github.com/epeli/underscore.string/releases
 [ghp]: https://github.com/epeli/underscore.string/tree/gh-pages
