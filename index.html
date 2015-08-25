@@ -140,6 +140,12 @@ capitalize(&quot;FOO Bar&quot;, true);
 <pre><code class="lang-javascript">clean(&quot; foo    bar   &quot;);
 // =&gt; &quot;foo bar&quot;
 </code></pre>
+<h4 id="cleandiacritics-string-gt-string">cleanDiacritics(string) =&gt; string<a class="anchor" href="#cleandiacritics-string-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Replace <a href="http://www.diveintojavascript.com/core-javascript-reference/the-string-object">diacritic</a> characters with closest ASCII equivalents. Check the
+<a href="https://github.com/epeli/underscore.string/blob/master/cleanDiacritics.js">source</a> for supported characters. <a href="https://github.com/epeli/underscore.string/blob/master/CONTRIBUTING.markdown">Pull requests</a> welcome for missing
+characters!</p>
+<pre><code class="lang-javascript">cleanDiacritics(&quot;ääkkönen&quot;);
+// =&gt; &quot;aakkonen&quot;
+</code></pre>
 <h4 id="chars-string-gt-array">chars(string) =&gt; array<a class="anchor" href="#chars-string-gt-array"><span class="glyphicon glyphicon-link header-link"></span></a></h4><pre><code class="lang-javascript">chars(&quot;Hello&quot;);
 // =&gt; [&quot;H&quot;, &quot;e&quot;, &quot;l&quot;, &quot;l&quot;, &quot;o&quot;]
 </code></pre>
@@ -151,7 +157,8 @@ capitalize(&quot;FOO Bar&quot;, true);
 <pre><code class="lang-javascript">include(&quot;foobar&quot;, &quot;ob&quot;);
 // =&gt; true
 </code></pre>
-<h4 id="count-string-substring-gt-number">count(string, substring) =&gt; number<a class="anchor" href="#count-string-substring-gt-number"><span class="glyphicon glyphicon-link header-link"></span></a></h4><pre><code class="lang-javascript">count(&quot;Hello world&quot;, &quot;l&quot;);
+<h4 id="count-string-substring-gt-number">count(string, substring) =&gt; number<a class="anchor" href="#count-string-substring-gt-number"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Returns number of occurrences of substring in string.</p>
+<pre><code class="lang-javascript">count(&quot;Hello world&quot;, &quot;l&quot;);
 // =&gt; 3
 </code></pre>
 <h4 id="escapehtml-string-gt-string">escapeHTML(string) =&gt; string<a class="anchor" href="#escapehtml-string-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Converts HTML special characters to their entity equivalents.
@@ -182,6 +189,19 @@ isBlank(&quot;a&quot;); // =&gt; false
 <h4 id="lines-str-gt-array">lines(str) =&gt; array<a class="anchor" href="#lines-str-gt-array"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Split lines to an array</p>
 <pre><code class="lang-javascript">lines(&quot;Hello\nWorld&quot;);
 // =&gt; [&quot;Hello&quot;, &quot;World&quot;]
+</code></pre>
+<h4 id="wrap-str-options-gt-string">wrap(str, options) =&gt; string<a class="anchor" href="#wrap-str-options-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Splits a line <code>str</code> (default &#39;&#39;) into several lines of size <code>options.width</code> (default 75) using a <code>options.seperator</code> (default &#39;\n&#39;). If <code>options.trailingSpaces</code> is true, make each line at least <code>width</code> long using trailing spaces. If <code>options.cut</code> is true, create new lines in the middle of words. If <code>options.preserveSpaces</code> is true, preserve the space that should be there at the end of a line (only works if options.cut is false). </p>
+<pre><code class="lang-javascript">wrap(&quot;Hello World&quot;, { width:5 })
+// =&gt; &quot;Hello\nWorld&quot;
+
+wrap(&quot;Hello World&quot;, { width:6, seperator:&#39;.&#39;, trailingSpaces: true })
+// =&gt; &quot;Hello .World &quot;
+
+wrap(&quot;Hello World&quot;, { width:5, seperator:&#39;.&#39;, cut:true, trailingSpaces: true })
+// =&gt; &quot;Hello. Worl.d    &quot;
+
+wrap(&quot;Hello World&quot;, { width:5, seperator:&#39;.&#39;, preserveSpaces: true })
+// =&gt; &quot;Hello .World&quot;
 </code></pre>
 <h4 id="dedent-str-pattern-gt-string">dedent(str, [pattern]) =&gt; string<a class="anchor" href="#dedent-str-pattern-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Dedent unnecessary indentation or dedent by a pattern.</p>
 <p>Credits go to @sindresorhus.
@@ -278,7 +298,7 @@ trim(&quot;_-foobar-_&quot;, &quot;_-&quot;);
 </code></pre>
 <h4 id="ltrim-string-characters-gt-string">ltrim(string, [characters]) =&gt; string<a class="anchor" href="#ltrim-string-characters-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Left trim. Similar to trim, but only for left side.</p>
 <h4 id="rtrim-string-characters-gt-string">rtrim(string, [characters]) =&gt; string<a class="anchor" href="#rtrim-string-characters-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Right trim. Similar to trim, but only for right side.</p>
-<h4 id="truncate-string-length-truncatestring-gt-string">truncate(string, length, truncateString) =&gt; string<a class="anchor" href="#truncate-string-length-truncatestring-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><pre><code class="lang-javascript">truncate(&quot;Hello world&quot;, 5);
+<h4 id="truncate-string-length-truncatestring-39-39-gt-string">truncate(string, length, [truncateString = &#39;...&#39;]) =&gt; string<a class="anchor" href="#truncate-string-length-truncatestring-39-39-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><pre><code class="lang-javascript">truncate(&quot;Hello world&quot;, 5);
 // =&gt; &quot;Hello...&quot;
 
 truncate(&quot;Hello&quot;, 10);

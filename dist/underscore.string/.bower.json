@@ -1,6 +1,6 @@
 {
   "name": "underscore.string",
-  "version": "3.1.1",
+  "version": "3.2.0",
   "description": "String manipulation extensions for Underscore.js javascript library.",
   "homepage": "http://epeli.github.com/underscore.string/",
   "contributors": [
@@ -31,11 +31,11 @@
       "type": "MIT"
     }
   ],
-  "_release": "3.1.1",
+  "_release": "3.2.0",
   "_resolution": {
     "type": "version",
-    "tag": "3.1.1",
-    "commit": "ea91a4425a2ae2bb915c7e72c2b2b2dc464a63c4"
+    "tag": "3.2.0",
+    "commit": "fe10d270f33f373cbeee14d54946a7f48b2df32a"
   },
   "_source": "git://github.com/epeli/underscore.string.git",
   "_target": "*",
