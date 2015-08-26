@@ -288,7 +288,7 @@ lines("Hello\nWorld");
 
 #### wrap(str, options) => string
 
-Splits a line `str` (default '') into several lines of size `options.width` (default 75) using a `options.seperator` (default '\n'). If `options.trailingSpaces` is true, make each line at least `width` long using trailing spaces. If `options.cut` is true, create new lines in the middle of words. If `options.preserveSpaces` is true, preserve the space that should be there at the end of a line (only works if options.cut is false). 
+Splits a line `str` (default '') into several lines of size `options.width` (default 75) using a `options.seperator` (default '\n'). If `options.trailingSpaces` is true, make each line at least `width` long using trailing spaces. If `options.cut` is true, create new lines in the middle of words. If `options.preserveSpaces` is true, preserve the space that should be there at the end of a line (only works if options.cut is false).
 
 ```javascript
 wrap("Hello World", { width:5 })
@@ -646,10 +646,10 @@ strLeftBack("This_is_a_test_string", "_");
 Removes all html tags from string.
 
 ```javascript
-stripTags("a <a href="#">link</a>");
+stripTags("a <a href=\"#\">link</a>");
 // => "a link"
 
-stripTags("a <a href="#">link</a><script>alert("hello world!")</script>");
+stripTags("a <a href=\"#\">link</a><script>alert(\"hello world!\")</script>");
 // => "a linkalert("hello world!")"
 ```
 
@@ -661,7 +661,7 @@ Join an array into a human readable sentence.
 toSentence(["jQuery", "Mootools", "Prototype"]);
 // => "jQuery, Mootools and Prototype";
 
-toSentence(["jQuery", "Mootools", "Prototype"], ", ", " unt ');
+toSentence(["jQuery", "Mootools", "Prototype"], ", ", " unt ");
 // => "jQuery, Mootools unt Prototype";
 ```
 
@@ -676,7 +676,7 @@ toSentenceSerial(["jQuery", "Mootools"]);
 toSentenceSerial(["jQuery", "Mootools", "Prototype"]);
 // => "jQuery, Mootools, and Prototype"
 
-toSentenceSerial(["jQuery", "Mootools", "Prototype"], ", ", " unt ');
+toSentenceSerial(["jQuery", "Mootools", "Prototype"], ", ", " unt ");
 // => "jQuery, Mootools, unt Prototype"
 ```
 
