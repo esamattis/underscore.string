@@ -17,5 +17,8 @@ test('#cleanDiacritics', function() {
   equal(cleanDiacritics('Äöö ÖÖ'), 'Aoo OO');
   equal(cleanDiacritics(' ä '), ' a ');
   equal(cleanDiacritics('- " , £ $ ä'), '- " , £ $ a');
+
+  equal(cleanDiacritics('ß'), 'ss');
+  equal(cleanDiacritics('Schuß'), 'Schuss');
 });
 
