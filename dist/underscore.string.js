@@ -1,4 +1,4 @@
-/* underscore.string 3.2.0 | MIT licensed | http://epeli.github.com/underscore.string/ */
+/* underscore.string 3.2.1 | MIT licensed | http://epeli.github.com/underscore.string/ */
 
 !function(e){if("object"==typeof exports)module.exports=e();else if("function"==typeof define&&define.amd)define(e);else{var f;"undefined"!=typeof window?f=window:"undefined"!=typeof global?f=global:"undefined"!=typeof self&&(f=self),f.s=e()}}(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(_dereq_,module,exports){
 var trim = _dereq_('./trim');
@@ -185,7 +185,7 @@ module.exports = function() {
 //  Underscore.string is freely distributable under the terms of the MIT license.
 //  Documentation: https://github.com/epeli/underscore.string
 //  Some code is borrowed from MooTools and Alexandru Marasteanu.
-//  Version '3.2.0'
+//  Version '3.2.1'
 
 'use strict';
 
@@ -195,7 +195,7 @@ function s(value) {
   this._wrapped = value;
 }
 
-s.VERSION = '3.2.0';
+s.VERSION = '3.2.1';
 
 s.isBlank          = _dereq_('./isBlank');
 s.stripTags        = _dereq_('./stripTags');
@@ -204,6 +204,7 @@ s.decapitalize     = _dereq_('./decapitalize');
 s.chop             = _dereq_('./chop');
 s.trim             = _dereq_('./trim');
 s.clean            = _dereq_('./clean');
+s.cleanDiacritics  = _dereq_('./cleanDiacritics');
 s.count            = _dereq_('./count');
 s.chars            = _dereq_('./chars');
 s.swapCase         = _dereq_('./swapCase');
@@ -318,7 +319,7 @@ for (var key in prototypeMethods) prototype2method(prototypeMethods[key]);
 
 module.exports = s;
 
-},{"./camelize":1,"./capitalize":2,"./chars":3,"./chop":4,"./classify":5,"./clean":6,"./count":8,"./dasherize":9,"./decapitalize":10,"./dedent":11,"./endsWith":12,"./escapeHTML":13,"./exports":14,"./helper/escapeRegExp":19,"./humanize":24,"./include":25,"./insert":26,"./isBlank":27,"./join":28,"./levenshtein":29,"./lines":30,"./lpad":31,"./lrpad":32,"./ltrim":33,"./naturalCmp":34,"./numberFormat":35,"./pad":36,"./pred":37,"./prune":38,"./quote":39,"./repeat":40,"./replaceAll":41,"./reverse":42,"./rpad":43,"./rtrim":44,"./slugify":45,"./splice":46,"./sprintf":47,"./startsWith":48,"./strLeft":49,"./strLeftBack":50,"./strRight":51,"./strRightBack":52,"./stripTags":53,"./succ":54,"./surround":55,"./swapCase":56,"./titleize":57,"./toBoolean":58,"./toNumber":59,"./toSentence":60,"./toSentenceSerial":61,"./trim":62,"./truncate":63,"./underscored":64,"./unescapeHTML":65,"./unquote":66,"./vsprintf":67,"./words":68,"./wrap":69}],16:[function(_dereq_,module,exports){
+},{"./camelize":1,"./capitalize":2,"./chars":3,"./chop":4,"./classify":5,"./clean":6,"./cleanDiacritics":7,"./count":8,"./dasherize":9,"./decapitalize":10,"./dedent":11,"./endsWith":12,"./escapeHTML":13,"./exports":14,"./helper/escapeRegExp":19,"./humanize":24,"./include":25,"./insert":26,"./isBlank":27,"./join":28,"./levenshtein":29,"./lines":30,"./lpad":31,"./lrpad":32,"./ltrim":33,"./naturalCmp":34,"./numberFormat":35,"./pad":36,"./pred":37,"./prune":38,"./quote":39,"./repeat":40,"./replaceAll":41,"./reverse":42,"./rpad":43,"./rtrim":44,"./slugify":45,"./splice":46,"./sprintf":47,"./startsWith":48,"./strLeft":49,"./strLeftBack":50,"./strRight":51,"./strRightBack":52,"./stripTags":53,"./succ":54,"./surround":55,"./swapCase":56,"./titleize":57,"./toBoolean":58,"./toNumber":59,"./toSentence":60,"./toSentenceSerial":61,"./trim":62,"./truncate":63,"./underscored":64,"./unescapeHTML":65,"./unquote":66,"./vsprintf":67,"./words":68,"./wrap":69}],16:[function(_dereq_,module,exports){
 var makeString = _dereq_('./makeString');
 
 module.exports = function adjacent(str, direction) {
