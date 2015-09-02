@@ -1,6 +1,10 @@
 
 # Changelog
 
+### 3.2.1
+
+* Export `cleanDiacritics` in index.js
+
 ### 3.2.0
 
 * Add `cleanDiacritics` [#444](https://github.com/epeli/underscore.string/pull/444)
