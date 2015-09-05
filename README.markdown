@@ -18,7 +18,7 @@ Upgrading from 2.x to 3.x? Please read the [changelog][c].
 
 ## Usage
 
-### In Node.js and Browserify
+### For Node.js, Browserify and Webpack
 
 Install from npm
 
