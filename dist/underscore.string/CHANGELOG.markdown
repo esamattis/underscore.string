@@ -1,6 +1,16 @@
 
 # Changelog
 
+### 3.2.2
+
+* Fix `slugify`regression [#448](https://github.com/epeli/underscore.string/pull/448)
+* [Full changelog](https://github.com/epeli/underscore.string/compare/3.2.1...3.2.2)
+
+### 3.2.1
+
+* Export `cleanDiacritics` in index.js
+* [Full changelog](https://github.com/epeli/underscore.string/compare/3.2.0...3.2.1)
+
 ### 3.2.0
 
 * Add `cleanDiacritics` [#444](https://github.com/epeli/underscore.string/pull/444)
@@ -8,6 +18,8 @@
 * `lines`: add support to CR ending lines [#440](https://github.com/epeli/underscore.string/pull/440)
 * Documentation improvements
 * Small performance improvements
+* [Full changelog](https://github.com/epeli/underscore.string/compare/3.1.1...3.2.0)
+
 
 ### 3.1.1
 

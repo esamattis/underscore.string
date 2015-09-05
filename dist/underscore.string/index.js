@@ -3,7 +3,7 @@
 //  Underscore.string is freely distributable under the terms of the MIT license.
 //  Documentation: https://github.com/epeli/underscore.string
 //  Some code is borrowed from MooTools and Alexandru Marasteanu.
-//  Version '3.2.0'
+//  Version '3.2.2'
 
 'use strict';
 
@@ -13,7 +13,7 @@ function s(value) {
   this._wrapped = value;
 }
 
-s.VERSION = '3.2.0';
+s.VERSION = '3.2.2';
 
 s.isBlank          = require('./isBlank');
 s.stripTags        = require('./stripTags');
@@ -22,6 +22,7 @@ s.decapitalize     = require('./decapitalize');
 s.chop             = require('./chop');
 s.trim             = require('./trim');
 s.clean            = require('./clean');
+s.cleanDiacritics  = require('./cleanDiacritics');
 s.count            = require('./count');
 s.chars            = require('./chars');
 s.swapCase         = require('./swapCase');

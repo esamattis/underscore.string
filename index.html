@@ -140,7 +140,7 @@ capitalize(&quot;FOO Bar&quot;, true);
 <pre><code class="lang-javascript">clean(&quot; foo    bar   &quot;);
 // =&gt; &quot;foo bar&quot;
 </code></pre>
-<h4 id="cleandiacritics-string-gt-string">cleanDiacritics(string) =&gt; string<a class="anchor" href="#cleandiacritics-string-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Replace <a href="http://www.diveintojavascript.com/core-javascript-reference/the-string-object">diacritic</a> characters with closest ASCII equivalents. Check the
+<h4 id="cleandiacritics-string-gt-string">cleanDiacritics(string) =&gt; string<a class="anchor" href="#cleandiacritics-string-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Replace <a href="https://en.wikipedia.org/wiki/Diacritic">diacritic</a> characters with closest ASCII equivalents. Check the
 <a href="https://github.com/epeli/underscore.string/blob/master/cleanDiacritics.js">source</a> for supported characters. <a href="https://github.com/epeli/underscore.string/blob/master/CONTRIBUTING.markdown">Pull requests</a> welcome for missing
 characters!</p>
 <pre><code class="lang-javascript">cleanDiacritics(&quot;ääkkönen&quot;);
@@ -190,7 +190,7 @@ isBlank(&quot;a&quot;); // =&gt; false
 <pre><code class="lang-javascript">lines(&quot;Hello\nWorld&quot;);
 // =&gt; [&quot;Hello&quot;, &quot;World&quot;]
 </code></pre>
-<h4 id="wrap-str-options-gt-string">wrap(str, options) =&gt; string<a class="anchor" href="#wrap-str-options-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Splits a line <code>str</code> (default &#39;&#39;) into several lines of size <code>options.width</code> (default 75) using a <code>options.seperator</code> (default &#39;\n&#39;). If <code>options.trailingSpaces</code> is true, make each line at least <code>width</code> long using trailing spaces. If <code>options.cut</code> is true, create new lines in the middle of words. If <code>options.preserveSpaces</code> is true, preserve the space that should be there at the end of a line (only works if options.cut is false). </p>
+<h4 id="wrap-str-options-gt-string">wrap(str, options) =&gt; string<a class="anchor" href="#wrap-str-options-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Splits a line <code>str</code> (default &#39;&#39;) into several lines of size <code>options.width</code> (default 75) using a <code>options.seperator</code> (default &#39;\n&#39;). If <code>options.trailingSpaces</code> is true, make each line at least <code>width</code> long using trailing spaces. If <code>options.cut</code> is true, create new lines in the middle of words. If <code>options.preserveSpaces</code> is true, preserve the space that should be there at the end of a line (only works if options.cut is false).</p>
 <pre><code class="lang-javascript">wrap(&quot;Hello World&quot;, { width:5 })
 // =&gt; &quot;Hello\nWorld&quot;
 
@@ -395,17 +395,17 @@ toNumber(&quot;999.999&quot;, -1);
 // =&gt; &quot;This_is_a_test&quot;;
 </code></pre>
 <h4 id="striptags-string-gt-string">stripTags(string) =&gt; string<a class="anchor" href="#striptags-string-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Removes all html tags from string.</p>
-<pre><code class="lang-javascript">stripTags(&quot;a &lt;a href=&quot;#&quot;&gt;link&lt;/a&gt;&quot;);
+<pre><code class="lang-javascript">stripTags(&quot;a &lt;a href=\&quot;#\&quot;&gt;link&lt;/a&gt;&quot;);
 // =&gt; &quot;a link&quot;
 
-stripTags(&quot;a &lt;a href=&quot;#&quot;&gt;link&lt;/a&gt;&lt;script&gt;alert(&quot;hello world!&quot;)&lt;/script&gt;&quot;);
+stripTags(&quot;a &lt;a href=\&quot;#\&quot;&gt;link&lt;/a&gt;&lt;script&gt;alert(\&quot;hello world!\&quot;)&lt;/script&gt;&quot;);
 // =&gt; &quot;a linkalert(&quot;hello world!&quot;)&quot;
 </code></pre>
 <h4 id="tosentence-array-delimiter-lastdelimiter-gt-string">toSentence(array, [delimiter, lastDelimiter]) =&gt; string<a class="anchor" href="#tosentence-array-delimiter-lastdelimiter-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Join an array into a human readable sentence.</p>
 <pre><code class="lang-javascript">toSentence([&quot;jQuery&quot;, &quot;Mootools&quot;, &quot;Prototype&quot;]);
 // =&gt; &quot;jQuery, Mootools and Prototype&quot;;
 
-toSentence([&quot;jQuery&quot;, &quot;Mootools&quot;, &quot;Prototype&quot;], &quot;, &quot;, &quot; unt &#39;);
+toSentence([&quot;jQuery&quot;, &quot;Mootools&quot;, &quot;Prototype&quot;], &quot;, &quot;, &quot; unt &quot;);
 // =&gt; &quot;jQuery, Mootools unt Prototype&quot;;
 </code></pre>
 <h4 id="tosentenceserial-array-delimiter-lastdelimiter-gt-string">toSentenceSerial(array, [delimiter, lastDelimiter]) =&gt; string<a class="anchor" href="#tosentenceserial-array-delimiter-lastdelimiter-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>The same as <code>toSentence</code>, but adjusts delimeters to use <a href="http://en.wikipedia.org/wiki/Serial_comma">Serial comma</a>.</p>
@@ -415,7 +415,7 @@ toSentence([&quot;jQuery&quot;, &quot;Mootools&quot;, &quot;Prototype&quot;], &q
 toSentenceSerial([&quot;jQuery&quot;, &quot;Mootools&quot;, &quot;Prototype&quot;]);
 // =&gt; &quot;jQuery, Mootools, and Prototype&quot;
 
-toSentenceSerial([&quot;jQuery&quot;, &quot;Mootools&quot;, &quot;Prototype&quot;], &quot;, &quot;, &quot; unt &#39;);
+toSentenceSerial([&quot;jQuery&quot;, &quot;Mootools&quot;, &quot;Prototype&quot;], &quot;, &quot;, &quot; unt &quot;);
 // =&gt; &quot;jQuery, Mootools, unt Prototype&quot;
 </code></pre>
 <h4 id="repeat-string-count-separator-gt-string">repeat(string, count, [separator]) =&gt; string<a class="anchor" href="#repeat-string-count-separator-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Repeats a string count times.</p>
