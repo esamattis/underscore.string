@@ -1,4 +1,4 @@
-/* underscore.string 3.2.1 | MIT licensed | http://epeli.github.com/underscore.string/ */
+/* underscore.string 3.2.2 | MIT licensed | http://epeli.github.com/underscore.string/ */
 
 !function(e){if("object"==typeof exports)module.exports=e();else if("function"==typeof define&&define.amd)define(e);else{var f;"undefined"!=typeof window?f=window:"undefined"!=typeof global?f=global:"undefined"!=typeof self&&(f=self),f.s=e()}}(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(_dereq_,module,exports){
 var trim = _dereq_('./trim');
@@ -68,10 +68,17 @@ var from  = "ąàáäâãåæăćčĉęèéëêĝĥìíïîĵłľńňòóöőô�
 from += from.toUpperCase();
 to += to.toUpperCase();
 
+to = to.split("");
+
+// for tokens requireing multitoken output
+from += "ß";
+to.push('ss');
+
+
 module.exports = function cleanDiacritics(str) {
     return makeString(str).replace(/.{1}/g, function(c){
       var index = from.indexOf(c);
-      return index === -1 ? c : to.charAt(index);
+      return index === -1 ? c : to[index];
   });
 };
 
@@ -185,7 +192,7 @@ module.exports = function() {
 //  Underscore.string is freely distributable under the terms of the MIT license.
 //  Documentation: https://github.com/epeli/underscore.string
 //  Some code is borrowed from MooTools and Alexandru Marasteanu.
-//  Version '3.2.1'
+//  Version '3.2.2'
 
 'use strict';
 
@@ -195,7 +202,7 @@ function s(value) {
   this._wrapped = value;
 }
 
-s.VERSION = '3.2.1';
+s.VERSION = '3.2.2';
 
 s.isBlank          = _dereq_('./isBlank');
 s.stripTags        = _dereq_('./stripTags');
@@ -721,7 +728,7 @@ var dasherize = _dereq_('./dasherize');
 var cleanDiacritics = _dereq_("./cleanDiacritics");
 
 module.exports = function slugify(str) {
-  return trim(dasherize(cleanDiacritics(str).replace(/[^\w\s-]/g, '-')), '-');
+  return trim(dasherize(cleanDiacritics(str).replace(/[^\w\s-]/g, '-').toLowerCase()), '-');
 };
 
 },{"./cleanDiacritics":7,"./dasherize":9,"./helper/defaultToWhiteSpace":17,"./helper/makeString":21,"./trim":62}],46:[function(_dereq_,module,exports){
