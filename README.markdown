@@ -248,7 +248,7 @@ unescapeHTML("&lt;div&gt;Blah&nbsp;blah blah&lt;/div&gt;");
 #### insert(string, index, substring) => string
 
 ```javascript
-insert("Hello ", 6, "world");
+insert("Hellworld", 4, "o ");
 // => "Hello world"
 ```
 
