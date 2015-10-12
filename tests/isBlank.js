@@ -12,5 +12,6 @@ test('#isBlank', function(){
   ok(isBlank(''));
   ok(isBlank(null));
   ok(isBlank(undefined));
+  ok(!isBlank(false));
 });
 
