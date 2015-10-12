@@ -13,6 +13,7 @@ test('#dasherize', function(){
   equal(dasherize('the  dasherize string method  '), 'the-dasherize-string-method');
   equal(dasherize('téléphone'), 'téléphone');
   equal(dasherize('foo$bar'), 'foo$bar');
+  equal(dasherize('input with a-dash'), 'input-with-a-dash');
   equal(dasherize(''), '');
   equal(dasherize(null), '');
   equal(dasherize(undefined), '');
