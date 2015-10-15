@@ -1,7 +1,7 @@
 // Wrap
 // wraps a string by a certain width
 
-makeString = require('./helper/makeString');
+var makeString = require('./helper/makeString');
 
 module.exports = function wrap(str, options){
 	str = makeString(str);
