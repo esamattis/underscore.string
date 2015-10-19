@@ -6,6 +6,8 @@ test("#naturalCmp", function() {
   // Should be associative
   _.each([
     ['abc', null],
+    ['abc', undefined],
+    ['abc', ''],
     ['abc', '123'],
     ['def', 'abc'],
     ['ab', 'a'],
@@ -21,7 +23,8 @@ test("#naturalCmp", function() {
     ['15ab16', '15ab'],
     ['abc', 'Abc'],
     ['abc', 'aBc'],
-    ['aBc', 'Abc']
+    ['aBc', 'Abc'],
+    [10, 2]
   ], function(vals) {
     var a = vals[0], b = vals[1];
     equal(naturalCmp(a, b), 1, '\'' + a + '\' >= \'' + b + '\'');
@@ -31,7 +34,10 @@ test("#naturalCmp", function() {
     ['123', '123'],
     ['abc', 'abc'],
     ['r12', 'r12'],
-    ['12a', '12a']
+    ['12a', '12a'],
+    ['', ''],
+    [undefined, undefined],
+    [null, null]
   ], function(vals) {
     var a = vals[0], b = vals[1];
     equal(naturalCmp(a, b), 0, '\'' + a + '\' == \'' + b + '\'');
