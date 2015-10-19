@@ -1056,14 +1056,17 @@ module.exports = function unescapeHTML(str) {
 };
 
 },{"./helper/htmlEntities":20,"./helper/makeString":21}],66:[function(_dereq_,module,exports){
+var makeString = _dereq_('./helper/makeString');
+
 module.exports = function unquote(str, quoteChar) {
+  str = makeString(str);
   quoteChar = quoteChar || '"';
   if (str[0] === quoteChar && str[str.length - 1] === quoteChar)
     return str.slice(1, str.length - 1);
   else return str;
 };
 
-},{}],67:[function(_dereq_,module,exports){
+},{"./helper/makeString":21}],67:[function(_dereq_,module,exports){
 var sprintf = _dereq_('./sprintf');
 
 module.exports = function vsprintf(fmt, argv) {

@@ -4,7 +4,6 @@ var capitalize = require('../capitalize');
 
 test('#capitalize', function() {
   equal(capitalize('fabio'), 'Fabio', 'First letter is upper case');
-  equal(capitalize('fabio'), 'Fabio', 'First letter is upper case');
   equal(capitalize('FOO'), 'FOO', 'Other letters unchanged');
   equal(capitalize('FOO', false), 'FOO', 'Other letters unchanged');
   equal(capitalize('foO', false), 'FoO', 'Other letters unchanged');

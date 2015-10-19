@@ -12,6 +12,7 @@ test('#pad', function() {
   equal(pad('foo', 8, '0', 'both'), '000foo00');
   equal(pad('foo', 7, '0', 'both'), '00foo00');
   equal(pad('foo', 7, '!@$%dofjrofj', 'both'), '!!foo!!');
+  equal(pad('abc', 1), 'abc');
   equal(pad('', 2), '  ');
   equal(pad(null, 2), '  ');
   equal(pad(undefined, 2), '  ');
