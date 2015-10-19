@@ -9,6 +9,7 @@ test('#lrpad', function() {
   equal(lrpad('foo', 8, '0'), '000foo00');
   equal(lrpad('foo', 7, '0'), '00foo00');
   equal(lrpad('foo', 7, '!@$%dofjrofj'), '!!foo!!');
+  equal(lrpad('abc', 1), 'abc', 'lrpad with length shorter than string');
   equal(lrpad('', 2), '  ');
   equal(lrpad(null, 2), '  ');
   equal(lrpad(undefined, 2), '  ');

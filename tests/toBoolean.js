@@ -3,10 +3,8 @@ var toBoolean = require('../toBoolean');
 
 test('#toBoolean', function() {
   strictEqual(toBoolean("false"), false);
-  strictEqual(toBoolean("false"), false);
   strictEqual(toBoolean("False"), false);
   strictEqual(toBoolean("Falsy",null,["false", "falsy"]), false);
-  strictEqual(toBoolean("true"), true);
   strictEqual(toBoolean("the truth", "the truth", "this is falsy"), true);
   strictEqual(toBoolean("this is falsy", "the truth", "this is falsy"), false);
   strictEqual(toBoolean("true"), true);
@@ -25,5 +23,9 @@ test('#toBoolean', function() {
   strictEqual(toBoolean("foo true bar", /true/), true);
   strictEqual(toBoolean("foo FALSE bar", null, /FALSE/), false);
   strictEqual(toBoolean(" true  "), true);
+  strictEqual(toBoolean(true), true);
+  strictEqual(toBoolean(false), false);
+  strictEqual(toBoolean(null), false);
+  strictEqual(toBoolean(undefined), false);
 });
 
