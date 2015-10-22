@@ -66,6 +66,7 @@ s.strLeftBack      = require('./strLeftBack');
 s.toSentence       = require('./toSentence');
 s.toSentenceSerial = require('./toSentenceSerial');
 s.slugify          = require('./slugify');
+s.around           = require('./around');
 s.surround         = require('./surround');
 s.quote            = require('./quote');
 s.unquote          = require('./unquote');
