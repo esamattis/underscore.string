@@ -692,13 +692,16 @@ repeat("foo", 3, "bar");
 // => "foobarfoobarfoo"
 ```
 
-#### surround(string, wrap) => string
+#### surround(string, wrap[, rightWrap]) => string
 
-Surround a string with another string.
+Surround a string with another string(s).
 
 ```javascript
 surround("foo", "ab");
 // => "abfooab"
+
+surround("foo", "<span>", "</span>");
+// => "<span>foo</span>"
 ```
 
 #### quote(string, quoteChar) or q(string, quoteChar) => string
