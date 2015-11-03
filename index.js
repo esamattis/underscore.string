@@ -76,6 +76,7 @@ s.toBoolean        = require('./toBoolean');
 s.exports          = require('./exports');
 s.escapeRegExp     = require('./helper/escapeRegExp');
 s.wrap             = require('./wrap');
+s.map              = require('./map');
 
 // Aliases
 s.strip     = s.trim;
@@ -88,6 +89,7 @@ s.contains  = s.include;
 s.q         = s.quote;
 s.toBool    = s.toBoolean;
 s.camelcase = s.camelize;
+s.mapChars  = s.map;
 
 
 // Implement chaining

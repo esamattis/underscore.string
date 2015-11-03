@@ -769,6 +769,28 @@ toBoolean("true only at start", [/^true/]);
 // => true
 ```
 
+#### map(string, function) => string
+
+Creates a new string with the results of calling a provided function on every character of the given string.
+
+```javascript
+map("Hello world", function(x) {
+  return x;
+});
+// => "Hello world"
+
+map(12345, function(x) {
+  return x;
+});
+// => "12345"
+
+map("Hello world", function(x) {
+  if (x === 'o') x = 'O';
+  return x;
+});
+// => "HellO wOrld"
+```
+
 ### Library functions
 
 If you require the full library you can use chaining and aliases
