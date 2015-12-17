@@ -16,7 +16,7 @@ module.exports = function camelize(str, decapitalize) {
   }
 };
 
-},{"./decapitalize":10,"./trim":62}],2:[function(_dereq_,module,exports){
+},{"./decapitalize":11,"./trim":64}],2:[function(_dereq_,module,exports){
 var makeString = _dereq_('./helper/makeString');
 
 module.exports = function capitalize(str, lowercaseRest) {
@@ -26,14 +26,14 @@ module.exports = function capitalize(str, lowercaseRest) {
   return str.charAt(0).toUpperCase() + remainingChars;
 };
 
-},{"./helper/makeString":21}],3:[function(_dereq_,module,exports){
+},{"./helper/makeString":22}],3:[function(_dereq_,module,exports){
 var makeString = _dereq_('./helper/makeString');
 
 module.exports = function chars(str) {
   return makeString(str).split('');
 };
 
-},{"./helper/makeString":21}],4:[function(_dereq_,module,exports){
+},{"./helper/makeString":22}],4:[function(_dereq_,module,exports){
 module.exports = function chop(str, step) {
   if (str == null) return [];
   str = String(str);
@@ -51,14 +51,14 @@ module.exports = function classify(str) {
   return capitalize(camelize(str.replace(/[\W_]/g, ' ')).replace(/\s/g, ''));
 };
 
-},{"./camelize":1,"./capitalize":2,"./helper/makeString":21}],6:[function(_dereq_,module,exports){
+},{"./camelize":1,"./capitalize":2,"./helper/makeString":22}],6:[function(_dereq_,module,exports){
 var trim = _dereq_('./trim');
 
 module.exports = function clean(str) {
   return trim(str).replace(/\s\s+/g, ' ');
 };
 
-},{"./trim":62}],7:[function(_dereq_,module,exports){
+},{"./trim":64}],7:[function(_dereq_,module,exports){
 
 var makeString = _dereq_('./helper/makeString');
 
@@ -82,7 +82,7 @@ module.exports = function cleanDiacritics(str) {
   });
 };
 
-},{"./helper/makeString":21}],8:[function(_dereq_,module,exports){
+},{"./helper/makeString":22}],8:[function(_dereq_,module,exports){
 var makeString = _dereq_('./helper/makeString');
 
 module.exports = function(str, substr) {
@@ -94,14 +94,25 @@ module.exports = function(str, substr) {
   return str.split(substr).length - 1;
 };
 
-},{"./helper/makeString":21}],9:[function(_dereq_,module,exports){
+},{"./helper/makeString":22}],9:[function(_dereq_,module,exports){
 var trim = _dereq_('./trim');
 
 module.exports = function dasherize(str) {
   return trim(str).replace(/([A-Z])/g, '-$1').replace(/[-_\s]+/g, '-').toLowerCase();
 };
 
-},{"./trim":62}],10:[function(_dereq_,module,exports){
+},{"./trim":64}],10:[function(_dereq_,module,exports){
+var decap = _dereq_('./decapitalize');
+var trim  = _dereq_('./trim');
+
+module.exports = function decamelize(string, separator) {
+	string = trim(string).split(/(?=[A-Z])/).map(function(word) {
+		return decap(word);
+	});
+    return string.join(separator || '_');
+};
+
+},{"./decapitalize":11,"./trim":64}],11:[function(_dereq_,module,exports){
 var makeString = _dereq_('./helper/makeString');
 
 module.exports = function decapitalize(str) {
@@ -109,7 +120,7 @@ module.exports = function decapitalize(str) {
   return str.charAt(0).toLowerCase() + str.slice(1);
 };
 
-},{"./helper/makeString":21}],11:[function(_dereq_,module,exports){
+},{"./helper/makeString":22}],12:[function(_dereq_,module,exports){
 var makeString = _dereq_('./helper/makeString');
 
 function getIndent(str) {
@@ -139,7 +150,7 @@ module.exports = function dedent(str, pattern) {
   return str.replace(reg, '');
 };
 
-},{"./helper/makeString":21}],12:[function(_dereq_,module,exports){
+},{"./helper/makeString":22}],13:[function(_dereq_,module,exports){
 var makeString = _dereq_('./helper/makeString');
 var toPositive = _dereq_('./helper/toPositive');
 
@@ -154,7 +165,7 @@ module.exports = function endsWith(str, ends, position) {
   return position >= 0 && str.indexOf(ends, position) === position;
 };
 
-},{"./helper/makeString":21,"./helper/toPositive":23}],13:[function(_dereq_,module,exports){
+},{"./helper/makeString":22,"./helper/toPositive":24}],14:[function(_dereq_,module,exports){
 var makeString = _dereq_('./helper/makeString');
 var escapeChars = _dereq_('./helper/escapeChars');
 var reversedEscapeChars = {};
@@ -174,19 +185,19 @@ module.exports = function escapeHTML(str) {
   });
 };
 
-},{"./helper/escapeChars":18,"./helper/makeString":21}],14:[function(_dereq_,module,exports){
+},{"./helper/escapeChars":19,"./helper/makeString":22}],15:[function(_dereq_,module,exports){
 module.exports = function() {
   var result = {};
 
   for (var prop in this) {
-    if (!this.hasOwnProperty(prop) || prop.match(/^(?:include|contains|reverse|join)$/)) continue;
+    if (!this.hasOwnProperty(prop) || prop.match(/^(?:include|contains|reverse|join|map)$/)) continue;
     result[prop] = this[prop];
   }
 
   return result;
 };
 
-},{}],15:[function(_dereq_,module,exports){
+},{}],16:[function(_dereq_,module,exports){
 //  Underscore.string
 //  (c) 2010 Esa-Matti Suuronen <esa-matti aet suuronen dot org>
 //  Underscore.string is freely distributable under the terms of the MIT license.
@@ -231,6 +242,7 @@ s.pred             = _dereq_('./pred');
 s.succ             = _dereq_('./succ');
 s.titleize         = _dereq_('./titleize');
 s.camelize         = _dereq_('./camelize');
+s.decamelize       = _dereq_('./decamelize');
 s.underscored      = _dereq_('./underscored');
 s.dasherize        = _dereq_('./dasherize');
 s.classify         = _dereq_('./classify');
@@ -265,6 +277,7 @@ s.toBoolean        = _dereq_('./toBoolean');
 s.exports          = _dereq_('./exports');
 s.escapeRegExp     = _dereq_('./helper/escapeRegExp');
 s.wrap             = _dereq_('./wrap');
+s.map              = _dereq_('./map');
 
 // Aliases
 s.strip     = s.trim;
@@ -277,6 +290,7 @@ s.contains  = s.include;
 s.q         = s.quote;
 s.toBool    = s.toBoolean;
 s.camelcase = s.camelize;
+s.mapChars  = s.map;
 
 
 // Implement chaining
@@ -326,7 +340,7 @@ for (var key in prototypeMethods) prototype2method(prototypeMethods[key]);
 
 module.exports = s;
 
-},{"./camelize":1,"./capitalize":2,"./chars":3,"./chop":4,"./classify":5,"./clean":6,"./cleanDiacritics":7,"./count":8,"./dasherize":9,"./decapitalize":10,"./dedent":11,"./endsWith":12,"./escapeHTML":13,"./exports":14,"./helper/escapeRegExp":19,"./humanize":24,"./include":25,"./insert":26,"./isBlank":27,"./join":28,"./levenshtein":29,"./lines":30,"./lpad":31,"./lrpad":32,"./ltrim":33,"./naturalCmp":34,"./numberFormat":35,"./pad":36,"./pred":37,"./prune":38,"./quote":39,"./repeat":40,"./replaceAll":41,"./reverse":42,"./rpad":43,"./rtrim":44,"./slugify":45,"./splice":46,"./sprintf":47,"./startsWith":48,"./strLeft":49,"./strLeftBack":50,"./strRight":51,"./strRightBack":52,"./stripTags":53,"./succ":54,"./surround":55,"./swapCase":56,"./titleize":57,"./toBoolean":58,"./toNumber":59,"./toSentence":60,"./toSentenceSerial":61,"./trim":62,"./truncate":63,"./underscored":64,"./unescapeHTML":65,"./unquote":66,"./vsprintf":67,"./words":68,"./wrap":69}],16:[function(_dereq_,module,exports){
+},{"./camelize":1,"./capitalize":2,"./chars":3,"./chop":4,"./classify":5,"./clean":6,"./cleanDiacritics":7,"./count":8,"./dasherize":9,"./decamelize":10,"./decapitalize":11,"./dedent":12,"./endsWith":13,"./escapeHTML":14,"./exports":15,"./helper/escapeRegExp":20,"./humanize":25,"./include":26,"./insert":27,"./isBlank":28,"./join":29,"./levenshtein":30,"./lines":31,"./lpad":32,"./lrpad":33,"./ltrim":34,"./map":35,"./naturalCmp":36,"./numberFormat":37,"./pad":38,"./pred":39,"./prune":40,"./quote":41,"./repeat":42,"./replaceAll":43,"./reverse":44,"./rpad":45,"./rtrim":46,"./slugify":47,"./splice":48,"./sprintf":49,"./startsWith":50,"./strLeft":51,"./strLeftBack":52,"./strRight":53,"./strRightBack":54,"./stripTags":55,"./succ":56,"./surround":57,"./swapCase":58,"./titleize":59,"./toBoolean":60,"./toNumber":61,"./toSentence":62,"./toSentenceSerial":63,"./trim":64,"./truncate":65,"./underscored":66,"./unescapeHTML":67,"./unquote":68,"./vsprintf":69,"./words":70,"./wrap":71}],17:[function(_dereq_,module,exports){
 var makeString = _dereq_('./makeString');
 
 module.exports = function adjacent(str, direction) {
@@ -337,7 +351,7 @@ module.exports = function adjacent(str, direction) {
   return str.slice(0, -1) + String.fromCharCode(str.charCodeAt(str.length - 1) + direction);
 };
 
-},{"./makeString":21}],17:[function(_dereq_,module,exports){
+},{"./makeString":22}],18:[function(_dereq_,module,exports){
 var escapeRegExp = _dereq_('./escapeRegExp');
 
 module.exports = function defaultToWhiteSpace(characters) {
@@ -349,7 +363,7 @@ module.exports = function defaultToWhiteSpace(characters) {
     return '[' + escapeRegExp(characters) + ']';
 };
 
-},{"./escapeRegExp":19}],18:[function(_dereq_,module,exports){
+},{"./escapeRegExp":20}],19:[function(_dereq_,module,exports){
 /* We're explicitly defining the list of entities we want to escape.
 nbsp is an HTML entity, but we don't want to escape all space characters in a string, hence its omission in this map.
 
@@ -370,14 +384,14 @@ var escapeChars = {
 
 module.exports = escapeChars;
 
-},{}],19:[function(_dereq_,module,exports){
+},{}],20:[function(_dereq_,module,exports){
 var makeString = _dereq_('./makeString');
 
 module.exports = function escapeRegExp(str) {
   return makeString(str).replace(/([.*+?^=!:${}()|[\]\/\\])/g, '\\$1');
 };
 
-},{"./makeString":21}],20:[function(_dereq_,module,exports){
+},{"./makeString":22}],21:[function(_dereq_,module,exports){
 /*
 We're explicitly defining the list of entities that might see in escape HTML strings
 */
@@ -398,7 +412,7 @@ var htmlEntities = {
 
 module.exports = htmlEntities;
 
-},{}],21:[function(_dereq_,module,exports){
+},{}],22:[function(_dereq_,module,exports){
 /**
  * Ensure some object is a coerced to a string
  **/
@@ -407,7 +421,7 @@ module.exports = function makeString(object) {
   return '' + object;
 };
 
-},{}],22:[function(_dereq_,module,exports){
+},{}],23:[function(_dereq_,module,exports){
 module.exports = function strRepeat(str, qty){
   if (qty < 1) return '';
   var result = '';
@@ -418,12 +432,12 @@ module.exports = function strRepeat(str, qty){
   return result;
 };
 
-},{}],23:[function(_dereq_,module,exports){
+},{}],24:[function(_dereq_,module,exports){
 module.exports = function toPositive(number) {
   return number < 0 ? 0 : (+number || 0);
 };
 
-},{}],24:[function(_dereq_,module,exports){
+},{}],25:[function(_dereq_,module,exports){
 var capitalize = _dereq_('./capitalize');
 var underscored = _dereq_('./underscored');
 var trim = _dereq_('./trim');
@@ -432,7 +446,7 @@ module.exports = function humanize(str) {
   return capitalize(trim(underscored(str).replace(/_id$/, '').replace(/_/g, ' ')));
 };
 
-},{"./capitalize":2,"./trim":62,"./underscored":64}],25:[function(_dereq_,module,exports){
+},{"./capitalize":2,"./trim":64,"./underscored":66}],26:[function(_dereq_,module,exports){
 var makeString = _dereq_('./helper/makeString');
 
 module.exports = function include(str, needle) {
@@ -440,21 +454,21 @@ module.exports = function include(str, needle) {
   return makeString(str).indexOf(needle) !== -1;
 };
 
-},{"./helper/makeString":21}],26:[function(_dereq_,module,exports){
+},{"./helper/makeString":22}],27:[function(_dereq_,module,exports){
 var splice = _dereq_('./splice');
 
 module.exports = function insert(str, i, substr) {
   return splice(str, i, 0, substr);
 };
 
-},{"./splice":46}],27:[function(_dereq_,module,exports){
+},{"./splice":48}],28:[function(_dereq_,module,exports){
 var makeString = _dereq_('./helper/makeString');
 
 module.exports = function isBlank(str) {
   return (/^\s*$/).test(makeString(str));
 };
 
-},{"./helper/makeString":21}],28:[function(_dereq_,module,exports){
+},{"./helper/makeString":22}],29:[function(_dereq_,module,exports){
 var makeString = _dereq_('./helper/makeString');
 var slice = [].slice;
 
@@ -465,7 +479,7 @@ module.exports = function join() {
   return args.join(makeString(separator));
 };
 
-},{"./helper/makeString":21}],29:[function(_dereq_,module,exports){
+},{"./helper/makeString":22}],30:[function(_dereq_,module,exports){
 var makeString = _dereq_('./helper/makeString');
 
 /**
@@ -519,27 +533,27 @@ module.exports = function levenshtein(str1, str2) {
   return nextCol;
 };
 
-},{"./helper/makeString":21}],30:[function(_dereq_,module,exports){
+},{"./helper/makeString":22}],31:[function(_dereq_,module,exports){
 module.exports = function lines(str) {
   if (str == null) return [];
   return String(str).split(/\r\n?|\n/);
 };
 
-},{}],31:[function(_dereq_,module,exports){
+},{}],32:[function(_dereq_,module,exports){
 var pad = _dereq_('./pad');
 
 module.exports = function lpad(str, length, padStr) {
   return pad(str, length, padStr);
 };
 
-},{"./pad":36}],32:[function(_dereq_,module,exports){
+},{"./pad":38}],33:[function(_dereq_,module,exports){
 var pad = _dereq_('./pad');
 
 module.exports = function lrpad(str, length, padStr) {
   return pad(str, length, padStr, 'both');
 };
 
-},{"./pad":36}],33:[function(_dereq_,module,exports){
+},{"./pad":38}],34:[function(_dereq_,module,exports){
 var makeString = _dereq_('./helper/makeString');
 var defaultToWhiteSpace = _dereq_('./helper/defaultToWhiteSpace');
 var nativeTrimLeft = String.prototype.trimLeft;
@@ -551,7 +565,18 @@ module.exports = function ltrim(str, characters) {
   return str.replace(new RegExp('^' + characters + '+'), '');
 };
 
-},{"./helper/defaultToWhiteSpace":17,"./helper/makeString":21}],34:[function(_dereq_,module,exports){
+},{"./helper/defaultToWhiteSpace":18,"./helper/makeString":22}],35:[function(_dereq_,module,exports){
+var makeString = _dereq_('./helper/makeString');
+
+module.exports = function(str, callback) {
+  str = makeString(str);
+
+  if (str.length === 0 || typeof callback !== 'function') return str;
+
+  return str.replace(/./g, callback);
+};
+
+},{"./helper/makeString":22}],36:[function(_dereq_,module,exports){
 module.exports = function naturalCmp(str1, str2) {
   if (str1 == str2) return 0;
   if (!str1) return -1;
@@ -582,7 +607,7 @@ module.exports = function naturalCmp(str1, str2) {
   return str1 < str2 ? -1 : 1;
 };
 
-},{}],35:[function(_dereq_,module,exports){
+},{}],37:[function(_dereq_,module,exports){
 module.exports = function numberFormat(number, dec, dsep, tsep) {
   if (isNaN(number) || number == null) return '';
 
@@ -596,7 +621,7 @@ module.exports = function numberFormat(number, dec, dsep, tsep) {
   return fnums.replace(/(\d)(?=(?:\d{3})+$)/g, '$1' + tsep) + decimals;
 };
 
-},{}],36:[function(_dereq_,module,exports){
+},{}],38:[function(_dereq_,module,exports){
 var makeString = _dereq_('./helper/makeString');
 var strRepeat = _dereq_('./helper/strRepeat');
 
@@ -624,14 +649,14 @@ module.exports = function pad(str, length, padStr, type) {
   }
 };
 
-},{"./helper/makeString":21,"./helper/strRepeat":22}],37:[function(_dereq_,module,exports){
+},{"./helper/makeString":22,"./helper/strRepeat":23}],39:[function(_dereq_,module,exports){
 var adjacent = _dereq_('./helper/adjacent');
 
 module.exports = function succ(str) {
   return adjacent(str, -1);
 };
 
-},{"./helper/adjacent":16}],38:[function(_dereq_,module,exports){
+},{"./helper/adjacent":17}],40:[function(_dereq_,module,exports){
 /**
  * _s.prune: a more elegant version of truncate
  * prune extra chars, never leaving a half-chopped word.
@@ -660,14 +685,14 @@ module.exports = function prune(str, length, pruneStr) {
   return (template + pruneStr).length > str.length ? str : str.slice(0, template.length) + pruneStr;
 };
 
-},{"./helper/makeString":21,"./rtrim":44}],39:[function(_dereq_,module,exports){
+},{"./helper/makeString":22,"./rtrim":46}],41:[function(_dereq_,module,exports){
 var surround = _dereq_('./surround');
 
 module.exports = function quote(str, quoteChar) {
   return surround(str, quoteChar || '"');
 };
 
-},{"./surround":55}],40:[function(_dereq_,module,exports){
+},{"./surround":57}],42:[function(_dereq_,module,exports){
 var makeString = _dereq_('./helper/makeString');
 var strRepeat = _dereq_('./helper/strRepeat');
 
@@ -684,7 +709,7 @@ module.exports = function repeat(str, qty, separator) {
   return repeat.join(separator);
 };
 
-},{"./helper/makeString":21,"./helper/strRepeat":22}],41:[function(_dereq_,module,exports){
+},{"./helper/makeString":22,"./helper/strRepeat":23}],43:[function(_dereq_,module,exports){
 var makeString = _dereq_('./helper/makeString');
 
 module.exports = function replaceAll(str, find, replace, ignorecase) {
@@ -694,21 +719,21 @@ module.exports = function replaceAll(str, find, replace, ignorecase) {
   return makeString(str).replace(reg, replace);
 };
 
-},{"./helper/makeString":21}],42:[function(_dereq_,module,exports){
+},{"./helper/makeString":22}],44:[function(_dereq_,module,exports){
 var chars = _dereq_('./chars');
 
 module.exports = function reverse(str) {
   return chars(str).reverse().join('');
 };
 
-},{"./chars":3}],43:[function(_dereq_,module,exports){
+},{"./chars":3}],45:[function(_dereq_,module,exports){
 var pad = _dereq_('./pad');
 
 module.exports = function rpad(str, length, padStr) {
   return pad(str, length, padStr, 'right');
 };
 
-},{"./pad":36}],44:[function(_dereq_,module,exports){
+},{"./pad":38}],46:[function(_dereq_,module,exports){
 var makeString = _dereq_('./helper/makeString');
 var defaultToWhiteSpace = _dereq_('./helper/defaultToWhiteSpace');
 var nativeTrimRight = String.prototype.trimRight;
@@ -720,7 +745,7 @@ module.exports = function rtrim(str, characters) {
   return str.replace(new RegExp(characters + '+$'), '');
 };
 
-},{"./helper/defaultToWhiteSpace":17,"./helper/makeString":21}],45:[function(_dereq_,module,exports){
+},{"./helper/defaultToWhiteSpace":18,"./helper/makeString":22}],47:[function(_dereq_,module,exports){
 var makeString = _dereq_('./helper/makeString');
 var defaultToWhiteSpace = _dereq_('./helper/defaultToWhiteSpace');
 var trim = _dereq_('./trim');
@@ -731,7 +756,7 @@ module.exports = function slugify(str) {
   return trim(dasherize(cleanDiacritics(str).replace(/[^\w\s-]/g, '-').toLowerCase()), '-');
 };
 
-},{"./cleanDiacritics":7,"./dasherize":9,"./helper/defaultToWhiteSpace":17,"./helper/makeString":21,"./trim":62}],46:[function(_dereq_,module,exports){
+},{"./cleanDiacritics":7,"./dasherize":9,"./helper/defaultToWhiteSpace":18,"./helper/makeString":22,"./trim":64}],48:[function(_dereq_,module,exports){
 var chars = _dereq_('./chars');
 
 module.exports = function splice(str, i, howmany, substr) {
@@ -740,7 +765,7 @@ module.exports = function splice(str, i, howmany, substr) {
   return arr.join('');
 };
 
-},{"./chars":3}],47:[function(_dereq_,module,exports){
+},{"./chars":3}],49:[function(_dereq_,module,exports){
 // sprintf() for JavaScript 0.7-beta1
 // http://www.diveintojavascript.com/projects/javascript-sprintf
 //
@@ -866,7 +891,7 @@ var sprintf = (function() {
 
 module.exports = sprintf;
 
-},{"./helper/strRepeat":22}],48:[function(_dereq_,module,exports){
+},{"./helper/strRepeat":23}],50:[function(_dereq_,module,exports){
 var makeString = _dereq_('./helper/makeString');
 var toPositive = _dereq_('./helper/toPositive');
 
@@ -877,7 +902,7 @@ module.exports = function startsWith(str, starts, position) {
   return str.lastIndexOf(starts, position) === position;
 };
 
-},{"./helper/makeString":21,"./helper/toPositive":23}],49:[function(_dereq_,module,exports){
+},{"./helper/makeString":22,"./helper/toPositive":24}],51:[function(_dereq_,module,exports){
 var makeString = _dereq_('./helper/makeString');
 
 module.exports = function strLeft(str, sep) {
@@ -887,7 +912,7 @@ module.exports = function strLeft(str, sep) {
   return~ pos ? str.slice(0, pos) : str;
 };
 
-},{"./helper/makeString":21}],50:[function(_dereq_,module,exports){
+},{"./helper/makeString":22}],52:[function(_dereq_,module,exports){
 var makeString = _dereq_('./helper/makeString');
 
 module.exports = function strLeftBack(str, sep) {
@@ -897,7 +922,7 @@ module.exports = function strLeftBack(str, sep) {
   return~ pos ? str.slice(0, pos) : str;
 };
 
-},{"./helper/makeString":21}],51:[function(_dereq_,module,exports){
+},{"./helper/makeString":22}],53:[function(_dereq_,module,exports){
 var makeString = _dereq_('./helper/makeString');
 
 module.exports = function strRight(str, sep) {
@@ -907,7 +932,7 @@ module.exports = function strRight(str, sep) {
   return~ pos ? str.slice(pos + sep.length, str.length) : str;
 };
 
-},{"./helper/makeString":21}],52:[function(_dereq_,module,exports){
+},{"./helper/makeString":22}],54:[function(_dereq_,module,exports){
 var makeString = _dereq_('./helper/makeString');
 
 module.exports = function strRightBack(str, sep) {
@@ -917,26 +942,26 @@ module.exports = function strRightBack(str, sep) {
   return~ pos ? str.slice(pos + sep.length, str.length) : str;
 };
 
-},{"./helper/makeString":21}],53:[function(_dereq_,module,exports){
+},{"./helper/makeString":22}],55:[function(_dereq_,module,exports){
 var makeString = _dereq_('./helper/makeString');
 
 module.exports = function stripTags(str) {
   return makeString(str).replace(/<\/?[^>]+>/g, '');
 };
 
-},{"./helper/makeString":21}],54:[function(_dereq_,module,exports){
+},{"./helper/makeString":22}],56:[function(_dereq_,module,exports){
 var adjacent = _dereq_('./helper/adjacent');
 
 module.exports = function succ(str) {
   return adjacent(str, 1);
 };
 
-},{"./helper/adjacent":16}],55:[function(_dereq_,module,exports){
+},{"./helper/adjacent":17}],57:[function(_dereq_,module,exports){
 module.exports = function surround(str, wrapper) {
   return [wrapper, str, wrapper].join('');
 };
 
-},{}],56:[function(_dereq_,module,exports){
+},{}],58:[function(_dereq_,module,exports){
 var makeString = _dereq_('./helper/makeString');
 
 module.exports = function swapCase(str) {
@@ -945,7 +970,7 @@ module.exports = function swapCase(str) {
   });
 };
 
-},{"./helper/makeString":21}],57:[function(_dereq_,module,exports){
+},{"./helper/makeString":22}],59:[function(_dereq_,module,exports){
 var makeString = _dereq_('./helper/makeString');
 
 module.exports = function titleize(str) {
@@ -954,7 +979,7 @@ module.exports = function titleize(str) {
   });
 };
 
-},{"./helper/makeString":21}],58:[function(_dereq_,module,exports){
+},{"./helper/makeString":22}],60:[function(_dereq_,module,exports){
 var trim = _dereq_('./trim');
 
 function boolMatch(s, matchers) {
@@ -976,7 +1001,7 @@ module.exports = function toBoolean(str, trueValues, falseValues) {
   if (boolMatch(str, falseValues || ["false", "0"])) return false;
 };
 
-},{"./trim":62}],59:[function(_dereq_,module,exports){
+},{"./trim":64}],61:[function(_dereq_,module,exports){
 var trim = _dereq_('./trim');
 
 module.exports = function toNumber(num, precision) {
@@ -985,7 +1010,7 @@ module.exports = function toNumber(num, precision) {
   return Math.round(num * factor) / factor;
 };
 
-},{"./trim":62}],60:[function(_dereq_,module,exports){
+},{"./trim":64}],62:[function(_dereq_,module,exports){
 var rtrim = _dereq_('./rtrim');
 
 module.exports = function toSentence(array, separator, lastSeparator, serial) {
@@ -999,14 +1024,14 @@ module.exports = function toSentence(array, separator, lastSeparator, serial) {
   return a.length ? a.join(separator) + lastSeparator + lastMember : lastMember;
 };
 
-},{"./rtrim":44}],61:[function(_dereq_,module,exports){
+},{"./rtrim":46}],63:[function(_dereq_,module,exports){
 var toSentence = _dereq_('./toSentence');
 
 module.exports = function toSentenceSerial(array, sep, lastSep) {
   return toSentence(array, sep, lastSep, true);
 };
 
-},{"./toSentence":60}],62:[function(_dereq_,module,exports){
+},{"./toSentence":62}],64:[function(_dereq_,module,exports){
 var makeString = _dereq_('./helper/makeString');
 var defaultToWhiteSpace = _dereq_('./helper/defaultToWhiteSpace');
 var nativeTrim = String.prototype.trim;
@@ -1018,7 +1043,7 @@ module.exports = function trim(str, characters) {
   return str.replace(new RegExp('^' + characters + '+|' + characters + '+$', 'g'), '');
 };
 
-},{"./helper/defaultToWhiteSpace":17,"./helper/makeString":21}],63:[function(_dereq_,module,exports){
+},{"./helper/defaultToWhiteSpace":18,"./helper/makeString":22}],65:[function(_dereq_,module,exports){
 var makeString = _dereq_('./helper/makeString');
 
 module.exports = function truncate(str, length, truncateStr) {
@@ -1028,14 +1053,14 @@ module.exports = function truncate(str, length, truncateStr) {
   return str.length > length ? str.slice(0, length) + truncateStr : str;
 };
 
-},{"./helper/makeString":21}],64:[function(_dereq_,module,exports){
+},{"./helper/makeString":22}],66:[function(_dereq_,module,exports){
 var trim = _dereq_('./trim');
 
 module.exports = function underscored(str) {
   return trim(str).replace(/([a-z\d])([A-Z]+)/g, '$1_$2').replace(/[-\s]+/g, '_').toLowerCase();
 };
 
-},{"./trim":62}],65:[function(_dereq_,module,exports){
+},{"./trim":64}],67:[function(_dereq_,module,exports){
 var makeString = _dereq_('./helper/makeString');
 var htmlEntities = _dereq_('./helper/htmlEntities');
 
@@ -1055,7 +1080,7 @@ module.exports = function unescapeHTML(str) {
   });
 };
 
-},{"./helper/htmlEntities":20,"./helper/makeString":21}],66:[function(_dereq_,module,exports){
+},{"./helper/htmlEntities":21,"./helper/makeString":22}],68:[function(_dereq_,module,exports){
 module.exports = function unquote(str, quoteChar) {
   quoteChar = quoteChar || '"';
   if (str[0] === quoteChar && str[str.length - 1] === quoteChar)
@@ -1063,7 +1088,7 @@ module.exports = function unquote(str, quoteChar) {
   else return str;
 };
 
-},{}],67:[function(_dereq_,module,exports){
+},{}],69:[function(_dereq_,module,exports){
 var sprintf = _dereq_('./sprintf');
 
 module.exports = function vsprintf(fmt, argv) {
@@ -1071,7 +1096,7 @@ module.exports = function vsprintf(fmt, argv) {
   return sprintf.apply(null, argv);
 };
 
-},{"./sprintf":47}],68:[function(_dereq_,module,exports){
+},{"./sprintf":49}],70:[function(_dereq_,module,exports){
 var isBlank = _dereq_('./isBlank');
 var trim = _dereq_('./trim');
 
@@ -1080,11 +1105,11 @@ module.exports = function words(str, delimiter) {
   return trim(str, delimiter).split(delimiter || /\s+/);
 };
 
-},{"./isBlank":27,"./trim":62}],69:[function(_dereq_,module,exports){
+},{"./isBlank":28,"./trim":64}],71:[function(_dereq_,module,exports){
 // Wrap
 // wraps a string by a certain width
 
-makeString = _dereq_('./helper/makeString');
+var makeString = _dereq_('./helper/makeString');
 
 module.exports = function wrap(str, options){
 	str = makeString(str);
@@ -1181,6 +1206,7 @@ module.exports = function wrap(str, options){
 		return result;
 	}
 };
-},{"./helper/makeString":21}]},{},[15])
-(15)
+
+},{"./helper/makeString":22}]},{},[16])
+(16)
 });
