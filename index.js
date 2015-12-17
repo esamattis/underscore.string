@@ -42,6 +42,7 @@ s.pred             = require('./pred');
 s.succ             = require('./succ');
 s.titleize         = require('./titleize');
 s.camelize         = require('./camelize');
+s.decamelize       = require('./decamelize');
 s.underscored      = require('./underscored');
 s.dasherize        = require('./dasherize');
 s.classify         = require('./classify');
