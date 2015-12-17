@@ -418,6 +418,17 @@ camelize("Moz-transform");
 camelize("-moz-transform", true);
 // => "mozTransform"
 ```
+#### decamelize(string, [seperator="_"]) => string
+
+Converts camelized string to a decamelized one. 
+
+```javascript
+decamelize("theDecamelizeStringMethod");
+// => "the_decamelize_string_method"
+
+decamelize("webkitTransform", "-");
+// => "webkit-transform"
+```
 
 #### classify(string) => string
 
