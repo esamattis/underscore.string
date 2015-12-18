@@ -5,5 +5,8 @@ module.exports = function decamelize(string, separator) {
 	string = trim(string).split(/(?=[A-Z])/).map(function(word) {
 		return decap(word);
 	});
-    return string.join(separator || '_');
+	if (separator === undefined) {
+		separator = "_";
+	} 
+    return string.join(separator);
 };
