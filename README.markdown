@@ -512,7 +512,7 @@ prune("Hello", 10);
 
 #### words(str, delimiter=/\s+/) => array
 
-Split string by delimiter (String or RegExp), /\s+/ by default.
+Splits string by delimiter (String or RegExp), /\s+/ by default.
 
 ```javascript
 words("   I   love   you   ");
@@ -592,7 +592,7 @@ lrpad("1", 8, '0');
 
 #### toNumber(string, [decimals]) => number
 
-Parse string to number. Returns NaN if string can't be parsed to number.
+Parses string to number. Returns NaN if string can't be parsed to number.
 
 ```javascript
 toNumber("2.556");
@@ -655,7 +655,7 @@ stripTags("a <a href=\"#\">link</a><script>alert(\"hello world!\")</script>");
 
 #### toSentence(array, [delimiter, lastDelimiter]) => string
 
-Join an array into a human readable sentence.
+Joins an array into a human readable sentence.
 
 ```javascript
 toSentence(["jQuery", "Mootools", "Prototype"]);
@@ -682,7 +682,7 @@ toSentenceSerial(["jQuery", "Mootools", "Prototype"], ", ", " unt ");
 
 #### repeat(string, count, [separator]) => string
 
-Repeats a string count times.
+Repeats a string `count` times.
 
 ```javascript
 repeat("foo", 3);
@@ -694,7 +694,7 @@ repeat("foo", 3, "bar");
 
 #### surround(string, wrap) => string
 
-Surround a string with another string.
+Surrounds a string with another string.
 
 ```javascript
 surround("foo", "ab");
@@ -724,7 +724,7 @@ unquote("'foo'", "'");
 
 #### slugify(string) => string
 
-Transform text into an ascii slug which can be used in safely in URLs. Replaces whitespaces, accentuated, and special characters with a dash. Limited set of non-ascii characters are transformed to similar versions in the ascii character set such as `ä` to `a`.
+Transforms text into an ascii slug which can be used in safely in URLs. Replaces whitespaces, accentuated, and special characters with a dash. Limited set of non-ascii characters are transformed to similar versions in the ascii character set such as `ä` to `a`.
 
 ```javascript
 slugify("Un éléphant à l\'orée du bois");
@@ -735,7 +735,7 @@ slugify("Un éléphant à l\'orée du bois");
 
 #### naturalCmp(string1, string2) => number
 
-Naturally sort strings like humans would do. None numbers are compared by their [ASCII values](http://www.asciitable.com/). Note: this means "a" > "A". Use `.toLowerCase` if this isn't to be desired.
+Naturally sorts strings like humans would do. None numbers are compared by their [ASCII values](http://www.asciitable.com/). Note: this means "a" > "A". Use `.toLowerCase` if this isn't to be desired.
 
 Just past it to `Array#sort`.
 
@@ -746,7 +746,7 @@ Just past it to `Array#sort`.
 
 #### toBoolean(string) => boolean
 
-Turn strings that can be commonly considered as booleas to real booleans. Such as "true", "false", "1" and "0". This function is case insensitive.
+Turns strings that can be commonly considered as booleas to real booleans. Such as "true", "false", "1" and "0". This function is case insensitive.
 
 ```javascript
 toBoolean("true");
@@ -797,7 +797,7 @@ If you require the full library you can use chaining and aliases
 
 #### s(string) => chain
 
-Start a chain. Returns an immutable chain object with the string functions as
+Starts a chain. Returns an immutable chain object with the string functions as
 methods which return a new chain object instead of the plain string value.
 
 The chain object includes also following native Javascript string methods:
@@ -813,7 +813,7 @@ The chain object includes also following native Javascript string methods:
 
 #### chain.value()
 
-Return the string value from the chain
+Returns the string value from the chain
 
 ```javascript
 s("  foo  ").trim().capitalize().value();
@@ -830,7 +830,7 @@ s(" foobar ").trim().startsWith("foo");
 
 #### chain.tap(function) => chain
 
-Tap into the chain with a custom function
+Taps into the chain with a custom function
 
 ```javascript
 s("foo").tap(function(value){
