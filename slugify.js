@@ -1,5 +1,3 @@
-var makeString = require('./helper/makeString');
-var defaultToWhiteSpace = require('./helper/defaultToWhiteSpace');
 var trim = require('./trim');
 var dasherize = require('./dasherize');
 var cleanDiacritics = require("./cleanDiacritics");

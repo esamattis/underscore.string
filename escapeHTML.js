@@ -1,6 +1,5 @@
 var makeString = require('./helper/makeString');
 var escapeChars = require('./helper/escapeChars');
-var reversedEscapeChars = {};
 
 var regexString = "[";
 for(var key in escapeChars) {

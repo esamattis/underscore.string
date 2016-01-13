@@ -1,5 +1,6 @@
 var gulp = require('gulp-param')(require('gulp'), process.argv),
   mocha = require("gulp-mocha"),
+  eslint = require('gulp-eslint'),
   istanbul = require('gulp-istanbul'),
   bench = require('gulp-bench'),
   uglify = require('gulp-uglify'),
@@ -19,7 +20,7 @@ var gulp = require('gulp-param')(require('gulp'), process.argv),
   headerText = '/* ' + package.name + ' ' + package.version + ' | ' +
                package.license + ' licensed | ' + package.homepage + ' */\n\n';
 
-gulp.task('test', ['browserify'], function(cov) {
+gulp.task('test', ['lint', 'browserify'], function(cov) {
   var reporters = ['html'];
 
   if (cov) {
@@ -41,6 +42,22 @@ gulp.task('test', ['browserify'], function(cov) {
           reporters: reporters
         }));
     });
+});
+
+gulp.task('lint', function() {
+  var toLint = [
+    '**/*.js',
+    '!gulpfile.js',
+    '!meteor-*.js',
+    '!package.js',
+    '!dist/**',
+    '!coverage/**',
+    '!node_modules/**'
+  ];
+  return gulp.src(toLint)
+        .pipe(eslint({ fix: true }))
+        .pipe(eslint.format())
+        .pipe(eslint.failAfterError());
 });
 
 gulp.task('bench', ['browserify'], function(func) {

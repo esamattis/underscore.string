@@ -100,13 +100,13 @@ s.prototype = {
 };
 
 function fn2method(key, fn) {
-    if (typeof fn !== "function") return;
-    s.prototype[key] = function() {
-      var args = [this._wrapped].concat(Array.prototype.slice.call(arguments));
-      var res = fn.apply(null, args);
-      // if the result is non-string stop the chain and return the value
-      return typeof res === 'string' ? new s(res) : res;
-    };
+  if (typeof fn !== "function") return;
+  s.prototype[key] = function() {
+    var args = [this._wrapped].concat(Array.prototype.slice.call(arguments));
+    var res = fn.apply(null, args);
+    // if the result is non-string stop the chain and return the value
+    return typeof res === 'string' ? new s(res) : res;
+  };
 }
 
 // Copy functions to instance methods for chaining
@@ -124,17 +124,17 @@ function prototype2method(methodName) {
 }
 
 var prototypeMethods = [
-  "toUpperCase",
-  "toLowerCase",
-  "split",
-  "replace",
-  "slice",
-  "substring",
-  "substr",
-  "concat"
+    "toUpperCase",
+    "toLowerCase",
+    "split",
+    "replace",
+    "slice",
+    "substring",
+    "substr",
+    "concat"
 ];
 
-for (var key in prototypeMethods) prototype2method(prototypeMethods[key]);
+for (var method in prototypeMethods) prototype2method(prototypeMethods[method]);
 
 
 module.exports = s;

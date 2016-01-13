@@ -42,15 +42,15 @@ test("methods returning non-string values stops the chain", function() {
 
 test("prototype methods are available in the chain", function() {
   var chain = s("foo");
-  var prototypeMethods = [
-    "toUpperCase",
-    "toLowerCase",
-    "split",
-    "replace",
-    "slice",
-    "substring",
-    "substr",
-   "concat",
+  [
+      "toUpperCase",
+      "toLowerCase",
+      "split",
+      "replace",
+      "slice",
+      "substring",
+      "substr",
+      "concat"
   ].forEach(function(method) {
     equal(typeof chain[method], "function", "has method: " + method);
   });
