@@ -8,11 +8,13 @@ module.exports = function wrap(str, options){
 
 	options = options || {};
 
-	width = options.width || 75;
-	seperator = options.seperator || '\n';
-	cut = options.cut || false;
-	preserveSpaces = options.preserveSpaces || false;
-	trailingSpaces = options.trailingSpaces || false;
+	var width = options.width || 75;
+	var seperator = options.seperator || '\n';
+	var cut = options.cut || false;
+	var preserveSpaces = options.preserveSpaces || false;
+	var trailingSpaces = options.trailingSpaces || false;
+
+  var result;
 
 	if(width <= 0){
 		return str;
@@ -20,9 +22,9 @@ module.exports = function wrap(str, options){
 
 	else if(!cut){
 
-		words = str.split(" ");
+		var words = str.split(" ");
+		var current_column = 0;
 		result = "";
-		current_column = 0;
 
 		while(words.length > 0){
 			
@@ -75,7 +77,7 @@ module.exports = function wrap(str, options){
 
 	else {
 
-		index = 0;
+		var index = 0;
 		result = "";
 
 		// walk through each character and add seperators where appropriate
