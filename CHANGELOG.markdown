@@ -1,6 +1,12 @@
 
 # Changelog
 
+### 3.2.3
+
+* Add romanian characters to `cleanDiacritics` [#470](https://github.com/epeli/underscore.string/pull/470)
+* Fix global leaks
+* [Full changelog](https://github.com/epeli/underscore.string/compare/3.2.2...3.2.3)
+
 ### 3.2.2
 
 * Fix `slugify`regression [#448](https://github.com/epeli/underscore.string/pull/448)
