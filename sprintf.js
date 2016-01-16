@@ -58,7 +58,7 @@ var sprintf = (function() {
           case 'x': arg = arg.toString(16); break;
           case 'X': arg = arg.toString(16).toUpperCase(); break;
         }
-        arg = (/[def]/.test(match[8]) && match[3] && arg >= 0 ? '+'+ arg : arg);
+        arg = (match[3] && /[def]/.test(match[8]) && arg >= 0 ? '+'+ arg : arg);
         pad_character = match[4] ? match[4] == '0' ? '0' : match[4].charAt(1) : ' ';
         pad_length = match[6] - String(arg).length;
         pad = match[6] ? str_repeat(pad_character, pad_length) : '';
