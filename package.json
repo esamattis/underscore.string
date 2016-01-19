@@ -60,5 +60,8 @@
       "s": true
     }
   },
-  "dependencies": {}
+  "dependencies": {
+    "sprintf-js": "^1.0.3",
+    "util-deprecate": "^1.0.2"
+  }
 }

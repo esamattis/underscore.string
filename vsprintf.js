@@ -1,6 +1,4 @@
-var sprintf = require('./sprintf');
+var deprecate = require('util-deprecate');
 
-module.exports = function vsprintf(fmt, argv) {
-  argv.unshift(fmt);
-  return sprintf.apply(null, argv);
-};
+module.exports = deprecate(require('sprintf-js').vsprintf,
+  'vsprintf() will be removed in the next major release, use the sprintf-js package instead.');
