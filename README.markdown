@@ -530,11 +530,9 @@ words("   ")
 
 #### sprintf(string format, ...arguments) => string
 
-C like string formatting.
-Credits goes to [Alexandru Marasteanu][o].
-For more detailed documentation, see the [original page][o].
+C like string formatting. Makes use of the [sprintf-js](https://npmjs.org/package/sprintf-js) package.
 
-[o]: http://www.diveintojavascript.com/projects/javascript-sprintf
+**This function will be removed in the next major release, use the [sprintf-js](https://npmjs.org/package/sprintf-js) package instead.**
 
 ```javascript
 sprintf("%.1f", 1.17);
