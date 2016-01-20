@@ -1,6 +1,0 @@
-.gitignore
-.DS_Store
-.project
-.tmp_*
-node_modules
-coverage
