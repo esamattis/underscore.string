@@ -2,8 +2,8 @@
 var equal = require('assert').equal;
 var cleanDiacritics = require('../cleanDiacritics');
 
-var from  = "ąàáäâãåæăćčĉęèéëêĝĥìíïîĵłľńňòóöőôõðøśșşšŝťțţŭùúüűûñÿýçżźž",
-    to    = "aaaaaaaaaccceeeeeghiiiijllnnoooooooossssstttuuuuuunyyczzz";
+var from  = "ąàáäâãåæăćčĉďęèéëêěĝĥìíïîĵłľńňòóöőôõðøřśșşšŝťțţŭùúüűûñÿýçżźž",
+    to    = "aaaaaaaaacccdeeeeeeghiiiijllnnoooooooorssssstttuuuuuunyyczzz";
 
 test('#cleanDiacritics', function() {
 
@@ -20,5 +20,7 @@ test('#cleanDiacritics', function() {
 
   equal(cleanDiacritics('ß'), 'ss');
   equal(cleanDiacritics('Schuß'), 'Schuss');
+  
+  equal(cleanDiacritics('vstřícná odpověď'), 'vstricna odpoved');
 });
 
