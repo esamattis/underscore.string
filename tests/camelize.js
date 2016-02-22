@@ -12,7 +12,7 @@ test('#camelize', function(){
   equal(camelize(' the camelize  string method'), 'theCamelizeStringMethod');
   equal(camelize('the camelize   string method'), 'theCamelizeStringMethod');
   equal(camelize(' with   spaces'), 'withSpaces');
-  equal(camelize("_som eWeird---name-"), 'SomEWeirdName');
+  equal(camelize('_som eWeird---name-'), 'SomEWeirdName');
   equal(camelize(''), '', 'Camelize empty string returns empty string');
   equal(camelize(null), '', 'Camelize null returns empty string');
   equal(camelize(undefined), '', 'Camelize undefined returns empty string');
@@ -26,7 +26,7 @@ test('#camelize', function(){
   equal(camelize(' the camelize  string method', true), 'theCamelizeStringMethod');
   equal(camelize('the camelize   string method', true), 'theCamelizeStringMethod');
   equal(camelize(' with   spaces', true), 'withSpaces');
-  equal(camelize("_som eWeird---name-", true), 'somEWeirdName');
+  equal(camelize('_som eWeird---name-', true), 'somEWeirdName');
   equal(camelize('', true), '', 'Camelize empty string returns empty string');
   equal(camelize(null, true), '', 'Camelize null returns empty string');
   equal(camelize(undefined, true), '', 'Camelize undefined returns empty string');

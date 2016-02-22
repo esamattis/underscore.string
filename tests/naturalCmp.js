@@ -2,7 +2,7 @@ var naturalCmp = require('../naturalCmp');
 var _ = require('underscore');
 var equal = require('assert').equal;
 
-test("#naturalCmp", function() {
+test('#naturalCmp', function() {
   // Should be associative
   _.each([
     ['abc', null],

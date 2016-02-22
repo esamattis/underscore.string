@@ -22,15 +22,10 @@ is out of scope.
 
 (for maintainers)
 
-  - Upgrade version number `gulp bump --semver <version>`
-  - Build the library `gulp build`
-  - Commit build artifacts in `dist`
   - Write a changelog entry to `CHANGELOG.markdown`
     - Use Github compare to see what has changed from previous tag. Ex https://github.com/epeli/underscore.string/compare/3.0.0...master 
-  - Add git tag
-    - `git tag -a 3.2.1 -m "3.2.1" && git push origin --tags`
-  - [Draft][d] a new Github release for the tag
-  - Push new release to npm
+  - Update the version in the `package.json`
+  - Publish a new version of _.string `npm run release`
   - Update the [gh-pages][ghp] branch `gulp bump --semver <version> && gulp site`
     - You need global installation of bower for this to work
     - Local workaround:

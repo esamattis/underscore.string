@@ -3,17 +3,17 @@ nbsp is an HTML entity, but we don't want to escape all space characters in a st
 
 */
 var escapeChars = {
-    '¢' : 'cent',
-    '£' : 'pound',
-    '¥' : 'yen',
-    '€': 'euro',
-    '©' :'copy',
-    '®' : 'reg',
-    '<' : 'lt',
-    '>' : 'gt',
-    '"' : 'quot',
-    '&' : 'amp',
-    "'" : '#39'
+  '¢' : 'cent',
+  '£' : 'pound',
+  '¥' : 'yen',
+  '€': 'euro',
+  '©' :'copy',
+  '®' : 'reg',
+  '<' : 'lt',
+  '>' : 'gt',
+  '"' : 'quot',
+  '&' : 'amp',
+  '\'' : '#39'
 };
 
 module.exports = escapeChars;

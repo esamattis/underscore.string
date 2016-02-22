@@ -1,6 +1,6 @@
 var ok = require('assert').ok;
 var include = require('../include');
-var s = require('../dist/underscore.string');
+var s = require('../');
 
 
 test('#include', function() {
