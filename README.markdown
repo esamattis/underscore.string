@@ -107,9 +107,9 @@ filter(S.startsWith('.'), [
 ```
 
 ## Download
-
-  * [Development version](https://raw.github.com/epeli/underscore.string/master/dist/underscore.string.js) *Uncompressed with Comments*
-  * [Production version](https://github.com/epeli/underscore.string/raw/master/dist/underscore.string.min.js) *Minified*
+  
+  * [Development version](https://npmcdn.com/underscore.string/dist/underscore.string.js) *Uncompressed with Comments*
+  * [Production version](https://npmcdn.com/underscore.string/dist/underscore.string.min.js) *Minified*
 
 ## API
 

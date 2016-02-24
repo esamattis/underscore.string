@@ -16,7 +16,7 @@ test('#unescapeHTML', function(){
   equal(unescapeHTML('&#39_;'), '&#39_;');
   equal(unescapeHTML('&amp;#38;'), '&#38;');
   equal(unescapeHTML('&#38;amp;'), '&amp;');
-  equal(unescapeHTML('&#39;'), "'");
+  equal(unescapeHTML('&#39;'), '\'');
   equal(unescapeHTML(''), '');
   equal(unescapeHTML('&nbsp;'), ' ');
   equal(unescapeHTML('what is the &yen; to &pound; to &euro; conversion process?'), 'what is the ¥ to £ to € conversion process?');
