@@ -58,7 +58,7 @@ for example from <a href="http://www.diveintojavascript.com/core-javascript-refe
 Originally started as an Underscore.js extension but is a full standalone
 library nowadays.</p>
 <p>Upgrading from 2.x to 3.x? Please read the <a href="https://github.com/epeli/underscore.string/blob/master/CHANGELOG.markdown#300">changelog</a>.</p>
-<h2 id="usage">Usage<a class="anchor" href="#usage"><span class="glyphicon glyphicon-link header-link"></span></a></h2><h3 id="in-node-js-and-browserify">In Node.js and Browserify<a class="anchor" href="#in-node-js-and-browserify"><span class="glyphicon glyphicon-link header-link"></span></a></h3><p>Install from npm</p>
+<h2 id="usage">Usage<a class="anchor" href="#usage"><span class="glyphicon glyphicon-link header-link"></span></a></h2><h3 id="for-node-js-browserify-and-webpack">For Node.js, Browserify and Webpack<a class="anchor" href="#for-node-js-browserify-and-webpack"><span class="glyphicon glyphicon-link header-link"></span></a></h3><p>Install from npm</p>
 <pre><code>npm install underscore.string
 </code></pre><p>Require individual functions</p>
 <pre><code class="lang-javascript">var slugify = require(&quot;underscore.string/slugify&quot;);
@@ -171,7 +171,7 @@ This function supports cent, yen, euro, pound, lt, gt, copy, reg, quote, amp, ap
 <pre><code class="lang-javascript">unescapeHTML(&quot;&amp;lt;div&amp;gt;Blah&amp;nbsp;blah blah&amp;lt;/div&amp;gt;&quot;);
 // =&gt; &quot;&lt;div&gt;Blah blah blah&lt;/div&gt;&quot;
 </code></pre>
-<h4 id="insert-string-index-substring-gt-string">insert(string, index, substring) =&gt; string<a class="anchor" href="#insert-string-index-substring-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><pre><code class="lang-javascript">insert(&quot;Hello &quot;, 6, &quot;world&quot;);
+<h4 id="insert-string-index-substring-gt-string">insert(string, index, substring) =&gt; string<a class="anchor" href="#insert-string-index-substring-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><pre><code class="lang-javascript">insert(&quot;Hellworld&quot;, 4, &quot;o &quot;);
 // =&gt; &quot;Hello world&quot;
 </code></pre>
 <h4 id="replaceall-string-find-replace-ignorecase-false-gt-string">replaceAll(string, find, replace, [ignorecase=false]) =&gt; string<a class="anchor" href="#replaceall-string-find-replace-ignorecase-false-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><pre><code class="lang-javascript">replaceAll(&quot;foo&quot;, &quot;o&quot;, &quot;a&quot;);
@@ -334,9 +334,8 @@ words(&quot;I-love-you&quot;, /-/);
 words(&quot;   &quot;)
 // =&gt; []
 </code></pre>
-<h4 id="sprintf-string-format-arguments-gt-string">sprintf(string format, ...arguments) =&gt; string<a class="anchor" href="#sprintf-string-format-arguments-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>C like string formatting.
-Credits goes to <a href="http://www.diveintojavascript.com/projects/javascript-sprintf">Alexandru Marasteanu</a>.
-For more detailed documentation, see the <a href="http://www.diveintojavascript.com/projects/javascript-sprintf">original page</a>.</p>
+<h4 id="sprintf-string-format-arguments-gt-string">sprintf(string format, ...arguments) =&gt; string<a class="anchor" href="#sprintf-string-format-arguments-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>C like string formatting. Makes use of the <a href="https://npmjs.org/package/sprintf-js">sprintf-js</a> package.</p>
+<p><strong>This function will be removed in the next major release, use the <a href="https://npmjs.org/package/sprintf-js">sprintf-js</a> package instead.</strong></p>
 <pre><code class="lang-javascript">sprintf(&quot;%.1f&quot;, 1.17);
 // =&gt; &quot;1.2&quot;
 </code></pre>
@@ -467,6 +466,23 @@ toBoolean(&quot;random&quot;);
 toBoolean(&quot;true only at start&quot;, [/^true/]);
 // =&gt; true
 </code></pre>
+<h4 id="map-string-function-gt-string">map(string, function) =&gt; string<a class="anchor" href="#map-string-function-gt-string"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Creates a new string with the results of calling a provided function on every character of the given string.</p>
+<pre><code class="lang-javascript">map(&quot;Hello world&quot;, function(x) {
+  return x;
+});
+// =&gt; &quot;Hello world&quot;
+
+map(12345, function(x) {
+  return x;
+});
+// =&gt; &quot;12345&quot;
+
+map(&quot;Hello world&quot;, function(x) {
+  if (x === &#39;o&#39;) x = &#39;O&#39;;
+  return x;
+});
+// =&gt; &quot;HellO wOrld&quot;
+</code></pre>
 <h3 id="library-functions">Library functions<a class="anchor" href="#library-functions"><span class="glyphicon glyphicon-link header-link"></span></a></h3><p>If you require the full library you can use chaining and aliases</p>
 <h4 id="s-string-gt-chain">s(string) =&gt; chain<a class="anchor" href="#s-string-gt-chain"><span class="glyphicon glyphicon-link header-link"></span></a></h4><p>Start a chain. Returns an immutable chain object with the string functions as
 methods which return a new chain object instead of the plain string value.</p>
@@ -542,7 +558,7 @@ THE SOFTWARE.</p>
     <script src="assets/bootstrap/dist/js/bootstrap.min.js"></script>
 
     <!-- Include Underscore, so you can play with it in the console. -->
-    <script type="text/javascript" src="dist/underscore.string/dist/underscore.string.js"></script>
+    <script type="text/javascript" src="https://npmcdn.com/underscore.string/dist/underscore.string.js"></script>
     <script type="text/javascript" src="assets/log.min.js"></script>
     <script>
     (function(){
