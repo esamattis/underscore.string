@@ -12,7 +12,7 @@ replace({
 
 replace({
   regex: /(version?"\s?:?\:?\s")([\d\.]*)"/gi,
-  replacement: '$1' + package.version + "'",
+  replacement: '$1' + package.version + "\"",
   paths: VERSION_FILES,
   recursive: false,
   silent: false
