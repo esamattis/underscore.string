@@ -26,11 +26,7 @@ is out of scope.
     - Use Github compare to see what has changed from previous tag. Ex https://github.com/epeli/underscore.string/compare/3.0.0...master 
   - Update the version in the `package.json`
   - Publish a new version of _.string `npm run release`
-  - Update the [gh-pages][ghp] branch `gulp bump --semver <version> && gulp site`
-    - You need global installation of bower for this to work
-    - Local workaround:
-      - `npm install bower`
-      - `export PATH=$(pwd)/node_modules/.bin/:$PATH`
+  - Update the [gh-pages][ghp] branch `npm run bump`
 
 [d]: https://github.com/epeli/underscore.string/releases
 [ghp]: https://github.com/epeli/underscore.string/tree/gh-pages
