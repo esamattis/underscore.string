@@ -1,6 +1,16 @@
 
 # Changelog
 
+### 3.3.1
+* fix release script
+
+### 3.3.0
+
+* `sprintf` and `vsprintf` is now marked as deprecated [#479](https://github.com/epeli/underscore.string/pull/479)
+* `wrap` is added to `exports` [#489](https://github.com/epeli/underscore.string/pull/489)
+* new build chain without gulp
+* [Full changelog](https://github.com/epeli/underscore.string/compare/3.2.3...3.3.0)
+
 ### 3.2.3
 
 * Add romanian characters to `cleanDiacritics` [#470](https://github.com/epeli/underscore.string/pull/470)
