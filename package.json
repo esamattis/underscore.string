@@ -42,7 +42,7 @@
     "build:clean": "rm -rf dist",
     "build:bundle": "mkdir dist && browserify index.js -o dist/underscore.string.js -p browserify-header",
     "build:min": "uglifyjs dist/underscore.string.js -o dist/underscore.string.min.js --comments",
-    "release": "npm test && npm run release:version && npm run build && npm run release:push && npm publish",
+    "release": "npm test && npm run release:version && npm run build && npm run release:push",
     "release:version": "node scripts/bump-version.js",
     "release:push": "node scripts/push-tags.js"
   },
