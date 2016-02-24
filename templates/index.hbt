@@ -65,7 +65,7 @@
     <script src="assets/bootstrap/dist/js/bootstrap.min.js"></script>
 
     <!-- Include Underscore, so you can play with it in the console. -->
-    <script type="text/javascript" src="https://raw.githubusercontent.com/epeli/underscore.string/master/dist/underscore.string.js"></script>
+    <script type="text/javascript" src="https://npmcdn.com/underscore.string/dist/underscore.string.js"></script>
     <script type="text/javascript" src="assets/log.min.js"></script>
     <script>
     (function(){
