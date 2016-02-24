@@ -4,7 +4,7 @@
 * Underscore.string is freely distributable under the terms of the MIT license.
 * Documentation: https://github.com/epeli/underscore.string
 * Some code is borrowed from MooTools and Alexandru Marasteanu.
-* Version '3.3.2'
+* Version '3.3.3'
 * @preserve
 */
 
@@ -314,7 +314,7 @@ module.exports = function include(str, needle) {
 * Underscore.string is freely distributable under the terms of the MIT license.
 * Documentation: https://github.com/epeli/underscore.string
 * Some code is borrowed from MooTools and Alexandru Marasteanu.
-* Version '3.3.2'
+* Version '3.3.3'
 * @preserve
 */
 
@@ -326,7 +326,7 @@ function s(value) {
   this._wrapped = value;
 }
 
-s.VERSION = '3.3.2';
+s.VERSION = '3.3.3';
 
 s.isBlank          = require('./isBlank');
 s.stripTags        = require('./stripTags');
