@@ -115,6 +115,21 @@ filter(S.startsWith('.'), [
 
 ### Individual functions
 
+
+#### addPossession(string) => string
+
+Adds possession to string where relevant
+
+```javascript
+addPossession("Apple");
+// => "Apple's"
+```
+
+```javascript
+addPossession("Apple's");
+// => "Apple's"
+```
+
 #### numberFormat(number, [ decimals=0, decimalSeparator='.', orderSeparator=',']) => string
 
 Formats the numbers.
