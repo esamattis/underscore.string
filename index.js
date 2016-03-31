@@ -18,6 +18,7 @@ function s(value) {
 
 s.VERSION = '3.3.4';
 
+s.addPossession    = require('./addPossession');
 s.isBlank          = require('./isBlank');
 s.stripTags        = require('./stripTags');
 s.capitalize       = require('./capitalize');
