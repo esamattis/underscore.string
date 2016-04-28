@@ -28,4 +28,5 @@ test('#unescapeHTML', function(){
   equal(unescapeHTML(null), '');
   equal(unescapeHTML(undefined), '');
   equal(unescapeHTML(5), '5');
+  equal(unescapeHTML('&shy;'), '');
 });

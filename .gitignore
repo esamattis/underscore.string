@@ -4,3 +4,4 @@
 .tmp_*
 node_modules
 coverage
+.idea
