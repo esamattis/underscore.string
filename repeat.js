@@ -6,11 +6,12 @@ module.exports = function repeat(str, qty, separator) {
 
   qty = ~~qty;
 
-  // using faster implementation if separator is not needed;
-  if (separator == null) return strRepeat(str, qty);
-
-  // this one is about 300x slower in Google Chrome
-  /*eslint no-empty: 0*/
-  for (var repeat = []; qty > 0; repeat[--qty] = str) {}
-  return repeat.join(separator);
+  if (separator == null) {
+    return strRepeat(str, qty);
+  } else if (qty > 0) {
+    var repeat = str + separator;
+    return strRepeat(repeat, qty - 1) + str;
+  } else {
+    return '';
+  }
 };
