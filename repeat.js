@@ -6,12 +6,13 @@ module.exports = function repeat(str, qty, separator) {
 
   qty = ~~qty;
 
-  if (separator == null) {
+  if (separator == null) 
     return strRepeat(str, qty);
-  } else if (qty > 0) {
+  
+  if (qty > 0) {
     var repeat = str + separator;
     return strRepeat(repeat, qty - 1) + str;
-  } else {
-    return '';
-  }
+  } 
+  
+  return '';
 };
