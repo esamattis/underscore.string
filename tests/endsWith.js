@@ -5,6 +5,7 @@ var endsWith = require('../endsWith');
 
 test('#endsWith', function() {
   ok(endsWith('foobar', 'bar'), 'foobar ends with bar');
+  ok(endsWith('foobar', ''), 'foobar ends with empty string');
   ok(endsWith('foobarfoobar', 'bar'), 'foobar ends with bar');
   ok(endsWith('foo', 'o'), 'foobar ends with o');
   ok(endsWith('foobar', 'bar'), 'foobar ends with bar');
@@ -39,4 +40,3 @@ test('#endsWith', function() {
   strictEqual(endsWith('vader', 'der', 3), false);
   strictEqual(endsWith('vader', 'der', 4), false);
 });
-
