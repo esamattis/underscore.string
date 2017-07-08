@@ -1,12 +1,11 @@
-var ok = require('assert').ok;
+var deepEqual = require('assert').deepEqual;
 var chop = require('../chop');
 
 
 test('#chop', function(){
-  ok(chop(null, 2).length === 0, 'output []');
-  ok(chop('whitespace', 2).length === 5, 'output [wh, it, es, pa, ce]');
-  ok(chop('whitespace', 3).length === 4, 'output [whi, tes, pac, e]');
-  ok(chop('whitespace')[0].length === 10, 'output [whitespace]');
-  ok(chop(12345, 1).length === 5, 'output [1, 2, 3,  4, 5]');
+  deepEqual(chop(null, 2), [], 'output []');
+  deepEqual(chop('whitespace', 2), ['wh', 'it', 'es', 'pa', 'ce'], 'output [wh, it, es, pa, ce]');
+  deepEqual(chop('whitespace', 3), ['whi', 'tes', 'pac', 'e'], 'output [whi, tes, pac, e]');
+  deepEqual(chop('whitespace'), ['whitespace'], 'output [whitespace]');
+  deepEqual(chop(12345, 1), ['1', '2', '3', '4', '5'], 'output [1, 2, 3, 4, 5]');
 });
-
