@@ -12,5 +12,8 @@ test('#lrpad', function() {
   equal(lrpad('', 2), '  ');
   equal(lrpad(null, 2), '  ');
   equal(lrpad(undefined, 2), '  ');
+  equal(lrpad('Hello', 0), 'Hello');
+  equal(lrpad('Hello', -8), 'Hello');
+  equal(lrpad('Hello', undefined), 'Hello');
+  equal(lrpad('Hello', null), 'Hello');
 });
-
