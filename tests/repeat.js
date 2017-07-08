@@ -12,5 +12,6 @@ test('#repeat', function() {
   equal(repeat('', 2), '');
   equal(repeat(null, 2), '');
   equal(repeat(undefined, 2), '');
+  equal(repeat('foo', null), '');
+  equal(repeat('foo', undefined), '');
 });
-
