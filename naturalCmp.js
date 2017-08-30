@@ -23,7 +23,7 @@ module.exports = function naturalCmp(str1, str2) {
   }
 
   if (tokens1.length != tokens2.length)
-    return tokens1.length - tokens2.length;
+    return tokens1.length < tokens2.length ? -1 : 1;
 
   return str1 < str2 ? -1 : 1;
 };
