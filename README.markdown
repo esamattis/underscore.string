@@ -4,7 +4,7 @@ The stable release documentation can be found here https://epeli.github.io/under
 
 </span>
 
-# Underscore.string [![Build Status](https://secure.travis-ci.org/epeli/underscore.string.png?branch=master)](http://travis-ci.org/epeli/underscore.string) #
+# Underscore.string [![Build Status](https://secure.travis-ci.org/epeli/underscore.string.png?branch=master)](http://travis-ci.org/epeli/underscore.string) [![Greenkeeper badge](https://badges.greenkeeper.io/epeli/underscore.string.svg)](https://greenkeeper.io/) #
 
 Javascript lacks complete string manipulation operations.
 This is an attempt to fill that gap. List of build-in methods can be found
