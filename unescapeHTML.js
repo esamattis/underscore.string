@@ -2,7 +2,7 @@ var makeString = require('./helper/makeString');
 var htmlEntities = require('./helper/htmlEntities');
 
 module.exports = function unescapeHTML(str) {
-  return makeString(str).replace(/\&([^;]+);/g, function(entity, entityCode) {
+  return makeString(str).replace(/\&([^;]{1,10});/g, function(entity, entityCode) {
     var match;
 
     if (entityCode in htmlEntities) {
