@@ -6,7 +6,7 @@ test('#wrap', function(){
   // without trailing spaces
   equal(wrap('My name is', { width: 2, seperator:'.', cut:false, trailingSpaces:false } ), 'My.name.is', 'works with width 2 and cut = false');
   equal(wrap('My name is', { width: 2, seperator:'.', cut:true, trailingSpaces:false } ), 'My. n.am.e .is', 'works with width 2 and cut = true');
-  equal(wrap('My name is', { width: 3, seperator:'.', cut:false, trailingSpaces:false } ), 'My.name.is', 'works with width 3 and cut = true');
+  equal(wrap('My name is', { width: 3, seperator:'.', cut:false, trailingSpaces:false } ), 'My.name.is', 'works with width 3 and cut = false');
   equal(wrap('My name is', { width: 3, seperator:'.', cut:true, trailingSpaces:false } ), 'My .nam.e i.s', 'works with width 3 and cut = true');
 
   // with trailing spaces
