@@ -1,7 +1,13 @@
 
 # Changelog
 
+### 3.3.5
+
+* Security fix 
+* [Full changelog](https://github.com/epeli/underscore.string/compare/3.2.4...3.2.5)
+
 ### 3.3.4
+
 * set standalone in browserify `s`
 
 ### 3.3.1 / 3.3.2 / 3.3.3
