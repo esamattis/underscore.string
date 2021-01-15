@@ -751,12 +751,12 @@ module.exports = function naturalCmp(str1, str2) {
                                 field_list[field_list.length] = field_match[1]
                             }
                             else {
-                                throw new SyntaxError("[sprintf] failed to parse named argument key")
+                                throw new SyntaxError(sprintf("[sprintf] failed to parse named argument key \"%s\" in \"%s\"", replacement_field, fmt))
                             }
                         }
                     }
                     else {
-                        throw new SyntaxError("[sprintf] failed to parse named argument key")
+                        throw new SyntaxError(sprintf("[sprintf] failed to parse named argument key \"%s\" in \"%s\"", replacement_field, fmt))
                     }
                     match[2] = field_list
                 }
@@ -764,12 +764,12 @@ module.exports = function naturalCmp(str1, str2) {
                     arg_names |= 2
                 }
                 if (arg_names === 3) {
-                    throw new Error("[sprintf] mixing positional and named placeholders is not (yet) supported")
+                    throw new Error(sprintf("[sprintf] mixing positional and named placeholders is not (yet) supported: \"%s\"", fmt))
                 }
                 parse_tree[parse_tree.length] = match
             }
             else {
-                throw new SyntaxError("[sprintf] unexpected placeholder")
+                throw new SyntaxError(sprintf("[sprintf] unexpected placeholder: \"%s\"", fmt))
             }
             _fmt = _fmt.substring(match[0].length)
         }
