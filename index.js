@@ -58,6 +58,7 @@ s.pad              = require('./pad');
 s.lpad             = require('./lpad');
 s.rpad             = require('./rpad');
 s.lrpad            = require('./lrpad');
+s.sformat          = require('./sformat');
 s.sprintf          = require('./sprintf');
 s.vsprintf         = require('./vsprintf');
 s.toNumber         = require('./toNumber');
