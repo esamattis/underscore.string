@@ -789,6 +789,22 @@ map("Hello world", function(x) {
 // => "HellO wOrld"
 ```
 
+#### extract(string, string) => array
+
+Extract tokens from string in requested order.
+
+```javascript
+extract('My name is {0} and I like {1}', 'My name is Sponge Bob and I like square pants');
+// => "['Sponge Bob', 'square pants']"
+
+extract('{2}, {1}, and {0}', 'Red, White, and Blue');
+// => "['Blue', 'White', 'Red']"
+
+var f = extract('My name is {0} and I like {1}');
+f('My name is Bob and I like sponges');
+// => "['Bob', 'sponges']"
+```
+
 ### Library functions
 
 If you require the full library you can use chaining and aliases
