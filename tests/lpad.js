@@ -10,5 +10,8 @@ test('#lpad', function() {
   equal(lpad('', 2), '  ');
   equal(lpad(null, 2), '  ');
   equal(lpad(undefined, 2), '  ');
+  equal(lpad('Hello', 0), 'Hello');
+  equal(lpad('Hello', -8), 'Hello');
+  equal(lpad('Hello', undefined), 'Hello');
+  equal(lpad('Hello', null), 'Hello');
 });
-

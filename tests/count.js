@@ -6,6 +6,7 @@ test('#count', function(){
   equal(count('Hello world', 'l'), 3);
   equal(count('Hello world', 'Hello'), 1);
   equal(count('Hello world', 'foo'), 0);
+  equal(count('Hello world', 'Hello world'), 1);
   equal(count('x.xx....x.x', 'x'), 5);
   equal(count('', 'x'), 0);
   equal(count(null, 'x'), 0);
@@ -19,4 +20,3 @@ test('#count', function(){
   equal(count(null, null), 0);
   equal(count(undefined, undefined), 0);
 });
-
