@@ -744,7 +744,7 @@ Just past it to `Array#sort`.
 
 #### toBoolean(string) => boolean
 
-Turn strings that can be commonly considered as booleas to real booleans. Such as "true", "false", "1" and "0". This function is case insensitive.
+Turn strings that can be commonly considered as booleans to real booleans. Such as "true", "false", "1" and "0". This function is case insensitive.
 
 ```javascript
 toBoolean("true");
