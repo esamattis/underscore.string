@@ -4,7 +4,7 @@
 * Underscore.string is freely distributable under the terms of the MIT license.
 * Documentation: https://github.com/epeli/underscore.string
 * Some code is borrowed from MooTools and Alexandru Marasteanu.
-* Version '3.3.5'
+* Version '3.3.6'
 * @preserve
 */
 
