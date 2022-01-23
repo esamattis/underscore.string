@@ -690,6 +690,21 @@ repeat("foo", 3, "bar");
 // => "foobarfoobarfoo"
 ```
 
+#### around(string, substring, wrap[, rightWrap]) => string
+
+Wraps the occurrences of the given substring with another string(s).
+
+```javascript
+around("This is an apple", "apple", "*");
+// => "This is an *apple*"
+
+around("This is an apple", "apple", "[", "]");
+// => "This is an [apple]"
+
+around("This is an apple", "a", "[", "]");
+// => "This is [a]n [a]pple"
+```
+
 #### surround(string, wrap) => string
 
 Surround a string with another string.
