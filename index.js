@@ -16,7 +16,7 @@ function s(value) {
   this._wrapped = value;
 }
 
-s.VERSION = '3.3.5';
+s.VERSION = '3.3.6';
 
 s.isBlank          = require('./isBlank');
 s.stripTags        = require('./stripTags');
