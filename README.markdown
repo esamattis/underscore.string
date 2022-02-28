@@ -860,7 +860,7 @@ This library is maintained by
   - Esa-Matti Suuronen – ***[@epeli](https://github.com/epeli)***
   - Christoph Hermann – ***[@stoeffel](https://github.com/stoeffel)***
 
-## Licence ##
+## License ##
 
 The MIT License
 
