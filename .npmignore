@@ -2,3 +2,8 @@ tests
 bench
 coverage
 scripts
+.editorconfig
+.eslintignore
+.eslintrc
+.travis.yml
+bower.json
