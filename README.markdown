@@ -1,3 +1,8 @@
+This repository is now archived. Just see if the browser now has native versions. 
+If not checkout [es-toolkit](https://es-toolkit.dev/reference/string/camelCase.html) for maintained lib like this.
+
+
+
 <span class="github-only">
 
 The stable release documentation can be found here https://epeli.github.io/underscore.string/
