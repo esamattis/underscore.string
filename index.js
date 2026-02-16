@@ -80,6 +80,7 @@ s.exports          = require('./exports');
 s.escapeRegExp     = require('./helper/escapeRegExp');
 s.wrap             = require('./wrap');
 s.map              = require('./map');
+s.extract          = require('./extract');
 
 // Aliases
 s.strip     = s.trim;
