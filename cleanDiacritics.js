@@ -1,8 +1,8 @@
 
 var makeString = require('./helper/makeString');
 
-var from  = 'ąàáäâãåæăćčĉęèéëêĝĥìíïîĵłľńňòóöőôõðøśșşšŝťțţŭùúüűûñÿýçżźž',
-  to    = 'aaaaaaaaaccceeeeeghiiiijllnnoooooooossssstttuuuuuunyyczzz';
+var from  = 'ąàáäâãåæăćčĉęèéëêĝĥìíïîĵłľńňòóöőôõðøśșşšŝťțţŭùúüűûūñÿýçżźž',
+  to    = 'aaaaaaaaaccceeeeeghiiiijllnnoooooooossssstttuuuuuuunyyczzz';
 
 from += from.toUpperCase();
 to += to.toUpperCase();
