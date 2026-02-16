@@ -13,7 +13,8 @@ var htmlEntities = {
   gt: '>',
   quot: '"',
   amp: '&',
-  apos: '\''
+  apos: '\'',
+  shy: ''
 };
 
 module.exports = htmlEntities;
