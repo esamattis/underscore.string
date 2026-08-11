@@ -1,6 +1,10 @@
 
 # Changelog
 
+### 3.3.6
+
+* Rebuild all assets for the release packages
+
 ### 3.3.5
 
 * Security fix 

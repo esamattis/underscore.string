@@ -3,7 +3,7 @@
 Package.describe({
   name: 'underscorestring:underscore.string',
   summary: 'underscore.string (official): String manipulation extensions for Underscore.js javascript library.',
-  version: '3.3.4',
+  version: '3.3.5',
   git: 'https://github.com/epeli/underscore.string.git',
   documentation: 'README.markdown'
 });
